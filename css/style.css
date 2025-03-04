@@ -1365,4 +1365,44 @@ h6 {
     transform: scale(1.09)
   }
 }
-.scroll-up{position:fixed;right:3rem;bottom:3rem;z-index:40;height:3rem;width:3rem;color:#dcdcdc;cursor:pointer;visibility:hidden;border-radius:3rem;-webkit-box-shadow:inset 0 0 0 .25rem #dcdcdc;box-shadow:inset 0 0 0 .25rem #dcdcdc;opacity:0;-webkit-transition:.2s;transition:.2s;-webkit-transform:translateY(1.6rem);transform:translateY(1.6rem)}.scroll-up::before{content:"🠕";position:absolute;top:0;left:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;font-size:1.7rem}@media(any-hover: hover){.scroll-up:hover{color:orange}}.scroll-up__path{-webkit-box-sizing:border-box;box-sizing:border-box;fill:none;stroke:orange;stroke-width:.25rem;-webkit-transition:.2s;transition:.2s}.scroll-up--active{visibility:visible;opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}@media(max-width: 450px){.scroll-up{right:1.5rem;bottom:1.5rem}}
+.scroll-up{
+  position:fixed;
+  right:3rem;
+  bottom:3rem;
+  z-index:40;
+  height:3rem;
+  width:3rem;
+  color:#dcdcdc;
+  cursor:pointer;
+  visibility:hidden;
+  border-radius:3rem;
+  -webkit-box-shadow:inset 0 0 0 .25rem #dcdcdc;
+  box-shadow:inset 0 0 0 .25rem #dcdcdc;
+  opacity:0;
+  -webkit-transition:.2s;
+  transition:.2s;
+  -webkit-transform:translateY(1.6rem);
+  transform:translateY(1.6rem)
+}
+.scroll-up::before{
+  content:"🠕";
+  position:absolute;
+  top:0;
+  left:0;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-align:center;
+  -ms-flex-align:center;
+  align-items:center;
+  -webkit-box-pack:center;
+  -ms-flex-pack:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  font-size:1.7rem
+}
+@media(any-hover: hover){
+  .scroll-up:hover{color:orange}
+}
+.scroll-up__path{-webkit-box-sizing:border-box;box-sizing:border-box;fill:none;stroke:orange;stroke-width:.25rem;-webkit-transition:.2s;transition:.2s}.scroll-up--active{visibility:visible;opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}@media(max-width: 450px){.scroll-up{right:1.5rem;bottom:1.5rem}}
