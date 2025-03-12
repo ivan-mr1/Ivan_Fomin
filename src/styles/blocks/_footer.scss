@@ -1,5 +1,69 @@
-@use "sass:math" as math;
 @use "../config/functions" as *;
 @use "../config/mixins" as *;
-@use "../config/variables" as global;
+
+.footer {
+    @include adaptive-clamp("padding-top", 70, 25);
+    @include adaptive-clamp("padding-bottom", 70, 25);
+    &__header {
+        text-align: center;
+        &:not(:last-child) {
+            margin-bottom: rem(25);
+        }
+    }
+    &__title {
+        font-size: rem(24);
+        font-weight: 700;
+    }
+    &__text {
+        font-size: rem(18);
+    }
+    &__bottom {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: rem(25);
+        row-gap: rem(25);
+        @media (max-width: em(479)){
+              flex-direction: column;
+        }
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: rem(13);
+        &:not(:last-child) {
+            margin-bottom: rem(20);
+        };
+    }
+    &__link-icon {
+        width: rem(20);
+        height: rem(20);
+    }
+    &__link-img {
+        max-width: 100%;
+    }
+}
+.social {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: rem(35);
+    row-gap: rem(20);
+    &__link {
+        width: rem(30);
+        height: rem(30);
+        transition: all 0.3s ease 0s;
+        @media (any-hover: hover) {
+            &:hover {
+                transform: scale(1.09);
+            }            
+        }
+    }
+    &__img {
+        max-width: 100%;
+    }
+}
+
+
 

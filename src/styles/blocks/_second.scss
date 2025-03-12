@@ -6,9 +6,6 @@
 
 
 .about {
-    @include adaptive-clamp("padding-top", 120, 40);
-    &__container {
-    }
     &__wrapper {
         display: flex;
         @include adaptive-clamp("column-gap", 70, 20);
@@ -43,9 +40,5 @@
     &__subtitle {
         padding-left: rem(12);
         padding-top: rem(3);
-    }
-    &__text {
-    }
-    &__skills {
     }
 }
