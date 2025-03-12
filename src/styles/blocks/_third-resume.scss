@@ -3,8 +3,6 @@
 
 .resume {
     @include adaptive-clamp("padding-top", 120, 40);
-    &__container {
-    }
     &__header {
         &:not(:last-child) {
             @include adaptive-clamp("margin-bottom", 50, 20);
@@ -24,8 +22,6 @@
         @media (max-width: em(767.98)){
             grid-template-columns: auto;
         }
-    }
-    &__column {
     }
     &__title {
         font-weight: 700;
@@ -56,8 +52,6 @@
             left: 0;
             background-color: #000;
         }
-    }
-    &__item {
     }
 }
 .item-resume {
@@ -100,9 +94,6 @@
         left: 17px;
         top: 14px;
         max-width: rem(25);
-    }
-    &__header {
-
     }
     &__title {
         font-weight: 700;

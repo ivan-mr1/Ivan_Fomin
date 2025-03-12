@@ -12,7 +12,6 @@
         @include adaptive-clamp("padding-top", 200, 90);
         @include adaptive-clamp("padding-bottom", 200, 40);
     }
-
     &__body {
         color: var(--c-white);
         max-width: rem(320);
@@ -20,7 +19,6 @@
             max-width: 100%;
       }
     }
-
     &__subtitle {
         font-weight: 700;
         line-height: 1.5;
@@ -29,7 +27,6 @@
             margin-bottom: rem(10);
         }
     }
-
     &__title {
         font-weight: 700;
         line-height: 1.2;
@@ -38,7 +35,6 @@
             margin-bottom: rem(25);
         }
     }
-
     &__buttons {
         display: flex;
         row-gap: rem(20);
@@ -47,13 +43,11 @@
             flex-direction: column;
         }
     }
-
     &__button {
         @media (max-width: em(500)){
             width: 100%;
       }
     }
-
     &__image {
         position: absolute;
         width: 100%;

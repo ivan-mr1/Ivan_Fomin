@@ -39,8 +39,8 @@
     }
     &__title {
         font-weight: 700;
+        line-height: 1.6;
         @include adaptive-clamp("font-size", 36, 24);
-        line-height: 167%;
         &:not(:last-child) {
             @include adaptive-clamp("margin-bottom", 25, 12);
         }
