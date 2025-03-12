@@ -1,0 +1,69 @@
+@use "sass:math" as math;
+@use './../config/functions' as *;
+@use './../config/mixins' as *;
+
+.spollers__title {
+    width: 100%;
+    padding: rem(10);
+    text-align-last: left;
+    font-size: rem(18);
+    position: relative;
+    background-color: transparent;
+}
+.init .spollers__title{
+    cursor: pointer;
+}
+.init .spollers__title {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.init .spollers__title:after {
+    content: '';
+    //background: url("../assets/img/root/spoller.svg") center center no-repeat;
+    background: url("../assets/img/root/spoller-white.svg") center center no-repeat;
+    width: 20px;
+    height: 20px;
+    transition: transform .5s;
+}
+.init .spollers__title.active:after {
+    transform: rotate(-180deg);
+}
+
+// указать свои стили
+
+
+/* 
+add this markup to index.html
+<div data-spollers data-one-spoller class="spollers">
+    <div class="spollers__item">
+        <button tabindex="1" type="button" data-spoller class="spollers__title">обычный спойлер</button>
+        <div class="spollers__text"></div>
+    </div>
+    <div class="spollers__item">
+        <button tabindex="1" type="button" data-spoller class="spollers__title">обычный спойлер</button>
+        <div class="spollers__text"></div>
+    </div>
+</div>
+<div data-spollers="600, min" class="spollers">
+    <div class="spollers__item">
+        <button tabindex="1" type="button" data-spoller class="spollers__title">спойлер работает на экранах = 600px</button>
+        <div class="spollers__text"></div>
+    </div>
+</div>
+<div data-spollers="800, max" class="spollers">
+    <div class="spollers__item">
+        <button tabindex="1" type="button" data-spoller class="spollers__title">спойлер 2 работает на экранах = 800px</button>
+        <div class="spollers__text"></div>
+    </div>
+</div>
+
+    data-one-spoiler функция акордеона, может быть открыт только один спойлер из всех
+    data-spoilers пустой атрибут вешаем на родителя, если надо вывести спойлеры, которые будут работать на любом разрешении экрана
+    "button" data-spoiler вешаем пустой атрибут на кнопку заголовок открывания
+    data-spoilers="650,min" чтобы включался на экранах шире 650
+    data-spoilers="800,max" чтобы включался на экранах меньше 650
+*/
+					
+					

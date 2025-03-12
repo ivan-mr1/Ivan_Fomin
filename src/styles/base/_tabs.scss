@@ -1,0 +1,52 @@
+.tabcontainer {
+}
+.tabcontent {
+}
+.tabheader {
+    &__items {
+        margin-bottom: 2rem;
+    }
+    &__item {
+        font-size: 1.125rem;
+        color: rgba(0, 0, 0, 0.6);
+        margin-bottom: 0.625rem;
+        cursor: pointer;
+        transition: 0.3s all;
+        &_active {
+            color: #000;
+            font-size: 1.375rem;
+            font-weight: 700;
+        }
+    }
+}
+.show {
+    display: block;
+}
+.hide {
+    display: none;
+}
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@keyframes fade {
+    from{
+        opacity: 0.1;
+    }
+    to{
+        opacity: 1;
+    }
+}
+/* 
+Add in HTML
+<div class="tabcontainer">
+    <div class="tabheader">
+        <ul class="tabheader__items">
+            <li class="tabheader__item tabheader__item_active"></li>
+            <li class="tabheader__item"></li>
+        </ul>
+    </div>
+    <div class="tabcontent"></div>
+    <div class="tabcontent"></div>
+</div>
+*/

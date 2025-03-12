@@ -1,0 +1,58 @@
+%ic {
+	font-family: "icons";
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+[class*="_icon-"] {
+	&::before {
+		@extend %ic;
+	}
+}
+
+/* https://fontawesome.com/ */
+/* https://icomoon.io/ */
+/* при выгрузке из фигмы выделить иконку, перейди в object и нажать outline strock(ctrl+shift+o), потом экспортировать в формате svg, также удалить цвета иконок.
+потом очищаем цвет иконок. font name=icons, class=_icon- */
+/* создание иконочного шрифта подходит для простых одноцветных иконок */
+
+._icon-arrow-left:before {
+	content: "\e900";
+  }
+  ._icon-arrow-right:before {
+	content: "\e901";
+  }
+  ._icon-arrowTopFooter:before {
+	content: "\e902";
+  }
+  ._icon-clock:before {
+	content: "\e903";
+  }
+  ._icon-geo:before {
+	content: "\e904";
+  }
+  ._icon-instagram:before {
+	content: "\e905";
+  }
+  ._icon-medium:before {
+	content: "\e906";
+  }
+  ._icon-paragraphBottom:before {
+	content: "\e907";
+  }
+  ._icon-paragraphTop:before {
+	content: "\e908";
+  }
+  ._icon-play:before {
+	content: "\e909";
+  }
+  ._icon-tiktok:before {
+	content: "\e90a";
+  }
+  ._icon-twitter:before {
+	content: "\e90b";
+  }

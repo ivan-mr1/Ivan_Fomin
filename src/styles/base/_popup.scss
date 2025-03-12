@@ -1,0 +1,97 @@
+
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.8s ease 0s;
+    &__image {
+        img {
+            max-width: 100%;
+        }
+    }
+    &__body {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 10px;
+    }
+    &__content {
+        position: relative;
+        background-color: #fff;
+        color: #000;
+        max-width: 800px;
+        padding: 30px;
+        transition: all 0.8s ease 0s;
+        opacity: 0;
+        transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+        //transform: scale(0);
+        &-image {
+            padding: 0;
+        }
+        a {
+            margin-bottom: 10px;
+        }
+        &__video {
+            padding: 0;
+        }
+    }
+    &__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        color: #c2410c;
+        text-decoration: none;
+    }
+    &__title {
+        font-size: 40px;
+        &:not(:last-child) {
+           margin-bottom: 16px;
+        }
+    }
+    &__text {
+    }
+}
+.popup.open {//.popup:target
+    opacity: 1;
+    visibility: visible;
+}
+.popup.open .popup__content{//.popup:target .popup__content
+    transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+    //transform: scale(1);
+    opacity: 1;
+}
+
+
+/* 
+<a href="#popup" class="popup-link">open popup 1</a>
+<div id="popup" class="popup">
+    <div class="popup__body">
+        <div class="popup__content">
+            <a href="#header" type="button" class="popup__close close-popup">X</a>
+            <h3 class="popup__title">title popup 1</h3>
+            <div class="popup__text">
+                <a href="#popup2" class="popup-link">open popup 2</a> <br>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="image" class="popup">
+    <div class="popup__body">
+        <div class="popup__content popup__content-image">
+            <a href="#header" type="button" class="popup__close close-popup">X</a>
+            <div class="popup__image">
+                <img src="assets/img/test-Image/1.png" alt="Image">
+            </div>
+        </div>
+    </div>
+</div>
+*/

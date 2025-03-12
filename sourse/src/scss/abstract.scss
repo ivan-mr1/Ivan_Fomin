@@ -1,0 +1,158 @@
+/*          подсказки, не подключать
+
+
+если лендинг, из home.html переносим ы index.html и home удаляем
+/* ===аналог gap, ко всем блокам первого уровня, кроме последнего, отступ вниз 15рх=== */
+// .item-getintouch > *:not(:last-child) {
+//     margin: 0px 0px 15px 0px;
+// }
+
+//===========
+/* &__text {
+    //1 чтобы получилось троеточие
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 225px;//установить ширину
+    overflow: hidden;
+    //1 чтобы получилось троеточие
+} */
+
+//============
+/* &__body {
+    display: flex;
+    align-items: flex-start;
+}
+&__video {
+    flex: 0 0 57%; // 600px/1046px *** 14.40
+    position: relative;
+    padding: 0px 0px 42.25% 0px; // 442/1046*100=42.25% 
+}
+&__video iframe {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+@media (max-width: 950px) { 
+    .whoweare {
+         &__body {
+            align-items: stretch;// чтобы вернуть видео 42 
+        }
+        &__video {
+            padding: 0px 0px 56.25% 0px;// 315/560=56.25 из iframe 
+        }  
+    }
+}// 315/560=56.25  */
+
+//============
+/* &__image {
+    position: relative;
+    display: block;// чтобы не пропадали изображения из-зa того, что ссылки строчный тег 
+    padding-bottom: 81%;// 300высота изображения/370ширина изображения=81% 300/370 
+    border-radius: 5px;
+    overflow: hidden;
+}
+&__image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease 0s;
+} */
+
+//==============
+/* &__image:hover img {// если ставить ховер так, то изображение будет увеличиваться, не меняя размер блока 
+    transform: scale(1.1);
+} */
+
+//==================
+/* &__video {
+    padding: 0px 0px 56.25% 0px;
+} 
+width="560" height="315" изображение или видео адаптируется 
+315/560=56.25 из iframe */
+
+//====================
+/* @media (any-hover: hover) {медиазапрос для устройств, где есть мышь
+    &:hover {
+        transform: scale(1.10);
+    }
+} */
+/* для адаптации картинок и  видео задаем родителю нижний процентный паддинг вместо фиксированной высоты */
+/* для этого высоту делим на ширину */
+/* &__video {
+    padding: 0px 0px 56.25% 0px;
+} */
+/* width="560" height="315" изображение или видео адаптируется */
+/* 315/560=56.25 из iframe */
+
+/* &__body > *:not(:last-child) {обращение ко всем обьектам первого уровня, кроме последнего
+    margin: 0px 0px 30px 0px;
+} */
+
+/*     &__video {
+        flex: 0 0 57%; 600px/1046px 
+        position: relative;
+        padding: 0px 0px 42.25% 0px;  442/1046*100=42.25% 
+    }
+    &__video iframe {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    } */
+
+//===============
+/* &__image {
+    display: block;// чтобы появилась картинка, т.к. она строчная 
+    position: relative;
+    padding-bottom: 49.238579%; // 194высота картинки/394ширина картинки 
+}
+&__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease 0s;
+    @media (any-hover: hover) {
+        &:hover {
+            transform: scale(1.006);
+            filter: grayscale(30%);
+        }
+    }
+} */
+// flex: 1 1 auto;/* позволяем увеличиваться */
+// flex: 0 0 auto;/* не позволяем уменьшаться */
+
+//================
+/* .header::before {//подложка при скролле
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+.header.scroll::before {
+	opacity: 1;
+} */
+//flex: 0 0 2.0625rem; // чтобы изображение flex элемент не плющило, вместо width: 33px; добавляем flex: 0 0 33px;
+
+//=============
+    // aspect-ratio: 325 / 366;//соотношение сторон вместо процентного паддинга добавлять каждоьу конкретному контейнеру. ширина первая325, вторая высота 366
+    // padding: 0px 0px 58% 0px; // отзывчивая высота нижним процентным паддингом родителю. задаем вместо фиксированной высоты. 
+    //overflow: hidden; 
+    //(иногда нужно устанавливать display: block картинке)
+
+//=============

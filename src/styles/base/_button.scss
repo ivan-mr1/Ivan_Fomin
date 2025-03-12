@@ -1,0 +1,24 @@
+@use "sass:math" as math;
+@use './../config/root' as *;
+@use './../config/functions' as *;
+@use './../config/mixins' as *;
+
+.button {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	//text-transform: uppercase;
+	padding: rem(12) rem(25);
+	border: 1px solid var(--c-white);
+	color: var(--c-white);
+	border-radius: rem(8);
+	transition: all 0.3s ease 0s;
+	@media (any-hover: hover) {
+		&:hover {
+			border: 1px solid var(--c-orange);
+			color: var(--c-orange);
+		}
+	}
+}
+

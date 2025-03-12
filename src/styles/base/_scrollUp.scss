@@ -1,0 +1,67 @@
+@use "sass:math" as math;
+@use './../config/functions' as *;
+@use './../config/mixins' as *;
+$scrollUpMainColor: #dcdcdc;
+$scrollUpAccentColor: var(--c-scrollUp);
+.scroll-up {//circle 
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+    z-index: 10;
+    height: 3rem;
+    width: 3rem;
+    color: $scrollUpMainColor;
+    cursor: pointer;
+    visibility: hidden;
+    border-radius: 3rem;
+    box-shadow: inset 0 0 0 0.25rem $scrollUpMainColor;
+    opacity: 0;
+    transition: 0.2s;
+    transform: translateY(1.6rem);
+    &::before{//arrow up          
+        content:'';
+        background: url('../assets/img/root/arrow-right.svg') center no-repeat;//белая стрелка
+        transform: rotate(-90deg);
+
+        //content:'🠕';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-size: 1.7rem;
+    }
+    @media (any-hover: hover){
+        &:hover{
+            color: $scrollUpAccentColor;
+        }
+    }
+    &__path {//scroll indication
+        box-sizing: border-box;
+        fill: none;
+        stroke: $scrollUpAccentColor;
+        stroke-width: 0.25rem;
+        transition: 0.2s;
+    }
+}
+.scroll-up--active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 450px){
+    .scroll-up {
+        right: 1.5rem;
+        bottom: 1.5rem;
+    }
+}
+
+/* add this markup to index.html
+    <div class="scroll-up">
+      <svg class="scroll-up__svg" xmlns="" viewBox="-2 -2 52 52"><path class="scroll-up__path" d="M 24,0 a24,24 0 0,1 0,48 a24,24 0 0,1 0,-48" /></svg>
+    </div>
+*/

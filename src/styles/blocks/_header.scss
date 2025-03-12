@@ -1,0 +1,73 @@
+ @use './../base/header-fon';
+ @use './../base/burger';
+ @use './../base/menu-header';
+
+@use "../config/functions" as *;
+@use "../config/mixins" as *;
+@use "../config/variables" as *;
+
+
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 50;
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: end;
+        @include adaptive-clamp("column-gap", 40, 20);
+        @include adaptive-clamp("min-height", 80, 50);
+	}
+	&__menu {
+	}
+	&__actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: rem(15);
+	}
+	&__button {
+		position: relative;
+		z-index: 5;
+		font-weight: 500;
+		line-height: 1.21;
+		padding: rem(14) rem(20);
+		border: 1px solid var(--c-white);
+        color: var(--c-white);
+		border-radius: rem(8);
+		transition: all 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				border: 1px solid var(--c-orange);
+				color: var(--c-orange);
+			}
+		}
+		@media (max-width:em(767.98)){
+			padding: rem(8) rem(15);
+		}
+	}
+}
+.menu {
+	&__body {
+	}
+	&__list {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		row-gap: rem(10);
+        @include adaptive-clamp("column-gap", 30, 15);
+		@media (max-width:em(767.98)){
+			flex-direction: column;
+			gap: rem(20);
+	  }
+	}
+	&__item {
+	}
+	&__link {
+		color: var(--c-white);
+	}
+	&__icon {
+	}
+} 
