@@ -20,8 +20,8 @@ $scrollUpAccentColor: var(--c-scrollUp);
     transform: translateY(1.6rem);
     &::before{//arrow up          
         content:'';
-        background: url('../assets/img/root/arrow-right.svg') center no-repeat;//белая стрелка
-        transform: rotate(-90deg);
+        background: url('../assets/img/root/scroll-up.svg') center no-repeat;
+        //transform: rotate(-90deg);
 
         //content:'🠕';
         position: absolute;

@@ -17,9 +17,11 @@
           <nav class="menu__body">
             <ul class="menu__list">
               <li class="menu__item"><a href="#" data-goto=".about" class="menu__link hover-link">ABOUT ME</a></li>
-              <li class="menu__item"><a href="#" data-goto=".resume" class="menu__link hover-link">MY EXPERIENCE</a></li>
+              <li class="menu__item"><a href="#" data-goto=".resume" class="menu__link hover-link">MY EXPERIENCE</a>
+              </li>
               <li class="menu__item"><a href="#" data-goto=".skills" class="menu__link hover-link">MY SKILLS</a></li>
-              <li class="menu__item"><a href="#" data-goto=".portfolio" class="menu__link hover-link">MY PORTFOLIO</a></li>
+              <li class="menu__item"><a href="#" data-goto=".portfolio" class="menu__link hover-link">MY PORTFOLIO</a>
+              </li>
               <li class="menu__item"><a href="#" data-goto=".footer" class="menu__link hover-link">CONTACTS</a></li>
             </ul>
           </nav>
@@ -250,7 +252,7 @@
               <div class="item-skills__icon">
                 <img src="assets/img/fourthSection4/js.svg" alt="icon-skill" class="item-skills__img" loading="lazy">
               </div>
-              <h3 class="item-skills__title">Java Script
+              <h3 class="item-skills__title">JavaScript
               </h3>
               <div class="item-skills__text">
                 <p>This programming language allows you to bring anything to life: sliders, windows, tooltips, tabs,
@@ -259,7 +261,18 @@
             </div>
             <div class="skills__item item-skills">
               <div class="item-skills__icon">
-                <img src="assets/img/fourthSection4/jquery.svg" alt="icon-skill" class="item-skills__img" loading="lazy">
+                <img src="assets/img/fourthSection4/typescript-svgrepo-com.svg" alt="icon-skill" class="item-skills__img" loading="lazy">
+              </div>
+              <h3 class="item-skills__title">TypeScript
+              </h3>
+              <div class="item-skills__text">
+                <p>TypeScript is a programming language that extends JavaScript by adding static typing. It allows for safer and more predictable code, making it easier to develop large applications.</p>
+              </div>
+            </div>
+            <div class="skills__item item-skills">
+              <div class="item-skills__icon">
+                <img src="assets/img/fourthSection4/jquery.svg" alt="icon-skill" class="item-skills__img"
+                  loading="lazy">
               </div>
               <h3 class="item-skills__title">Jquery</h3>
               <div class="item-skills__text">
@@ -269,12 +282,33 @@
             </div>
             <div class="skills__item item-skills">
               <div class="item-skills__icon">
-                <img src="assets/img/fourthSection4/gulp-logo.svg" alt="icon-skill" class="item-skills__img" loading="lazy">
+                <img src="assets/img/fourthSection4/gulp-logo.svg" alt="icon-skill" class="item-skills__img"
+                  loading="lazy">
               </div>
               <h3 class="item-skills__title">Gulp</h3>
               <div class="item-skills__text">
                 <p>Gulp is a task manager for automatically performing frequently used tasks (for example, minification,
                   testing, merging files), written in the JavaScript programming language.</p>
+              </div>
+            </div>
+            <div class="skills__item item-skills">
+              <div class="item-skills__icon">
+                <img src="assets/img/fourthSection4/webpack-svgrepo-com.svg" alt="icon-skill" class="item-skills__img"
+                  loading="lazy">
+              </div>
+              <h3 class="item-skills__title">Webpack</h3>
+              <div class="item-skills__text">
+                <p>Webpack is a popular module bundler for JavaScript applications that allows you to bundle, optimize, and manage dependencies. It supports various plugins and loaders to customize the build for the specific needs of a project.</p>
+              </div>
+            </div>
+            <div class="skills__item item-skills">
+              <div class="item-skills__icon">
+                <img src="assets/img/fourthSection4/vite-svgrepo-com.svg" alt="icon-skill" class="item-skills__img"
+                  loading="lazy">
+              </div>
+              <h3 class="item-skills__title">Vite</h3>
+              <div class="item-skills__text">
+                <p>Vite is a modern build tool for web applications that leverages native browser capabilities for fast development. It provides instant reloading and optimization, making the development process more efficient.</p>
               </div>
             </div>
             <div class="skills__item item-skills">
@@ -286,7 +320,6 @@
                 <p>React. js is an open source library for the JavaScript programming language for developing user
                   interfaces. It helps you quickly and easily implement reactivity - a phenomenon where, in response to
                   a change in one element, everything else changes.
-
                 </p>
               </div>
             </div>
@@ -303,8 +336,9 @@
           </div>
           <ul class="portfolio__items">
             <li class="portfolio__item">
-              <a target="_blank" href="https://ivan1986mrpl.github.io/landing/dist/index.html" class="portfolio__link"><img
-                  src="assets/img/works/landing.webp" alt="portfolio link" class="portfolio__img" loading="lazy"></a>
+              <a target="_blank" href="https://ivan1986mrpl.github.io/landing/dist/index.html"
+                class="portfolio__link"><img src="assets/img/works/landing.webp" alt="portfolio link"
+                  class="portfolio__img" loading="lazy"></a>
             </li>
             <li class="portfolio__item">
               <a target="_blank" href="https://ivan1986mrpl.github.io/Funiro/Funiro-main/" class="portfolio__link"><img
@@ -346,7 +380,7 @@
               <a target="_blank" href="https://ivan1986mrpl.github.io/RGym/src/" class="portfolio__link"><img
                   src="assets/img/works/RGym.jpg" alt="portfolio link" class="portfolio__img" loading="lazy"></a>
             </li>
-             <li class="portfolio__item">
+            <li class="portfolio__item">
               <a target="_blank" href="https://ivan1986mrpl.github.io/roboSchool/app/" class="portfolio__link"><img
                   src="assets/img/works/roboschool.jpg" alt="portfolio link" class="portfolio__img" loading="lazy"></a>
             </li>
@@ -385,9 +419,8 @@
           </ul>
         </div>
       </section>
-
     </main>
-    
+
     <footer id="footer" class="footer">
       <div class="footer__container">
         <div class="footer__header">
@@ -397,24 +430,36 @@
         <div class="footer__bottom">
           <ul class="footer__social social">
             <li class="social__item"><a href="https://www.linkedin.com/in/ivan-553404281/" target="_blank"
-                class="social__link"><img src="assets/img/footer/social/linkedin.svg" alt="linkedin"
-                  class="social__img" loading="lazy"></a></li>
+                class="social__link"><img src="assets/img/footer/social/linkedin.svg" alt="linkedin" class="social__img"
+                  loading="lazy"></a>
+            </li>
             <li class="social__item"><a href="https://github.com/ivan1986mrpl" target="_blank" class="social__link"><img
-                  src="assets/img/footer/social/github.svg" alt="Github" class="social__img" loading="lazy"></a></li>
+                  src="assets/img/footer/social/github.svg" alt="Github" class="social__img" loading="lazy"></a>
+            </li>
             <li class="social__item"><a href="https://t.me/ivan_mrpl" target="_blank" class="social__link"><img
-                  src="assets/img/footer/social/telegram.svg" alt="Telegram" class="social__img" loading="lazy"></a></li>
+                  src="assets/img/footer/social/telegram1.svg" alt="Telegram" class="social__img" loading="lazy"></a>
+            </li>
+            <li class="social__item"><a href="https://wa.me/380668752517" target="_blank" class="social__link"><img
+                  src="assets/img/footer/social/whatsapp.svg" alt="whatsapp" class="social__img" loading="lazy"></a>
+            </li>
+            <!-- 
+            <li class="social__item"><a href="#" target="_blank" class="social__link"><img
+                  src="assets/img/footer/social/instagram.svg" alt="instagram" class="social__img" loading="lazy"></a>
+            </li> -->
           </ul>
           <ul class="footer__contacts">
             <li class="footer__item">
               <div class="footer__link-icon"><img src="assets/img/footer/social/email.svg" alt="email"
                   class="footer__link-img" loading="lazy"></div>
-              <a href="mailto:ivanitit3535@gmail.com" class="footer__link"><span class="hover-link">ivanitit3535@gmail.com</span></a>
+              <a href="mailto:ivanitit3535@gmail.com" class="footer__link"><span
+                  class="hover-link">ivanitit3535@gmail.com</span></a>
             </li>
+            <!-- 
             <li class="footer__item">
               <div class="footer__link-icon"><img src="assets/img/footer/social/phone2.svg" alt="phone"
                   class="footer__link-img" loading="lazy"></div>
               <a href="tel:380668752517" class="footer__link"><span class="hover-link">+38-066-875-25-17</span></a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
