@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // popup();
 
-// spollers();
+ spollers();
 
  headerFon();
 

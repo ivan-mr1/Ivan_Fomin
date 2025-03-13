@@ -4,9 +4,9 @@
 
 .spollers__title {
     width: 100%;
-    padding: rem(10);
+    //padding: rem(10);
     text-align-last: left;
-    font-size: rem(18);
+    //font-size: rem(18);
     position: relative;
     background-color: transparent;
 }
@@ -21,8 +21,8 @@
 }
 .init .spollers__title:after {
     content: '';
-    //background: url("../assets/img/root/spoller.svg") center center no-repeat;
-    background: url("../assets/img/root/spoller-white.svg") center center no-repeat;
+    background: url("../assets/img/root/spoller.svg") center center no-repeat;
+    //background: url("../assets/img/root/spoller-white.svg") center center no-repeat;
     width: 20px;
     height: 20px;
     transition: transform .5s;
