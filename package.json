@@ -18,6 +18,6 @@
     "svgo": "^3.3.2"
   },
   "browserslist": [
-		"last 3 versions"
+		"last 2 versions"
 	]
 }
