@@ -6,6 +6,7 @@
  import tabs from "./modules/tabs";
  import popup from "./modules/popup";
  import spollers from "./modules/spollers";
+ import galleryAnimation from "./modules/galleryAnimation";
 
  import headerFon from "./modules/headerFon";
  import pageNavigation from "./modules/page-navigation";
@@ -27,30 +28,12 @@ window.addEventListener('DOMContentLoaded', () => {
 // initCountdown('.countdown', 86440, 'The timer is over'); // Таймер на 1 день (86400 секунд)
 
 // tabs();
-
 // popup();
-
  spollers();
-
  headerFon();
-
  pageNavigation();
-
  menuBurger();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ galleryAnimation();
 
 
 });
