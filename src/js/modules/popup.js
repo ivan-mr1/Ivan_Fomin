@@ -1,65 +1,74 @@
-import { body, lockPadding, bodyLock, bodyUnlock, bodyLockStatus } from "../function";
+import {
+  body,
+  lockPadding,
+  bodyLock,
+  bodyUnlock,
+  bodyLockStatus,
+} from '../function';
 
 export default function popup() {
+  // Делегирование кликов по всему body
+  document.body.addEventListener('click', (e) => {
+    // Открытие попапа по клику на .popup-link
+    const popupLink = e.target.closest('.popup-link');
+    if (popupLink) {
+      e.preventDefault();
+      const popupName = popupLink.getAttribute('href').replace('#', '');
+      const currentPopup = document.getElementById(popupName);
+      popupOpen(currentPopup);
+      return; // чтобы дальше не искать close-popup при клике по popup-link
+    }
 
-	const popupLinks = document.querySelectorAll('.popup-link');
-	//const body = document.querySelector('body');
-	//const lockPadding = document.querySelectorAll('.lock-padding');
- 
-	if (popupLinks.length > 0) {
-		for (let index = 0; index < popupLinks.length; index++) {
-			const popupLink = popupLinks[index];
-			popupLink.addEventListener('click', function(e) {
-				e.preventDefault();
-				const popupName = popupLink.getAttribute('href').replace('#', '');//убираем хеш и получаем чистое имя
-				const currentPopup = document.getElementById(popupName);
-				popupOpen(currentPopup);
-			});
-		}
-	}
+    // Закрытие попапа по клику на кнопку закрытия
+    const closeBtn = e.target.closest('.close-popup');
+    if (closeBtn) {
+      e.preventDefault();
+      const popup = closeBtn.closest('.popup');
+      popupClose(popup);
+      return;
+    }
+  });
 
-	const popupCloseIcon = document.querySelectorAll('.close-popup');
-	if (popupCloseIcon.length > 0) {
-		for (let index = 0; index < popupCloseIcon.length; index++) {
-			const el = popupCloseIcon[index];
-			el.addEventListener('click', function(e) {
-				e.preventDefault();
-				//popupCloseIcon(el.closest('.popup'));
-				popupClose(el.closest('.popup'));//закрываем ближайшего родителя кнопки close-popup
-			});
-		}
-	}
+  // Делегирование клика по затемнённой области модального окна
+  document.body.addEventListener('click', (e) => {
+    const openPopup = document.querySelector('.popup.open');
+    if (
+      openPopup &&
+      !e.target.closest('.popup__content') &&
+      e.target.closest('.popup')
+    ) {
+      popupClose(openPopup);
+    }
+  });
 
-	function popupOpen(currentPopup) {
-		if (currentPopup && bodyLockStatus) {
-				const popupActive = document.querySelector('.popup.open');
-			if (popupActive) {
-				popupClose(popupActive, false);
-			} else {
-				bodyLock();
-			}
-			currentPopup.classList.add('open');
-			currentPopup.addEventListener('click', (e) => {
-				if (!e.target.closest('.popup__content')) {//все, кроме темной области (если нет в родителях popup__content)
-					popupClose(e.target.closest('.popup'));
-				}
-			});
-		}
-	}
+  // Закрытие по Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape') {
+      const popupActive = document.querySelector('.popup.open');
+      if (popupActive) {
+        popupClose(popupActive);
+      }
+    }
+  });
 
-	function popupClose(popupActive, doUnlock = true) {//doUnlock = true === чтобы не рахблокировался скролл, если открываем попап сразу после другого попапа
-		if (bodyLockStatus) {
-			popupActive.classList.remove('open');
-			if (doUnlock) {
-				bodyUnlock();
-			}
-		}
-	}
+  function popupOpen(currentPopup) {
+    if (currentPopup && bodyLockStatus) {
+      const popupActive = document.querySelector('.popup.open');
+      if (popupActive) {
+        popupClose(popupActive, false);
+      } else {
+        bodyLock();
+      }
+      currentPopup.classList.add('open');
+    }
+  }
 
-	document.addEventListener('keydown', (e) => {
-		if (e.code === 'Escape') {
-			const popupActive = document.querySelector('.popup.open');
-			popupClose(popupActive);
-		}
-	});
+  function popupClose(popupActive, doUnlock = true) {
+    if (popupActive && bodyLockStatus) {
+      popupActive.classList.remove('open');
+      if (doUnlock) {
+        bodyUnlock();
+      }
+    }
+  }
 }

@@ -1,44 +1,46 @@
-//@use "sass:math" as math;
-@use "../config/variables" as *;
-@use "../config/functions" as *;
-@use "../config/mixins" as *;
-//@use '../config/root' as *;
-
+@use '../helpers' as *;
 
 .about {
-    &__wrapper {
-        display: flex;
-        @include adaptive-clamp("column-gap", 70, 20);
-        @media (max-width: em(700)){
-            flex-direction: column-reverse;
-            row-gap: rem(20);
-        }
+  &__wrapper {
+    display: flex;
+
+    @include adaptive-clamp('column-gap', 70, 20);
+
+    @media (max-width: em(700)) {
+      flex-direction: column-reverse;
+      row-gap: rem(20);
     }
-    &__image {
-        flex: 0 1 40%;
-        aspect-ratio: 400 / 600;
-        display: block; 
-        position: relative;
+  }
+
+  &__image {
+    flex: 0 1 40%;
+    position: relative;
+    display: block;
+    aspect-ratio: 400 / 600;
+  }
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__descr {
+    flex: 0 1 60%;
+    padding-top: rem(6);
+  }
+
+  &__header {
+    &:not(:last-child) {
+      margin-bottom: rem(25);
     }
-    &__img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        object-fit: cover;
-        width: 100%;
-        height: 100%;      
-    }
-    &__descr {
-        flex: 0 1 60%;
-        padding-top: rem(6);
-    }
-    &__header {
-        &:not(:last-child) {
-            margin-bottom: rem(25);
-        }
-    }
-    &__subtitle {
-        padding-left: rem(12);
-        padding-top: rem(3);
-    }
+  }
+
+  &__subtitle {
+    padding-top: rem(3);
+    padding-left: rem(12);
+  }
 }

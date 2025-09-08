@@ -1,0 +1,104 @@
+@use 'helpers' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+*::before,
+*::after {
+  display: inline-block;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 320px;
+  height: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+textarea,
+input {
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+}
+
+button,
+label,
+select,
+option {
+  cursor: pointer;
+}
+
+button {
+  user-select: none; // нельзя выделить текст в кнопке.
+  // убирает внутренние отступы/границу в Firefox при фокусе.
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+figure,
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+// Удаление анимаций при системных настройках
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

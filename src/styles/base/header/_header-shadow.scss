@@ -1,0 +1,16 @@
+@use '../../helpers' as *;
+
+.header {
+  --header-animation-shadow: var(--color-orange);
+
+  animation-name: scrolling-header; //  2.04
+  animation-fill-mode: both;
+  animation-timeline: scroll();
+  animation-range: rem(100) rem(200);
+
+  @keyframes scrolling-header {
+    to {
+      box-shadow: 0 0 1rem 0 var(--header-animation-shadow);
+    }
+  }
+}

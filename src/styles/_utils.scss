@@ -1,0 +1,57 @@
+@use 'helpers' as *;
+
+[class*='__container'] {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(100%) !important;
+}
+
+.hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+.visible-mobile {
+  @include mobile-above {
+    display: none !important;
+  }
+}
+
+.ibg {
+  position: relative;
+  aspect-ratio: 4 / 3; // удалить здесь и задавать каждому отдельному изображению
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none; // запрещаем взаимодействие
+}
+
+// p {
+//   &:not(:last-child) {
+//     margin-bottom: 10px;
+//   }
+// }

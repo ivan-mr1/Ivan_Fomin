@@ -1,70 +1,79 @@
-@use "../config/functions" as *;
-@use "../config/mixins" as *;
-@use '../config/root' as *;
+@use '../helpers' as *;
 
 .header-block {
-    &__center {
-        text-align: center;
-        .header-block__line {
-            margin: 0 auto;
-        }
-        .header-block__subtitle {
-            &::before{
-                top: rem(-9);
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
+  &__center {
+    text-align: center;
+
+    .header-block__line {
+      margin: 0 auto;
     }
-    &__subtitle {
-        font-weight: 700;
-        font-size: rem(16);
-        &:not(:last-child) {
-            margin-bottom: rem(10);
-        }
-        position: relative;
-        &:before {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            top: -25%;
-            left: 0;
-            width: rem(36);
-            height: rem(36);
-            border-radius: 100%;
-            background: var(--second-color);
-        }
+
+    .header-block__subtitle {
+      &::before {
+        top: rem(-9);
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
-    &__title {
-        font-weight: 700;
-        line-height: 1.6;
-        @include adaptive-clamp("font-size", 36, 24);
-        &:not(:last-child) {
-            @include adaptive-clamp("margin-bottom", 25, 12);
-        }
+  }
+
+  &__subtitle {
+    position: relative;
+    font-size: rem(16);
+    font-weight: 700;
+
+    &:not(:last-child) {
+      margin-bottom: rem(10);
     }
-    &__title-zero {
-        &:not(:last-child) {
-            margin-bottom: rem(0);
-        }   
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: -25%;
+      left: 0;
+      width: rem(36);
+      height: rem(36);
+      background: var(--second-color);
+      border-radius: 100%;
     }
-    &__line {
-        height: rem(3);
-        width: rem(60);
-        background-color: var(--second-color);
+  }
+
+  &__title {
+    font-weight: 700;
+    line-height: 1.6;
+
+    @include adaptive-clamp('font-size', 36, 24);
+
+    &:not(:last-child) {
+      @include adaptive-clamp('margin-bottom', 25, 12);
     }
+  }
+
+  &__title-zero {
+    &:not(:last-child) {
+      margin-bottom: rem(0);
+    }
+  }
+
+  &__line {
+    width: rem(60);
+    height: rem(3);
+    background-color: var(--second-color);
+  }
 }
-//=============================
+
+// =============================
 @mixin before_circle {
-    &:before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        top: -25%;
-        left: 0;
-        width: 36px;
-        height: 36px;
-        border-radius: 100%;
-        background: var(--main-color);
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -25%;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--main-color);
+    border-radius: 100%;
+  }
 }

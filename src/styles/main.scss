@@ -1,26 +1,25 @@
- @use 'config/fonts';
-// @use 'config/icons';
- @use 'config/variables';
- @use 'config/root';
- @use 'config/reset';
- @use 'config/setting';
+@use 'reset';
+@use 'normalize';
+@use 'fonts/fonts';
 
- @use 'base/base';
+// @use 'fonts/icons';
+@use 'variables';
+@use 'utils';
+@use 'globals';
+@use 'helpers-classes';
+@use 'base/base-index';
+@use 'blocks/page';
+@use 'blocks/common';
+@use 'blocks/header';
+@use 'blocks/footer';
+@use 'blocks/hero';
+@use 'blocks/second';
+@use 'blocks/third';
+@use 'blocks/fourth';
+@use 'blocks/fifth';
 
- @use 'blocks/page';
- @use 'blocks/common';
- @use 'blocks/header';
- @use 'blocks/footer';
- @use 'blocks/hero';
- @use 'blocks/second';
- @use 'blocks/third-resume';
- @use 'blocks/fourth-skills';
- @use 'blocks/fifth-portfolio';
-
-
-
- 
-
-
-
-
+// .header,
+// main > *:not(:last-child), //  все секции, кроме последней
+// .footer {
+//   display: none !important;
+// }

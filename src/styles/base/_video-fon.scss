@@ -1,16 +1,16 @@
-@use './../config/functions' as *;
-@use './../config/mixins' as *;
+@use '../helpers' as *;
 
 .hero {
-  //position: relative; // задать секции, на которой висит видео
-  background-color: #000;
-  overflow: hidden;//надо задать если есть радиусы у самой секции
-  &__container {
-    //position: relative;
-    //z-index: 2;
-  }
+  // position: relative; // задать секции, на которой висит видео
+  overflow: hidden;
+  background-color: #000000; // надо задать если есть радиусы у самой секции
+  // &__container {
+  //   position: relative;
+  //   z-index: 2;
+  // }
 }
-.video-bacground {
+
+.video-background {
   position: absolute;
   top: 0;
   left: 0;
@@ -18,7 +18,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 /* 
@@ -30,4 +30,4 @@
   </video>
 </section> */
 
-/* pexels.com = download video*/
+/* pexels.com = download video */

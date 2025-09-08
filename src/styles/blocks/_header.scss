@@ -1,80 +1,60 @@
- @use './../base/header-fon';
- @use './../base/burger';
- @use './../base/menu-header';
-
-@use "../config/functions" as *;
-@use "../config/mixins" as *;
-@use "../config/variables" as *;
-
+@use '../helpers' as *;
+@use '../base/header/header-fon';
+@use '../base/header/header-shadow';
+@use '../base/header/burger-2';
+@use '../base/header/menu-header';
 
 .header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 50;
-	&__container {
-		display: flex;
-		align-items: center;
-		justify-content: end;
-        @include adaptive-clamp("column-gap", 40, 20);
-        @include adaptive-clamp("min-height", 80, 50);
-	}
-	&__actions {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		gap: rem(15);
-	}
-	&__button {
-		position: relative;
-		z-index: 5;
-		font-weight: 500;
-		line-height: 1.21;
-		padding: rem(14) rem(20);
-		border: 1px solid var(--c-white);
-    color: var(--c-white);
-		border-radius: rem(8);
-		transition: all 0.3s;
-		@media (any-hover: hover) {
-			&:hover {
-				border: 1px solid var(--c-orange);
-				color: var(--c-orange);
-			}
-		}
-		@media (max-width:em(767.98)){
-			padding: rem(8) rem(15);
-		}
-	}
-	&__codewars {
-		position: relative;
-		z-index: 5;
-		width: rem(48);
-		height: rem(48);
-		transition: all 0.3s ease 0s;
-		@media (any-hover: hover) {
-				&:hover {
-					transform: scale(1.09);
-				}            
-			}
-		}
-	&__codewars-img {
-		max-width: 100%;
-	}
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    @include adaptive-clamp('column-gap', 40, 20);
+    @include adaptive-clamp('min-height', 80, 60);
+  }
+
+  &__actions {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: rem(15);
+  }
+
+  &__codewars {
+    width: rem(48);
+    height: rem(48);
+    transition: all 0.3s ease 0s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        transform: scale(1.09);
+      }
+    }
+  }
+
+  &__button {
+    padding: rem(14) rem(20);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+    border-radius: rem(8);
+    transition: all 0.3s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: var(--color-orange);
+        border: 1px solid var(--color-orange);
+      }
+    }
+  }
 }
-.menu {
-	&__list {
-		display: flex;
-		align-items: center;
-		flex-wrap: wrap;
-		row-gap: rem(10);
-        @include adaptive-clamp("column-gap", 30, 15);
-		@media (max-width:em(767.98)){
-			flex-direction: column;
-			gap: rem(20);
-	  }
-	}
-	&__link {
-		color: var(--c-white);
-	}
-} 

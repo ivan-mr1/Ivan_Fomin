@@ -1,0 +1,38 @@
+/* 
+&nbsp; не разрывный пробел, вместо тега <br/>
+ставится вместо пробела между двумя словами, которые должны быть всегда на одной строке
+by&nbsp;StarBucks
+
+https://bennettfeely.com/clippy/
+создание углов
+
+<time class="blog-card__date h6" datetime="2023-10-15">October 15, 2023</time>
+
+
+*/
+
+// padding-inline-start: padding-left;
+// padding-inline-end: padding-rigth;
+// padding-block-start: padding-top;
+// padding-block-end: padding-bottom;
+
+// inset-inline-start: left;
+// inset-inline-end: right;
+// inset-block-start: top;
+// inset-block-end: bottom;
+// inset-inline: left right;
+// inset-block: top bottom;
+
+// border-inline-start: border-left;
+// border-inline-end: border-right;
+// border-block-start: border-top;
+// border-block-end: border-bottom;
+
+// text-align: start;left
+// text-align: end;right
+
+// direction: rtl;(справа налево)
+// writing-mode: vertical-lr;(блок по вертикали (слева направо)
+
+// height: 100%; block-size: 100%; (в медиазапросах используем стандартную height и width)
+// min-width: 320px; min-inline-size: 320px;

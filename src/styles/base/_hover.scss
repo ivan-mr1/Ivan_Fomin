@@ -1,30 +1,75 @@
-@use './../config/functions' as *;
-@use './../config/mixins' as *;
-@use './../config/root' as *;
+@use '../helpers' as *;
 
- 
 .hover-link {
+  position: relative;
+  transition: color 0.4s ease 0s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: rem(-3);
+    left: 0;
+    width: 0;
+    height: rem(2);
+    background-color: var(--hover-background);
+    transition: width 0.3s ease 0s;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--hover-color);
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+// ===================
+
+/* 
+.hover-link2 {
+    //font-size: 17px;
+    //background: transparent;
+    //border: none;
+    padding: rem(13) rem(18);
     position: relative;
-    transition: color 0.4s ease 0s;
+    transition: 0.5s ease;
+    &::before{
+        content:'';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 0;
+        background-color: var(--accent-color);
+        transition: 0.5s ease;
+    }
     &::after{
         content:'';
         position: absolute;
-        bottom: rem(-3);
         left: 0;
-        width: 0;
-        height: rem(2);
-        transition: width 0.3s ease 0s;
-        background-color: var(--hover-background);        
+        bottom: 0;
+        height: 0;
+        width: 100%;
+        background-color: var(--accent-color);
+        transition: 0.4s ease;
+        z-index: -1;
     }
-    @media (any-hover: hover){
-        &:hover{
-            color: var(--hover-color);
-        }
-        &:hover::after {
-            width: 100%;
-        }
-    }
-} 
+}  
+.hover-link2:hover {
+    color: var(--c-dark);
+    transition-delay: 0.5s;
+}  
+.hover-link2:hover::before {
+    width: 100%;
+}  
+.hover-link2:hover::after {
+    height: 100%;
+    transition-delay: 0.4s;
+    color: var(--accent-color);
+} */
 
 /* 
 .hover-img {
@@ -40,7 +85,7 @@
     }
 } */
 
- /* 
+/* 
  .hover-scale-filter {
     img {
         width: 100%;
@@ -55,7 +100,7 @@
         }
     }
 }  */
- 
+
 /* 
 .hover-btn {
     transition: all 0.3s ease 0s;
@@ -64,11 +109,11 @@
             transform: scale(1.06);
         }
     }
-} */ 
+} */
 // всплывающие подсказки при наведении
 // если родитель не div, задать display: block;
 // <div class="hover-prompt"><span>описание проекта</span><img src="assets/img/demo.jpg" alt="alt"></div>
- 
+
 /* 
 .hover-prompt {
     width: 300px;//
@@ -98,59 +143,66 @@
             transform: scale(1) rotate(0);
         }
     }
-} */ 
+} */
 // ========================================
-// <div class="pulse"><img src="assets/img/instagram.svg" alt="button"></div> 
-/* 
-$pulseColor: var(--hover-color); 
+// <div class="pulse"><img src="assets/img/instagram.svg" alt="button"></div>
+
+/* $pulseColor: var(--color-white);
+
 .pulse {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    //========
-    position: relative;
-    text-align: center;
-    padding: 20px;
+  // ========
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  border-radius: rem(20);
+
+  // border-radius: 50%;
+  // background: $pulseColor;
+  // width: 60px;
+  // height: 60px;
+  img {
+    max-width: 100%;
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border: 2px solid $pulseColor;
     border-radius: rem(20);
-    //border-radius: 50%;
-    background: $pulseColor;
-    //width: 60px;
-    //height: 60px;
-    img {
-        max-width: 100%;
-      }
-    &::after,
-    &::before {
-        content: '';
-        position: absolute;
-        border: 2px solid $pulseColor;
-        left: -20px;
-        opacity: 0;
-        right: -20px;
-        top: -20px;
-        bottom: -20px;
-        border-radius: rem(20);
-        //border-radius: 50%;
-        animation: pulse 2.5s linear infinite;
-    }
-    &::after {
-        animation-delay: 1.25s;
-    }
+    opacity: 0;
+
+    // border-radius: 50%;
+    animation: pulse 2.5s linear infinite;
+  }
+
+  &::after {
+    animation-delay: 1.25s;
+  }
 }
+
 @keyframes pulse {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0;
-    }
-}   */
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+} */
+
 // ====================================
+
 /* 
 .border-decor {
     position: relative;
