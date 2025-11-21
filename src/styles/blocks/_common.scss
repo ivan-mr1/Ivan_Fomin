@@ -2,6 +2,7 @@
 
 .header-block {
   font-weight: 700;
+
   &__center {
     text-align: center;
 
@@ -22,7 +23,7 @@
     position: relative;
     font-size: rem(16);
 
-    @include orange-before;    
+    @include orange-before;
 
     &:not(:last-child) {
       margin-bottom: rem(10);
