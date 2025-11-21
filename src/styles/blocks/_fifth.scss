@@ -1,50 +1,17 @@
 @use '../helpers' as *;
 
 .portfolio {
-  &__header {
-    &:not(:last-child) {
-      @include adaptive-clamp('margin-bottom', 60, 20);
-    }
-  }
-
   &__items {
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // flex-wrap: wrap;
-    // gap: 5px;
-
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 15px;
   }
 
-  &__item {
-    // width: rem(280);
-    // height: rem(280);
-    // @media (max-width: em(590)) {
-    //   flex: 0 1 100%;
-    //   width: 100%;
-    // }
-  }
-
   &__link {
-    position: relative;
-    display: block;
     aspect-ratio: 280 / 280;
-    transition: all 0.3s ease 0s;
 
-    &:hover {
+    @include hover {
       filter: grayscale(90%);
-    }
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
   }
 }

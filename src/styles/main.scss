@@ -1,25 +1,40 @@
 @use 'reset';
-@use 'normalize';
 @use 'fonts/fonts';
-
-// @use 'fonts/icons';
 @use 'variables';
 @use 'utils';
 @use 'globals';
 @use 'helpers-classes';
-@use 'base/base-index';
+@use '../components/video/video-bcg/video-bcg-fon';
+@use '../components/form/button';
+@use '../components/hover/hover-link';
+@use '../components/soc1al/social';
+@use '../components/scrollUpButton/scroll-up-button';
+@use '../components/spollers/spollers';
+
+// @use '../components/hover/pulse';
+// @use '../components/scroller/scroller';
+// @use '../components/video/video-player/video-player';
+// @use '../components/form/field';
+// @use '../components/loginCard/loginCard';
+// @use '../components/Popup/popup';
 @use 'blocks/page';
 @use 'blocks/common';
 @use 'blocks/header';
 @use 'blocks/footer';
 @use 'blocks/hero';
+@use 'blocks/times';
 @use 'blocks/second';
 @use 'blocks/third';
 @use 'blocks/fourth';
 @use 'blocks/fifth';
 
+// @use 'blocks/six';
+// @use 'blocks/seventh';
+// @use 'blocks/eighth8';
+// @use 'blocks/ninth9';
+
 // .header,
-// main > *:not(:last-child), //  все секции, кроме последней
+// main > *:not(:last-child),
 // .footer {
 //   display: none !important;
 // }

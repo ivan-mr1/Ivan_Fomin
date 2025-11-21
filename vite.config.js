@@ -16,8 +16,6 @@ export default defineConfig({
     SassGlob(),
     noAttr(),
     ViteImageOptimizer({
-      // https://sharp.pixelplumbing.com/api-output#jpeg
-      //https://github.com/FatehAK/vite-plugin-image-optimizer
       png: {
         quality: 70,
       },

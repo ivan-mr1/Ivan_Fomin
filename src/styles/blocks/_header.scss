@@ -1,12 +1,12 @@
 @use '../helpers' as *;
-@use '../base/header/header-fon';
-@use '../base/header/header-shadow';
-@use '../base/header/burger-2';
-@use '../base/header/menu-header';
+@use '../../components/header/header-fon';
+@use '../../components/header/header-shadow';
+@use '../../components/header/burger-2';
+@use '../../components/header/menu-header';
 
 .header {
   position: fixed;
-  z-index: 50;
+  z-index: var(--z-index-header);
   top: 0;
   left: 0;
   width: 100%;
@@ -17,7 +17,14 @@
     align-items: center;
 
     @include adaptive-clamp('column-gap', 40, 20);
-    @include adaptive-clamp('min-height', 80, 60);
+    @include adaptive-clamp('min-height', 100, 65);
+  }
+
+  &__overlay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
   }
 
   &__actions {
@@ -29,32 +36,14 @@
     gap: rem(15);
   }
 
+  &__github,
   &__codewars {
-    width: rem(48);
-    height: rem(48);
-    transition: all 0.3s ease 0s;
+    --size: #{rem(44)};
 
-    @media (any-hover: hover) {
-      &:hover {
-        transform: scale(1.09);
-      }
-    }
-  }
+    @include square(var(--size));
 
-  &__button {
-    padding: rem(14) rem(20);
-    font-weight: 500;
-    line-height: 1.2;
-    color: var(--color-white);
-    border: 1px solid var(--color-white);
-    border-radius: rem(8);
-    transition: all 0.3s;
-
-    @media (any-hover: hover) {
-      &:hover {
-        color: var(--color-orange);
-        border: 1px solid var(--color-orange);
-      }
+    @include hover {
+      transform: scale(1.09);
     }
   }
 }

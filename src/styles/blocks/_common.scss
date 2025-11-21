@@ -1,6 +1,8 @@
 @use '../helpers' as *;
 
 .header-block {
+  font-weight: 700;
+
   &__center {
     text-align: center;
 
@@ -20,27 +22,15 @@
   &__subtitle {
     position: relative;
     font-size: rem(16);
-    font-weight: 700;
+
+    @include orange-before;
 
     &:not(:last-child) {
       margin-bottom: rem(10);
     }
-
-    &::before {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      top: -25%;
-      left: 0;
-      width: rem(36);
-      height: rem(36);
-      background: var(--second-color);
-      border-radius: 100%;
-    }
   }
 
   &__title {
-    font-weight: 700;
     line-height: 1.6;
 
     @include adaptive-clamp('font-size', 36, 24);
@@ -63,17 +53,12 @@
   }
 }
 
-// =============================
-@mixin before_circle {
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: -25%;
-    left: 0;
-    width: 36px;
-    height: 36px;
-    background: var(--main-color);
-    border-radius: 100%;
+.resume,
+.skills,
+.portfolio {
+  &__header {
+    &:not(:last-child) {
+      @include adaptive-clamp('margin-bottom', 60, 20);
+    }
   }
 }

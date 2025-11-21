@@ -1,12 +1,15 @@
 @use 'helpers' as *;
 
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border: 0;
 }
 
 *::before,
@@ -16,13 +19,50 @@
 
 html,
 body {
-  width: 100%;
-  min-width: 320px;
+  scroll-behavior: smooth;
   height: 100%;
 }
 
-ul,
-ol {
+body {
+  line-height: 1;
+  scrollbar-gutter: stable;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+input,
+textarea {
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+}
+
+button,
+select,
+option {
+  cursor: pointer;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+ul li {
   list-style: none;
 }
 
@@ -33,65 +73,28 @@ video {
   height: auto;
 }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-input,
-button,
-select,
-textarea {
-  font: inherit;
-  color: inherit;
-  background: transparent;
-  border: none;
-  outline: none;
-}
-
-textarea,
-input {
-  width: 100%;
-}
-
-label {
-  display: inline-block;
-}
-
-button,
-label,
-select,
-option {
-  cursor: pointer;
-}
-
-button {
-  user-select: none; // нельзя выделить текст в кнопке.
-  // убирает внутренние отступы/границу в Firefox при фокусе.
-  &::-moz-focus-inner {
-    padding: 0;
-    border: 0;
-  }
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-p,
-blockquote,
-figure,
-dl,
-dt,
-dd {
-  margin: 0;
-  padding: 0;
-  font: inherit;
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
 }
 
-// Удаление анимаций при системных настройках
+// [fill] {
+//   fill: currentColor;
+// }
+
+// [stroke] {
+//   stroke: currentColor;
+// }
+
+// svg * {
+//   transition-property: fill, stroke;
+// }
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -14,25 +14,25 @@
 // }
 
 // .gradient-text {
-//   --gradient-color: #999;
-// 	background: var(--gradient-color);//можно использовать фото
-// 	background-clip: text;//обрезка фона, чтобы он соответствовал тексту
-// 	color: transparent;//делаем текст прозрачным
+//   color: transparent;
+//   background: var(--gradient-color);
+//   background-clip: text; // можно использовать фото// обрезка фона, чтобы он соответствовал тексту// делаем текст прозрачным
 // }
 
-// .video {
-// 	position: relative;
-// 	overflow: hidden;
-// 	height: 0;
-// 	aspect-ratio: 4 / 3;//удалить здесь и задавать каждому отдельному изображению
-// 	video,
-// 	iframe,
-// 	object,
-// 	embed {
-// 		position: absolute;
-// 		top: 0;
-// 		left: 0;
-// 		width: 100%;
-// 		height: 100%;
-// 	}
-// }
+.video {
+  position: relative;
+  overflow: hidden;
+
+  // height: 0;
+  aspect-ratio: 16 / 9; // удалить здесь и задавать каждому отдельному изображению
+  video,
+  iframe,
+  object,
+  embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

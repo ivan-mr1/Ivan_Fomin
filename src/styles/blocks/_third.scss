@@ -1,20 +1,12 @@
 @use '../helpers' as *;
 
 .resume {
-  &__header {
-    &:not(:last-child) {
-      @include adaptive-clamp('margin-bottom', 50, 20);
-    }
-  }
-
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding-left: 40px;
     padding-right: 40px;
 
-    // @include adaptive-clamp('padding-left', 40, 20);
-    // @include adaptive-clamp('padding-right', 40, 20);
     @include adaptive-clamp('column-gap', 70, 20);
     @include adaptive-clamp('row-gap', 50, 20);
 
@@ -58,7 +50,7 @@
       left: 0;
       width: rem(1);
       height: calc(100% + 7px);
-      background-color: #000000;
+      background-color: var(--color-dark);
     }
   }
 }
@@ -73,7 +65,7 @@
     left: 0;
     width: rem(44);
     height: rem(1);
-    background-color: #000000;
+    background-color: var(--color-dark);
   }
 
   &__head {
@@ -97,17 +89,7 @@
     top: rem(55);
     left: rem(45);
 
-    &::before {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      top: -25%;
-      left: 0;
-      width: rem(36);
-      height: rem(36);
-      background: var(--second-color);
-      border-radius: 100%;
-    }
+    @include orange-before;
   }
 
   &__img {
