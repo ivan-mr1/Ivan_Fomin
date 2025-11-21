@@ -63,17 +63,12 @@
   }
 }
 
-// =============================
-@mixin before_circle {
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: -25%;
-    left: 0;
-    width: 36px;
-    height: 36px;
-    background: var(--main-color);
-    border-radius: 100%;
+.resume,
+.skills,
+.portfolio {
+  &__header {
+    &:not(:last-child) {
+      @include adaptive-clamp('margin-bottom', 60, 20);
+    }
   }
 }

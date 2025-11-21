@@ -1,20 +1,12 @@
 @use '../helpers' as *;
 
 .resume {
-  &__header {
-    &:not(:last-child) {
-      @include adaptive-clamp('margin-bottom', 50, 20);
-    }
-  }
-
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding-left: 40px;
     padding-right: 40px;
 
-    // @include adaptive-clamp('padding-left', 40, 20);
-    // @include adaptive-clamp('padding-right', 40, 20);
     @include adaptive-clamp('column-gap', 70, 20);
     @include adaptive-clamp('row-gap', 50, 20);
 

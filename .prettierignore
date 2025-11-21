@@ -21,3 +21,6 @@ npm-debug.log*
 dist
 build
 coverage
+
+# Fonts.scss
+_fonts.scss

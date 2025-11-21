@@ -14,32 +14,12 @@ $fontSecondary: '';
 // @include font-woff2($fontPrimary, "../assets/fonts/#{$fontPrimary}-Thin", 100, normal);
 // @include font-woff2($fontPrimary, "../assets/fonts/#{$fontPrimary}-ExtraLight", 200, normal);
 // @include font-woff2($fontPrimary, "../assets/fonts/#{$fontPrimary}-Light", 300, normal);
-@include font-woff2(
-  $fontPrimary,
-  '../assets/fonts/#{$fontPrimary}-Regular',
-  400,
-  normal
-);
-@include font-woff2(
-  $fontPrimary,
-  '../assets/fonts/#{$fontPrimary}-Medium',
-  500,
-  normal
-);
+@include font-woff2($fontPrimary, '../assets/fonts/#{$fontPrimary}-Regular', 400, normal);
+@include font-woff2($fontPrimary, '../assets/fonts/#{$fontPrimary}-Medium', 500, normal);
 
-// @include font-woff2( $fontPrimary, '../assets/fonts/#{$fontPrimary}-SemiBold', 600, normal);
-@include font-woff2(
-  $fontPrimary,
-  '../assets/fonts/#{$fontPrimary}-Bold',
-  700,
-  normal
-);
-@include font-woff2(
-  $fontPrimary,
-  '../assets/fonts/#{$fontPrimary}-ExtraBold',
-  800,
-  normal
-);
+// @include font-woff2($fontPrimary, '../assets/fonts/#{$fontPrimary}-SemiBold', 600, normal);
+@include font-woff2($fontPrimary, '../assets/fonts/#{$fontPrimary}-Bold', 700, normal);
+@include font-woff2($fontPrimary, '../assets/fonts/#{$fontPrimary}-ExtraBold', 800, normal);
 
 // @include font-woff2($fontPrimary, "../assets/fonts/#{$fontPrimary}-Black", 900, normal);
 
@@ -65,19 +45,3 @@ $fontSecondary: '';
 // Roboto-Regular.woff2  == имя шрифта должно быть в таком формате
 https://transfonter.org/
 */
-
-// ===========================================================================================
-
-/* 
-@mixin font($fname, $fstyle, $fweight, $furl) {
-    @font-face {
-      font-family: $fname;
-      font-style: $fstyle;
-      font-weight: $fweight;
-      src: url($furl) format('woff2');
-    }
-  }  
-  @include font('roboto-x', normal, 400, '../assets/fonts/roboto-regular-webfont.woff2');
-  @include font('roboto-x', italic, 400, '../assets/fonts/roboto-italic-webfont.woff2');
-  @include font('roboto-x', normal, 700, '../assets/fonts/roboto-bold-webfont.woff2');
-  @include font('roboto-x', italic, 700, '../assets/fonts/roboto-bolditalic-webfont.woff2'); */

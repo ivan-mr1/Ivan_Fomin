@@ -1,12 +1,12 @@
 @use '../helpers' as *;
-@use '../base/header/header-fon';
-@use '../base/header/header-shadow';
-@use '../base/header/burger-2';
-@use '../base/header/menu-header';
+@use '../../components/header/header-fon';
+@use '../../components/header/header-shadow';
+@use '../../components/header/burger-2';
+@use '../../components/header/menu-header';
 
 .header {
   position: fixed;
-  z-index: 50;
+  z-index: var(--z-index-header);
   top: 0;
   left: 0;
   width: 100%;
@@ -17,7 +17,14 @@
     align-items: center;
 
     @include adaptive-clamp('column-gap', 40, 20);
-    @include adaptive-clamp('min-height', 80, 60);
+    @include adaptive-clamp('min-height', 100, 65);
+  }
+
+  &__overlay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
   }
 
   &__actions {
