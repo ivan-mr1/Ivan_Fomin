@@ -35,11 +35,7 @@
       <header class="header" data-header data-right-padding>
         <div class="header__container">
           <div class="header__overlay">
-            <nav
-              class="header__menu menu"
-              data-header-menu
-              aria-label="Main navigation"
-            >
+            <nav class="header__menu menu" data-header-menu>
               <ul class="menu__list">
                 <li class="menu__item">
                   <a href="#" class="menu__link hover-link" data-goto=".about"
@@ -53,7 +49,7 @@
                 </li>
                 <li class="menu__item">
                   <a href="#" class="menu__link hover-link" data-goto=".skills"
-                    >MY SKILLS</a
+                    >SKILLS</a
                   >
                 </li>
                 <li class="menu__item">
@@ -61,7 +57,7 @@
                     href="#"
                     class="menu__link hover-link"
                     data-goto=".portfolio"
-                    >MY PORTFOLIO</a
+                    >PORTFOLIO</a
                   >
                 </li>
                 <li class="menu__item">
@@ -72,6 +68,21 @@
               </ul>
             </nav>
             <div class="header__actions">
+              <a
+                target="_blank"
+                href="https://github.com/ivan1986mrpl"
+                class="header__github"
+                aria-label="Open github"
+                title="Open github"
+              >
+                <img
+                  src="assets/img/soc1al/github.svg"
+                  alt="github"
+                  class="header__github-img"
+                  width="48"
+                  height="48"
+                />
+              </a>
               <a
                 target="_blank"
                 href="https://www.codewars.com/users/ivan1986mrpl"
@@ -90,7 +101,7 @@
               <a
                 target="_blank"
                 href="assets/img/Ivan_Fomin_CV.pdf"
-                class="header__button"
+                class="button button--min header__button"
                 >CV</a
               >
             </div>
@@ -141,7 +152,7 @@
         <section class="page__about about" aria-labelledby="about-title">
           <div class="about__container">
             <div class="about__wrapper">
-              <div class="about__image">
+              <div class="ibg about__image">
                 <img
                   src="assets/img/secondSection2/5.webp"
                   alt="photo"
@@ -168,15 +179,15 @@
                   <p>
                     Motivated and fast-learning Junior Front-End Developer with
                     hands-on experience building 20+ responsive landing pages
-                    and dynamic web interfaces using HTML, CSS (SCSS), and
-                    JavaScript. Familiar with React and UI libraries, and
-                    experienced in performance optimization (Google PageSpeed
-                    85+), version control (Git), and deployment using Netlify,
-                    Vercel, and GitHub Pages. Passionate about continuous
-                    learning, open to feedback, and eager to grow in a
-                    collaborative team environment. Strong attention to detail,
-                    responsible, and ready to take on new challenges in web
-                    development.
+                    and dynamic web interfaces using HTML, CSS (SCSS),
+                    JavaScript and React. Familiar with React and UI libraries,
+                    and experienced in performance optimization (Google
+                    PageSpeed 90+), version control (Git), and deployment using
+                    Netlify, Vercel, and GitHub Pages. Passionate about
+                    continuous learning, open to feedback, and eager to grow in
+                    a collaborative team environment. Strong attention to
+                    detail, responsible, and ready to take on new challenges in
+                    web development.
                   </p>
                 </div>
               </div>
@@ -734,7 +745,39 @@
               <li class="portfolio__item">
                 <a
                   target="_blank"
-                  href="https://ivan1986mrpl.github.io/castle/"
+                  href="https://ivan1986mrpl.github.io/MK-ai-landing/dist/"
+                  class="ibg portfolio__link"
+                >
+                  <img
+                    src="assets/img/works/ai-landing.webp"
+                    alt="portfolio link"
+                    class="portfolio__img"
+                    width="280"
+                    height="280"
+                    loading="lazy"
+                  />
+                </a>
+              </li>
+              <li class="portfolio__item">
+                <a
+                  target="_blank"
+                  href="https://ivan1986mrpl.github.io/photographer/dist/"
+                  class="ibg portfolio__link"
+                >
+                  <img
+                    src="assets/img/works/portfolio-photo.webp"
+                    alt="portfolio link"
+                    class="portfolio__img"
+                    width="280"
+                    height="280"
+                    loading="lazy"
+                  />
+                </a>
+              </li>
+              <li class="portfolio__item">
+                <a
+                  target="_blank"
+                  href="https://ivan1986mrpl.github.io/paris-palase-of-culture/dist/"
                   class="ibg portfolio__link"
                 >
                   <img
@@ -800,7 +843,7 @@
                   href="https://ivan1986mrpl.github.io/Relvise/dist/"
                   class="ibg portfolio__link"
                   ><img
-                    src="assets/img/works/Frame_2.webp"
+                    src="assets/img/works/relvise.webp"
                     alt="portfolio link"
                     class="portfolio__img"
                     width="280"
@@ -1104,7 +1147,7 @@
             <h2 class="footer__title">Contact me</h2>
             <div class="footer__text">In any way convenient for you:</div>
           </div>
-          <div class="footer__bottom">
+          <div class="footer__wrapper">
             <div class="footer__soc1al soc1al">
               <ul class="soc1al__list">
                 <li class="soc1al__item">
@@ -1116,8 +1159,8 @@
                     title="linkedin"
                   >
                     <svg
-                      width="64"
-                      height="64"
+                      width="44"
+                      height="44"
                       viewBox="0 0 16 16"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -1137,8 +1180,8 @@
                     title="Github"
                   >
                     <svg
-                      width="64"
-                      height="64"
+                      width="44"
+                      height="44"
                       viewBox="0 0 48 48"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -1158,8 +1201,8 @@
                     title="Telegram"
                   >
                     <svg
-                      width="64"
-                      height="64"
+                      width="44"
+                      height="44"
                       viewBox="0 0 512 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -1188,8 +1231,8 @@
                     title="whatsapp"
                   >
                     <svg
-                      width="64"
-                      height="64"
+                      width="44"
+                      height="44"
                       viewBox="0 0 512 512"
                       xmlns="http://www.w3.org/2000/svg"
                     >

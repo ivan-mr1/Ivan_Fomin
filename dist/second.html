@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="description - Landing Page" />
+    <title>start | second</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/img/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/img/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/img/favicon/site.webmanifest" />
+    <script type="module" src="./assets/js/app.js"></script>
+    <link rel="stylesheet" href="./assets/css/app.css">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header id="header" class="header" data-header>
+        <div class="header__container">
+          <a
+            href="/"
+            data-goto=".hero"
+            class="header__logo logo gradient-text"
+            aria-label="home"
+            title="home"
+            >S</a
+          >
+          <div class="header__overlay">
+            <nav class="header__menu menu" data-header-menu>
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a href="/" class="menu__link hover-link" data-goto=".about"
+                    >ABOUT</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="header__actions"></div>
+          <button
+            type="button"
+            class="header__burger-button burger-button"
+            data-header-burger-btn
+            aria-label="Open menu"
+            title="Open menu"
+          >
+            <span class="burger-button__inner">
+              <span class="burger-button__line"></span>
+              <span class="burger-button__line"></span>
+              <span class="burger-button__line"></span>
+            </span>
+          </button>
+        </div>
+      </header>
+      <main class="page"></main>
+      <footer id="footer" class="footer">
+        <div class="footer__container">
+          <div class="footer__header"></div>
+          <div class="footer__bottom">
+            <div class="footer__soc1al soc1al">
+              <ul class="soc1al__list">
+                <li class="soc1al__item">
+                  <a
+                    href="https://www.linkedin.com/"
+                    class="soc1al__link"
+                    target="_blank"
+                    aria-label="linkedin"
+                    title="linkedin"
+                  >
+                    <img
+                      src="assets/img/footer/social/linkedin.svg"
+                      alt="linkedin"
+                      class="social__img"
+                      width="30"
+                      height="30"
+                      loading="lazy"
+                    />
+                  </a>
+                </li>
+                <li class="soc1al__item">
+                  <a
+                    href="https://github.com/"
+                    class="soc1al__link"
+                    target="_blank"
+                    aria-label="Github"
+                    title="Github"
+                  >
+                    <img
+                      src="assets/img/footer/social/github.svg"
+                      alt="Github"
+                      class="social__img"
+                      width="30"
+                      height="30"
+                      loading="lazy"
+                    />
+                  </a>
+                </li>
+                <li class="soc1al__item">
+                  <a
+                    href="https://t.me/"
+                    class="soc1al__link"
+                    target="_blank"
+                    aria-label="Telegram"
+                    title="Telegram"
+                  >
+                    <img
+                      src="assets/img/footer/social/telegram1.svg"
+                      alt="Telegram"
+                      class="social__img"
+                      width="30"
+                      height="30"
+                      loading="lazy"
+                    />
+                  </a>
+                </li>
+                <li class="soc1al__item">
+                  <a
+                    href="https://wa.me/380"
+                    class="soc1al__link"
+                    target="_blank"
+                    aria-label="whatsapp"
+                    title="whatsapp"
+                  >
+                    <img
+                      src="assets/img/footer/social/whatsapp.svg"
+                      alt="whatsapp"
+                      class="social__img"
+                      width="30"
+                      height="30"
+                      loading="lazy"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <ul class="footer__contacts">
+              <li class="footer__item">
+                <div class="footer__link-icon">
+                  <img
+                    src="./assets/img/footer/social/email.svg"
+                    alt="email"
+                    class="footer__link-img"
+                    loading="lazy"
+                  />
+                </div>
+                <a href="mailto:sgzafgz@gmail.com" class="footer__link"
+                  ><span class="hover-link">szgaga@gmail.com</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<div id="video-1" class="video">
+  <img
+    src="assets/img/hero/1.webp"
+    alt=""
+    class="video__preview"
+    width=""
+    height=""
+    loading="lazy"
+  />
+  <button
+    type="button"
+    class="video__play"
+    aria-label="play video"
+    title="play video"
+  >
+    <svg
+      width="58"
+      height="58"
+      viewBox="0 0 58 58"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M0.5625 29C0.5625 13.2944 13.2944 0.5625 29 0.5625C44.7056 0.5625 57.4375 13.2944 57.4375 29C57.4375 44.7056 44.7056 57.4375 29 57.4375C13.2944 57.4375 0.5625 44.7056 0.5625 29ZM41.4663 26.1318C43.7167 27.382 43.7167 30.6183 41.4663 31.8685L25.1248 40.9471C22.9377 42.1621 20.25 40.5807 20.25 38.0788V19.9215C20.25 17.4196 22.9377 15.8381 25.1248 17.0531L41.4663 26.1318Z"
+        fill="white"
+      />
+    </svg>
+  </button>
+</div>

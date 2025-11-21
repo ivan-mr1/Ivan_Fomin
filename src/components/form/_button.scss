@@ -29,4 +29,9 @@
   border-radius: var(--border-radius);
 
   @extend %btn;
+
+  &--min {
+    padding-block: rem(14);
+    padding-inline: rem(20);
+  }
 }
