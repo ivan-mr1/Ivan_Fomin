@@ -5,6 +5,7 @@ import headerFon from '../components/header/headerFon';
 import Header from './../components/header/Header';
 import spollers from '../components/spollers/spollers';
 import ScrollUpButton from '../components/scrollUpButton/ScrollUpButton';
+import Portfolio from './portfolio/Portfolio';
 
 window.addEventListener('DOMContentLoaded', () => {
   pageNavigation();
@@ -12,4 +13,5 @@ window.addEventListener('DOMContentLoaded', () => {
   new Header();
   spollers();
   new ScrollUpButton();
+  new Portfolio();
 });
