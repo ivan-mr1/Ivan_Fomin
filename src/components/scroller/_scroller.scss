@@ -1,15 +1,12 @@
 @use '../../styles/helpers/' as *;
 
 .scroller {
-  max-width: 900px;
-  margin: 0 auto;
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
 }
-
-// .scroller__inner {
-//   display: flex;
-//   flex-wrap: wrap;
-//   gap: 1rem;
-// }
 
 .scroller[data-animated='true'] {
   overflow: hidden;

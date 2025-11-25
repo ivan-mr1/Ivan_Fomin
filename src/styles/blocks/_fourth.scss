@@ -1,37 +1,9 @@
 @use '../helpers' as *;
 
 .skills {
-  &__items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 15px;
-  }
-}
-
-.item-skills {
-  padding: rem(25);
-  border: 1px solid var(--color-dark);
-
-  &__icon {
-    display: flex;
-    align-items: center;
-    height: 65px;
-
+  &__scroller {
     &:not(:last-child) {
-      margin-bottom: rem(20);
+      @include adaptive-clamp('margin-bottom', 60, 20);
     }
-  }
-
-  &__title {
-    font-weight: 700;
-
-    &:not(:last-child) {
-      margin-bottom: rem(15);
-    }
-  }
-
-  &__text {
-    font-size: rem(14);
-    line-height: 1.5;
   }
 }
