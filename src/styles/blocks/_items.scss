@@ -1,13 +1,13 @@
-@use '../helpers' as *;
+@use '../helpers/' as *;
 
-.resume {
+.items {
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    row-gap: 50px;
     padding-inline: 40px;
 
     @include adaptive-clamp('column-gap', 70, 20);
-    @include adaptive-clamp('row-gap', 50, 20);
 
     @media (max-width: em(1000)) {
       padding-inline: 0;
@@ -52,7 +52,7 @@
   }
 }
 
-.item-resume {
+.item {
   position: relative;
 
   &::before {
