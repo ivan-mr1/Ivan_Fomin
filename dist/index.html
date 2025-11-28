@@ -25,9 +25,9 @@
       sizes="16x16"
       href="./assets/img/favicon/favicon-16x16.png"
     />
-    <link rel="manifest" href="./assets/img/favicon/site.webmanifest" />
+    <link rel="manifest" href="./assets/img/favicon/site.webmanifest" />    
     <link rel="stylesheet" href="./assets/css/app.css">
-    <script type="module" src="./assets/js/app.js"></script>    
+    <script type="module" src="./assets/js/app.js"></script>
   </head>
 
   <body>
@@ -147,17 +147,44 @@
           <video class="video-fon" autoplay muted loop>
             <source type="video/mp4" src="./assets/video/3.mp4" />
           </video>
+          <a href="#about" class="scroll-down-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="80"
+              viewBox="0 0 50 80"
+            >
+              <path
+                class="first-path"
+                fill="#FFFFFF"
+                d="M24.752,79.182c-0.397,0-0.752-0.154-1.06-0.463L2.207,57.234c-0.306-0.305-0.458-0.656-0.458-1.057
+        s0.152-0.752,0.458-1.059l2.305-2.305c0.309-0.309,0.663-0.461,1.06-0.461c0.398,0,0.752,0.152,1.061,0.461l18.119,18.119
+        l18.122-18.119c0.306-0.309,0.657-0.461,1.057-0.461c0.402,0,0.753,0.152,1.059,0.461l2.306,2.305
+        c0.308,0.307,0.461,0.658,0.461,1.059s-0.153,0.752-0.461,1.057L25.813,78.719C25.504,79.027,25.15,79.182,24.752,79.182z"
+              />
+              <path
+                class="second-path"
+                fill="#FFFFFF"
+                d="M24.752,58.25c-0.397,0-0.752-0.154-1.06-0.463L2.207,36.303c-0.306-0.304-0.458-0.655-0.458-1.057
+        c0-0.4,0.152-0.752,0.458-1.058l2.305-2.305c0.309-0.308,0.663-0.461,1.06-0.461c0.398,0,0.752,0.153,1.061,0.461l18.119,18.12
+        l18.122-18.12c0.306-0.308,0.657-0.461,1.057-0.461c0.402,0,0.753,0.153,1.059,0.461l2.306,2.305
+        c0.308,0.306,0.461,0.657,0.461,1.058c0,0.401-0.153,0.753-0.461,1.057L25.813,57.787C25.504,58.096,25.15,58.25,24.752,58.25z"
+              />
+            </svg>
+          </a>
         </section>
-        <section class="page__about about" aria-labelledby="about-title">
+        <section
+          id="about"
+          class="page__about about"
+          aria-labelledby="about-title"
+        >
           <div class="about__container">
             <div class="about__wrapper">
               <div class="ibg about__image">
                 <picture>
                   <source
                     type="image/webp"
-                    srcset="./assets/img/second/5-100w.webp 100w, 
-                            ./assets/img/second/5-230w.webp 230w, 
-                            ./assets/img/second/5-460w.webp 460w"
+                    srcset="./assets/img/second/5-100w.webp 100w, ./assets/img/second/5-230w.webp 230w, ./assets/img/second/5-460w.webp 460w"
                     sizes="
                       (max-width: 600px) 100vw,
                       (max-width: 1024px) 50vw,
@@ -217,8 +244,8 @@
               <div class="resume__column">
                 <h3 class="resume__title">Education</h3>
                 <ul>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
+                  <li class="resume__item">
+                    <div class="item-resume">
                       <div class="item-resume__head">
                         <div class="item-resume__icon">
                           <img
@@ -247,8 +274,8 @@
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
+                  <li class="resume__item">
+                    <div class="item-resume">
                       <div class="item-resume__head item-resume__head-spoller">
                         <div class="item-resume__icon">
                           <img
@@ -287,8 +314,8 @@
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
+                  <li class="resume__item">
+                    <div class="item-resume">
                       <div class="item-resume__head item-resume__head-spoller">
                         <div class="item-resume__icon">
                           <img
@@ -327,8 +354,8 @@
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
+                  <li class="resume__item">
+                    <div class="item-resume">
                       <div class="item-resume__head item-resume__head-spoller">
                         <div class="item-resume__icon">
                           <img
@@ -367,8 +394,8 @@
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
+                  <li class="resume__item">
+                    <div class="item-resume">
                       <div class="item-resume__head item-resume__head-spoller">
                         <div class="item-resume__icon">
                           <img
@@ -407,8 +434,8 @@
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
+                  <li class="resume__item">
+                    <div class="item-resume">
                       <div class="item-resume__head item-resume__head-spoller">
                         <div class="item-resume__icon">
                           <img
@@ -459,8 +486,8 @@
               <div class="resume__column">
                 <h3 class="resume__title">Work</h3>
                 <ul>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
+                  <li class="resume__item">
+                    <div class="item-resume">
                       <div class="item-resume__head">
                         <div class="item-resume__icon">
                           <img
@@ -486,8 +513,8 @@
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
+                  <li class="resume__item">
+                    <div class="item-resume">
                       <div class="item-resume__head">
                         <div class="item-resume__icon">
                           <img
@@ -536,7 +563,6 @@
                 <img
                   src="./assets/img/fourthSection4/html5.svg"
                   alt="html5"
-                  title="html5"
                   class="scroller__img"
                   width="46"
                   height="65"
@@ -545,7 +571,6 @@
                 <img
                   src="./assets/img/fourthSection4/css3.svg"
                   alt="css3"
-                  title="css3"
                   class="scroller__img"
                   width="46"
                   height="65"
@@ -554,7 +579,6 @@
                 <img
                   src="./assets/img/fourthSection4/Saas.svg"
                   alt="sass"
-                  title="sass"
                   class="scroller__img"
                   width="85"
                   height="65"
@@ -563,7 +587,6 @@
                 <img
                   src="./assets/img/fourthSection4/js.svg"
                   alt="javascript"
-                  title="javascript"
                   class="scroller__img"
                   width="65"
                   height="65"
@@ -572,7 +595,6 @@
                 <img
                   src="./assets/img/fourthSection4/typescript.svg"
                   alt="typescript"
-                  title="typescript"
                   class="scroller__img"
                   width="65"
                   height="65"
@@ -581,7 +603,6 @@
                 <img
                   src="./assets/img/fourthSection4/react.svg"
                   alt="react"
-                  title="react"
                   class="scroller__img"
                   width="72"
                   height="65"
@@ -590,7 +611,6 @@
                 <img
                   src="./assets/img/fourthSection4/Git.svg"
                   alt="Git"
-                  title="Git"
                   class="scroller__img"
                   width="65"
                   height="65"
@@ -599,7 +619,6 @@
                 <img
                   src="./assets/img/fourthSection4/vite.svg"
                   alt="vite"
-                  title="vite"
                   class="scroller__img"
                   width="65"
                   height="65"
@@ -608,7 +627,6 @@
                 <img
                   src="./assets/img/fourthSection4/gulp.svg"
                   alt="gulp"
-                  title="gulp"
                   class="scroller__img"
                   width="65"
                   height="65"
@@ -617,7 +635,6 @@
                 <img
                   src="./assets/img/fourthSection4/webpack.svg"
                   alt="webpack"
-                  title="webpack"
                   class="scroller__img"
                   width="65"
                   height="65"
@@ -626,7 +643,6 @@
                 <img
                   src="./assets/img/fourthSection4/jquery.svg"
                   alt="jquery"
-                  title="jquery"
                   class="scroller__img"
                   width="162"
                   height="37"
@@ -634,212 +650,190 @@
                 />
               </div>
             </div>
-            <div class="resume__wrapper skills__wrapper">
-              <div class="resume__column">
-                <h3 class="resume__title">Hard skills</h3>
-                <ul>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+            <div class="items__wrapper">
+              <div class="items__column">
+                <h3 class="items__title">Hard skills</h3>
+                <ul class="items__list">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/2.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">HTML (HTML5), JSX</h4>
+                        <div class="item__text">HTML (HTML5), JSX</div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          CSS (CSS3), SASS (SCSS), PostCSS, Bootstrap, Tailwind,
+                          Animations
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/2.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            CSS (CSS3), SASS (SCSS), PostCSS, Bootstrap,
-                            Tailwind, Animations
-                          </h4>
+                        <div class="item__text">
+                          JavaScript (ES6+, OOP), jQuery
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/2.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            JavaScript (ES6+, OOP), jQuery
-                          </h4>
+                        <div class="item__text">React</div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">Webpack, Vite, Gulp</div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          REST API, WebSockets, Long Polling
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/2.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">React</h4>
+                        <div class="item__text">
+                          BEM, Feature-Sliced Design, Accessibility, UX
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/2.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            Webpack, Vite, Gulp
-                          </h4>
+                        <div class="item__text">
+                          Git (GitHub, GitLab), Netlify, Vercel
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/2.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            REST API, WebSockets, Long Polling
-                          </h4>
+                        <div class="item__text">
+                          Figma, Adobe Photoshop, Avocode
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/2.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            BEM, Feature-Sliced Design, Accessibility, UX
-                          </h4>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
-                          <img
-                            src="./assets/img/thirdSection3/2.svg"
-                            alt="icon"
-                            class="item-resume__img"
-                            width="25"
-                            height="25"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            Git (GitHub, GitLab)
-                          </h4>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
-                          <img
-                            src="./assets/img/thirdSection3/2.svg"
-                            alt="icon"
-                            class="item-resume__img"
-                            width="25"
-                            height="25"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            Figma, Adobe Photoshop, Avocode
-                          </h4>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
-                          <img
-                            src="./assets/img/thirdSection3/2.svg"
-                            alt="icon"
-                            class="item-resume__img"
-                            width="25"
-                            height="25"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">English level - A2</h4>
-                        </div>
+                        <div class="item__text">English level - A2</div>
                       </div>
                     </div>
                   </li>
@@ -848,220 +842,198 @@
               <div class="resume__column">
                 <h3 class="resume__title">Soft skills</h3>
                 <ul>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/1.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            I know how to work in a team, I have experience in
-                            communication with designers, managers and other
-                            developers
-                          </h4>
+                        <div class="item__text">
+                          I know how to work in a team, I have experience in
+                          communication with designers, managers and other
+                          engineers
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/1.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            I am responsible about deadlines
-                          </h4>
+                        <div class="item__text">
+                          I am responsible about deadlines
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/1.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            I am attentive to the details of the terms of
-                            reference
-                          </h4>
+                        <div class="item__text">
+                          I am attentive to the details of the terms of
+                          reference
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/1.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            I am demanding of the quality of my code, I follow
-                            the code-style
-                          </h4>
+                        <div class="item__text">
+                          I am demanding of the quality of my code, I follow the
+                          code-style
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/1.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            I have time management skills
-                          </h4>
+                        <div class="item__text">
+                          I have time management skills
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/1.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            I welcome constructive criticism and am always happy
-                            to find new points of professional and personal
-                            growth
-                          </h4>
+                        <div class="item__text">
+                          I welcome constructive criticism and am always happy
+                          to find new points of professional and personal growth
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/1.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            I know how to solve conflict situations
-                          </h4>
+                        <div class="item__text">
+                          I know how to solve conflict situations
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/1.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            I am correctly convey thoughts, formulate questions
-                          </h4>
+                        <div class="item__text">
+                          I am correctly convey thoughts, formulate questions
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/1.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            I write detailed reports on the work done, if
-                            required
-                          </h4>
+                        <div class="item__text">
+                          I write detailed reports on the work done, if required
                         </div>
                       </div>
                     </div>
                   </li>
-                  <li class="resume__li">
-                    <div class="resume__item item-resume">
-                      <div class="item-resume__head">
-                        <div class="item-resume__icon">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
                           <img
                             src="./assets/img/thirdSection3/1.svg"
                             alt="icon"
-                            class="item-resume__img"
+                            class="item__img"
                             width="25"
                             height="25"
                             loading="lazy"
                           />
                         </div>
-                        <div class="item-resume__header">
-                          <h4 class="item-resume__title">
-                            I am motivated to improve my skills, constantly
-                            studying new technologies in my field of activity
-                          </h4>
+                        <div class="item__text">
+                          I am motivated to improve my skills, constantly
+                          studying new technologies in my field of activity
                         </div>
                       </div>
                     </div>
@@ -1096,7 +1068,7 @@
               <ul class="soc1al__list">
                 <li class="soc1al__item">
                   <a
-                    href="https://www.linkedin.com/in/ivan-553404281/"
+                    href="https://www.linkedin.com/in/fomin-ivan/"
                     class="soc1al__link"
                     target="_blank"
                     aria-label="linkedin"
