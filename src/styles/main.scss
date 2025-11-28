@@ -9,10 +9,12 @@
 @use '../components/hover/hover-link';
 @use '../components/soc1al/social';
 @use '../components/scrollUpButton/scroll-up-button';
+@use '../components/scrollDownButton/scrollDownButton';
 @use '../components/spollers/spollers';
 @use '../components/scroller/scroller';
 @use 'blocks/page';
 @use 'blocks/common';
+@use 'blocks/items';
 @use 'blocks/header';
 @use 'blocks/footer';
 @use 'blocks/hero';
