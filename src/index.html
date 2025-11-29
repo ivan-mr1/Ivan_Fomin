@@ -44,7 +44,7 @@
                 </li>
                 <li class="menu__item">
                   <a href="#" class="menu__link hover-link" data-goto=".resume"
-                    >MY EXPERIENCE</a
+                    >RESUME</a
                   >
                 </li>
                 <li class="menu__item">
@@ -147,7 +147,13 @@
           <video class="video-fon" autoplay muted loop>
             <source type="video/mp4" src="assets/video/3.mp4" />
           </video>
-          <a href="#about" class="scroll-down-btn">
+          <button
+            type="button"
+            class="scroll-down-btn"
+            data-goto=".about"
+            title="scroll down"
+            aria-label="scroll-down"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="50"
@@ -171,37 +177,37 @@
         c0.308,0.306,0.461,0.657,0.461,1.058c0,0.401-0.153,0.753-0.461,1.057L25.813,57.787C25.504,58.096,25.15,58.25,24.752,58.25z"
               />
             </svg>
-          </a>
+          </button>
         </section>
-        <section
-          id="about"
-          class="page__about about"
-          aria-labelledby="about-title"
-        >
+        <section class="page__about about" aria-labelledby="about-title">
           <div class="about__container">
             <div class="about__wrapper">
               <div class="ibg about__image">
                 <picture>
                   <source
+                    type="image/avif"
+                    srcset="
+                      assets/img/second/5-320.avif 320w,
+                      assets/img/second/5-640.avif 640w
+                    "
+                    sizes="(max-width: 320px) 100vw, (max-width: 640px) 50vw, 640px"
+                  />
+                  <source
                     type="image/webp"
                     srcset="
-                      assets/img/second/5-100w.webp 100w,
-                      assets/img/second/5-230w.webp 230w,
-                      assets/img/second/5-460w.webp 460w
+                      assets/img/second/5-320.webp 320w,
+                      assets/img/second/5-640.webp 640w
                     "
-                    sizes="
-                      (max-width: 600px) 100vw,
-                      (max-width: 1024px) 50vw,
-                      452px
-                    "
+                    sizes="(max-width: 320px) 100vw, (max-width: 640px) 50vw, 640px"
                   />
                   <img
-                    src="assets/img/second/5.webp"
-                    alt="photo"
+                    src="assets/img/second/5-320.webp"
+                    alt="my photo"
                     class="about__img"
                     width="452"
                     height="678"
                     loading="lazy"
+                    decoding="async"
                   />
                 </picture>
               </div>
@@ -259,6 +265,7 @@
                             width="25"
                             height="25"
                             loading="lazy"
+                            decoding="async"
                           />
                         </div>
                         <div class="item-resume__header">
@@ -289,6 +296,7 @@
                             width="25"
                             height="25"
                             loading="lazy"
+                            decoding="async"
                           />
                         </div>
                         <div class="item-resume__header">
@@ -312,6 +320,7 @@
                               width="482"
                               height="340"
                               loading="lazy"
+                              decoding="async"
                             />
                           </div>
                         </div>
@@ -329,6 +338,7 @@
                             width="25"
                             height="25"
                             loading="lazy"
+                            decoding="async"
                           />
                         </div>
                         <div class="item-resume__header">
@@ -352,6 +362,7 @@
                               width="482"
                               height="340"
                               loading="lazy"
+                              decoding="async"
                             />
                           </div>
                         </div>
@@ -369,6 +380,7 @@
                             width="25"
                             height="25"
                             loading="lazy"
+                            decoding="async"
                           />
                         </div>
                         <div data-spollers class="spollers item-resume__header">
@@ -392,6 +404,7 @@
                               width="482"
                               height="340"
                               loading="lazy"
+                              decoding="async"
                             />
                           </div>
                         </div>
@@ -409,6 +422,7 @@
                             width="25"
                             height="25"
                             loading="lazy"
+                            decoding="async"
                           />
                         </div>
                         <div data-spollers class="spollers item-resume__header">
@@ -432,6 +446,7 @@
                               width="482"
                               height="340"
                               loading="lazy"
+                              decoding="async"
                             />
                           </div>
                         </div>
@@ -449,6 +464,7 @@
                             width="25"
                             height="25"
                             loading="lazy"
+                            decoding="async"
                           />
                         </div>
                         <div data-spollers class="spollers item-resume__header">
@@ -472,6 +488,7 @@
                               width="482"
                               height="240"
                               loading="lazy"
+                              decoding="async"
                             />
                             <img
                               src="assets/img/thirdSection3/rsschool2.webp"
@@ -479,6 +496,7 @@
                               width="482"
                               height="240"
                               loading="lazy"
+                              decoding="async"
                             />
                           </div>
                         </div>
@@ -501,6 +519,7 @@
                             width="25"
                             height="25"
                             loading="lazy"
+                            decoding="async"
                           />
                         </div>
                         <div class="item-resume__header">
@@ -528,6 +547,7 @@
                             width="25"
                             height="25"
                             loading="lazy"
+                            decoding="async"
                           />
                         </div>
                         <div class="item-resume__header">
@@ -571,6 +591,7 @@
                   width="46"
                   height="65"
                   loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="assets/img/fourthSection4/css3.svg"
@@ -579,6 +600,7 @@
                   width="46"
                   height="65"
                   loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="assets/img/fourthSection4/Saas.svg"
@@ -587,6 +609,34 @@
                   width="85"
                   height="65"
                   loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="assets/img/fourthSection4/bootstrap.svg"
+                  alt="javascript"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="assets/img/fourthSection4/tailwind.svg"
+                  alt="javascript"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="assets/img/fourthSection4/figma.svg"
+                  alt="javascript"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="assets/img/fourthSection4/js.svg"
@@ -595,6 +645,7 @@
                   width="65"
                   height="65"
                   loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="assets/img/fourthSection4/typescript.svg"
@@ -603,6 +654,7 @@
                   width="65"
                   height="65"
                   loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="assets/img/fourthSection4/react.svg"
@@ -611,6 +663,7 @@
                   width="72"
                   height="65"
                   loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="assets/img/fourthSection4/Git.svg"
@@ -619,6 +672,7 @@
                   width="65"
                   height="65"
                   loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="assets/img/fourthSection4/vite.svg"
@@ -627,6 +681,7 @@
                   width="65"
                   height="65"
                   loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="assets/img/fourthSection4/gulp.svg"
@@ -635,6 +690,7 @@
                   width="65"
                   height="65"
                   loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="assets/img/fourthSection4/webpack.svg"
@@ -643,6 +699,7 @@
                   width="65"
                   height="65"
                   loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="assets/img/fourthSection4/jquery.svg"
@@ -651,6 +708,7 @@
                   width="162"
                   height="37"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -761,9 +819,7 @@
                             loading="lazy"
                           />
                         </div>
-                        <div class="item__text">
-                          REST API, WebSockets, Long Polling
-                        </div>
+                        <div class="item__text">REST API, WebSockets</div>
                       </div>
                     </div>
                   </li>

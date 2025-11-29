@@ -20,6 +20,7 @@ export default class ProjectCard {
     img.width = 280;
     img.height = 280;
     img.loading = 'lazy';
+    img.decoding = 'async';
     return img;
   }
 

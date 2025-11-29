@@ -4,21 +4,19 @@ export default function pageNavigation() {
   if (menuLinks.length > 0) {
     menuLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
-        const menuLink = e.target;
+        const menuLink = e.target.closest('[data-goto]');
         if (
           menuLink.dataset.goto &&
           document.querySelector(menuLink.dataset.goto)
         ) {
           e.preventDefault();
-          // fixed header
+
           const goToBlock = document.querySelector(menuLink.dataset.goto);
-          // not fixed header
-          // const goToBlockValue =
-          //   goToBlock.getBoundingClientRect().top + pageYOffset;
+
           const goToBlockValue =
             goToBlock.getBoundingClientRect().top +
-            pageYOffset -
-            document.querySelector('header').offsetHeight;
+            window.pageYOffset -
+            (document.querySelector('header')?.offsetHeight || 0);
 
           window.scrollTo({
             top: goToBlockValue,
