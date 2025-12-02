@@ -28,6 +28,9 @@ export default defineConfig({
       webp: {
         quality: 85,
       },
+      avif: {
+        lossless: true,
+      },
     }),
   ],
   build: {
