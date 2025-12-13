@@ -11,9 +11,9 @@ import Portfolio from './portfolio/Portfolio';
 window.addEventListener('DOMContentLoaded', () => {
   pageNavigation();
   headerFon();
-  new Header();
   spollers();
-  new ScrollUpButton();
   scroller();
+  new Header();
+  new ScrollUpButton();
   new Portfolio();
 });
