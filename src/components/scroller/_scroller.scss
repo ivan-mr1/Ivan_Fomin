@@ -1,10 +1,17 @@
-@use '../../styles/helpers/' as *;
+@use '@styles/helpers' as *;
 
 .scroller {
   &__inner {
     display: flex;
     align-items: center;
     gap: 1.6rem;
+    min-height: 60px;
+    background-color: var(--color-orange);
+  }
+
+  &__item {
+    font-size: 24px;
+    list-style: none;
   }
 }
 
@@ -30,7 +37,7 @@
 }
 
 .scroller[data-speed='slow'] {
-  --_animation-duration: 120s;
+  --_animation-duration: 100s;
 }
 
 .scroller[data-speed='fast'] {

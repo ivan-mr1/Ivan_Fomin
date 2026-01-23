@@ -1,0 +1,9 @@
+@use '@styles/helpers' as *;
+
+.skills {
+  &__scroller {
+    &:not(:last-child) {
+      @include adaptive-clamp('margin-bottom', 60, 20);
+    }
+  }
+}
