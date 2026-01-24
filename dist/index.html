@@ -26,8 +26,38 @@
       href="./assets/img/favicon/favicon-16x16.png"
     />
     <link rel="manifest" href="./assets/img/favicon/site.webmanifest" />
+
+    <link
+      rel="preload"
+      href="./assets/fonts/Roboto-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/Roboto-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/Roboto-ExtraBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./assets/fonts/Roboto-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <script type="module" src="./assets/js/app.js"></script>
-    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/app.css" />
   </head>
 
   <body>
@@ -67,6 +97,7 @@
                 </li>
               </ul>
             </nav>
+
             <div class="header__actions">
               <a
                 target="_blank"
@@ -100,7 +131,7 @@
               </a>
               <a
                 target="_blank"
-                href="assets/img/Ivan_Fomin_CV.pdf"
+                href="/assets/files/Ivan_Fomin_CV.pdf"
                 class="button button--min header__button"
                 >CV</a
               >
@@ -121,6 +152,7 @@
           </button>
         </div>
       </header>
+
       <main class="page">
         <section
           class="parent-video-fon page__hero hero"
@@ -167,7 +199,7 @@
         s0.152-0.752,0.458-1.059l2.305-2.305c0.309-0.309,0.663-0.461,1.06-0.461c0.398,0,0.752,0.152,1.061,0.461l18.119,18.119
         l18.122-18.119c0.306-0.309,0.657-0.461,1.057-0.461c0.402,0,0.753,0.152,1.059,0.461l2.306,2.305
         c0.308,0.307,0.461,0.658,0.461,1.059s-0.153,0.752-0.461,1.057L25.813,78.719C25.504,79.027,25.15,79.182,24.752,79.182z"
-              />
+              ></path>
               <path
                 class="second-path"
                 fill="#FFFFFF"
@@ -175,10 +207,11 @@
         c0-0.4,0.152-0.752,0.458-1.058l2.305-2.305c0.309-0.308,0.663-0.461,1.06-0.461c0.398,0,0.752,0.153,1.061,0.461l18.119,18.12
         l18.122-18.12c0.306-0.308,0.657-0.461,1.057-0.461c0.402,0,0.753,0.153,1.059,0.461l2.306,2.305
         c0.308,0.306,0.461,0.657,0.461,1.058c0,0.401-0.153,0.753-0.461,1.057L25.813,57.787C25.504,58.096,25.15,58.25,24.752,58.25z"
-              />
+              ></path>
             </svg>
           </button>
         </section>
+
         <section class="page__about about" aria-labelledby="about-title">
           <div class="about__container">
             <div class="about__wrapper">
@@ -186,12 +219,18 @@
                 <picture>
                   <source
                     type="image/avif"
-                    srcset="./assets/img/second/5-320.avif 320w, ./assets/img/second/5-640.avif 640w"
+                    srcset="
+                      ./assets/img/second/5-320.avif 320w,
+                      ./assets/img/second/5-640.avif 640w
+                    "
                     sizes="(max-width: 320px) 100vw, (max-width: 640px) 50vw, 640px"
                   />
                   <source
                     type="image/webp"
-                    srcset="./assets/img/second/5-320.webp 320w, ./assets/img/second/5-640.webp 640w"
+                    srcset="
+                      ./assets/img/second/5-320.webp 320w,
+                      ./assets/img/second/5-640.webp 640w
+                    "
                     sizes="(max-width: 320px) 100vw, (max-width: 640px) 50vw, 640px"
                   />
                   <img
@@ -237,6 +276,7 @@
             </div>
           </div>
         </section>
+
         <section class="page__resume resume" aria-labelledby="resume-title">
           <div class="resume__container">
             <div class="resume__header header-block header-block__center">
@@ -649,6 +689,7 @@
             </div>
           </div>
         </section>
+
         <section class="page__skills skills" aria-labelledby="skills-title">
           <div class="skills__container">
             <div class="skills__header header-block header-block__center">
@@ -691,7 +732,7 @@
                 />
                 <img
                   src="./assets/img/fourthSection4/bootstrap.svg"
-                  alt="javascript"
+                  alt="bootstrap"
                   class="scroller__img"
                   width="65"
                   height="65"
@@ -700,7 +741,7 @@
                 />
                 <img
                   src="./assets/img/fourthSection4/tailwind.svg"
-                  alt="javascript"
+                  alt="tailwind"
                   class="scroller__img"
                   width="65"
                   height="65"
@@ -709,7 +750,7 @@
                 />
                 <img
                   src="./assets/img/fourthSection4/figma.svg"
-                  alt="javascript"
+                  alt="figma"
                   class="scroller__img"
                   width="65"
                   height="65"
@@ -739,6 +780,15 @@
                   alt="react"
                   class="scroller__img"
                   width="72"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./assets/img/fourthSection4/vue.svg"
+                  alt="vue"
+                  class="scroller__img"
+                  width="65"
                   height="65"
                   loading="lazy"
                   decoding="async"
@@ -807,7 +857,9 @@
                             loading="lazy"
                           />
                         </div>
-                        <div class="item__text">HTML (HTML5), JSX</div>
+                        <div class="item__text">
+                          HTML (HTML5), PostHTML, JSX
+                        </div>
                       </div>
                     </div>
                   </li>
@@ -863,7 +915,7 @@
                             loading="lazy"
                           />
                         </div>
-                        <div class="item__text">React</div>
+                        <div class="item__text">React, Vue</div>
                       </div>
                     </div>
                   </li>
@@ -1181,6 +1233,7 @@
             </div>
           </div>
         </section>
+
         <section
           class="page__portfolio portfolio"
           aria-labelledby="portfolio-title"
@@ -1318,12 +1371,8 @@
                     loading="lazy"
                   />
                 </div>
-                <a
-                  href="mailto:ivanfomin.mr1@gmail.com"
-                  class="footer__link"
-                  ><span class="hover-link"
-                    >ivanfomin.mr1@gmail.com</span
-                  ></a
+                <a href="mailto:ivanfomin.mr1@gmail.com" class="footer__link"
+                  ><span class="hover-link">ivanfomin.mr1@gmail.com</span></a
                 >
               </li>
             </ul>

@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use './functions' as *;
+/* stylelint-disable no-invalid-position-declaration */
 
 // отступы безопасности для контейнера
 $main-offset: 15;
