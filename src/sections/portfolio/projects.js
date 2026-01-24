@@ -1,4 +1,4 @@
-import idGeneration from '@js/function/idGeneration';
+import { idGeneration } from '@js/function/idGeneration';
 
 const projects = [
   {

@@ -1,4 +1,4 @@
-@use '@styles/helpers' as *;
+@use '@helpers' as *;
 
 .spollers__title {
   // font-size: rem(18);
@@ -22,8 +22,7 @@
   content: '';
   width: 20px;
   height: 20px;
-  background: url('../assets/img/components/spoller.svg') center center
-    no-repeat;
+  background: url('/assets/img/components/spoller.svg') center center no-repeat;
   transition: transform 0.5s;
 }
 

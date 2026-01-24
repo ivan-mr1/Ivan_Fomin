@@ -1,86 +1,9 @@
 <header class="header" data-header data-right-padding>
   <div class="header__container">
     <div class="header__overlay">
-      <nav class="header__menu menu" data-header-menu>
-        <ul class="menu__list">
-          <li class="menu__item">
-            <a href="#" class="menu__link hover-link" data-goto=".about"
-              >ABOUT ME</a
-            >
-          </li>
-          <li class="menu__item">
-            <a href="#" class="menu__link hover-link" data-goto=".resume"
-              >RESUME</a
-            >
-          </li>
-          <li class="menu__item">
-            <a href="#" class="menu__link hover-link" data-goto=".skills"
-              >SKILLS</a
-            >
-          </li>
-          <li class="menu__item">
-            <a href="#" class="menu__link hover-link" data-goto=".portfolio"
-              >PORTFOLIO</a
-            >
-          </li>
-          <li class="menu__item">
-            <a href="#" class="menu__link hover-link" data-goto=".footer"
-              >CONTACTS</a
-            >
-          </li>
-        </ul>
-      </nav>
-      <div class="header__actions">
-        <a
-          target="_blank"
-          href="https://github.com/ivan-mr1"
-          class="header__github"
-          aria-label="Open github"
-          title="Open github"
-        >
-          <img
-            src="assets/img/soc1al/github.svg"
-            alt="github"
-            class="header__github-img"
-            width="48"
-            height="48"
-          />
-        </a>
-        <a
-          target="_blank"
-          href="https://www.codewars.com/users/ivan-mr1"
-          class="header__codewars"
-          aria-label="Open codewars"
-          title="Open codewars"
-        >
-          <img
-            src="assets/img/root/libs/codewars.svg"
-            alt="Codewars"
-            class="header__codewars-img"
-            width="48"
-            height="48"
-          />
-        </a>
-        <a
-          target="_blank"
-          href="assets/img/Ivan_Fomin_CV.pdf"
-          class="button button--min header__button"
-          >CV</a
-        >
-      </div>
+      <load src="layouts/header/nav-menu/_nav-menu.html" />
+      <load src="layouts/header/header-actions/_header-actions.html" />
     </div>
-    <button
-      type="button"
-      class="header__burger-button burger-button"
-      data-header-burger-btn
-      aria-label="Open or close menu"
-      title="Open or close menu"
-    >
-      <span class="burger-button__inner">
-        <span class="burger-button__line"></span>
-        <span class="burger-button__line"></span>
-        <span class="burger-button__line"></span>
-      </span>
-    </button>
+    <load src="layouts/header/burger-button/_burger-btn.html" />
   </div>
 </header>

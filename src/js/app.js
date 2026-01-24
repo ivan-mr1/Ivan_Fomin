@@ -1,11 +1,11 @@
 'use strict';
 
-import pageNavigation from './modules/pageNavigation';
+import pageNavigation from '@components/page-navigation/pageNavigation';
 import headerFon from '@layouts/header/headerFon';
 import Header from '@layouts/header/Header';
-import spollers from '../components/spollers/spollers';
-import ScrollUpButton from '../components/scrollUpButton/ScrollUpButton';
-import scroller from '../components/scroller/scroller';
+import spollers from '@components/spollers/spollers';
+import ScrollUpButton from '@components/scrollUpButton/ScrollUpButton';
+import scroller from '@components/scroller/scroller';
 import Portfolio from '@sections/portfolio/Portfolio';
 
 window.addEventListener('DOMContentLoaded', () => {

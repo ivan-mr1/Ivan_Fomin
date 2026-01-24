@@ -5,6 +5,7 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@styles/*": ["src/styles/*"],
+      "@helpers/*": ["src/styles/helpers/*"],
       "@sections/*": ["src/sections/*"],
       "@layouts/*": ["src/layouts/*"],
       "@js/*": ["src/js/*"]
