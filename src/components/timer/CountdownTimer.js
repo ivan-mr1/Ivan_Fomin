@@ -1,4 +1,4 @@
-import { locales } from '../../js/helpers/locales';
+import { locales } from '../locates/locales';
 
 class CountdownTimer {
   /**

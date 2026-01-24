@@ -1,4 +1,4 @@
-@use 'helpers' as *;
+@use '@helpers' as *;
 
 [class*='__container'] {
   max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
@@ -36,11 +36,11 @@ p {
 //   }
 // }
 
-// .visible-mobile {
-//   @include mobile-above {
-//     display: none !important;
-//   }
-// }
+.visible-mobile {
+  @include mobile-above {
+    display: none !important;
+  }
+}
 
 // .disabled {
 //   opacity: 0.5;

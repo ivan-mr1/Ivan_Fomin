@@ -16,6 +16,7 @@ const ignores = [
   '**/.DS_Store',
   'postcss.config.js',
   'vite.config.js',
+  '**/vite-plugins/**',
 ];
 
 export default defineConfig([
@@ -32,7 +33,7 @@ export default defineConfig([
     rules: {
       ...js.configs.recommended.rules,
       'prettier/prettier': 'error',
-      'no-console': ['error', { allow: ['error'] }],
+      'no-console': 'off',
       eqeqeq: 'warn',
       curly: 'warn',
       'no-else-return': 'warn',
