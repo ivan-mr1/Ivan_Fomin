@@ -16,8 +16,12 @@ p {
   @include visually-hidden;
 }
 
-.is-hidden {
+.is-none {
   display: none;
+}
+
+.is-hidden-translate {
+  transform: translateY(-100%);
 }
 
 .visible-mobile {

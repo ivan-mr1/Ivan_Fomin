@@ -104,6 +104,12 @@
     }
   }
 
+  &__text {
+    @include hover {
+      color: var(--color-orange);
+    }
+  }
+
   &__body {
     padding-left: rem(43);
   }

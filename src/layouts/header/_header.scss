@@ -11,9 +11,9 @@
   width: 100%;
   transition: transform var(--transition-duration) ease-in-out;
 
-  &.is-hidden-translate {
-    transform: translateY(-100%);
-  }
+  // &.is-hidden-translate {
+  //   transform: translateY(-100%);
+  // }
 
   &__container {
     display: flex;

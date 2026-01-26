@@ -1,15 +1,10 @@
 @use '@helpers' as *;
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: 0;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
 }
 
 *::before,
@@ -17,21 +12,18 @@
   display: inline-block;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 html {
+  text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-offset, 80px);
 
   &.is-scrolling-down {
-    scroll-padding-top: 0 !important;
+    scroll-padding-top: 0;
   }
 }
 
 body {
+  min-height: 100vh;
   line-height: 1;
   scrollbar-gutter: stable; // резервирует место под скроллбар
   text-size-adjust: 100%;
@@ -52,6 +44,10 @@ textarea {
 input,
 textarea {
   width: 100%;
+}
+
+textarea {
+  resize: vertical;
 }
 
 label {
@@ -78,8 +74,7 @@ img,
 video {
   display: block;
   max-width: 100%;
-
-  // height: auto;
+  height: auto;
 }
 
 h1,
@@ -93,6 +88,10 @@ h6 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {

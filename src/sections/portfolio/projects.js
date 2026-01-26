@@ -1,6 +1,18 @@
-import { idGeneration } from '@js/function/idGeneration';
-
 const projects = [
+  {
+    name: 'optica-store',
+    alt: 'optica-store',
+    img: 'optica.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/optica/dist/',
+  },
+  {
+    name: 'vue-store',
+    alt: 'vue-store',
+    img: 'phones-vue.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://vue-store-eta.vercel.app/',
+  },
   {
     name: 'MK-ai-landing',
     alt: 'MK Ai Landing',
@@ -183,6 +195,6 @@ const projects = [
     github: 'https://github.com/ivan-mr1/',
     deploy: 'https://ivan-mr1.github.io/uber/src/',
   },
-].map((project) => ({ id: idGeneration(), ...project }));
+];
 
 export default projects;

@@ -1,14 +1,14 @@
 (function () {
-  const e = document.createElement('link').relList;
-  if (e && e.supports && e.supports('modulepreload')) return;
-  for (const o of document.querySelectorAll('link[rel="modulepreload"]')) h(o);
+  const t = document.createElement('link').relList;
+  if (t && t.supports && t.supports('modulepreload')) return;
+  for (const o of document.querySelectorAll('link[rel="modulepreload"]')) l(o);
   new MutationObserver((o) => {
     for (const n of o)
       if (n.type === 'childList')
-        for (const c of n.addedNodes)
-          c.tagName === 'LINK' && c.rel === 'modulepreload' && h(c);
+        for (const d of n.addedNodes)
+          d.tagName === 'LINK' && d.rel === 'modulepreload' && l(d);
   }).observe(document, { childList: !0, subtree: !0 });
-  function s(o) {
+  function i(o) {
     const n = {};
     return (
       o.integrity && (n.integrity = o.integrity),
@@ -21,251 +21,319 @@
       n
     );
   }
-  function h(o) {
+  function l(o) {
     if (o.ep) return;
     o.ep = !0;
-    const n = s(o);
+    const n = i(o);
     fetch(o.href, n);
   }
 })();
-function E() {
-  const t = document.querySelector('header');
+function P() {
   document.addEventListener('click', (e) => {
-    const s = e.target.closest('[data-goto]');
-    if (!s) return;
-    const h = s.dataset.goto,
-      o = document.querySelector(h);
-    if (o) {
+    const t = e.target.closest('[data-goto]');
+    if (!t) return;
+    const i = document.querySelector(t.dataset.goto);
+    if (i) {
       e.preventDefault();
-      const n = t ? t.offsetHeight : 0,
-        d = o.getBoundingClientRect().top + window.scrollY - n;
-      window.scrollTo({ top: d, behavior: 'smooth' });
+      const l = i.getBoundingClientRect().top,
+        o = document.documentElement;
+      (l > 0
+        ? o.classList.add('is-scrolling-down')
+        : o.classList.remove('is-scrolling-down'),
+        i.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      const n = () => {
+        (o.classList.remove('is-scrolling-down'),
+          window.removeEventListener('scrollend', n));
+      };
+      'onscrollend' in window
+        ? window.addEventListener('scrollend', n)
+        : setTimeout(n, 1e3);
     }
   });
 }
-function L() {
-  window.addEventListener('scroll', function () {
-    scrollY > 0
-      ? document.querySelector('.header').classList.add('scroll')
-      : document.querySelector('.header').classList.remove('scroll');
-  });
-}
-class P {
+let p = !0;
+const E = (e) => {
+    ((p = !1),
+      setTimeout(() => {
+        p = !0;
+      }, e));
+  },
+  k = () => document.querySelectorAll('[data-right-padding]'),
+  A = () => {
+    const e = window.innerWidth - document.body.clientWidth,
+      t = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    return e / t + 'rem';
+  },
+  L = (e = '') => {
+    (k().forEach((i) => {
+      i.style.paddingRight = e;
+    }),
+      (document.body.style.paddingRight = e));
+  },
+  C = (e) => {
+    document.documentElement.style.setProperty('--scrollbar-width', e);
+  },
+  H = () => {
+    document.documentElement.style.removeProperty('--scrollbar-width');
+  },
+  M = (e = 500) => {
+    if (!p) return;
+    const t = A();
+    (L(t),
+      C(t),
+      document.documentElement.setAttribute('data-scroll-lock', ''),
+      E(e));
+  },
+  x = (e = 500) => {
+    p &&
+      (L(''),
+      H(),
+      document.documentElement.removeAttribute('data-scroll-lock'),
+      E(e));
+  };
+class _ {
+  hiddenHeader = !0;
   selectors = {
     root: '[data-header]',
     menu: '[data-header-menu]',
     burgerButton: '[data-header-burger-btn]',
-    overlay: '.header__overlay',
+    overlay: '[data-header-overlay]',
   };
-  stateClasses = { isActive: 'is-active', isLock: 'lock' };
+  stateClasses = {
+    isActive: 'is-active',
+    isScrolled: 'scroll',
+    isHidden: 'is-hidden-translate',
+  };
   constructor() {
-    if (
-      ((this.rootElement = document.querySelector(this.selectors.root)),
-      !this.rootElement)
-    ) {
-      console.error('Header root element not found');
-      return;
-    }
-    ((this.menuElement = this.rootElement.querySelector(this.selectors.menu)),
-      (this.burgerButtonElement = this.rootElement.querySelector(
-        this.selectors.burgerButton,
-      )),
-      (this.overlayElement = this.rootElement.querySelector(
-        this.selectors.overlay,
-      )),
-      this.bindEvents());
+    ((this.rootElement = document.querySelector(this.selectors.root)),
+      this.rootElement &&
+        ((this.menuElement = this.rootElement.querySelector(
+          this.selectors.menu,
+        )),
+        (this.burgerButtonElement = this.rootElement.querySelector(
+          this.selectors.burgerButton,
+        )),
+        (this.overlayElement = this.rootElement.querySelector(
+          this.selectors.overlay,
+        )),
+        (this.isMenuOpen = !1),
+        (this.lastScrollY = window.scrollY),
+        (this.ticking = !1),
+        this.init()));
   }
-  openMenu() {
-    (this.burgerButtonElement.classList.add(this.stateClasses.isActive),
-      this.menuElement.classList.add(this.stateClasses.isActive),
-      document.body.classList.add(this.stateClasses.isLock));
+  init() {
+    (this.updateHeights(),
+      this.addListeners(),
+      (this.resizeObserver = new ResizeObserver(this.updateHeights)),
+      this.resizeObserver.observe(this.rootElement));
   }
-  closeMenu() {
-    (this.burgerButtonElement.classList.remove(this.stateClasses.isActive),
-      this.menuElement.classList.remove(this.stateClasses.isActive),
-      document.body.classList.remove(this.stateClasses.isLock));
+  updateHeights = () => {
+    const t = this.rootElement.offsetHeight,
+      i = this.rootElement.classList.contains(this.stateClasses.isHidden);
+    (document.documentElement.style.setProperty('--header-height', `${t}px`),
+      document.documentElement.style.setProperty(
+        '--header-offset',
+        i ? '0px' : `${t}px`,
+      ));
+  };
+  setMenuState(t) {
+    ((this.isMenuOpen = t),
+      this.burgerButtonElement?.classList.toggle(this.stateClasses.isActive, t),
+      this.menuElement?.classList.toggle(this.stateClasses.isActive, t),
+      t ? M() : x(),
+      t &&
+        (this.rootElement.classList.remove(this.stateClasses.isHidden),
+        this.updateHeights()),
+      document[t ? 'addEventListener' : 'removeEventListener'](
+        'keydown',
+        this.onEscapePress,
+      ));
   }
-  toggleMenu = () => {
-    this.menuElement.classList.contains(this.stateClasses.isActive)
-      ? this.closeMenu()
-      : this.openMenu();
+  toggleMenu = () => this.setMenuState(!this.isMenuOpen);
+  onMenuLinkClick = (t) => {
+    t.target.closest('a') && this.setMenuState(!1);
   };
-  onEscapePress = (e) => {
-    e.key === 'Escape' && this.closeMenu();
+  onEscapePress = (t) => {
+    t.key === 'Escape' && this.setMenuState(!1);
   };
-  onOverlayClick = (e) => {
-    e.target === this.overlayElement && this.closeMenu();
+  onOverlayClick = (t) => {
+    t.target === this.overlayElement && this.setMenuState(!1);
   };
-  onMenuClick = (e) => {
-    const s = e.target;
-    (s.closest('a.menu__link') || s.closest('button')) && this.closeMenu();
+  handleScroll = () => {
+    this.ticking ||
+      ((this.ticking = !0),
+      window.requestAnimationFrame(() => {
+        const t = Math.max(0, window.scrollY),
+          i = t > this.lastScrollY,
+          l = this.rootElement.offsetHeight;
+        if (
+          (this.rootElement.classList.toggle(
+            this.stateClasses.isScrolled,
+            t > 0,
+          ),
+          this.hiddenHeader && !this.isMenuOpen)
+        ) {
+          const o = i && t > l;
+          this.rootElement.classList.contains(this.stateClasses.isHidden) !==
+            o &&
+            (this.rootElement.classList.toggle(this.stateClasses.isHidden, o),
+            this.updateHeights());
+        }
+        ((this.lastScrollY = t), (this.ticking = !1));
+      }));
   };
-  bindEvents() {
-    if (!this.burgerButtonElement || !this.menuElement) {
-      console.error('Burger button or menu element not found');
-      return;
-    }
-    (this.burgerButtonElement.addEventListener('click', this.toggleMenu),
-      this.menuElement.addEventListener('click', this.onMenuClick),
-      this.overlayElement &&
-        this.overlayElement.addEventListener('click', this.onOverlayClick),
-      document.addEventListener('keydown', this.onEscapePress));
-  }
-  destroy() {
-    !this.burgerButtonElement ||
-      !this.menuElement ||
-      (this.burgerButtonElement.removeEventListener('click', this.toggleMenu),
-      this.menuElement.removeEventListener('click', this.onMenuClick),
-      this.overlayElement &&
-        this.overlayElement.removeEventListener('click', this.onOverlayClick),
-      document.removeEventListener('keydown', this.onEscapePress));
+  addListeners() {
+    (this.burgerButtonElement?.addEventListener('click', this.toggleMenu),
+      this.menuElement?.addEventListener('click', this.onMenuLinkClick),
+      this.overlayElement?.addEventListener('click', this.onOverlayClick),
+      window.addEventListener('scroll', this.handleScroll, { passive: !0 }));
   }
 }
-let w = (t, e = 500) => {
-    t.classList.contains('_slide') ||
-      (t.classList.add('_slide'),
-      (t.style.transitionProperty = 'height, margin, padding'),
-      (t.style.transitionDuration = e + 'ms'),
-      (t.style.height = t.offsetHeight + 'px'),
-      t.offsetHeight,
-      (t.style.overflow = 'hidden'),
-      (t.style.height = 0),
-      (t.style.paddingTop = 0),
-      (t.style.paddingBottom = 0),
-      (t.style.marginTop = 0),
-      (t.style.marginBottom = 0),
+let S = (e, t = 500) => {
+    e.classList.contains('_slide') ||
+      (e.classList.add('_slide'),
+      (e.style.transitionProperty = 'height, margin, padding'),
+      (e.style.transitionDuration = t + 'ms'),
+      (e.style.height = e.offsetHeight + 'px'),
+      e.offsetHeight,
+      (e.style.overflow = 'hidden'),
+      (e.style.height = 0),
+      (e.style.paddingTop = 0),
+      (e.style.paddingBottom = 0),
+      (e.style.marginTop = 0),
+      (e.style.marginBottom = 0),
       window.setTimeout(() => {
-        ((t.hidden = !0),
-          t.style.removeProperty('height'),
-          t.style.removeProperty('padding-top'),
-          t.style.removeProperty('padding-bottom'),
-          t.style.removeProperty('margin-top'),
-          t.style.removeProperty('margin-bottom'),
-          t.style.removeProperty('overflow'),
-          t.style.removeProperty('transition-duration'),
-          t.style.removeProperty('transition-property'),
-          t.classList.remove('_slide'));
-      }, e));
+        ((e.hidden = !0),
+          e.style.removeProperty('height'),
+          e.style.removeProperty('padding-top'),
+          e.style.removeProperty('padding-bottom'),
+          e.style.removeProperty('margin-top'),
+          e.style.removeProperty('margin-bottom'),
+          e.style.removeProperty('overflow'),
+          e.style.removeProperty('transition-duration'),
+          e.style.removeProperty('transition-property'),
+          e.classList.remove('_slide'));
+      }, t));
   },
-  S = (t, e = 500) => {
-    if (!t.classList.contains('_slide')) {
-      (t.classList.add('_slide'), t.hidden && (t.hidden = !1));
-      let s = t.offsetHeight;
-      ((t.style.overflow = 'hidden'),
-        (t.style.height = 0),
-        (t.style.paddingTop = 0),
-        (t.style.paddingBottom = 0),
-        (t.style.marginTop = 0),
-        (t.style.marginBottom = 0),
-        t.offsetHeight,
-        (t.style.transitionProperty = 'height, margin, padding'),
-        (t.style.transitionDuration = e + 'ms'),
-        (t.style.height = s + 'px'),
-        t.style.removeProperty('padding-top'),
-        t.style.removeProperty('padding-bottom'),
-        t.style.removeProperty('margin-top'),
-        t.style.removeProperty('margin-bottom'),
+  R = (e, t = 500) => {
+    if (!e.classList.contains('_slide')) {
+      (e.classList.add('_slide'), e.hidden && (e.hidden = !1));
+      let i = e.offsetHeight;
+      ((e.style.overflow = 'hidden'),
+        (e.style.height = 0),
+        (e.style.paddingTop = 0),
+        (e.style.paddingBottom = 0),
+        (e.style.marginTop = 0),
+        (e.style.marginBottom = 0),
+        e.offsetHeight,
+        (e.style.transitionProperty = 'height, margin, padding'),
+        (e.style.transitionDuration = t + 'ms'),
+        (e.style.height = i + 'px'),
+        e.style.removeProperty('padding-top'),
+        e.style.removeProperty('padding-bottom'),
+        e.style.removeProperty('margin-top'),
+        e.style.removeProperty('margin-bottom'),
         window.setTimeout(() => {
-          (t.style.removeProperty('height'),
-            t.style.removeProperty('overflow'),
-            t.style.removeProperty('transition-duration'),
-            t.style.removeProperty('transition-property'),
-            t.classList.remove('_slide'));
-        }, e));
+          (e.style.removeProperty('height'),
+            e.style.removeProperty('overflow'),
+            e.style.removeProperty('transition-duration'),
+            e.style.removeProperty('transition-property'),
+            e.classList.remove('_slide'));
+        }, t));
     }
   },
-  A = (t, e = 500) => (t.hidden ? S(t, e) : w(t, e));
-function k() {
-  const t = document.querySelectorAll('[data-spollers]');
-  if (t.length > 0) {
-    let d = function (a, r = !1) {
-        a.forEach((i) => {
-          ((i = r ? i.item : i),
+  T = (e, t = 500) => (e.hidden ? R(e, t) : S(e, t));
+function O() {
+  const e = document.querySelectorAll('[data-spollers]');
+  if (e.length > 0) {
+    let u = function (h, r = !1) {
+        h.forEach((s) => {
+          ((s = r ? s.item : s),
             r.matches || !r
-              ? (i.classList.add('init'), p(i), i.addEventListener('click', g))
-              : (i.classList.remove('init'),
-                p(i, !1),
-                i.removeEventListener('click', g)));
+              ? (s.classList.add('init'), g(s), s.addEventListener('click', b))
+              : (s.classList.remove('init'),
+                g(s, !1),
+                s.removeEventListener('click', b)));
         });
       },
-      p = function (a, r = !0) {
-        const i = a.querySelectorAll('[data-spoller]');
-        i.length > 0 &&
-          i.forEach((l) => {
+      g = function (h, r = !0) {
+        const s = h.querySelectorAll('[data-spoller]');
+        s.length > 0 &&
+          s.forEach((a) => {
             r
-              ? (l.removeAttribute('tabindex'),
-                l.classList.contains('active') ||
-                  (l.nextElementSibling.hidden = !0))
-              : (l.setAttribute('tabindex', '-1'),
-                (l.nextElementSibling.hidden = !1));
+              ? (a.removeAttribute('tabindex'),
+                a.classList.contains('active') ||
+                  (a.nextElementSibling.hidden = !0))
+              : (a.setAttribute('tabindex', '-1'),
+                (a.nextElementSibling.hidden = !1));
           });
       },
-      g = function (a) {
-        const r = a.target;
+      b = function (h) {
+        const r = h.target;
         if (r.hasAttribute('data-spoller') || r.closest('[data-spoller]')) {
-          const i = r.hasAttribute('data-spoller')
+          const s = r.hasAttribute('data-spoller')
               ? r
               : r.closest('[data-spoller]'),
-            l = i.closest('[data-spollers]'),
-            m = !!l.hasAttribute('data-one-spoller');
-          (l.querySelectorAll('.slide').length ||
-            (m && !i.classList.contains('active') && v(l),
-            i.classList.toggle('active'),
-            A(i.nextElementSibling, 500)),
-            a.preventDefault());
+            a = s.closest('[data-spollers]'),
+            c = !!a.hasAttribute('data-one-spoller');
+          (a.querySelectorAll('.slide').length ||
+            (c && !s.classList.contains('active') && y(a),
+            s.classList.toggle('active'),
+            T(s.nextElementSibling, 500)),
+            h.preventDefault());
         }
       },
-      v = function (a) {
-        const r = a.querySelector('[data-spoller].active');
-        r && (r.classList.remove('active'), w(r.nextElementSibling, 500));
+      y = function (h) {
+        const r = h.querySelector('[data-spoller].active');
+        r && (r.classList.remove('active'), S(r.nextElementSibling, 500));
       };
-    var e = d,
-      s = p,
-      h = g,
-      o = v;
-    const n = Array.from(t).filter(function (a) {
-      return !a.dataset.spollers.split(',')[0];
+    var t = u,
+      i = g,
+      l = b,
+      o = y;
+    const n = Array.from(e).filter(function (h) {
+      return !h.dataset.spollers.split(',')[0];
     });
-    n.length > 0 && d(n);
-    const c = Array.from(t).filter(function (a) {
-      return a.dataset.spollers.split(',')[0];
+    n.length > 0 && u(n);
+    const d = Array.from(e).filter(function (h) {
+      return h.dataset.spollers.split(',')[0];
     });
-    if (c.length > 0) {
-      const a = [];
-      c.forEach((i) => {
-        const l = i.dataset.spollers,
-          m = {},
-          u = l.split(',');
-        ((m.value = u[0]),
-          (m.type = u[1] ? u[1].trim() : 'max'),
-          (m.item = i),
-          a.push(m));
+    if (d.length > 0) {
+      const h = [];
+      d.forEach((s) => {
+        const a = s.dataset.spollers,
+          c = {},
+          m = a.split(',');
+        ((c.value = m[0]),
+          (c.type = m[1] ? m[1].trim() : 'max'),
+          (c.item = s),
+          h.push(c));
       });
-      let r = a.map(function (i) {
+      let r = h.map(function (s) {
         return (
-          '(' + i.type + '-width: ' + i.value + 'px),' + i.value + ',' + i.type
+          '(' + s.type + '-width: ' + s.value + 'px),' + s.value + ',' + s.type
         );
       });
-      ((r = r.filter(function (i, l, m) {
-        return m.indexOf(i) === l;
+      ((r = r.filter(function (s, a, c) {
+        return c.indexOf(s) === a;
       })),
-        r.forEach((i) => {
-          const l = i.split(','),
-            m = l[1],
-            u = l[2],
-            b = window.matchMedia(l[0]),
-            y = a.filter(function (f) {
-              if (f.value === m && f.type === u) return !0;
+        r.forEach((s) => {
+          const a = s.split(','),
+            c = a[1],
+            m = a[2],
+            v = window.matchMedia(a[0]),
+            f = h.filter(function (w) {
+              if (w.value === c && w.type === m) return !0;
             });
-          (b.addListener(function () {
-            d(y, b);
+          (v.addListener(function () {
+            u(f, v);
           }),
-            d(y, b));
+            u(f, v));
         }));
     }
   }
 }
-class C {
+class q {
   defaults = {
     parent: document.body,
     offset: 300,
@@ -273,14 +341,14 @@ class C {
     scrollUpClass: 'scroll-up',
     scrollUpPathClass: 'scroll-up__path',
   };
-  constructor(e = {}) {
-    this.settings = { ...this.defaults, ...e };
-    const { parent: s } = this.settings;
-    if (!(s instanceof Element)) {
+  constructor(t = {}) {
+    this.settings = { ...this.defaults, ...t };
+    const { parent: i } = this.settings;
+    if (!(i instanceof Element)) {
       console.error('ScrollUpButton = Invalid parent element');
       return;
     }
-    ((this.parent = s),
+    ((this.parent = i),
       (this.button = null),
       (this.path = null),
       (this.pathLength = 0),
@@ -294,21 +362,21 @@ class C {
       this.toggleVisibility());
   }
   createButton() {
-    const { scrollUpClass: e, scrollUpPathClass: s, parent: h } = this.settings;
+    const { scrollUpClass: t, scrollUpPathClass: i, parent: l } = this.settings;
     ((this.button = document.createElement('button')),
-      this.button.classList.add(e),
+      this.button.classList.add(t),
       this.button.setAttribute('aria-label', 'scroll to top'),
       this.button.setAttribute('title', 'scroll to top'),
       (this.button.innerHTML = `
-      <svg class="${e}__svg" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 52 52">
-        <path class="${s}" d="M 24,0 a24,24 0 0,1 0,48 a24,24 0 0,1 0,-48" />
+      <svg class="${t}__svg" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 52 52">
+        <path class="${i}" d="M 24,0 a24,24 0 0,1 0,48 a24,24 0 0,1 0,-48" />
       </svg>
     `),
-      h.appendChild(this.button));
+      l.appendChild(this.button));
   }
   cacheElements() {
-    const { scrollUpPathClass: e } = this.settings;
-    ((this.path = this.button.querySelector(`.${e}`)),
+    const { scrollUpPathClass: t } = this.settings;
+    ((this.path = this.button.querySelector(`.${t}`)),
       (this.pathLength = this.path.getTotalLength()));
   }
   setInitialStyles() {
@@ -319,18 +387,18 @@ class C {
     return window.scrollY || document.documentElement.scrollTop;
   }
   updateDashOffset() {
-    const e = document.documentElement.scrollHeight - window.innerHeight,
-      s = this.pathLength - (this.getScrollTop() * this.pathLength) / e;
-    this.path.style.strokeDashoffset = s;
+    const t = document.documentElement.scrollHeight - window.innerHeight,
+      i = this.pathLength - (this.getScrollTop() * this.pathLength) / t;
+    this.path.style.strokeDashoffset = i;
   }
   toggleVisibility = () => {
-    const { offset: e, maxWidth: s, scrollUpClass: h } = this.settings,
+    const { offset: t, maxWidth: i, scrollUpClass: l } = this.settings,
       o = this.getScrollTop(),
       n = window.innerWidth;
     (this.updateDashOffset(),
-      o > e && n <= s
-        ? this.button.classList.add(`${h}--active`)
-        : this.button.classList.remove(`${h}--active`));
+      o > t && n <= i
+        ? this.button.classList.add(`${l}--active`)
+        : this.button.classList.remove(`${l}--active`));
   };
   scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -347,253 +415,264 @@ class C {
       this.button.remove());
   }
 }
-function _() {
-  const t = document.querySelectorAll('.scroller');
-  window.matchMedia('(prefer-reduce-motion: reduce)').matches || e();
-  function e() {
-    t.forEach((s) => {
-      s.setAttribute('data-animated', !0);
-      const h = s.querySelector('.scroller__inner');
-      Array.from(h.children).forEach((n) => {
-        const c = n.cloneNode(!0);
-        (c.setAttribute('aria-hidden', !0), h.appendChild(c));
+function z() {
+  const e = document.querySelectorAll('.scroller');
+  window.matchMedia('(prefer-reduce-motion: reduce)').matches || t();
+  function t() {
+    e.forEach((i) => {
+      i.setAttribute('data-animated', !0);
+      const l = i.querySelector('.scroller__inner');
+      Array.from(l.children).forEach((n) => {
+        const d = n.cloneNode(!0);
+        (d.setAttribute('aria-hidden', !0), l.appendChild(d));
       });
     });
   }
 }
-const M = function () {
-    return crypto?.randomUUID() ?? Date.now().toString();
+const F = [
+  {
+    name: 'optica-store',
+    alt: 'optica-store',
+    img: 'optica.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/optica/dist/',
   },
-  T = [
-    {
-      name: 'MK-ai-landing',
-      alt: 'MK Ai Landing',
-      img: 'ai-landing.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/MK-ai-landing/dist/',
-    },
-    {
-      name: 'photographer',
-      alt: 'Photographer',
-      img: 'portfolio-photo.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/photographer/dist/',
-    },
-    {
-      name: 'paris-palase-of-culture',
-      alt: 'Paris Palase Of Culture',
-      img: 'louvre.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/paris-palase-of-culture/dist/',
-    },
-    {
-      name: 'New-Year-Shop',
-      alt: 'New Year Shop',
-      img: 'new-york-store.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/New-Year-Shop/dist/',
-    },
-    {
-      name: 'coffee',
-      alt: 'Coffee',
-      img: 'coffee.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/coffee/dist/',
-    },
-    {
-      name: 'store-optica',
-      alt: 'Store Optica',
-      img: 'store-optica.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/store-optica/dist/',
-    },
-    {
-      name: 'Relvise',
-      alt: 'Relvise',
-      img: 'relvise.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/Relvise/dist/',
-    },
-    {
-      name: 'landing',
-      alt: 'Landing',
-      img: 'landing.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/landing/dist/',
-    },
-    {
-      name: 'Funiro-main',
-      alt: 'Funiro Main',
-      img: 'Funiro1.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/Funiro/Funiro-main/',
-    },
-    {
-      name: 'rentiz',
-      alt: 'Rentiz',
-      img: 'rentiz1.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/rentiz/',
-    },
-    {
-      name: 'alexPortfolio',
-      alt: 'Alex Portfolio',
-      img: 'alex1.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/alexPortfolio/dist/',
-    },
-    {
-      name: 'roboSchool',
-      alt: 'Robo School',
-      img: 'roboschool.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/roboSchool/app/',
-    },
-    {
-      name: 'fv',
-      alt: 'FV',
-      img: 'fr1.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/fv/',
-    },
-    {
-      name: 'home',
-      alt: 'Home',
-      img: 'home.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/home/',
-    },
-    {
-      name: 'pulse',
-      alt: 'Pulse',
-      img: 'pulse.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/pulse/src/',
-    },
-    {
-      name: 'grow',
-      alt: 'Grow',
-      img: 'grow.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/grow/src/',
-    },
-    {
-      name: 'RealEstate',
-      alt: 'Real Estate',
-      img: 'estate_1.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/RealEstate/src/',
-    },
-    {
-      name: 'lamborghini',
-      alt: 'Lamborghini',
-      img: 'lambo.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/lamborghini/dist/',
-    },
-    {
-      name: 'Recidiviz',
-      alt: 'Recidiviz',
-      img: 'Recidiviz.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/Recidiviz/dist/',
-    },
-    {
-      name: 'RGym',
-      alt: 'RGym',
-      img: 'RGym.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/RGym/src/',
-    },
-    {
-      name: 'ujjo2',
-      alt: 'Ujjo2',
-      img: 'ujio.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/ujjo2/',
-    },
-    {
-      name: 'store',
-      alt: 'Store',
-      img: 'Store.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/store/',
-    },
-    {
-      name: 'cab',
-      alt: 'Cab',
-      img: 'cabins.png',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/cab/',
-    },
-    {
-      name: 'Fitness',
-      alt: 'Fitness',
-      img: 'fitness.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/Fitness/dist/',
-    },
-    {
-      name: 'lidia',
-      alt: 'Lidia',
-      img: 'lidia.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/lidia/',
-    },
-    {
-      name: 'uber',
-      alt: 'Uber',
-      img: 'uber.webp',
-      github: 'https://github.com/ivan-mr1/',
-      deploy: 'https://ivan-mr1.github.io/uber/src/',
-    },
-  ].map((t) => ({ id: M(), ...t }));
-class x {
+  {
+    name: 'vue-store',
+    alt: 'vue-store',
+    img: 'phones-vue.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://vue-store-eta.vercel.app/',
+  },
+  {
+    name: 'MK-ai-landing',
+    alt: 'MK Ai Landing',
+    img: 'ai-landing.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/MK-ai-landing/dist/',
+  },
+  {
+    name: 'photographer',
+    alt: 'Photographer',
+    img: 'portfolio-photo.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/photographer/dist/',
+  },
+  {
+    name: 'paris-palase-of-culture',
+    alt: 'Paris Palase Of Culture',
+    img: 'louvre.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/paris-palase-of-culture/dist/',
+  },
+  {
+    name: 'New-Year-Shop',
+    alt: 'New Year Shop',
+    img: 'new-york-store.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/New-Year-Shop/dist/',
+  },
+  {
+    name: 'coffee',
+    alt: 'Coffee',
+    img: 'coffee.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/coffee/dist/',
+  },
+  {
+    name: 'store-optica',
+    alt: 'Store Optica',
+    img: 'store-optica.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/store-optica/dist/',
+  },
+  {
+    name: 'Relvise',
+    alt: 'Relvise',
+    img: 'relvise.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/Relvise/dist/',
+  },
+  {
+    name: 'landing',
+    alt: 'Landing',
+    img: 'landing.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/landing/dist/',
+  },
+  {
+    name: 'Funiro-main',
+    alt: 'Funiro Main',
+    img: 'Funiro1.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/Funiro/Funiro-main/',
+  },
+  {
+    name: 'rentiz',
+    alt: 'Rentiz',
+    img: 'rentiz1.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/rentiz/',
+  },
+  {
+    name: 'alexPortfolio',
+    alt: 'Alex Portfolio',
+    img: 'alex1.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/alexPortfolio/dist/',
+  },
+  {
+    name: 'roboSchool',
+    alt: 'Robo School',
+    img: 'roboschool.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/roboSchool/app/',
+  },
+  {
+    name: 'fv',
+    alt: 'FV',
+    img: 'fr1.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/fv/',
+  },
+  {
+    name: 'home',
+    alt: 'Home',
+    img: 'home.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/home/',
+  },
+  {
+    name: 'pulse',
+    alt: 'Pulse',
+    img: 'pulse.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/pulse/src/',
+  },
+  {
+    name: 'grow',
+    alt: 'Grow',
+    img: 'grow.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/grow/src/',
+  },
+  {
+    name: 'RealEstate',
+    alt: 'Real Estate',
+    img: 'estate_1.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/RealEstate/src/',
+  },
+  {
+    name: 'lamborghini',
+    alt: 'Lamborghini',
+    img: 'lambo.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/lamborghini/dist/',
+  },
+  {
+    name: 'Recidiviz',
+    alt: 'Recidiviz',
+    img: 'Recidiviz.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/Recidiviz/dist/',
+  },
+  {
+    name: 'RGym',
+    alt: 'RGym',
+    img: 'RGym.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/RGym/src/',
+  },
+  {
+    name: 'ujjo2',
+    alt: 'Ujjo2',
+    img: 'ujio.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/ujjo2/',
+  },
+  {
+    name: 'store',
+    alt: 'Store',
+    img: 'Store.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/store/',
+  },
+  {
+    name: 'cab',
+    alt: 'Cab',
+    img: 'cabins.png',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/cab/',
+  },
+  {
+    name: 'Fitness',
+    alt: 'Fitness',
+    img: 'fitness.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/Fitness/dist/',
+  },
+  {
+    name: 'lidia',
+    alt: 'Lidia',
+    img: 'lidia.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/lidia/',
+  },
+  {
+    name: 'uber',
+    alt: 'Uber',
+    img: 'uber.webp',
+    github: 'https://github.com/ivan-mr1/',
+    deploy: 'https://ivan-mr1.github.io/uber/src/',
+  },
+];
+class j {
   classes = {
     item: 'portfolio__item',
     link: 'portfolio__link',
     img: 'portfolio__img',
   };
-  constructor({ id: e, img: s, alt: h, deploy: o }) {
-    ((this.id = e),
-      (this.img = s),
-      (this.alt = h || 'Project image'),
+  constructor({ id: t, img: i, alt: l, deploy: o }) {
+    ((this.id = t),
+      (this.img = i),
+      (this.alt = l || 'Project image'),
       (this.deploy = o || '#'));
   }
   createImage() {
-    const e = document.createElement('img');
+    const t = document.createElement('img');
     return (
-      (e.src = `assets/img/works/${this.img}`),
-      (e.alt = this.alt),
-      e.classList.add(this.classes.img),
-      (e.width = 280),
-      (e.height = 280),
-      (e.loading = 'lazy'),
-      (e.decoding = 'async'),
-      e
+      (t.src = `assets/img/works/${this.img}`),
+      (t.alt = this.alt),
+      t.classList.add(this.classes.img),
+      (t.width = 280),
+      (t.height = 280),
+      (t.loading = 'lazy'),
+      (t.decoding = 'async'),
+      t
     );
   }
   createLink() {
-    const e = document.createElement('a');
+    const t = document.createElement('a');
     return (
-      (e.href = this.deploy),
-      (e.target = '_blank'),
-      e.classList.add('ibg', this.classes.link),
-      e.append(this.createImage()),
-      e
+      (t.href = this.deploy),
+      (t.target = '_blank'),
+      t.classList.add('ibg', this.classes.link),
+      t.append(this.createImage()),
+      t
     );
   }
   renderElement() {
-    const e = document.createElement('li');
+    const t = document.createElement('li');
     return (
-      e.classList.add(this.classes.item),
-      this.id && (e.id = this.id),
-      e.append(this.createLink()),
-      e
+      t.classList.add(this.classes.item),
+      this.id && (t.id = this.id),
+      t.append(this.createLink()),
+      t
     );
   }
 }
-class O {
+class U {
   selectors = { root: '[data-portfolio]' };
   constructor() {
     ((this.root = document.querySelector(this.selectors.root)),
@@ -601,12 +680,12 @@ class O {
   }
   renderProjects() {
     ((this.root.innerHTML = ''),
-      T.forEach((e) => {
-        const s = new x(e);
-        this.root.append(s.renderElement());
+      F.forEach((t) => {
+        const i = new j(t);
+        this.root.append(i.renderElement());
       }));
   }
 }
 window.addEventListener('DOMContentLoaded', () => {
-  (E(), L(), k(), _(), new P(), new C(), new O());
+  (P(), O(), z(), new _(), new q(), new U());
 });

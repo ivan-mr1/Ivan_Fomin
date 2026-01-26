@@ -20,7 +20,7 @@ body {
   overflow: clip;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  min-height: 100vh;
 
   > main {
     flex: 1 1 auto;
@@ -32,9 +32,13 @@ button,
 label,
 input,
 textarea,
-select,
-svg * {
-  transition-duration: var(--transition-duration);
+select {
+  transition:
+    color var(--transition-duration) ease,
+    background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease,
+    opacity var(--transition-duration) ease,
+    transform var(--transition-duration) ease;
 }
 
 // a,
@@ -43,13 +47,15 @@ svg * {
 //     position: relative;
 
 //     &::before {
-//       width: 44px;
-//       height: 44px;
+//       content: '';
 //       position: absolute;
 //       top: 50%;
 //       left: 50%;
-//       translate: -50% -50%;
-//       content: '';
+//       width: 44px;
+//       height: 44px;
+//       transform: translate(-50%, -50%);
+//       min-width: 100%;
+//       min-height: 100%;
 //     }
 //   }
 // }
