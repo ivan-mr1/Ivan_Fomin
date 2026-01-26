@@ -6,20 +6,6 @@
   padding-inline: var(--container-padding-x);
 }
 
-.ibg {
-  position: relative;
-  display: block;
-  aspect-ratio: 4 / 3; // удалить здесь и задавать каждому отдельному изображению
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
 p {
   &:not(:last-child) {
     margin-bottom: rem(10);
@@ -30,11 +16,9 @@ p {
   @include visually-hidden;
 }
 
-// .hidden-mobile {
-//   @include mobile {
-//     display: none !important;
-//   }
-// }
+.is-hidden {
+  display: none;
+}
 
 .visible-mobile {
   @include mobile-above {
@@ -42,8 +26,21 @@ p {
   }
 }
 
+// .hidden-mobile {
+//   @include mobile {
+//     display: none !important;
+//   }
+// }
+
 // .disabled {
 //   opacity: 0.5;
 //   cursor: default;
 //   pointer-events: none; // запрещаем взаимодействие
+// }
+
+// :focus-visible {
+//   // в момент фокусировки с клавиатуры
+//   outline: rem(2) dashed var(--color-white);
+//   outline-offset: rem(4);
+//   transition-duration: 0s !important;
 // }

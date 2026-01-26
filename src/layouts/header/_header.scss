@@ -1,6 +1,5 @@
 @use '@helpers' as *;
 @use '@layouts/header/header-fon';
-@use '@layouts/header/header-shadow';
 @use '@layouts/header/burger-button/burger-2';
 @use '@layouts/header/nav-menu/nav-menu';
 
@@ -33,7 +32,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: rem(15);
+    gap: 1rem;
   }
 
   &__github,

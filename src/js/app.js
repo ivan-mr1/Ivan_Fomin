@@ -1,7 +1,6 @@
 'use strict';
 
 import pageNavigation from '@components/page-navigation/pageNavigation';
-import headerFon from '@layouts/header/headerFon';
 import Header from '@layouts/header/Header';
 import spollers from '@components/spollers/spollers';
 import ScrollUpButton from '@components/scrollUpButton/ScrollUpButton';
@@ -10,7 +9,6 @@ import Portfolio from '@sections/portfolio/Portfolio';
 
 window.addEventListener('DOMContentLoaded', () => {
   pageNavigation();
-  headerFon();
   spollers();
   scroller();
   new Header();
