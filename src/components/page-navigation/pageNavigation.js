@@ -1,29 +1,38 @@
 export default function pageNavigation() {
-  const header = document.querySelector('header');
-
   document.addEventListener('click', (e) => {
     const menuLink = e.target.closest('[data-goto]');
-
     if (!menuLink) {
       return;
     }
 
-    const targetSelector = menuLink.dataset.goto;
-    const targetBlock = document.querySelector(targetSelector);
-
+    const targetBlock = document.querySelector(menuLink.dataset.goto);
     if (targetBlock) {
       e.preventDefault();
 
-      const headerHeight = header ? header.offsetHeight : 0;
+      const targetPosition = targetBlock.getBoundingClientRect().top;
+      const html = document.documentElement;
 
-      const targetPosition =
-        targetBlock.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = targetPosition - headerHeight;
+      if (targetPosition > 0) {
+        html.classList.add('is-scrolling-down');
+      } else {
+        html.classList.remove('is-scrolling-down');
+      }
 
-      window.scrollTo({
-        top: offsetPosition,
+      targetBlock.scrollIntoView({
         behavior: 'smooth',
+        block: 'start',
       });
+
+      const onScrollEnd = () => {
+        html.classList.remove('is-scrolling-down');
+        window.removeEventListener('scrollend', onScrollEnd);
+      };
+
+      if ('onscrollend' in window) {
+        window.addEventListener('scrollend', onScrollEnd);
+      } else {
+        setTimeout(onScrollEnd, 1000);
+      }
     }
   });
 }

@@ -24,7 +24,11 @@ body {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height, 80px);
+  scroll-padding-top: var(--header-offset, 80px);
+
+  &.is-scrolling-down {
+    scroll-padding-top: 0 !important;
+  }
 }
 
 body {

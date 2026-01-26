@@ -1,6 +1,8 @@
 import { bodyLock, bodyUnlock } from '@js/function/bodyLock.js';
 
 class Header {
+  hiddenHeader = true;
+
   selectors = {
     root: '[data-header]',
     menu: '[data-header-menu]',
@@ -11,7 +13,7 @@ class Header {
   stateClasses = {
     isActive: 'is-active',
     isScrolled: 'scroll',
-    isHidden: 'is-hidden',
+    isHidden: 'is-hidden-translate',
   };
 
   constructor() {
@@ -36,88 +38,58 @@ class Header {
   }
 
   init() {
-    this.setHeightProperty();
-    this.handleScroll();
-    this.bindEvents();
+    this.updateHeights();
+    this.addListeners();
 
-    this.resizeObserver = new ResizeObserver(() => this.setHeightProperty());
+    this.resizeObserver = new ResizeObserver(this.updateHeights);
     this.resizeObserver.observe(this.rootElement);
   }
 
-  setHeightProperty = () => {
+  /**
+   * Обновляет CSS-переменные высоты.
+   * --header-height: всегда реальная высота хедера.
+   * --header-offset: 0, если хедер скрыт, или реальная высота, если виден.
+   */
+  updateHeights = () => {
     const height = this.rootElement.offsetHeight;
+    const isHidden = this.rootElement.classList.contains(
+      this.stateClasses.isHidden,
+    );
+
     document.documentElement.style.setProperty(
       '--header-height',
       `${height}px`,
     );
+    document.documentElement.style.setProperty(
+      '--header-offset',
+      isHidden ? '0px' : `${height}px`,
+    );
   };
 
-  /**
-   * Обработчик скролла страницы
-   * Управляет видимостью и состоянием header при прокрутке
-   */
-  handleScroll = () => {
-    if (!this.ticking) {
-      window.requestAnimationFrame(() => {
-        const currentScrollY = window.scrollY;
-        const headerHeight = this.rootElement.offsetHeight;
-        const isScrollingDown = currentScrollY > this.lastScrollY;
-        const isScrolledPastHeader = currentScrollY > headerHeight;
-
-        // Класс при любом скролле
-        this.rootElement.classList.toggle(
-          this.stateClasses.isScrolled,
-          currentScrollY > 0,
-        );
-
-        // Скрываем/показываем header при скролле вниз
-        const shouldHideHeader =
-          !this.isMenuOpen && isScrolledPastHeader && isScrollingDown;
-        this.rootElement.classList.toggle(
-          this.stateClasses.isHidden,
-          shouldHideHeader,
-        );
-
-        this.lastScrollY = currentScrollY;
-        this.ticking = false;
-      });
-
-      this.ticking = true;
-    }
-  };
-
-  /**
-   * Переключает состояние мобильного меню
-   */
-  toggleMenu = () => this.setMenuState(!this.isMenuOpen);
-
-  /**
-   * Устанавливает состояние меню (открыто/закрыто)
-   * @param {boolean} isOpen
-   */
-  setMenuState = (isOpen) => {
+  setMenuState(isOpen) {
     this.isMenuOpen = isOpen;
+
     this.burgerButtonElement?.classList.toggle(
       this.stateClasses.isActive,
       isOpen,
     );
     this.menuElement?.classList.toggle(this.stateClasses.isActive, isOpen);
-    this.burgerButtonElement?.setAttribute('aria-expanded', isOpen);
 
     isOpen ? bodyLock() : bodyUnlock();
 
-    // При открытии всегда показываем header
     if (isOpen) {
       this.rootElement.classList.remove(this.stateClasses.isHidden);
+      this.updateHeights();
     }
 
-    isOpen
-      ? document.addEventListener('keydown', this.onEscapePress)
-      : document.removeEventListener('keydown', this.onEscapePress);
-  };
+    const action = isOpen ? 'addEventListener' : 'removeEventListener';
+    document[action]('keydown', this.onEscapePress);
+  }
 
-  onMenuLinkClick = (event) => {
-    if (event.target.closest('a')) {
+  toggleMenu = () => this.setMenuState(!this.isMenuOpen);
+
+  onMenuLinkClick = (e) => {
+    if (e.target.closest('a')) {
       this.setMenuState(false);
     }
   };
@@ -134,20 +106,48 @@ class Header {
     }
   };
 
-  bindEvents() {
+  handleScroll = () => {
+    if (this.ticking) {
+      return;
+    }
+    this.ticking = true;
+
+    window.requestAnimationFrame(() => {
+      const currentScrollY = Math.max(0, window.scrollY);
+      const isScrollingDown = currentScrollY > this.lastScrollY;
+      const headerHeight = this.rootElement.offsetHeight;
+
+      this.rootElement.classList.toggle(
+        this.stateClasses.isScrolled,
+        currentScrollY > 0,
+      );
+
+      if (this.hiddenHeader && !this.isMenuOpen) {
+        const shouldHide = isScrollingDown && currentScrollY > headerHeight;
+
+        const wasHidden = this.rootElement.classList.contains(
+          this.stateClasses.isHidden,
+        );
+
+        if (wasHidden !== shouldHide) {
+          this.rootElement.classList.toggle(
+            this.stateClasses.isHidden,
+            shouldHide,
+          );
+          this.updateHeights();
+        }
+      }
+
+      this.lastScrollY = currentScrollY;
+      this.ticking = false;
+    });
+  };
+
+  addListeners() {
     this.burgerButtonElement?.addEventListener('click', this.toggleMenu);
     this.menuElement?.addEventListener('click', this.onMenuLinkClick);
     this.overlayElement?.addEventListener('click', this.onOverlayClick);
     window.addEventListener('scroll', this.handleScroll, { passive: true });
-  }
-
-  destroy() {
-    this.burgerButtonElement?.removeEventListener('click', this.toggleMenu);
-    this.menuElement?.removeEventListener('click', this.onMenuLinkClick);
-    this.overlayElement?.removeEventListener('click', this.onOverlayClick);
-    window.removeEventListener('scroll', this.handleScroll);
-    document.removeEventListener('keydown', this.onEscapePress);
-    this.resizeObserver?.disconnect();
   }
 }
 

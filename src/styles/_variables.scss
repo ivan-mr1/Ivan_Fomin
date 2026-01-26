@@ -1,6 +1,10 @@
 @use '@helpers' as *;
 
 :root {
+  --header-height: 80px; // всегда реальная высота хедера
+  --header-offset: var(
+    --header-height
+  ); // 0, если хедер скрыт, или реальная высота, если виден
   --scrollbar-width: 0rem;
   --z-index-header: 50;
   --z-index-scroll-up: 10;

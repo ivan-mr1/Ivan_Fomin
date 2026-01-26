@@ -9,6 +9,11 @@
   top: 0;
   left: 0;
   width: 100%;
+  transition: transform var(--transition-duration) ease-in-out;
+
+  &.is-hidden-translate {
+    transform: translateY(-100%);
+  }
 
   &__container {
     display: flex;

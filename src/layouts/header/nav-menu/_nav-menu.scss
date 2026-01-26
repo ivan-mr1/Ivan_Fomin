@@ -28,10 +28,9 @@
       top: 0;
       left: -100%;
       width: 100%;
+      height: var(--header-height);
       background-color: var(--menu-background-before);
       transition: left 0.3s;
-
-      @include adaptive-clamp('height', 80, 60);
     }
 
     &.is-active {
