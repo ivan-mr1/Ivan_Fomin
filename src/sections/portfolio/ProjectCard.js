@@ -5,10 +5,10 @@ export default class ProjectCard {
     img: 'portfolio__img',
   };
 
-  constructor({ id, img, alt, deploy }) {
+  constructor({ id, img, name, deploy }) {
     this.id = id;
     this.img = img;
-    this.alt = alt || 'Project image';
+    this.alt = name || 'Project name';
     this.deploy = deploy || '#';
   }
 
