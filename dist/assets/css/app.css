@@ -1,10 +1,10 @@
 @charset "UTF-8";
 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   border: 0;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 *:before,
 *:after {
@@ -12,6 +12,9 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-offset, 80px);
 }
@@ -1530,6 +1533,8 @@ select {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  position: relative;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1540,8 +1545,6 @@ select {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  position: relative;
-  z-index: 2;
 }
 .hero__body {
   max-width: 32.5rem;
