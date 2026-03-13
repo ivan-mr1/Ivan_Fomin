@@ -5,11 +5,15 @@ export default class ProjectCard {
     img: 'portfolio__img',
   };
 
-  constructor({ id, img, name, deploy }) {
+  constructor({ id, img, name, deploy, category, pageType, year, techStack }) {
     this.id = id;
     this.img = img;
     this.alt = name || 'Project name';
     this.deploy = deploy || '#';
+    this.category = category || '';
+    this.pageType = pageType || '';
+    this.year = year || '';
+    this.techStack = techStack || [];
   }
 
   createImage() {
@@ -39,6 +43,12 @@ export default class ProjectCard {
     if (this.id) {
       li.id = this.id;
     }
+
+    li.dataset.category = this.category.toLowerCase();
+    li.dataset.pageType = this.pageType.toLowerCase();
+    li.dataset.year = this.year;
+    li.dataset.tech = this.techStack.map((t) => t.toLowerCase()).join(',');
+
     li.append(this.createLink());
     return li;
   }

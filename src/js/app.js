@@ -5,7 +5,8 @@ import Header from '@layouts/header/Header';
 import spollers from '@components/spollers/spollers';
 import ScrollUpButton from '@components/scrollUpButton/ScrollUpButton';
 import scroller from '@components/scroller/scroller';
-import Portfolio from '@sections/portfolio/Portfolio';
+import PortfolioCollection from '@sections/portfolio/PortfolioCollection';
+import TabsCollection from '@components/tabs/Tabs';
 
 window.addEventListener('DOMContentLoaded', () => {
   pageNavigation();
@@ -13,5 +14,6 @@ window.addEventListener('DOMContentLoaded', () => {
   scroller();
   new Header();
   new ScrollUpButton();
-  new Portfolio();
+  new PortfolioCollection();
+  new TabsCollection();
 });
