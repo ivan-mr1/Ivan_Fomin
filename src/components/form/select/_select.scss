@@ -53,7 +53,7 @@
       @include square(var(--size));
 
       content: '';
-      background: url('../../../assets/img/components/arrow-down_white.svg')
+      background: url('@assets/img/components/arrow-down_white.svg')
         center/contain no-repeat;
       transition-duration: var(--transition-duration);
 
@@ -119,6 +119,23 @@
 
     &.is-current {
       border-color: var(--accent-color);
+    }
+  }
+
+  @media (min-width: em(767.98)) {
+    @include hover {
+      .select__dropdown {
+        @include show;
+
+        display: grid;
+        scale: 1;
+      }
+
+      .select__button {
+        &::after {
+          rotate: -180deg;
+        }
+      }
     }
   }
 }

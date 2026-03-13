@@ -49,8 +49,6 @@ class Select extends BaseComponent {
     this.bindEvents();
   }
 
-  // --- UI update (pure: only reflects state, no side effects) ---
-
   updateUI() {
     const { isExpanded, currentOptionIndex, selectedOptionElement } =
       this.state;
@@ -84,8 +82,6 @@ class Select extends BaseComponent {
     });
   }
 
-  // --- Selection sync: explicitly called after user makes a choice ---
-
   syncNativeControl() {
     const index = this.optionElements.indexOf(this.state.selectedOptionElement);
     this.originalControlElement.selectedIndex = index;
@@ -93,8 +89,6 @@ class Select extends BaseComponent {
       new Event('change', { bubbles: true }),
     );
   }
-
-  // --- State helpers ---
 
   expand() {
     this.state.isExpanded = true;
@@ -139,8 +133,6 @@ class Select extends BaseComponent {
       !this.state.isExpanded && document.activeElement === this.buttonElement
     );
   }
-
-  // --- Event handlers ---
 
   onButtonClick = () => {
     this.toggleExpandedState();
@@ -222,7 +214,6 @@ class Select extends BaseComponent {
     this.updateTabIndexes(event.matches);
   };
 
-  // Handles selection via the native <select> on mobile
   onOriginalControlChange = () => {
     const index = this.originalControlElement.selectedIndex;
     this.state.selectedOptionElement = this.optionElements[index];
