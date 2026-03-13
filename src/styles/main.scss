@@ -6,6 +6,7 @@
 @use 'helpers-classes';
 @use '@components/video/video-bcg/video-bcg-fon';
 @use '@components/form/button';
+@use '@components/form/select/select';
 @use '@components/hover/hover-link';
 @use '@components/soc1al/social';
 @use '@components/scrollUpButton/scroll-up-button';
@@ -23,3 +24,4 @@
 @use '@sections/resume/resume';
 @use '@sections/skills/skills';
 @use '@sections/portfolio/portfolio';
+@use '@sections/portfolio/portfolio-controls/portfolio-controls';
