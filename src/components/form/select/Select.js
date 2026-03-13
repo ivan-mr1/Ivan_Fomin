@@ -5,7 +5,6 @@ const rootSelector = '[data-js-select]';
 
 class Select extends BaseComponent {
   selectors = {
-    root: rootSelector,
     originalControl: '[data-js-select-original-control]',
     button: '[data-js-select-button]',
     dropdown: '[data-js-select-dropdown]',
@@ -26,95 +25,76 @@ class Select extends BaseComponent {
     ariaActiveDescendant: 'aria-activedescendant',
   };
 
-  initialState = {
-    isExpanded: false,
-    currentOptionIndex: null,
-    selectedOptionElement: null,
-  };
-
   constructor(rootElement) {
     super();
     this.rootElement = rootElement;
-    this.originalControlElement = this.rootElement.querySelector(
+    this.originalControlElement = rootElement.querySelector(
       this.selectors.originalControl,
     );
-    this.buttonElement = this.rootElement.querySelector(this.selectors.button);
-    this.dropdownElement = this.rootElement.querySelector(
-      this.selectors.dropdown,
-    );
-    this.optionElements = this.dropdownElement.querySelectorAll(
-      this.selectors.option,
-    );
+    this.buttonElement = rootElement.querySelector(this.selectors.button);
+    this.dropdownElement = rootElement.querySelector(this.selectors.dropdown);
+    this.optionElements = [
+      ...this.dropdownElement.querySelectorAll(this.selectors.option),
+    ];
+
     this.state = this.getProxyState({
-      ...this.initialState,
+      isExpanded: false,
       currentOptionIndex: this.originalControlElement.selectedIndex,
       selectedOptionElement:
         this.optionElements[this.originalControlElement.selectedIndex],
     });
+
     this.fixDropdownPosition();
     this.updateTabIndexes();
     this.bindEvents();
   }
 
+  // --- UI update (pure: only reflects state, no side effects) ---
+
   updateUI() {
     const { isExpanded, currentOptionIndex, selectedOptionElement } =
       this.state;
+    const label = selectedOptionElement.textContent.trim();
 
-    const newSelectedOptionValue = selectedOptionElement.textContent.trim();
+    this.buttonElement.textContent = label;
+    this.buttonElement.classList.toggle(
+      this.stateClasses.isExpanded,
+      isExpanded,
+    );
+    this.buttonElement.setAttribute(
+      this.stateAttributes.ariaExpanded,
+      isExpanded,
+    );
+    this.buttonElement.setAttribute(
+      this.stateAttributes.ariaActiveDescendant,
+      this.optionElements[currentOptionIndex].id,
+    );
 
-    const updateOriginalControl = () => {
-      this.originalControlElement.value = newSelectedOptionValue;
-    };
+    this.dropdownElement.classList.toggle(
+      this.stateClasses.isExpanded,
+      isExpanded,
+    );
 
-    const updateButton = () => {
-      this.buttonElement.textContent = newSelectedOptionValue;
-      this.buttonElement.classList.toggle(
-        this.stateClasses.isExpanded,
-        isExpanded,
-      );
-      this.buttonElement.setAttribute(
-        this.stateAttributes.ariaExpanded,
-        isExpanded,
-      );
-      this.buttonElement.setAttribute(
-        this.stateAttributes.ariaActiveDescendant,
-        this.optionElements[currentOptionIndex].id,
-      );
-    };
-
-    const updateDropdown = () => {
-      this.dropdownElement.classList.toggle(
-        this.stateClasses.isExpanded,
-        isExpanded,
-      );
-    };
-
-    const updateOptions = () => {
-      this.optionElements.forEach((optionElement, index) => {
-        const isCurrent = currentOptionIndex === index;
-        const isSelected = selectedOptionElement === optionElement;
-
-        optionElement.classList.toggle(this.stateClasses.isCurrent, isCurrent);
-        optionElement.classList.toggle(
-          this.stateClasses.isSelected,
-          isSelected,
-        );
-        optionElement.setAttribute(
-          this.stateAttributes.ariaSelected,
-          isSelected,
-        );
-      });
-    };
-
-    updateOriginalControl();
-    updateButton();
-    updateDropdown();
-    updateOptions();
+    this.optionElements.forEach((optionElement, index) => {
+      const isCurrent = index === currentOptionIndex;
+      const isSelected = optionElement === selectedOptionElement;
+      optionElement.classList.toggle(this.stateClasses.isCurrent, isCurrent);
+      optionElement.classList.toggle(this.stateClasses.isSelected, isSelected);
+      optionElement.setAttribute(this.stateAttributes.ariaSelected, isSelected);
+    });
   }
 
-  toggleExpandedState() {
-    this.state.isExpanded = !this.state.isExpanded;
+  // --- Selection sync: explicitly called after user makes a choice ---
+
+  syncNativeControl() {
+    const index = this.optionElements.indexOf(this.state.selectedOptionElement);
+    this.originalControlElement.selectedIndex = index;
+    this.originalControlElement.dispatchEvent(
+      new Event('change', { bubbles: true }),
+    );
   }
+
+  // --- State helpers ---
 
   expand() {
     this.state.isExpanded = true;
@@ -124,21 +104,28 @@ class Select extends BaseComponent {
     this.state.isExpanded = false;
   }
 
+  toggleExpandedState() {
+    this.state.isExpanded = !this.state.isExpanded;
+  }
+
+  selectCurrentOption() {
+    this.state.selectedOptionElement =
+      this.optionElements[this.state.currentOptionIndex];
+    this.syncNativeControl();
+  }
+
   fixDropdownPosition() {
     const viewportWidth = document.documentElement.clientWidth;
-    const halfViewportX = viewportWidth / 2;
     const { width, x } = this.buttonElement.getBoundingClientRect();
-    const buttonCenterX = x + width / 2;
-    const isButtonOnTheLeftViewportSide = buttonCenterX < halfViewportX;
+    const isOnLeftSide = x + width / 2 < viewportWidth / 2;
 
     this.dropdownElement.classList.toggle(
       this.stateClasses.isOnTheLeftSide,
-      isButtonOnTheLeftViewportSide,
+      isOnLeftSide,
     );
-
     this.dropdownElement.classList.toggle(
       this.stateClasses.isOnTheRightSide,
-      !isButtonOnTheLeftViewportSide,
+      !isOnLeftSide,
     );
   }
 
@@ -148,15 +135,12 @@ class Select extends BaseComponent {
   }
 
   get isNeedToExpand() {
-    const isButtonFocused = document.activeElement === this.buttonElement;
-
-    return !this.state.isExpanded && isButtonFocused;
+    return (
+      !this.state.isExpanded && document.activeElement === this.buttonElement
+    );
   }
 
-  selectCurrentOption() {
-    this.state.selectedOptionElement =
-      this.optionElements[this.state.currentOptionIndex];
-  }
+  // --- Event handlers ---
 
   onButtonClick = () => {
     this.toggleExpandedState();
@@ -164,23 +148,20 @@ class Select extends BaseComponent {
 
   onClick = (event) => {
     const { target } = event;
-
     const isButtonClick = target === this.buttonElement;
-    const isOutsideDropdownClick =
+    const isOutsideDropdown =
       target.closest(this.selectors.dropdown) !== this.dropdownElement;
 
-    if (!isButtonClick && isOutsideDropdownClick) {
+    if (!isButtonClick && isOutsideDropdown) {
       this.collapse();
       return;
     }
 
-    const isOptionClick = target.matches(this.selectors.option);
-
-    if (isOptionClick) {
+    if (target.matches(this.selectors.option)) {
+      const index = this.optionElements.indexOf(target);
+      this.state.currentOptionIndex = index;
       this.state.selectedOptionElement = target;
-      this.state.currentOptionIndex = [...this.optionElements].findIndex(
-        (optionElement) => optionElement === target,
-      );
+      this.syncNativeControl();
       this.collapse();
     }
   };
@@ -190,7 +171,6 @@ class Select extends BaseComponent {
       this.expand();
       return;
     }
-
     if (this.state.currentOptionIndex > 0) {
       this.state.currentOptionIndex--;
     }
@@ -201,7 +181,6 @@ class Select extends BaseComponent {
       this.expand();
       return;
     }
-
     if (this.state.currentOptionIndex < this.optionElements.length - 1) {
       this.state.currentOptionIndex++;
     }
@@ -212,7 +191,6 @@ class Select extends BaseComponent {
       this.expand();
       return;
     }
-
     this.selectCurrentOption();
     this.collapse();
   };
@@ -222,20 +200,17 @@ class Select extends BaseComponent {
       this.expand();
       return;
     }
-
     this.selectCurrentOption();
     this.collapse();
   };
 
   onKeyDown = (event) => {
-    const { code } = event;
-
     const action = {
       ArrowUp: this.onArrowUpKeyDown,
       ArrowDown: this.onArrowDownKeyDown,
       Space: this.onSpaceKeyDown,
       Enter: this.onEnterKeyDown,
-    }[code];
+    }[event.code];
 
     if (action) {
       event.preventDefault();
@@ -247,9 +222,11 @@ class Select extends BaseComponent {
     this.updateTabIndexes(event.matches);
   };
 
+  // Handles selection via the native <select> on mobile
   onOriginalControlChange = () => {
-    this.state.selectedOptionElement =
-      this.optionElements[this.originalControlElement.selectedIndex];
+    const index = this.originalControlElement.selectedIndex;
+    this.state.selectedOptionElement = this.optionElements[index];
+    this.state.currentOptionIndex = index;
   };
 
   bindEvents() {
@@ -266,12 +243,13 @@ class Select extends BaseComponent {
 
 class SelectCollection {
   constructor() {
+    this.selects = [];
     this.init();
   }
 
   init() {
     document.querySelectorAll(rootSelector).forEach((element) => {
-      new Select(element);
+      this.selects.push(new Select(element));
     });
   }
 }

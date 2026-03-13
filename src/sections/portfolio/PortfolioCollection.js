@@ -7,21 +7,12 @@ export default class PortfolioCollection {
   }
 
   init() {
-    document.querySelectorAll('[data-portfolio]').forEach((element) => {
-      const portfolio = new Portfolio(element);
-      this.portfolios.push(portfolio);
+    document.querySelectorAll('[data-portfolio]').forEach((el) => {
+      this.portfolios.push(new Portfolio(el));
     });
   }
 
-  setTabFilter(filter) {
-    this.portfolios.forEach((portfolio) => {
-      portfolio.setTabFilter(filter);
-    });
-  }
-
-  setSearch(query) {
-    this.portfolios.forEach((portfolio) => {
-      portfolio.setSearch(query);
-    });
+  setFilter(key, value) {
+    this.portfolios.forEach((portfolio) => portfolio.setFilter(key, value));
   }
 }

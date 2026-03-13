@@ -8,7 +8,7 @@ export default class ProjectCard {
   constructor({ id, img, name, deploy, category, pageType, year, techStack }) {
     this.id = id;
     this.img = img;
-    this.alt = name || 'Project name';
+    this.name = name || 'Project';
     this.deploy = deploy || '#';
     this.category = category || '';
     this.pageType = pageType || '';
@@ -19,7 +19,7 @@ export default class ProjectCard {
   createImage() {
     const img = document.createElement('img');
     img.src = `assets/img/works/${this.img}`;
-    img.alt = this.alt;
+    img.alt = this.name;
     img.classList.add(this.classes.img);
     img.width = 280;
     img.height = 280;
@@ -39,16 +39,12 @@ export default class ProjectCard {
 
   renderElement() {
     const li = document.createElement('li');
+    li.id = `project-${this.id}`;
     li.classList.add(this.classes.item);
-    if (this.id) {
-      li.id = this.id;
-    }
-
-    li.dataset.category = this.category.toLowerCase();
-    li.dataset.pageType = this.pageType.toLowerCase();
+    li.dataset.category = this.category;
+    li.dataset.pageType = this.pageType;
     li.dataset.year = this.year;
-    li.dataset.tech = this.techStack.map((t) => t.toLowerCase()).join(',');
-
+    li.dataset.tech = this.techStack.join(',');
     li.append(this.createLink());
     return li;
   }
