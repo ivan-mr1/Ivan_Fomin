@@ -318,7 +318,7 @@ const projects = [
   {
     id: 29,
     name: 'react to do list',
-    img: 'optica.webp',
+    img: 'react-todo.webp',
     github: 'https://github.com/ivan-mr1/react-todo',
     deploy: 'https://ivan-mr1.github.io/react-todo/',
     category: 'to do list',
@@ -329,7 +329,7 @@ const projects = [
   {
     id: 30,
     name: 'react crypto',
-    img: 'optica.webp',
+    img: 'react-crypto.webp',
     github: 'https://github.com/ivan-mr1/crypto-react',
     deploy: 'https://crypto-react-roan.vercel.app/',
     category: 'e-commerce',
@@ -340,7 +340,7 @@ const projects = [
   {
     id: 31,
     name: 'vue weather',
-    img: 'optica.webp',
+    img: 'weather-vue.webp',
     github: 'https://github.com/ivan-mr1/vue-weather',
     deploy: 'https://vue-weather-orcin.vercel.app/',
     category: 'weather',
@@ -351,7 +351,7 @@ const projects = [
   {
     id: 32,
     name: 'to do list',
-    img: 'optica.webp',
+    img: 'todo-js.webp',
     github: 'https://github.com/ivan-mr1/To-Do-List',
     deploy: 'https://ivan-mr1.github.io/To-Do-List/dist/',
     category: 'to do list',
