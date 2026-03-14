@@ -46,9 +46,9 @@ class Header {
   }
 
   /**
-   * Обновляет CSS-переменные высоты.
-   * --header-height: всегда реальная высота хедера.
-   * --header-offset: 0, если хедер скрыт, или реальная высота, если виден.
+   * Updates CSS variables for header height.
+   * --header-height: actual height.
+   * --header-offset: 0 if hidden, actual height if visible.
    */
   updateHeights = () => {
     const height = this.rootElement.offsetHeight;
@@ -113,35 +113,42 @@ class Header {
     this.ticking = true;
 
     window.requestAnimationFrame(() => {
-      const currentScrollY = Math.max(0, window.scrollY);
-      const isScrollingDown = currentScrollY > this.lastScrollY;
-      const headerHeight = this.rootElement.offsetHeight;
-
-      this.rootElement.classList.toggle(
-        this.stateClasses.isScrolled,
-        currentScrollY > 0,
-      );
-
-      if (this.hiddenHeader && !this.isMenuOpen) {
-        const shouldHide = isScrollingDown && currentScrollY > headerHeight;
-
-        const wasHidden = this.rootElement.classList.contains(
-          this.stateClasses.isHidden,
-        );
-
-        if (wasHidden !== shouldHide) {
-          this.rootElement.classList.toggle(
-            this.stateClasses.isHidden,
-            shouldHide,
-          );
-          this.updateHeights();
-        }
-      }
-
-      this.lastScrollY = currentScrollY;
+      this.processScroll();
       this.ticking = false;
     });
   };
+
+  processScroll() {
+    const currentScrollY = Math.max(0, window.scrollY);
+
+    this.updateBackgroundState(currentScrollY);
+    this.updateVisibilityState(currentScrollY);
+
+    this.lastScrollY = currentScrollY;
+  }
+
+  updateBackgroundState(currentScrollY) {
+    const isScrolled = currentScrollY > 0;
+    this.rootElement.classList.toggle(this.stateClasses.isScrolled, isScrolled);
+  }
+
+  updateVisibilityState(currentScrollY) {
+    if (!this.hiddenHeader || this.isMenuOpen) {
+      return;
+    }
+
+    const isScrollingDown = currentScrollY > this.lastScrollY;
+    const headerHeight = this.rootElement.offsetHeight;
+    const shouldHide = isScrollingDown && currentScrollY > headerHeight;
+    const isCurrentlyHidden = this.rootElement.classList.contains(
+      this.stateClasses.isHidden,
+    );
+
+    if (isCurrentlyHidden !== shouldHide) {
+      this.rootElement.classList.toggle(this.stateClasses.isHidden, shouldHide);
+      this.updateHeights();
+    }
+  }
 
   addListeners() {
     this.burgerButtonElement?.addEventListener('click', this.toggleMenu);
