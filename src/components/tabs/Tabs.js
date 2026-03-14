@@ -1,4 +1,4 @@
-import BaseComponent from './BaseComponent';
+import BaseComponent from '@js/BaseComponent';
 
 const rootSelector = '[data-js-tabs]';
 
