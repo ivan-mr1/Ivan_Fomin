@@ -106,8 +106,6 @@ class Header {
     }
   };
 
-  // --- Scroll Logic ---
-
   handleScroll = () => {
     if (this.ticking) {
       return;
@@ -151,8 +149,6 @@ class Header {
       this.updateHeights();
     }
   }
-
-  // --- External Bindings ---
 
   addListeners() {
     this.burgerButtonElement?.addEventListener('click', this.toggleMenu);

@@ -1,8 +1,5 @@
 import { _slideUp, _slideToggle } from './slide.js';
 
-/**
- * Spoller (Accordion) component.
- */
 class Spoller {
   constructor(rootElement) {
     this.rootElement = rootElement;
@@ -19,7 +16,6 @@ class Spoller {
     }
 
     this.titles.forEach((title) => {
-      // Set initial state based on active class
       title.setAttribute('tabindex', '0');
       if (!title.classList.contains('active')) {
         title.nextElementSibling.hidden = true;
@@ -53,7 +49,6 @@ class Spoller {
 
     e.preventDefault();
 
-    // Prevent action if animation is in progress (slide class exists)
     if (this.rootElement.querySelectorAll('._slide').length) {
       return;
     }
@@ -77,7 +72,7 @@ class Spoller {
 
 export default class SpollersCollection {
   constructor() {
-    this.spollers = new Map(); // rootElement -> Spoller instance
+    this.spollers = new Map();
     this.init();
   }
 
@@ -99,13 +94,11 @@ export default class SpollersCollection {
       }
     });
 
-    // Initialize regular spollers (work on all screens)
     regularBlocks.forEach((block) => {
       block.classList.add('init');
       this.spollers.set(block, new Spoller(block));
     });
 
-    // Initialize media spollers (work conditionally)
     this.initMediaSpollers(mediaBlocks);
   }
 
@@ -114,10 +107,9 @@ export default class SpollersCollection {
       return;
     }
 
-    const breakpoints = new Map(); // mediaQueryString -> Array of blocks
+    const breakpoints = new Map();
 
     mediaBlocks.forEach((block) => {
-      // Examples: '650,min' or '800,max'
       const [widthStr, typeStr] = block.dataset.spollers
         .split(',')
         .map((s) => s.trim());
@@ -156,13 +148,12 @@ export default class SpollersCollection {
         });
       };
 
-      // In modern browsers addeventlistener on matchMedia works. For older browsers we fallback if needed.
       if (matchMedia.addEventListener) {
         matchMedia.addEventListener('change', handleChange);
       } else {
         matchMedia.addListener(handleChange);
       }
-      handleChange(); // initial check
+      handleChange();
     });
   }
 }
