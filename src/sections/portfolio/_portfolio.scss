@@ -16,6 +16,9 @@
   }
 
   &__show-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
@@ -27,6 +30,21 @@
 
     &:hover {
       background-color: #0056b3;
+    }
+
+    &__spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
     }
   }
 

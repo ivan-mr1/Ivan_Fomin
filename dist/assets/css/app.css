@@ -2249,18 +2249,45 @@ select {
 .portfolio__show-more {
   margin-top: 1.25rem;
   padding: 0.625rem 1.25rem;
-  background-color: #007bff;
+  font-size: 1rem;
   color: #fff;
+  background-color: #007bff;
   border: none;
   border-radius: 0.3125rem;
   cursor: pointer;
-  font-size: 1rem;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 .portfolio__show-more:hover {
   background-color: #0056b3;
 }
+.portfolio__show-more__spinner {
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 0.125rem solid rgba(255, 255, 255, 0.5);
+  border-top-color: #fff;
+  border-radius: 50%;
+  -webkit-animation: spin 0.7s linear infinite;
+  animation: spin 0.7s linear infinite;
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 .portfolio__pagination {
-  margin-top: 1.25rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2268,14 +2295,15 @@ select {
   -ms-flex-pack: center;
   justify-content: center;
   gap: 0.625rem;
+  margin-top: 1.25rem;
 }
 .pagination__button {
   padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
   background-color: #f0f0f0;
-  border: 0.0625rem solid #ccc;
+  border: 0.0625rem solid #cccccc;
   border-radius: 0.25rem;
   cursor: pointer;
-  font-size: 0.875rem;
 }
 .pagination__button:hover:not(:disabled) {
   background-color: #e0e0e0;
@@ -2285,8 +2313,8 @@ select {
   cursor: not-allowed;
 }
 .pagination__button.is-active {
-  background-color: #007bff;
   color: #fff;
+  background-color: #007bff;
   border-color: #007bff;
 }
 .portfolio__controls {

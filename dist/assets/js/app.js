@@ -28,7 +28,7 @@
     fetch(s.href, o);
   }
 })();
-function v() {
+function f() {
   document.addEventListener('click', (i) => {
     const t = i.target.closest('[data-goto]');
     if (!t) return;
@@ -51,47 +51,47 @@ function v() {
     }
   });
 }
-let h = !0;
-const g = (i) => {
-    ((h = !1),
+let c = !0;
+const S = (i) => {
+    ((c = !1),
       setTimeout(() => {
-        h = !0;
+        c = !0;
       }, i));
   },
-  f = () => document.querySelectorAll('[data-right-padding]'),
-  E = () => {
+  E = () => document.querySelectorAll('[data-right-padding]'),
+  w = () => {
     const i = window.innerWidth - document.body.clientWidth,
       t = parseFloat(getComputedStyle(document.documentElement).fontSize);
     return i / t + 'rem';
   },
-  b = (i = '') => {
-    (f().forEach((e) => {
+  y = (i = '') => {
+    (E().forEach((e) => {
       e.style.paddingRight = i;
     }),
       (document.body.style.paddingRight = i));
   },
-  w = (i) => {
+  C = (i) => {
     document.documentElement.style.setProperty('--scrollbar-width', i);
   },
-  C = () => {
+  T = () => {
     document.documentElement.style.removeProperty('--scrollbar-width');
   },
-  T = (i = 500) => {
-    if (!h) return;
-    const t = E();
-    (b(t),
-      w(t),
-      document.documentElement.setAttribute('data-scroll-lock', ''),
-      g(i));
-  },
   L = (i = 500) => {
-    h &&
-      (b(''),
-      C(),
+    if (!c) return;
+    const t = w();
+    (y(t),
+      C(t),
+      document.documentElement.setAttribute('data-scroll-lock', ''),
+      S(i));
+  },
+  x = (i = 500) => {
+    c &&
+      (y(''),
+      T(),
       document.documentElement.removeAttribute('data-scroll-lock'),
-      g(i));
+      S(i));
   };
-class x {
+class k {
   hiddenHeader = !0;
   selectors = {
     root: '[data-header]',
@@ -140,7 +140,7 @@ class x {
     ((this.isMenuOpen = t),
       this.burgerButtonElement?.classList.toggle(this.stateClasses.isActive, t),
       this.menuElement?.classList.toggle(this.stateClasses.isActive, t),
-      t ? T() : L(),
+      t ? L() : x(),
       t &&
         (this.rootElement.classList.remove(this.stateClasses.isHidden),
         this.updateHeights()),
@@ -192,7 +192,7 @@ class x {
       window.addEventListener('scroll', this.handleScroll, { passive: !0 }));
   }
 }
-let S = (i, t = 500) => {
+let b = (i, t = 500) => {
     i.classList.contains('_slide') ||
       (i.classList.add('_slide'),
       (i.style.transitionProperty = 'height, margin, padding'),
@@ -218,7 +218,7 @@ let S = (i, t = 500) => {
           i.classList.remove('_slide'));
       }, t));
   },
-  P = (i, t = 500) => {
+  M = (i, t = 500) => {
     if (!i.classList.contains('_slide')) {
       (i.classList.add('_slide'), i.hidden && (i.hidden = !1));
       let e = i.offsetHeight;
@@ -245,8 +245,8 @@ let S = (i, t = 500) => {
         }, t));
     }
   },
-  k = (i, t = 500) => (i.hidden ? P(i, t) : S(i, t));
-class p {
+  A = (i, t = 500) => (i.hidden ? M(i, t) : b(i, t));
+class u {
   constructor(t) {
     ((this.rootElement = t),
       (this.isOneSpoller = this.rootElement.hasAttribute('data-one-spoller')),
@@ -287,14 +287,14 @@ class p {
           !e.classList.contains('active') &&
           this.closeActiveSpoller(),
         e.classList.toggle('active'),
-        k(e.nextElementSibling, 500)));
+        A(e.nextElementSibling, 500)));
   }
   closeActiveSpoller() {
     const t = this.rootElement.querySelector('[data-spoller].active');
-    t && (t.classList.remove('active'), S(t.nextElementSibling, 500));
+    t && (t.classList.remove('active'), b(t.nextElementSibling, 500));
   }
 }
-class M {
+class H {
   constructor() {
     ((this.spollers = new Map()), this.init());
   }
@@ -307,7 +307,7 @@ class M {
       s.dataset.spollers ? n.push(s) : e.push(s);
     }),
       e.forEach((s) => {
-        (s.classList.add('init'), this.spollers.set(s, new p(s)));
+        (s.classList.add('init'), this.spollers.set(s, new u(s)));
       }),
       this.initMediaSpollers(n));
   }
@@ -315,7 +315,7 @@ class M {
     if (!t.length) return;
     const e = new Map();
     (t.forEach((n) => {
-      const [s, o] = n.dataset.spollers.split(',').map((c) => c.trim()),
+      const [s, o] = n.dataset.spollers.split(',').map((p) => p.trim()),
         a = o || 'max',
         r = Number(s);
       if (isNaN(r)) return;
@@ -328,7 +328,7 @@ class M {
             n.forEach((r) => {
               o.matches
                 ? (r.classList.add('init'),
-                  this.spollers.has(r) || this.spollers.set(r, new p(r)))
+                  this.spollers.has(r) || this.spollers.set(r, new u(r)))
                 : (r.classList.remove('init'),
                   this.spollers.has(r) &&
                     (this.spollers.get(r).unbindEvents(),
@@ -342,7 +342,7 @@ class M {
       }));
   }
 }
-class A {
+class P {
   defaults = {
     parent: document.body,
     offset: 300,
@@ -424,7 +424,7 @@ class A {
       this.button.remove());
   }
 }
-function H() {
+function I() {
   const i = document.querySelectorAll('.scroller');
   window.matchMedia('(prefer-reduce-motion: reduce)').matches || t();
   function t() {
@@ -438,9 +438,9 @@ function H() {
     });
   }
 }
-class d {
+class h {
   constructor() {
-    if (this.constructor === d)
+    if (this.constructor === h)
       throw new Error(
         'Невозможно создать экземпляр абстрактного класса BaseComponent!',
       );
@@ -458,10 +458,10 @@ class d {
     throw new Error('Необходимо реализовать метод updateUI!');
   }
 }
-const y = '[data-js-tabs]';
-class I extends d {
+const v = '[data-js-tabs]';
+class O extends h {
   selectors = {
-    root: y,
+    root: v,
     button: '[data-js-tabs-button]',
     content: '[data-js-tabs-content]',
   };
@@ -548,17 +548,196 @@ class I extends d {
       this.rootElement.addEventListener('keydown', this.onKeyDown));
   }
 }
-class _ {
+class B {
   constructor() {
     this.init();
   }
   init() {
-    document.querySelectorAll(y).forEach((t) => {
-      new I(t);
+    document.querySelectorAll(v).forEach((t) => {
+      new O(t);
     });
   }
 }
-const u = [
+class d {
+  constructor(t = []) {
+    ((this.projects = t),
+      (this.filters = {
+        tab: 'all',
+        category: 'all',
+        pageType: 'all',
+        year: 'all',
+        tech: 'all',
+        search: '',
+      }),
+      (this.visibleCount = 12),
+      (this.increment = 4));
+  }
+  setFilter(t, e) {
+    ((this.filters[t] = e), this.resetPagination());
+  }
+  resetPagination() {
+    this.visibleCount = 12;
+  }
+  increaseVisibleCount() {
+    this.visibleCount += this.increment;
+  }
+  getFilteredProjects() {
+    const {
+      tab: t,
+      category: e,
+      pageType: n,
+      year: s,
+      tech: o,
+      search: a,
+    } = this.filters;
+    return this.projects.filter((r) => {
+      if (t !== 'all') {
+        const l = d.TAB_TECH_MAP[t] ?? [];
+        if (!r.techStack.some((p) => l.includes(p))) return !1;
+      }
+      return !(
+        (e !== 'all' && r.category !== e) ||
+        (n !== 'all' && r.pageType !== n) ||
+        (s !== 'all' && r.year !== s) ||
+        (o !== 'all' && !r.techStack.includes(o)) ||
+        (a && !r.name.toLowerCase().includes(a))
+      );
+    });
+  }
+  getVisibleProjects() {
+    return this.getFilteredProjects().slice(0, this.visibleCount);
+  }
+}
+d.TAB_TECH_MAP = {
+  htmlcss: ['HTML', 'CSS', 'SCSS'],
+  javascript: ['JavaScript'],
+  react: ['React'],
+  vue: ['Vue.js'],
+};
+class _ {
+  classes = {
+    item: 'portfolio__item',
+    link: 'portfolio__link',
+    img: 'portfolio__img',
+  };
+  constructor({
+    id: t,
+    img: e,
+    name: n,
+    deploy: s,
+    category: o,
+    pageType: a,
+    year: r,
+    techStack: l,
+  }) {
+    ((this.id = t),
+      (this.img = e),
+      (this.name = n || 'Project'),
+      (this.deploy = s || '#'),
+      (this.category = o || ''),
+      (this.pageType = a || ''),
+      (this.year = r || ''),
+      (this.techStack = l || []));
+  }
+  createImage() {
+    const t = document.createElement('img');
+    return (
+      (t.src = `assets/img/works/${this.img}`),
+      (t.alt = this.name),
+      t.classList.add(this.classes.img),
+      (t.width = 280),
+      (t.height = 280),
+      (t.loading = 'lazy'),
+      (t.decoding = 'async'),
+      t
+    );
+  }
+  createLink() {
+    const t = document.createElement('a');
+    return (
+      (t.href = this.deploy),
+      (t.target = '_blank'),
+      t.classList.add('ibg', this.classes.link),
+      t.append(this.createImage()),
+      t
+    );
+  }
+  renderElement() {
+    const t = document.createElement('li');
+    return (
+      (t.id = `project-${this.id}`),
+      t.classList.add(this.classes.item),
+      (t.dataset.category = this.category),
+      (t.dataset.pageType = this.pageType),
+      (t.dataset.year = this.year),
+      (t.dataset.tech = this.techStack.join(',')),
+      t.append(this.createLink()),
+      t
+    );
+  }
+}
+class j {
+  constructor({
+    container: t = null,
+    text: e = 'Показать еще',
+    loadingText: n = 'Загрузка...',
+    className: s = 'portfolio__show-more',
+    onClick: o,
+    attrs: a = {},
+  } = {}) {
+    if (typeof o != 'function')
+      throw new Error('ShowMoreButton requires an onClick callback');
+    ((this.container = t instanceof Element ? t : null),
+      (this.text = e),
+      (this.loadingText = n),
+      (this.className = s),
+      (this.attrs = a),
+      (this.onClick = o),
+      (this.isLoading = !1),
+      (this.element = this.createElement()),
+      this.container && this.container.appendChild(this.element));
+  }
+  createElement() {
+    const t = document.createElement('button');
+    return (
+      (t.type = 'button'),
+      (t.className = this.className),
+      (this.textNode = document.createElement('span')),
+      (this.textNode.textContent = this.text),
+      (this.spinner = document.createElement('span')),
+      (this.spinner.className = `${this.className}__spinner`),
+      this.spinner.setAttribute('aria-hidden', 'true'),
+      (this.spinner.style.display = 'none'),
+      t.append(this.spinner, this.textNode),
+      Object.entries(this.attrs).forEach(([e, n]) => {
+        t.setAttribute(e, n);
+      }),
+      t.addEventListener('click', this.onClick),
+      t
+    );
+  }
+  setText(t) {
+    ((this.text = t), this.textNode && (this.textNode.textContent = t));
+  }
+  setLoading(t = !0) {
+    ((this.isLoading = t),
+      (this.element.disabled = t),
+      (this.spinner.style.display = t ? '' : 'none'),
+      this.setText(t ? this.loadingText : this.text));
+  }
+  show() {
+    this.element.style.display = '';
+  }
+  hide() {
+    this.element.style.display = 'none';
+  }
+  destroy() {
+    (this.element.removeEventListener('click', this.onClick),
+      this.element.parentElement &&
+        this.element.parentElement.removeChild(this.element));
+  }
+}
+const D = [
   {
     id: 1,
     name: 'optica store',
@@ -923,201 +1102,83 @@ const u = [
     techStack: ['HTML', 'CSS', 'SCSS'],
   },
 ];
-class O {
-  classes = {
-    item: 'portfolio__item',
-    link: 'portfolio__link',
-    img: 'portfolio__img',
-  };
-  constructor({
-    id: t,
-    img: e,
-    name: n,
-    deploy: s,
-    category: o,
-    pageType: a,
-    year: r,
-    techStack: l,
-  }) {
-    ((this.id = t),
-      (this.img = e),
-      (this.name = n || 'Project'),
-      (this.deploy = s || '#'),
-      (this.category = o || ''),
-      (this.pageType = a || ''),
-      (this.year = r || ''),
-      (this.techStack = l || []));
-  }
-  createImage() {
-    const t = document.createElement('img');
-    return (
-      (t.src = `assets/img/works/${this.img}`),
-      (t.alt = this.name),
-      t.classList.add(this.classes.img),
-      (t.width = 280),
-      (t.height = 280),
-      (t.loading = 'lazy'),
-      (t.decoding = 'async'),
-      t
-    );
-  }
-  createLink() {
-    const t = document.createElement('a');
-    return (
-      (t.href = this.deploy),
-      (t.target = '_blank'),
-      t.classList.add('ibg', this.classes.link),
-      t.append(this.createImage()),
-      t
-    );
-  }
-  renderElement() {
-    const t = document.createElement('li');
-    return (
-      (t.id = `project-${this.id}`),
-      t.classList.add(this.classes.item),
-      (t.dataset.category = this.category),
-      (t.dataset.pageType = this.pageType),
-      (t.dataset.year = this.year),
-      (t.dataset.tech = this.techStack.join(',')),
-      t.append(this.createLink()),
-      t
-    );
-  }
-}
-const D = {
-  htmlcss: ['HTML', 'CSS', 'SCSS'],
-  javascript: ['JavaScript'],
-  react: ['React'],
-  vue: ['Vue.js'],
-};
-class B {
+class m extends d {
   constructor(t) {
-    ((this.rootElement = t),
-      (this.filters = {
-        tab: t.dataset.portfolio || 'all',
-        category: 'all',
-        pageType: 'all',
-        year: 'all',
-        tech: 'all',
-        search: '',
-      }),
-      (this.currentPage = 1),
-      (this.itemsPerPage = 12),
-      (this.visibleCount = 12),
-      (this.increment = 4),
-      this.renderProjects());
+    (super(D),
+      (this.rootElement = t),
+      (this.filters.tab = t.dataset.portfolio || 'all'),
+      (this.controlsContainer = null));
   }
-  createPagination(t) {
-    const e = document.createElement('div');
-    e.className = 'portfolio__pagination pagination';
-    const n = document.createElement('button');
-    ((n.className = 'pagination__button pagination__prev'),
-      (n.textContent = 'Предыдущая'),
-      (n.disabled = this.currentPage === 1),
-      n.addEventListener('click', () => this.goToPage(this.currentPage - 1)),
-      e.append(n));
-    const s = 5;
-    let o = Math.max(1, this.currentPage - Math.floor(s / 2)),
-      a = Math.min(t, o + s - 1);
-    a - o + 1 < s && (o = Math.max(1, a - s + 1));
-    for (let l = o; l <= a; l++) {
-      const c = document.createElement('button');
-      ((c.className = `pagination__button pagination__page ${l === this.currentPage ? 'is-active' : ''}`),
-        (c.textContent = l),
-        c.addEventListener('click', () => this.goToPage(l)),
-        e.append(c));
+  init() {
+    (this.ensureControlsContainer(), this.render());
+  }
+  ensureControlsContainer() {
+    if (
+      this.controlsContainer &&
+      this.rootElement.contains(this.controlsContainer)
+    )
+      return;
+    const t = this.rootElement.nextElementSibling;
+    if (t?.classList?.contains('portfolio__controls-container')) {
+      this.controlsContainer = t;
+      return;
     }
-    const r = document.createElement('button');
-    return (
-      (r.className = 'pagination__button pagination__next'),
-      (r.textContent = 'Следующая'),
-      (r.disabled = this.currentPage === t),
-      r.addEventListener('click', () => this.goToPage(this.currentPage + 1)),
-      e.append(r),
-      e
-    );
-  }
-  showMore() {
-    this.visibleCount += this.increment;
-    const t = u.filter((n) => this.matchesFilters(n));
-    this.visibleCount = Math.min(this.visibleCount, t.length);
-    const e = Math.ceil(this.visibleCount / this.itemsPerPage);
-    ((this.currentPage = Math.min(this.currentPage, e)), this.renderProjects());
-  }
-  goToPage(t) {
-    ((this.currentPage = t), this.renderProjects());
+    ((this.controlsContainer = document.createElement('div')),
+      (this.controlsContainer.className = 'portfolio__controls-container'),
+      this.rootElement.after(this.controlsContainer));
   }
   setFilter(t, e) {
-    ((this.filters[t] = e),
-      (this.currentPage = 1),
-      (this.visibleCount = 12),
-      this.renderProjects());
+    (super.setFilter(t, e), this.render());
   }
-  matchesFilters(t) {
-    const {
-      tab: e,
-      category: n,
-      pageType: s,
-      year: o,
-      tech: a,
-      search: r,
-    } = this.filters;
-    if (e !== 'all') {
-      const l = D[e] ?? [];
-      if (!t.techStack.some((c) => l.includes(c))) return !1;
-    }
-    return !(
-      (n !== 'all' && t.category !== n) ||
-      (s !== 'all' && t.pageType !== s) ||
-      (o !== 'all' && t.year !== o) ||
-      (a !== 'all' && !t.techStack.includes(a)) ||
-      (r && !t.name.toLowerCase().includes(r))
+  showMore() {
+    (this.increaseVisibleCount(), this.render());
+  }
+  createProjectCard(t) {
+    return new _(t).renderElement();
+  }
+  createShowMoreButton() {
+    return (
+      this.showMoreButton ||
+        (this.showMoreButton = new j({
+          container: this.controlsContainer,
+          onClick: () => this.showMore(),
+        })),
+      this.showMoreButton.element
     );
   }
-  renderProjects() {
-    const t = u.filter((c) => this.matchesFilters(c));
-    this.visibleCount = Math.min(this.visibleCount, t.length);
-    const e = Math.ceil(this.visibleCount / this.itemsPerPage),
-      n = (this.currentPage - 1) * this.itemsPerPage,
-      s = Math.min(n + this.itemsPerPage, this.visibleCount),
-      o = t.slice(n, s),
-      a = document.createDocumentFragment();
-    o.forEach((c) => a.append(new O(c).renderElement()));
-    const r = this.rootElement.querySelector('.portfolio__show-more');
-    r && r.remove();
-    const l = this.rootElement.querySelector('.portfolio__pagination');
-    if ((l && l.remove(), t.length > this.visibleCount)) {
-      const c = document.createElement('button');
-      ((c.className = 'portfolio__show-more'),
-        (c.textContent = 'Показать еще'),
-        c.addEventListener('click', () => this.showMore()),
-        a.append(c));
-    }
-    if (e > 1) {
-      const c = this.createPagination(e);
-      a.append(c);
-    }
-    this.rootElement.replaceChildren(a);
+  render() {
+    const t = this.getFilteredProjects(),
+      e = this.getVisibleProjects(),
+      n = document.createDocumentFragment();
+    (e.forEach((o) => n.append(this.createProjectCard(o))),
+      this.rootElement.replaceChildren(n),
+      this.ensureControlsContainer());
+    const s = Math.max(0, t.length - this.visibleCount);
+    s > 0
+      ? (this.createShowMoreButton(),
+        this.showMoreButton.setText(`Еще ${s}`),
+        this.showMoreButton.show())
+      : this.showMoreButton && this.showMoreButton.hide();
   }
 }
-class j {
+class V extends m {
   constructor() {
-    ((this.portfolios = []), this.init());
+    (super(document.createElement('div')), (this.portfolios = []), this.init());
   }
   init() {
     document.querySelectorAll('[data-portfolio]').forEach((t) => {
-      this.portfolios.push(new B(t));
+      const e = new m(t);
+      (e.init(), this.portfolios.push(e));
     });
   }
   setFilter(t, e) {
-    this.portfolios.forEach((n) => n.setFilter(t, e));
+    (super.setFilter(t, e), this.portfolios.forEach((n) => n.setFilter(t, e)));
   }
 }
-const R = (i) => i / 16,
-  m = { mobile: window.matchMedia(`(width <= ${R(767.98)}rem)`) },
-  q = '[data-js-select]';
-class J extends d {
+const N = (i) => i / 16,
+  g = { mobile: window.matchMedia(`(width <= ${N(767.98)}rem)`) },
+  R = '[data-js-select]';
+class J extends h {
   selectors = {
     originalControl: '[data-js-select-original-control]',
     button: '[data-js-select-button]',
@@ -1214,7 +1275,7 @@ class J extends d {
         !s,
       ));
   }
-  updateTabIndexes(t = m.mobile.matches) {
+  updateTabIndexes(t = g.mobile.matches) {
     ((this.originalControlElement.tabIndex = t ? 0 : -1),
       (this.buttonElement.tabIndex = t ? -1 : 0));
   }
@@ -1289,7 +1350,7 @@ class J extends d {
       (this.state.currentOptionIndex = t));
   };
   bindEvents() {
-    (m.mobile.addEventListener('change', this.onMobileMatchMediaChange),
+    (g.mobile.addEventListener('change', this.onMobileMatchMediaChange),
       this.buttonElement.addEventListener('click', this.onButtonClick),
       document.addEventListener('click', this.onClick),
       this.rootElement.addEventListener('keydown', this.onKeyDown),
@@ -1299,12 +1360,12 @@ class J extends d {
       ));
   }
 }
-class V {
+class q {
   constructor() {
     ((this.selects = []), this.init());
   }
   init() {
-    document.querySelectorAll(q).forEach((t) => {
+    document.querySelectorAll(R).forEach((t) => {
       this.selects.push(new J(t));
     });
   }
@@ -1316,10 +1377,10 @@ const F = {
   'tab-4': 'react',
   'tab-5': 'vue',
 };
-class K {
+class K extends V {
   constructor() {
-    ((this.portfolioCollection = new j()),
-      (this.selectCollection = new V()),
+    (super(),
+      (this.selectCollection = new q()),
       (this.searchInput = document.querySelector('[data-js-portfolio-search]')),
       (this.tabs = document.querySelector('[data-js-tabs]')),
       this.initSearch(),
@@ -1329,10 +1390,7 @@ class K {
   initSearch() {
     this.searchInput &&
       this.searchInput.addEventListener('input', (t) => {
-        this.portfolioCollection.setFilter(
-          'search',
-          t.target.value.trim().toLowerCase(),
-        );
+        this.setFilter('search', t.target.value.trim().toLowerCase());
       });
   }
   initTabs() {
@@ -1341,7 +1399,7 @@ class K {
     t.forEach((e) => {
       e.addEventListener('click', () => {
         const n = F[e.id] ?? 'all';
-        (this.portfolioCollection.setFilter('tab', n), this.setActiveTab(e, t));
+        (this.setFilter('tab', n), this.setActiveTab(e, t));
       });
     });
   }
@@ -1358,11 +1416,11 @@ class K {
       const e = t.rootElement.dataset.jsPortfolioFilter;
       e &&
         t.originalControlElement.addEventListener('change', (n) => {
-          this.portfolioCollection.setFilter(e, n.target.value);
+          this.setFilter(e, n.target.value);
         });
     });
   }
 }
 window.addEventListener('DOMContentLoaded', () => {
-  (v(), new M(), H(), new x(), new A(), new _(), new K());
+  (f(), new H(), I(), new k(), new P(), new B(), new K());
 });
