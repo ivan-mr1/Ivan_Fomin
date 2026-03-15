@@ -17,7 +17,15 @@ p {
 }
 
 .is-none {
-  display: none;
+  display: none !important;
+}
+
+.is-show {
+  @include show;
+}
+
+.is-hide {
+  @include hide;
 }
 
 .is-hidden-translate {
