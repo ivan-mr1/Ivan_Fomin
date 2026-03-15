@@ -9,9 +9,10 @@ const TAB_ID_TO_FILTER_KEY = {
   'tab-5': 'vue',
 };
 
-export default class PortfolioController {
+export default class PortfolioController extends PortfolioCollection {
   constructor() {
-    this.portfolioCollection = new PortfolioCollection();
+    super();
+
     this.selectCollection = new SelectCollection();
     this.searchInput = document.querySelector('[data-js-portfolio-search]');
     this.tabs = document.querySelector('[data-js-tabs]');
@@ -27,10 +28,7 @@ export default class PortfolioController {
     }
 
     this.searchInput.addEventListener('input', (e) => {
-      this.portfolioCollection.setFilter(
-        'search',
-        e.target.value.trim().toLowerCase(),
-      );
+      this.setFilter('search', e.target.value.trim().toLowerCase());
     });
   }
 
@@ -44,7 +42,7 @@ export default class PortfolioController {
     buttons.forEach((btn) => {
       btn.addEventListener('click', () => {
         const filterKey = TAB_ID_TO_FILTER_KEY[btn.id] ?? 'all';
-        this.portfolioCollection.setFilter('tab', filterKey);
+        this.setFilter('tab', filterKey);
         this.setActiveTab(btn, buttons);
       });
     });
@@ -67,7 +65,7 @@ export default class PortfolioController {
       }
 
       select.originalControlElement.addEventListener('change', (e) => {
-        this.portfolioCollection.setFilter(filterKey, e.target.value);
+        this.setFilter(filterKey, e.target.value);
       });
     });
   }

@@ -5,8 +5,8 @@
   new MutationObserver((s) => {
     for (const o of s)
       if (o.type === 'childList')
-        for (const a of o.addedNodes)
-          a.tagName === 'LINK' && a.rel === 'modulepreload' && n(a);
+        for (const r of o.addedNodes)
+          r.tagName === 'LINK' && r.rel === 'modulepreload' && n(r);
   }).observe(document, { childList: !0, subtree: !0 });
   function e(s) {
     const o = {};
@@ -28,7 +28,7 @@
     fetch(s.href, o);
   }
 })();
-function b() {
+function f() {
   document.addEventListener('click', (i) => {
     const t = i.target.closest('[data-goto]');
     if (!t) return;
@@ -52,46 +52,46 @@ function b() {
   });
 }
 let c = !0;
-const m = (i) => {
+const S = (i) => {
     ((c = !1),
       setTimeout(() => {
         c = !0;
       }, i));
   },
-  v = () => document.querySelectorAll('[data-right-padding]'),
-  f = () => {
+  E = () => document.querySelectorAll('[data-right-padding]'),
+  w = () => {
     const i = window.innerWidth - document.body.clientWidth,
       t = parseFloat(getComputedStyle(document.documentElement).fontSize);
     return i / t + 'rem';
   },
-  g = (i = '') => {
-    (v().forEach((e) => {
+  b = (i = '') => {
+    (E().forEach((e) => {
       e.style.paddingRight = i;
     }),
       (document.body.style.paddingRight = i));
   },
-  E = (i) => {
+  C = (i) => {
     document.documentElement.style.setProperty('--scrollbar-width', i);
   },
-  w = () => {
+  T = () => {
     document.documentElement.style.removeProperty('--scrollbar-width');
   },
-  C = (i = 500) => {
+  L = (i = 500) => {
     if (!c) return;
-    const t = f();
-    (g(t),
-      E(t),
+    const t = w();
+    (b(t),
+      C(t),
       document.documentElement.setAttribute('data-scroll-lock', ''),
-      m(i));
+      S(i));
   },
-  T = (i = 500) => {
+  x = (i = 500) => {
     c &&
-      (g(''),
-      w(),
+      (b(''),
+      T(),
       document.documentElement.removeAttribute('data-scroll-lock'),
-      m(i));
+      S(i));
   };
-class L {
+class k {
   hiddenHeader = !0;
   selectors = {
     root: '[data-header]',
@@ -140,7 +140,7 @@ class L {
     ((this.isMenuOpen = t),
       this.burgerButtonElement?.classList.toggle(this.stateClasses.isActive, t),
       this.menuElement?.classList.toggle(this.stateClasses.isActive, t),
-      t ? C() : T(),
+      t ? L() : x(),
       t &&
         (this.rootElement.classList.remove(this.stateClasses.isHidden),
         this.updateHeights()),
@@ -192,7 +192,7 @@ class L {
       window.addEventListener('scroll', this.handleScroll, { passive: !0 }));
   }
 }
-let S = (i, t = 500) => {
+let y = (i, t = 500) => {
     i.classList.contains('_slide') ||
       (i.classList.add('_slide'),
       (i.style.transitionProperty = 'height, margin, padding'),
@@ -218,7 +218,7 @@ let S = (i, t = 500) => {
           i.classList.remove('_slide'));
       }, t));
   },
-  x = (i, t = 500) => {
+  M = (i, t = 500) => {
     if (!i.classList.contains('_slide')) {
       (i.classList.add('_slide'), i.hidden && (i.hidden = !1));
       let e = i.offsetHeight;
@@ -245,8 +245,8 @@ let S = (i, t = 500) => {
         }, t));
     }
   },
-  k = (i, t = 500) => (i.hidden ? x(i, t) : S(i, t));
-class p {
+  A = (i, t = 500) => (i.hidden ? M(i, t) : y(i, t));
+class u {
   constructor(t) {
     ((this.rootElement = t),
       (this.isOneSpoller = this.rootElement.hasAttribute('data-one-spoller')),
@@ -287,14 +287,14 @@ class p {
           !e.classList.contains('active') &&
           this.closeActiveSpoller(),
         e.classList.toggle('active'),
-        k(e.nextElementSibling, 500)));
+        A(e.nextElementSibling, 500)));
   }
   closeActiveSpoller() {
     const t = this.rootElement.querySelector('[data-spoller].active');
-    t && (t.classList.remove('active'), S(t.nextElementSibling, 500));
+    t && (t.classList.remove('active'), y(t.nextElementSibling, 500));
   }
 }
-class M {
+class H {
   constructor() {
     ((this.spollers = new Map()), this.init());
   }
@@ -307,7 +307,7 @@ class M {
       s.dataset.spollers ? n.push(s) : e.push(s);
     }),
       e.forEach((s) => {
-        (s.classList.add('init'), this.spollers.set(s, new p(s)));
+        (s.classList.add('init'), this.spollers.set(s, new u(s)));
       }),
       this.initMediaSpollers(n));
   }
@@ -315,34 +315,34 @@ class M {
     if (!t.length) return;
     const e = new Map();
     (t.forEach((n) => {
-      const [s, o] = n.dataset.spollers.split(',').map((d) => d.trim()),
-        a = o || 'max',
-        r = Number(s);
-      if (isNaN(r)) return;
-      const l = `(${a}-width: ${r}px)`;
+      const [s, o] = n.dataset.spollers.split(',').map((p) => p.trim()),
+        r = o || 'max',
+        a = Number(s);
+      if (isNaN(a)) return;
+      const l = `(${r}-width: ${a}px)`;
       (e.has(l) || e.set(l, []), e.get(l).push(n));
     }),
       e.forEach((n, s) => {
         const o = window.matchMedia(s),
-          a = () => {
-            n.forEach((r) => {
+          r = () => {
+            n.forEach((a) => {
               o.matches
-                ? (r.classList.add('init'),
-                  this.spollers.has(r) || this.spollers.set(r, new p(r)))
-                : (r.classList.remove('init'),
-                  this.spollers.has(r) &&
-                    (this.spollers.get(r).unbindEvents(),
-                    this.spollers.delete(r)));
+                ? (a.classList.add('init'),
+                  this.spollers.has(a) || this.spollers.set(a, new u(a)))
+                : (a.classList.remove('init'),
+                  this.spollers.has(a) &&
+                    (this.spollers.get(a).unbindEvents(),
+                    this.spollers.delete(a)));
             });
           };
         (o.addEventListener
-          ? o.addEventListener('change', a)
-          : o.addListener(a),
-          a());
+          ? o.addEventListener('change', r)
+          : o.addListener(r),
+          r());
       }));
   }
 }
-class A {
+class P {
   defaults = {
     parent: document.body,
     offset: 300,
@@ -424,7 +424,7 @@ class A {
       this.button.remove());
   }
 }
-function H() {
+function I() {
   const i = document.querySelectorAll('.scroller');
   window.matchMedia('(prefer-reduce-motion: reduce)').matches || t();
   function t() {
@@ -432,8 +432,8 @@ function H() {
       e.setAttribute('data-animated', !0);
       const n = e.querySelector('.scroller__inner');
       Array.from(n.children).forEach((o) => {
-        const a = o.cloneNode(!0);
-        (a.setAttribute('aria-hidden', !0), n.appendChild(a));
+        const r = o.cloneNode(!0);
+        (r.setAttribute('aria-hidden', !0), n.appendChild(r));
       });
     });
   }
@@ -458,10 +458,10 @@ class h {
     throw new Error('Необходимо реализовать метод updateUI!');
   }
 }
-const y = '[data-js-tabs]';
-class P extends h {
+const v = '[data-js-tabs]';
+class O extends h {
   selectors = {
-    root: y,
+    root: v,
     button: '[data-js-tabs-button]',
     content: '[data-js-tabs-content]',
   };
@@ -548,17 +548,173 @@ class P extends h {
       this.rootElement.addEventListener('keydown', this.onKeyDown));
   }
 }
-class I {
+class B {
   constructor() {
     this.init();
   }
   init() {
-    document.querySelectorAll(y).forEach((t) => {
-      new P(t);
+    document.querySelectorAll(v).forEach((t) => {
+      new O(t);
     });
   }
 }
-const O = [
+class d {
+  constructor(t = []) {
+    ((this.projects = t),
+      (this.filters = {
+        tab: 'all',
+        category: 'all',
+        pageType: 'all',
+        year: 'all',
+        tech: 'all',
+        search: '',
+      }),
+      (this.visibleCount = 12),
+      (this.increment = 4));
+  }
+  setFilter(t, e) {
+    ((this.filters[t] = e), this.resetPagination());
+  }
+  resetPagination() {
+    this.visibleCount = 12;
+  }
+  increaseVisibleCount() {
+    this.visibleCount += this.increment;
+  }
+  getFilteredProjects() {
+    const {
+      tab: t,
+      category: e,
+      pageType: n,
+      year: s,
+      tech: o,
+      search: r,
+    } = this.filters;
+    return this.projects.filter((a) => {
+      if (t !== 'all') {
+        const l = d.TAB_TECH_MAP[t] ?? [];
+        if (!a.techStack.some((p) => l.includes(p))) return !1;
+      }
+      return !(
+        (e !== 'all' && a.category !== e) ||
+        (n !== 'all' && a.pageType !== n) ||
+        (s !== 'all' && a.year !== s) ||
+        (o !== 'all' && !a.techStack.includes(o)) ||
+        (r && !a.name.toLowerCase().includes(r))
+      );
+    });
+  }
+  getVisibleProjects() {
+    return this.getFilteredProjects().slice(0, this.visibleCount);
+  }
+}
+d.TAB_TECH_MAP = {
+  htmlcss: ['HTML', 'CSS', 'SCSS'],
+  javascript: ['JavaScript'],
+  react: ['React'],
+  vue: ['Vue.js'],
+};
+class j {
+  classes = {
+    item: 'portfolio__item',
+    link: 'portfolio__link',
+    img: 'portfolio__img',
+  };
+  constructor({
+    id: t,
+    img: e,
+    name: n,
+    deploy: s,
+    category: o,
+    pageType: r,
+    year: a,
+    techStack: l,
+  }) {
+    ((this.id = t),
+      (this.img = e),
+      (this.name = n || 'Project'),
+      (this.deploy = s || '#'),
+      (this.category = o || ''),
+      (this.pageType = r || ''),
+      (this.year = a || ''),
+      (this.techStack = l || []));
+  }
+  createImage() {
+    const t = document.createElement('img');
+    return (
+      (t.src = `assets/img/works/${this.img}`),
+      (t.alt = this.name),
+      t.classList.add(this.classes.img),
+      (t.width = 280),
+      (t.height = 280),
+      (t.loading = 'lazy'),
+      (t.decoding = 'async'),
+      t
+    );
+  }
+  createLink() {
+    const t = document.createElement('a');
+    return (
+      (t.href = this.deploy),
+      (t.target = '_blank'),
+      t.classList.add('ibg', this.classes.link),
+      t.append(this.createImage()),
+      t
+    );
+  }
+  renderElement() {
+    const t = document.createElement('li');
+    return (
+      (t.id = `project-${this.id}`),
+      t.classList.add(this.classes.item),
+      (t.dataset.category = this.category),
+      (t.dataset.pageType = this.pageType),
+      (t.dataset.year = this.year),
+      (t.dataset.tech = this.techStack.join(',')),
+      t.append(this.createLink()),
+      t
+    );
+  }
+}
+class D {
+  constructor({
+    container: t = null,
+    text: e = 'show more',
+    className: n = 'button button--show-more',
+    onClick: s,
+  } = {}) {
+    ((this.container = t instanceof Element ? t : null),
+      (this.text = e),
+      (this.className = n),
+      (this.onClick = s),
+      (this.element = this.createElement()),
+      this.container && this.container.appendChild(this.element));
+  }
+  createElement() {
+    const t = document.createElement('button');
+    return (
+      (t.type = 'button'),
+      (t.className = this.className),
+      (t.textContent = this.text),
+      t.addEventListener('click', this.onClick),
+      t
+    );
+  }
+  setText(t) {
+    ((this.text = t), (this.element.textContent = t));
+  }
+  show() {
+    this.element.classList.remove('is-none');
+  }
+  hide() {
+    this.element.classList.add('is-none');
+  }
+  destroy() {
+    (this.element.removeEventListener('click', this.onClick),
+      this.element.remove());
+  }
+}
+const V = [
   {
     id: 1,
     name: 'optica store',
@@ -923,136 +1079,83 @@ const O = [
     techStack: ['HTML', 'CSS', 'SCSS'],
   },
 ];
-class D {
-  classes = {
-    item: 'portfolio__item',
-    link: 'portfolio__link',
-    img: 'portfolio__img',
-  };
-  constructor({
-    id: t,
-    img: e,
-    name: n,
-    deploy: s,
-    category: o,
-    pageType: a,
-    year: r,
-    techStack: l,
-  }) {
-    ((this.id = t),
-      (this.img = e),
-      (this.name = n || 'Project'),
-      (this.deploy = s || '#'),
-      (this.category = o || ''),
-      (this.pageType = a || ''),
-      (this.year = r || ''),
-      (this.techStack = l || []));
-  }
-  createImage() {
-    const t = document.createElement('img');
-    return (
-      (t.src = `assets/img/works/${this.img}`),
-      (t.alt = this.name),
-      t.classList.add(this.classes.img),
-      (t.width = 280),
-      (t.height = 280),
-      (t.loading = 'lazy'),
-      (t.decoding = 'async'),
-      t
-    );
-  }
-  createLink() {
-    const t = document.createElement('a');
-    return (
-      (t.href = this.deploy),
-      (t.target = '_blank'),
-      t.classList.add('ibg', this.classes.link),
-      t.append(this.createImage()),
-      t
-    );
-  }
-  renderElement() {
-    const t = document.createElement('li');
-    return (
-      (t.id = `project-${this.id}`),
-      t.classList.add(this.classes.item),
-      (t.dataset.category = this.category),
-      (t.dataset.pageType = this.pageType),
-      (t.dataset.year = this.year),
-      (t.dataset.tech = this.techStack.join(',')),
-      t.append(this.createLink()),
-      t
-    );
-  }
-}
-const B = {
-  htmlcss: ['HTML', 'CSS', 'SCSS'],
-  javascript: ['JavaScript'],
-  react: ['React'],
-  vue: ['Vue.js'],
-};
-class R {
+class m extends d {
   constructor(t) {
-    ((this.rootElement = t),
-      (this.filters = {
-        tab: t.dataset.portfolio || 'all',
-        category: 'all',
-        pageType: 'all',
-        year: 'all',
-        tech: 'all',
-        search: '',
-      }),
-      this.renderProjects());
+    (super(V),
+      (this.rootElement = t),
+      (this.filters.tab = t.dataset.portfolio || 'all'),
+      (this.controlsContainer = null),
+      (this.showMoreButton = null));
+  }
+  init() {
+    (this.ensureControlsContainer(), this.render());
+  }
+  ensureControlsContainer() {
+    if (
+      this.controlsContainer &&
+      this.rootElement.contains(this.controlsContainer)
+    )
+      return;
+    const t = this.rootElement.nextElementSibling;
+    if (t?.classList?.contains('show-more-container')) {
+      this.controlsContainer = t;
+      return;
+    }
+    ((this.controlsContainer = document.createElement('div')),
+      (this.controlsContainer.className = 'show-more-container'),
+      this.rootElement.after(this.controlsContainer));
   }
   setFilter(t, e) {
-    ((this.filters[t] = e), this.renderProjects());
+    (super.setFilter(t, e), this.render());
   }
-  matchesFilters(t) {
-    const {
-      tab: e,
-      category: n,
-      pageType: s,
-      year: o,
-      tech: a,
-      search: r,
-    } = this.filters;
-    if (e !== 'all') {
-      const l = B[e] ?? [];
-      if (!t.techStack.some((d) => l.includes(d))) return !1;
-    }
-    return !(
-      (n !== 'all' && t.category !== n) ||
-      (s !== 'all' && t.pageType !== s) ||
-      (o !== 'all' && t.year !== o) ||
-      (a !== 'all' && !t.techStack.includes(a)) ||
-      (r && !t.name.toLowerCase().includes(r))
+  showMore() {
+    (this.increaseVisibleCount(), this.render());
+  }
+  createProjectCard(t) {
+    return new j(t).renderElement();
+  }
+  createShowMoreButton() {
+    return (
+      this.showMoreButton ||
+        (this.showMoreButton = new D({
+          container: this.controlsContainer,
+          onClick: () => this.showMore(),
+        })),
+      this.showMoreButton
     );
   }
-  renderProjects() {
-    const t = document.createDocumentFragment();
-    (O.filter((e) => this.matchesFilters(e)).forEach((e) =>
-      t.append(new D(e).renderElement()),
-    ),
-      this.rootElement.replaceChildren(t));
+  render() {
+    const t = this.getFilteredProjects(),
+      e = this.getVisibleProjects(),
+      n = document.createDocumentFragment();
+    (e.forEach((o) => n.append(this.createProjectCard(o))),
+      this.rootElement.replaceChildren(n),
+      this.ensureControlsContainer());
+    const s = t.length - this.visibleCount;
+    if (s > 0) {
+      const o = this.createShowMoreButton();
+      (o.setText(`show more ${s}`), o.show());
+    } else this.showMoreButton && this.showMoreButton.hide();
   }
 }
-class _ {
+class _ extends m {
   constructor() {
-    ((this.portfolios = []), this.init());
+    (super(document.createElement('div')), (this.portfolios = []), this.init());
   }
   init() {
     document.querySelectorAll('[data-portfolio]').forEach((t) => {
-      this.portfolios.push(new R(t));
+      const e = new m(t);
+      (e.init(), this.portfolios.push(e));
     });
   }
   setFilter(t, e) {
-    this.portfolios.forEach((n) => n.setFilter(t, e));
+    (super.setFilter(t, e), this.portfolios.forEach((n) => n.setFilter(t, e)));
   }
 }
-const J = (i) => i / 16,
-  u = { mobile: window.matchMedia(`(width <= ${J(767.98)}rem)`) },
-  j = '[data-js-select]';
-class V extends h {
+const R = (i) => i / 16,
+  g = { mobile: window.matchMedia(`(width <= ${R(767.98)}rem)`) },
+  J = '[data-js-select]';
+class q extends h {
   selectors = {
     originalControl: '[data-js-select-original-control]',
     button: '[data-js-select-button]',
@@ -1107,10 +1210,10 @@ class V extends h {
         this.optionElements[e].id,
       ),
       this.dropdownElement.classList.toggle(this.stateClasses.isExpanded, t),
-      this.optionElements.forEach((o, a) => {
-        const r = a === e,
+      this.optionElements.forEach((o, r) => {
+        const a = r === e,
           l = o === n;
-        (o.classList.toggle(this.stateClasses.isCurrent, r),
+        (o.classList.toggle(this.stateClasses.isCurrent, a),
           o.classList.toggle(this.stateClasses.isSelected, l),
           o.setAttribute(this.stateAttributes.ariaSelected, l));
       }));
@@ -1149,7 +1252,7 @@ class V extends h {
         !s,
       ));
   }
-  updateTabIndexes(t = u.mobile.matches) {
+  updateTabIndexes(t = g.mobile.matches) {
     ((this.originalControlElement.tabIndex = t ? 0 : -1),
       (this.buttonElement.tabIndex = t ? -1 : 0));
   }
@@ -1224,7 +1327,7 @@ class V extends h {
       (this.state.currentOptionIndex = t));
   };
   bindEvents() {
-    (u.mobile.addEventListener('change', this.onMobileMatchMediaChange),
+    (g.mobile.addEventListener('change', this.onMobileMatchMediaChange),
       this.buttonElement.addEventListener('click', this.onButtonClick),
       document.addEventListener('click', this.onClick),
       this.rootElement.addEventListener('keydown', this.onKeyDown),
@@ -1234,13 +1337,13 @@ class V extends h {
       ));
   }
 }
-class q {
+class F {
   constructor() {
     ((this.selects = []), this.init());
   }
   init() {
-    document.querySelectorAll(j).forEach((t) => {
-      this.selects.push(new V(t));
+    document.querySelectorAll(J).forEach((t) => {
+      this.selects.push(new q(t));
     });
   }
 }
@@ -1251,10 +1354,10 @@ const K = {
   'tab-4': 'react',
   'tab-5': 'vue',
 };
-class F {
+class N extends _ {
   constructor() {
-    ((this.portfolioCollection = new _()),
-      (this.selectCollection = new q()),
+    (super(),
+      (this.selectCollection = new F()),
       (this.searchInput = document.querySelector('[data-js-portfolio-search]')),
       (this.tabs = document.querySelector('[data-js-tabs]')),
       this.initSearch(),
@@ -1264,10 +1367,7 @@ class F {
   initSearch() {
     this.searchInput &&
       this.searchInput.addEventListener('input', (t) => {
-        this.portfolioCollection.setFilter(
-          'search',
-          t.target.value.trim().toLowerCase(),
-        );
+        this.setFilter('search', t.target.value.trim().toLowerCase());
       });
   }
   initTabs() {
@@ -1276,7 +1376,7 @@ class F {
     t.forEach((e) => {
       e.addEventListener('click', () => {
         const n = K[e.id] ?? 'all';
-        (this.portfolioCollection.setFilter('tab', n), this.setActiveTab(e, t));
+        (this.setFilter('tab', n), this.setActiveTab(e, t));
       });
     });
   }
@@ -1293,11 +1393,11 @@ class F {
       const e = t.rootElement.dataset.jsPortfolioFilter;
       e &&
         t.originalControlElement.addEventListener('change', (n) => {
-          this.portfolioCollection.setFilter(e, n.target.value);
+          this.setFilter(e, n.target.value);
         });
     });
   }
 }
 window.addEventListener('DOMContentLoaded', () => {
-  (b(), new M(), H(), new L(), new A(), new I(), new F());
+  (f(), new H(), I(), new k(), new P(), new B(), new N());
 });
