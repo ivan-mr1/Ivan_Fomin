@@ -28,7 +28,7 @@
     fetch(s.href, o);
   }
 })();
-function b() {
+function v() {
   document.addEventListener('click', (i) => {
     const t = i.target.closest('[data-goto]');
     if (!t) return;
@@ -51,47 +51,47 @@ function b() {
     }
   });
 }
-let c = !0;
-const m = (i) => {
-    ((c = !1),
+let h = !0;
+const g = (i) => {
+    ((h = !1),
       setTimeout(() => {
-        c = !0;
+        h = !0;
       }, i));
   },
-  v = () => document.querySelectorAll('[data-right-padding]'),
-  f = () => {
+  f = () => document.querySelectorAll('[data-right-padding]'),
+  E = () => {
     const i = window.innerWidth - document.body.clientWidth,
       t = parseFloat(getComputedStyle(document.documentElement).fontSize);
     return i / t + 'rem';
   },
-  g = (i = '') => {
-    (v().forEach((e) => {
+  b = (i = '') => {
+    (f().forEach((e) => {
       e.style.paddingRight = i;
     }),
       (document.body.style.paddingRight = i));
   },
-  E = (i) => {
+  w = (i) => {
     document.documentElement.style.setProperty('--scrollbar-width', i);
   },
-  w = () => {
+  C = () => {
     document.documentElement.style.removeProperty('--scrollbar-width');
   },
-  C = (i = 500) => {
-    if (!c) return;
-    const t = f();
-    (g(t),
-      E(t),
-      document.documentElement.setAttribute('data-scroll-lock', ''),
-      m(i));
-  },
   T = (i = 500) => {
-    c &&
-      (g(''),
-      w(),
+    if (!h) return;
+    const t = E();
+    (b(t),
+      w(t),
+      document.documentElement.setAttribute('data-scroll-lock', ''),
+      g(i));
+  },
+  L = (i = 500) => {
+    h &&
+      (b(''),
+      C(),
       document.documentElement.removeAttribute('data-scroll-lock'),
-      m(i));
+      g(i));
   };
-class L {
+class x {
   hiddenHeader = !0;
   selectors = {
     root: '[data-header]',
@@ -140,7 +140,7 @@ class L {
     ((this.isMenuOpen = t),
       this.burgerButtonElement?.classList.toggle(this.stateClasses.isActive, t),
       this.menuElement?.classList.toggle(this.stateClasses.isActive, t),
-      t ? C() : T(),
+      t ? T() : L(),
       t &&
         (this.rootElement.classList.remove(this.stateClasses.isHidden),
         this.updateHeights()),
@@ -218,7 +218,7 @@ let S = (i, t = 500) => {
           i.classList.remove('_slide'));
       }, t));
   },
-  x = (i, t = 500) => {
+  P = (i, t = 500) => {
     if (!i.classList.contains('_slide')) {
       (i.classList.add('_slide'), i.hidden && (i.hidden = !1));
       let e = i.offsetHeight;
@@ -245,7 +245,7 @@ let S = (i, t = 500) => {
         }, t));
     }
   },
-  k = (i, t = 500) => (i.hidden ? x(i, t) : S(i, t));
+  k = (i, t = 500) => (i.hidden ? P(i, t) : S(i, t));
 class p {
   constructor(t) {
     ((this.rootElement = t),
@@ -315,7 +315,7 @@ class M {
     if (!t.length) return;
     const e = new Map();
     (t.forEach((n) => {
-      const [s, o] = n.dataset.spollers.split(',').map((d) => d.trim()),
+      const [s, o] = n.dataset.spollers.split(',').map((c) => c.trim()),
         a = o || 'max',
         r = Number(s);
       if (isNaN(r)) return;
@@ -438,9 +438,9 @@ function H() {
     });
   }
 }
-class h {
+class d {
   constructor() {
-    if (this.constructor === h)
+    if (this.constructor === d)
       throw new Error(
         'Невозможно создать экземпляр абстрактного класса BaseComponent!',
       );
@@ -459,7 +459,7 @@ class h {
   }
 }
 const y = '[data-js-tabs]';
-class P extends h {
+class I extends d {
   selectors = {
     root: y,
     button: '[data-js-tabs-button]',
@@ -548,17 +548,17 @@ class P extends h {
       this.rootElement.addEventListener('keydown', this.onKeyDown));
   }
 }
-class I {
+class _ {
   constructor() {
     this.init();
   }
   init() {
     document.querySelectorAll(y).forEach((t) => {
-      new P(t);
+      new I(t);
     });
   }
 }
-const O = [
+const u = [
   {
     id: 1,
     name: 'optica store',
@@ -923,7 +923,7 @@ const O = [
     techStack: ['HTML', 'CSS', 'SCSS'],
   },
 ];
-class D {
+class O {
   classes = {
     item: 'portfolio__item',
     link: 'portfolio__link',
@@ -985,13 +985,13 @@ class D {
     );
   }
 }
-const B = {
+const D = {
   htmlcss: ['HTML', 'CSS', 'SCSS'],
   javascript: ['JavaScript'],
   react: ['React'],
   vue: ['Vue.js'],
 };
-class R {
+class B {
   constructor(t) {
     ((this.rootElement = t),
       (this.filters = {
@@ -1002,10 +1002,57 @@ class R {
         tech: 'all',
         search: '',
       }),
+      (this.currentPage = 1),
+      (this.itemsPerPage = 12),
+      (this.visibleCount = 12),
+      (this.increment = 4),
       this.renderProjects());
   }
+  createPagination(t) {
+    const e = document.createElement('div');
+    e.className = 'portfolio__pagination pagination';
+    const n = document.createElement('button');
+    ((n.className = 'pagination__button pagination__prev'),
+      (n.textContent = 'Предыдущая'),
+      (n.disabled = this.currentPage === 1),
+      n.addEventListener('click', () => this.goToPage(this.currentPage - 1)),
+      e.append(n));
+    const s = 5;
+    let o = Math.max(1, this.currentPage - Math.floor(s / 2)),
+      a = Math.min(t, o + s - 1);
+    a - o + 1 < s && (o = Math.max(1, a - s + 1));
+    for (let l = o; l <= a; l++) {
+      const c = document.createElement('button');
+      ((c.className = `pagination__button pagination__page ${l === this.currentPage ? 'is-active' : ''}`),
+        (c.textContent = l),
+        c.addEventListener('click', () => this.goToPage(l)),
+        e.append(c));
+    }
+    const r = document.createElement('button');
+    return (
+      (r.className = 'pagination__button pagination__next'),
+      (r.textContent = 'Следующая'),
+      (r.disabled = this.currentPage === t),
+      r.addEventListener('click', () => this.goToPage(this.currentPage + 1)),
+      e.append(r),
+      e
+    );
+  }
+  showMore() {
+    this.visibleCount += this.increment;
+    const t = u.filter((n) => this.matchesFilters(n));
+    this.visibleCount = Math.min(this.visibleCount, t.length);
+    const e = Math.ceil(this.visibleCount / this.itemsPerPage);
+    ((this.currentPage = Math.min(this.currentPage, e)), this.renderProjects());
+  }
+  goToPage(t) {
+    ((this.currentPage = t), this.renderProjects());
+  }
   setFilter(t, e) {
-    ((this.filters[t] = e), this.renderProjects());
+    ((this.filters[t] = e),
+      (this.currentPage = 1),
+      (this.visibleCount = 12),
+      this.renderProjects());
   }
   matchesFilters(t) {
     const {
@@ -1017,8 +1064,8 @@ class R {
       search: r,
     } = this.filters;
     if (e !== 'all') {
-      const l = B[e] ?? [];
-      if (!t.techStack.some((d) => l.includes(d))) return !1;
+      const l = D[e] ?? [];
+      if (!t.techStack.some((c) => l.includes(c))) return !1;
     }
     return !(
       (n !== 'all' && t.category !== n) ||
@@ -1029,30 +1076,48 @@ class R {
     );
   }
   renderProjects() {
-    const t = document.createDocumentFragment();
-    (O.filter((e) => this.matchesFilters(e)).forEach((e) =>
-      t.append(new D(e).renderElement()),
-    ),
-      this.rootElement.replaceChildren(t));
+    const t = u.filter((c) => this.matchesFilters(c));
+    this.visibleCount = Math.min(this.visibleCount, t.length);
+    const e = Math.ceil(this.visibleCount / this.itemsPerPage),
+      n = (this.currentPage - 1) * this.itemsPerPage,
+      s = Math.min(n + this.itemsPerPage, this.visibleCount),
+      o = t.slice(n, s),
+      a = document.createDocumentFragment();
+    o.forEach((c) => a.append(new O(c).renderElement()));
+    const r = this.rootElement.querySelector('.portfolio__show-more');
+    r && r.remove();
+    const l = this.rootElement.querySelector('.portfolio__pagination');
+    if ((l && l.remove(), t.length > this.visibleCount)) {
+      const c = document.createElement('button');
+      ((c.className = 'portfolio__show-more'),
+        (c.textContent = 'Показать еще'),
+        c.addEventListener('click', () => this.showMore()),
+        a.append(c));
+    }
+    if (e > 1) {
+      const c = this.createPagination(e);
+      a.append(c);
+    }
+    this.rootElement.replaceChildren(a);
   }
 }
-class _ {
+class j {
   constructor() {
     ((this.portfolios = []), this.init());
   }
   init() {
     document.querySelectorAll('[data-portfolio]').forEach((t) => {
-      this.portfolios.push(new R(t));
+      this.portfolios.push(new B(t));
     });
   }
   setFilter(t, e) {
     this.portfolios.forEach((n) => n.setFilter(t, e));
   }
 }
-const J = (i) => i / 16,
-  u = { mobile: window.matchMedia(`(width <= ${J(767.98)}rem)`) },
-  j = '[data-js-select]';
-class V extends h {
+const R = (i) => i / 16,
+  m = { mobile: window.matchMedia(`(width <= ${R(767.98)}rem)`) },
+  q = '[data-js-select]';
+class J extends d {
   selectors = {
     originalControl: '[data-js-select-original-control]',
     button: '[data-js-select-button]',
@@ -1149,7 +1214,7 @@ class V extends h {
         !s,
       ));
   }
-  updateTabIndexes(t = u.mobile.matches) {
+  updateTabIndexes(t = m.mobile.matches) {
     ((this.originalControlElement.tabIndex = t ? 0 : -1),
       (this.buttonElement.tabIndex = t ? -1 : 0));
   }
@@ -1224,7 +1289,7 @@ class V extends h {
       (this.state.currentOptionIndex = t));
   };
   bindEvents() {
-    (u.mobile.addEventListener('change', this.onMobileMatchMediaChange),
+    (m.mobile.addEventListener('change', this.onMobileMatchMediaChange),
       this.buttonElement.addEventListener('click', this.onButtonClick),
       document.addEventListener('click', this.onClick),
       this.rootElement.addEventListener('keydown', this.onKeyDown),
@@ -1234,27 +1299,27 @@ class V extends h {
       ));
   }
 }
-class q {
+class V {
   constructor() {
     ((this.selects = []), this.init());
   }
   init() {
-    document.querySelectorAll(j).forEach((t) => {
-      this.selects.push(new V(t));
+    document.querySelectorAll(q).forEach((t) => {
+      this.selects.push(new J(t));
     });
   }
 }
-const K = {
+const F = {
   'tab-1': 'all',
   'tab-2': 'htmlcss',
   'tab-3': 'javascript',
   'tab-4': 'react',
   'tab-5': 'vue',
 };
-class F {
+class K {
   constructor() {
-    ((this.portfolioCollection = new _()),
-      (this.selectCollection = new q()),
+    ((this.portfolioCollection = new j()),
+      (this.selectCollection = new V()),
       (this.searchInput = document.querySelector('[data-js-portfolio-search]')),
       (this.tabs = document.querySelector('[data-js-tabs]')),
       this.initSearch(),
@@ -1275,7 +1340,7 @@ class F {
     const t = this.tabs.querySelectorAll('[data-js-tabs-button]');
     t.forEach((e) => {
       e.addEventListener('click', () => {
-        const n = K[e.id] ?? 'all';
+        const n = F[e.id] ?? 'all';
         (this.portfolioCollection.setFilter('tab', n), this.setActiveTab(e, t));
       });
     });
@@ -1299,5 +1364,5 @@ class F {
   }
 }
 window.addEventListener('DOMContentLoaded', () => {
-  (b(), new M(), H(), new L(), new A(), new I(), new F());
+  (v(), new M(), H(), new x(), new A(), new _(), new K());
 });

@@ -2246,6 +2246,49 @@ select {
     filter: grayscale(90%);
   }
 }
+.portfolio__show-more {
+  margin-top: 1.25rem;
+  padding: 0.625rem 1.25rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.portfolio__show-more:hover {
+  background-color: #0056b3;
+}
+.portfolio__pagination {
+  margin-top: 1.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 0.625rem;
+}
+.pagination__button {
+  padding: 0.5rem 0.75rem;
+  background-color: #f0f0f0;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.pagination__button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+}
+.pagination__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pagination__button.is-active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
 .portfolio__controls {
   display: -webkit-box;
   display: -ms-flexbox;
