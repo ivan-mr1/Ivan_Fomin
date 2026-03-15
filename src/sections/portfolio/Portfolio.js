@@ -1,72 +1,87 @@
-import projects from './projects.js';
+import PortfolioBase from './PortfolioBase.js';
 import ProjectCard from './ProjectCard.js';
+import ShowMoreButton from '@components/showMoreButton/ShowMoreButton.js';
+import projects from './projects.js';
 
-export const TAB_TECH_MAP = {
-  htmlcss: ['HTML', 'CSS', 'SCSS'],
-  javascript: ['JavaScript'],
-  react: ['React'],
-  vue: ['Vue.js'],
-};
-
-export default class Portfolio {
+export default class Portfolio extends PortfolioBase {
   constructor(rootElement) {
+    super(projects);
+
     this.rootElement = rootElement;
+    this.filters.tab = rootElement.dataset.portfolio || 'all';
 
-    this.filters = {
-      tab: rootElement.dataset.portfolio || 'all',
-      category: 'all',
-      pageType: 'all',
-      year: 'all',
-      tech: 'all',
-      search: '',
-    };
+    this.controlsContainer = null;
+    this.showMoreButton = null;
+  }
 
-    this.renderProjects();
+  init() {
+    this.ensureControlsContainer();
+    this.render();
+  }
+
+  ensureControlsContainer() {
+    if (
+      this.controlsContainer &&
+      this.rootElement.contains(this.controlsContainer)
+    ) {
+      return;
+    }
+
+    const nextSibling = this.rootElement.nextElementSibling;
+    if (nextSibling?.classList?.contains('show-more-container')) {
+      this.controlsContainer = nextSibling;
+      return;
+    }
+
+    this.controlsContainer = document.createElement('div');
+    this.controlsContainer.className = 'show-more-container';
+    this.rootElement.after(this.controlsContainer);
   }
 
   setFilter(key, value) {
-    this.filters[key] = value;
-    this.renderProjects();
+    super.setFilter(key, value);
+    this.render();
   }
 
-  matchesFilters(project) {
-    const { tab, category, pageType, year, tech, search } = this.filters;
-
-    if (tab !== 'all') {
-      const allowedTechs = TAB_TECH_MAP[tab] ?? [];
-      if (!project.techStack.some((t) => allowedTechs.includes(t))) {
-        return false;
-      }
-    }
-
-    if (category !== 'all' && project.category !== category) {
-      return false;
-    }
-    if (pageType !== 'all' && project.pageType !== pageType) {
-      return false;
-    }
-    if (year !== 'all' && project.year !== year) {
-      return false;
-    }
-    if (tech !== 'all' && !project.techStack.includes(tech)) {
-      return false;
-    }
-    if (search && !project.name.toLowerCase().includes(search)) {
-      return false;
-    }
-
-    return true;
+  showMore() {
+    this.increaseVisibleCount();
+    this.render();
   }
 
-  renderProjects() {
+  createProjectCard(project) {
+    return new ProjectCard(project).renderElement();
+  }
+
+  createShowMoreButton() {
+    if (!this.showMoreButton) {
+      this.showMoreButton = new ShowMoreButton({
+        container: this.controlsContainer,
+        onClick: () => this.showMore(),
+      });
+    }
+    return this.showMoreButton;
+  }
+
+  render() {
+    const filteredProjects = this.getFilteredProjects();
+    const visibleProjects = this.getVisibleProjects();
+
     const fragment = document.createDocumentFragment();
-
-    projects
-      .filter((project) => this.matchesFilters(project))
-      .forEach((project) =>
-        fragment.append(new ProjectCard(project).renderElement()),
-      );
-
+    visibleProjects.forEach((project) =>
+      fragment.append(this.createProjectCard(project)),
+    );
     this.rootElement.replaceChildren(fragment);
+
+    this.ensureControlsContainer();
+
+    const remaining = filteredProjects.length - this.visibleCount;
+
+    if (remaining > 0) {
+      const button = this.createShowMoreButton();
+      button.setText(`show more ${remaining}`);
+      button.show();
+    } else if (this.showMoreButton) {
+      this.showMoreButton.hide();
+    }
   }
 }

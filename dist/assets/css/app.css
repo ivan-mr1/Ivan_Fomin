@@ -173,7 +173,15 @@ p:not(:last-child) {
   clip-path: inset(100%) !important;
 }
 .is-none {
-  display: none;
+  display: none !important;
+}
+.is-show {
+  visibility: visible;
+  opacity: 1;
+}
+.is-hide {
+  visibility: hidden;
+  opacity: 0;
 }
 .is-hidden-translate {
   -webkit-transform: translateY(-100%);
@@ -263,6 +271,9 @@ select {
   -o-object-fit: cover;
   object-fit: cover;
 }
+.show-more-container {
+  text-align: center;
+}
 .parent-video-fon {
   position: relative;
   overflow: hidden;
@@ -319,6 +330,12 @@ select {
 .button--min {
   padding-block: 0.875rem;
   padding-inline: 1.25rem;
+}
+.button--show-more {
+  gap: 0.5rem;
+  margin-top: 1rem;
+  color: var(--color-dark);
+  border: 0.0625rem solid var(--color-orange);
 }
 .select {
   position: relative;

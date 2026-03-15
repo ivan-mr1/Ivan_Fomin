@@ -34,4 +34,11 @@
     padding-block: rem(14);
     padding-inline: rem(20);
   }
+
+  &--show-more {
+    gap: 8px;
+    margin-top: 1rem;
+    color: var(--color-dark);
+    border: 1px solid var(--color-orange);
+  }
 }
