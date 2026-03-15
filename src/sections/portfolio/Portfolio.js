@@ -11,6 +11,7 @@ export default class Portfolio extends PortfolioBase {
     this.filters.tab = rootElement.dataset.portfolio || 'all';
 
     this.controlsContainer = null;
+    this.showMoreButton = null;
   }
 
   init() {
@@ -27,17 +28,13 @@ export default class Portfolio extends PortfolioBase {
     }
 
     const nextSibling = this.rootElement.nextElementSibling;
-    const isExisting = nextSibling?.classList?.contains(
-      'portfolio__controls-container',
-    );
-
-    if (isExisting) {
+    if (nextSibling?.classList?.contains('show-more-container')) {
       this.controlsContainer = nextSibling;
       return;
     }
 
     this.controlsContainer = document.createElement('div');
-    this.controlsContainer.className = 'portfolio__controls-container';
+    this.controlsContainer.className = 'show-more-container';
     this.rootElement.after(this.controlsContainer);
   }
 
@@ -62,29 +59,27 @@ export default class Portfolio extends PortfolioBase {
         onClick: () => this.showMore(),
       });
     }
-
-    return this.showMoreButton.element;
+    return this.showMoreButton;
   }
 
   render() {
     const filteredProjects = this.getFilteredProjects();
     const visibleProjects = this.getVisibleProjects();
 
-    const listFragment = document.createDocumentFragment();
+    const fragment = document.createDocumentFragment();
     visibleProjects.forEach((project) =>
-      listFragment.append(this.createProjectCard(project)),
+      fragment.append(this.createProjectCard(project)),
     );
-
-    this.rootElement.replaceChildren(listFragment);
+    this.rootElement.replaceChildren(fragment);
 
     this.ensureControlsContainer();
 
-    const remaining = Math.max(0, filteredProjects.length - this.visibleCount);
+    const remaining = filteredProjects.length - this.visibleCount;
 
     if (remaining > 0) {
-      this.createShowMoreButton();
-      this.showMoreButton.setText(`show more ${remaining}`);
-      this.showMoreButton.show();
+      const button = this.createShowMoreButton();
+      button.setText(`show more ${remaining}`);
+      button.show();
     } else if (this.showMoreButton) {
       this.showMoreButton.hide();
     }
