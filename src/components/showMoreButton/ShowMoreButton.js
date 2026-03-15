@@ -1,26 +1,8 @@
-/**
- * Simple module that encapsulates the "Show more" button and its click logic.
- *
- * Usage:
- *   const button = new ShowMoreButton({
- *     container: document.querySelector('.container'),
- *     onClick: () => { ... },
- *   });
- *
- *   // Control state:
- *   button.setLoading(true);
- *   button.setText('Еще немного');
- *
- *   // Cleanup:
- *   button.destroy();
- */
-
 export default class ShowMoreButton {
   constructor({
     container = null,
-    text = 'Показать еще',
-    loadingText = 'Загрузка...',
-    className = 'portfolio__show-more',
+    text = 'show more',
+    className = 'button button--show-more',
     onClick,
     attrs = {},
   } = {}) {
@@ -30,12 +12,9 @@ export default class ShowMoreButton {
 
     this.container = container instanceof Element ? container : null;
     this.text = text;
-    this.loadingText = loadingText;
     this.className = className;
     this.attrs = attrs;
     this.onClick = onClick;
-
-    this.isLoading = false;
 
     this.element = this.createElement();
 
@@ -52,12 +31,7 @@ export default class ShowMoreButton {
     this.textNode = document.createElement('span');
     this.textNode.textContent = this.text;
 
-    this.spinner = document.createElement('span');
-    this.spinner.className = `${this.className}__spinner`;
-    this.spinner.setAttribute('aria-hidden', 'true');
-    this.spinner.style.display = 'none';
-
-    button.append(this.spinner, this.textNode);
+    button.append(this.textNode);
 
     Object.entries(this.attrs).forEach(([key, value]) => {
       button.setAttribute(key, value);
@@ -70,30 +44,25 @@ export default class ShowMoreButton {
 
   setText(text) {
     this.text = text;
-    if (this.textNode) {
-      this.textNode.textContent = text;
-    }
-  }
-
-  setLoading(isLoading = true) {
-    this.isLoading = isLoading;
-    this.element.disabled = isLoading;
-    this.spinner.style.display = isLoading ? '' : 'none';
-    this.setText(isLoading ? this.loadingText : this.text);
+    this.textNode.textContent = text;
   }
 
   show() {
-    this.element.style.display = '';
+    this.element.classList.remove('is-none', 'is-hide');
+    this.element.classList.add('is-show');
   }
 
   hide() {
-    this.element.style.display = 'none';
+    this.element.classList.remove('is-show');
+    this.element.classList.add('is-hide');
+  }
+
+  remove() {
+    this.element.classList.add('is-none');
   }
 
   destroy() {
     this.element.removeEventListener('click', this.onClick);
-    if (this.element.parentElement) {
-      this.element.parentElement.removeChild(this.element);
-    }
+    this.element.remove();
   }
 }

@@ -83,7 +83,7 @@ export default class Portfolio extends PortfolioBase {
 
     if (remaining > 0) {
       this.createShowMoreButton();
-      this.showMoreButton.setText(`Еще ${remaining}`);
+      this.showMoreButton.setText(`show more ${remaining}`);
       this.showMoreButton.show();
     } else if (this.showMoreButton) {
       this.showMoreButton.hide();

@@ -2,7 +2,6 @@ import Portfolio from './Portfolio.js';
 
 export default class PortfolioCollection extends Portfolio {
   constructor() {
-    // Pass a dummy container to avoid rendering directly on construction.
     super(document.createElement('div'));
 
     this.portfolios = [];

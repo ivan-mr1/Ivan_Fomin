@@ -20,6 +20,14 @@ p {
   display: none;
 }
 
+.is-show {
+  @include show;
+}
+
+.is-hide {
+  @include hide;
+}
+
 .is-hidden-translate {
   transform: translateY(-100%);
 }
