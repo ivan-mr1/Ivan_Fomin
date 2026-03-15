@@ -5,8 +5,8 @@
   new MutationObserver((s) => {
     for (const o of s)
       if (o.type === 'childList')
-        for (const a of o.addedNodes)
-          a.tagName === 'LINK' && a.rel === 'modulepreload' && n(a);
+        for (const r of o.addedNodes)
+          r.tagName === 'LINK' && r.rel === 'modulepreload' && n(r);
   }).observe(document, { childList: !0, subtree: !0 });
   function e(s) {
     const o = {};
@@ -64,7 +64,7 @@ const S = (i) => {
       t = parseFloat(getComputedStyle(document.documentElement).fontSize);
     return i / t + 'rem';
   },
-  y = (i = '') => {
+  b = (i = '') => {
     (E().forEach((e) => {
       e.style.paddingRight = i;
     }),
@@ -79,14 +79,14 @@ const S = (i) => {
   L = (i = 500) => {
     if (!c) return;
     const t = w();
-    (y(t),
+    (b(t),
       C(t),
       document.documentElement.setAttribute('data-scroll-lock', ''),
       S(i));
   },
   x = (i = 500) => {
     c &&
-      (y(''),
+      (b(''),
       T(),
       document.documentElement.removeAttribute('data-scroll-lock'),
       S(i));
@@ -192,7 +192,7 @@ class k {
       window.addEventListener('scroll', this.handleScroll, { passive: !0 }));
   }
 }
-let b = (i, t = 500) => {
+let y = (i, t = 500) => {
     i.classList.contains('_slide') ||
       (i.classList.add('_slide'),
       (i.style.transitionProperty = 'height, margin, padding'),
@@ -245,7 +245,7 @@ let b = (i, t = 500) => {
         }, t));
     }
   },
-  A = (i, t = 500) => (i.hidden ? M(i, t) : b(i, t));
+  A = (i, t = 500) => (i.hidden ? M(i, t) : y(i, t));
 class u {
   constructor(t) {
     ((this.rootElement = t),
@@ -291,7 +291,7 @@ class u {
   }
   closeActiveSpoller() {
     const t = this.rootElement.querySelector('[data-spoller].active');
-    t && (t.classList.remove('active'), b(t.nextElementSibling, 500));
+    t && (t.classList.remove('active'), y(t.nextElementSibling, 500));
   }
 }
 class H {
@@ -316,29 +316,29 @@ class H {
     const e = new Map();
     (t.forEach((n) => {
       const [s, o] = n.dataset.spollers.split(',').map((p) => p.trim()),
-        a = o || 'max',
-        r = Number(s);
-      if (isNaN(r)) return;
-      const l = `(${a}-width: ${r}px)`;
+        r = o || 'max',
+        a = Number(s);
+      if (isNaN(a)) return;
+      const l = `(${r}-width: ${a}px)`;
       (e.has(l) || e.set(l, []), e.get(l).push(n));
     }),
       e.forEach((n, s) => {
         const o = window.matchMedia(s),
-          a = () => {
-            n.forEach((r) => {
+          r = () => {
+            n.forEach((a) => {
               o.matches
-                ? (r.classList.add('init'),
-                  this.spollers.has(r) || this.spollers.set(r, new u(r)))
-                : (r.classList.remove('init'),
-                  this.spollers.has(r) &&
-                    (this.spollers.get(r).unbindEvents(),
-                    this.spollers.delete(r)));
+                ? (a.classList.add('init'),
+                  this.spollers.has(a) || this.spollers.set(a, new u(a)))
+                : (a.classList.remove('init'),
+                  this.spollers.has(a) &&
+                    (this.spollers.get(a).unbindEvents(),
+                    this.spollers.delete(a)));
             });
           };
         (o.addEventListener
-          ? o.addEventListener('change', a)
-          : o.addListener(a),
-          a());
+          ? o.addEventListener('change', r)
+          : o.addListener(r),
+          r());
       }));
   }
 }
@@ -432,8 +432,8 @@ function I() {
       e.setAttribute('data-animated', !0);
       const n = e.querySelector('.scroller__inner');
       Array.from(n.children).forEach((o) => {
-        const a = o.cloneNode(!0);
-        (a.setAttribute('aria-hidden', !0), n.appendChild(a));
+        const r = o.cloneNode(!0);
+        (r.setAttribute('aria-hidden', !0), n.appendChild(r));
       });
     });
   }
@@ -588,19 +588,19 @@ class d {
       pageType: n,
       year: s,
       tech: o,
-      search: a,
+      search: r,
     } = this.filters;
-    return this.projects.filter((r) => {
+    return this.projects.filter((a) => {
       if (t !== 'all') {
         const l = d.TAB_TECH_MAP[t] ?? [];
-        if (!r.techStack.some((p) => l.includes(p))) return !1;
+        if (!a.techStack.some((p) => l.includes(p))) return !1;
       }
       return !(
-        (e !== 'all' && r.category !== e) ||
-        (n !== 'all' && r.pageType !== n) ||
-        (s !== 'all' && r.year !== s) ||
-        (o !== 'all' && !r.techStack.includes(o)) ||
-        (a && !r.name.toLowerCase().includes(a))
+        (e !== 'all' && a.category !== e) ||
+        (n !== 'all' && a.pageType !== n) ||
+        (s !== 'all' && a.year !== s) ||
+        (o !== 'all' && !a.techStack.includes(o)) ||
+        (r && !a.name.toLowerCase().includes(r))
       );
     });
   }
@@ -614,7 +614,7 @@ d.TAB_TECH_MAP = {
   react: ['React'],
   vue: ['Vue.js'],
 };
-class _ {
+class j {
   classes = {
     item: 'portfolio__item',
     link: 'portfolio__link',
@@ -626,8 +626,8 @@ class _ {
     name: n,
     deploy: s,
     category: o,
-    pageType: a,
-    year: r,
+    pageType: r,
+    year: a,
     techStack: l,
   }) {
     ((this.id = t),
@@ -635,8 +635,8 @@ class _ {
       (this.name = n || 'Project'),
       (this.deploy = s || '#'),
       (this.category = o || ''),
-      (this.pageType = a || ''),
-      (this.year = r || ''),
+      (this.pageType = r || ''),
+      (this.year = a || ''),
       (this.techStack = l || []));
   }
   createImage() {
@@ -676,24 +676,17 @@ class _ {
     );
   }
 }
-class j {
+class D {
   constructor({
     container: t = null,
-    text: e = 'Показать еще',
-    loadingText: n = 'Загрузка...',
-    className: s = 'portfolio__show-more',
-    onClick: o,
-    attrs: a = {},
+    text: e = 'show more',
+    className: n = 'button button--show-more',
+    onClick: s,
   } = {}) {
-    if (typeof o != 'function')
-      throw new Error('ShowMoreButton requires an onClick callback');
     ((this.container = t instanceof Element ? t : null),
       (this.text = e),
-      (this.loadingText = n),
-      (this.className = s),
-      (this.attrs = a),
-      (this.onClick = o),
-      (this.isLoading = !1),
+      (this.className = n),
+      (this.onClick = s),
       (this.element = this.createElement()),
       this.container && this.container.appendChild(this.element));
   }
@@ -702,42 +695,26 @@ class j {
     return (
       (t.type = 'button'),
       (t.className = this.className),
-      (this.textNode = document.createElement('span')),
-      (this.textNode.textContent = this.text),
-      (this.spinner = document.createElement('span')),
-      (this.spinner.className = `${this.className}__spinner`),
-      this.spinner.setAttribute('aria-hidden', 'true'),
-      (this.spinner.style.display = 'none'),
-      t.append(this.spinner, this.textNode),
-      Object.entries(this.attrs).forEach(([e, n]) => {
-        t.setAttribute(e, n);
-      }),
+      (t.textContent = this.text),
       t.addEventListener('click', this.onClick),
       t
     );
   }
   setText(t) {
-    ((this.text = t), this.textNode && (this.textNode.textContent = t));
-  }
-  setLoading(t = !0) {
-    ((this.isLoading = t),
-      (this.element.disabled = t),
-      (this.spinner.style.display = t ? '' : 'none'),
-      this.setText(t ? this.loadingText : this.text));
+    ((this.text = t), (this.element.textContent = t));
   }
   show() {
-    this.element.style.display = '';
+    this.element.classList.remove('is-none');
   }
   hide() {
-    this.element.style.display = 'none';
+    this.element.classList.add('is-none');
   }
   destroy() {
     (this.element.removeEventListener('click', this.onClick),
-      this.element.parentElement &&
-        this.element.parentElement.removeChild(this.element));
+      this.element.remove());
   }
 }
-const D = [
+const V = [
   {
     id: 1,
     name: 'optica store',
@@ -1104,10 +1081,11 @@ const D = [
 ];
 class m extends d {
   constructor(t) {
-    (super(D),
+    (super(V),
       (this.rootElement = t),
       (this.filters.tab = t.dataset.portfolio || 'all'),
-      (this.controlsContainer = null));
+      (this.controlsContainer = null),
+      (this.showMoreButton = null));
   }
   init() {
     (this.ensureControlsContainer(), this.render());
@@ -1119,12 +1097,12 @@ class m extends d {
     )
       return;
     const t = this.rootElement.nextElementSibling;
-    if (t?.classList?.contains('portfolio__controls-container')) {
+    if (t?.classList?.contains('show-more-container')) {
       this.controlsContainer = t;
       return;
     }
     ((this.controlsContainer = document.createElement('div')),
-      (this.controlsContainer.className = 'portfolio__controls-container'),
+      (this.controlsContainer.className = 'show-more-container'),
       this.rootElement.after(this.controlsContainer));
   }
   setFilter(t, e) {
@@ -1134,16 +1112,16 @@ class m extends d {
     (this.increaseVisibleCount(), this.render());
   }
   createProjectCard(t) {
-    return new _(t).renderElement();
+    return new j(t).renderElement();
   }
   createShowMoreButton() {
     return (
       this.showMoreButton ||
-        (this.showMoreButton = new j({
+        (this.showMoreButton = new D({
           container: this.controlsContainer,
           onClick: () => this.showMore(),
         })),
-      this.showMoreButton.element
+      this.showMoreButton
     );
   }
   render() {
@@ -1153,15 +1131,14 @@ class m extends d {
     (e.forEach((o) => n.append(this.createProjectCard(o))),
       this.rootElement.replaceChildren(n),
       this.ensureControlsContainer());
-    const s = Math.max(0, t.length - this.visibleCount);
-    s > 0
-      ? (this.createShowMoreButton(),
-        this.showMoreButton.setText(`Еще ${s}`),
-        this.showMoreButton.show())
-      : this.showMoreButton && this.showMoreButton.hide();
+    const s = t.length - this.visibleCount;
+    if (s > 0) {
+      const o = this.createShowMoreButton();
+      (o.setText(`show more ${s}`), o.show());
+    } else this.showMoreButton && this.showMoreButton.hide();
   }
 }
-class V extends m {
+class _ extends m {
   constructor() {
     (super(document.createElement('div')), (this.portfolios = []), this.init());
   }
@@ -1175,10 +1152,10 @@ class V extends m {
     (super.setFilter(t, e), this.portfolios.forEach((n) => n.setFilter(t, e)));
   }
 }
-const N = (i) => i / 16,
-  g = { mobile: window.matchMedia(`(width <= ${N(767.98)}rem)`) },
-  R = '[data-js-select]';
-class J extends h {
+const R = (i) => i / 16,
+  g = { mobile: window.matchMedia(`(width <= ${R(767.98)}rem)`) },
+  J = '[data-js-select]';
+class q extends h {
   selectors = {
     originalControl: '[data-js-select-original-control]',
     button: '[data-js-select-button]',
@@ -1233,10 +1210,10 @@ class J extends h {
         this.optionElements[e].id,
       ),
       this.dropdownElement.classList.toggle(this.stateClasses.isExpanded, t),
-      this.optionElements.forEach((o, a) => {
-        const r = a === e,
+      this.optionElements.forEach((o, r) => {
+        const a = r === e,
           l = o === n;
-        (o.classList.toggle(this.stateClasses.isCurrent, r),
+        (o.classList.toggle(this.stateClasses.isCurrent, a),
           o.classList.toggle(this.stateClasses.isSelected, l),
           o.setAttribute(this.stateAttributes.ariaSelected, l));
       }));
@@ -1360,27 +1337,27 @@ class J extends h {
       ));
   }
 }
-class q {
+class F {
   constructor() {
     ((this.selects = []), this.init());
   }
   init() {
-    document.querySelectorAll(R).forEach((t) => {
-      this.selects.push(new J(t));
+    document.querySelectorAll(J).forEach((t) => {
+      this.selects.push(new q(t));
     });
   }
 }
-const F = {
+const K = {
   'tab-1': 'all',
   'tab-2': 'htmlcss',
   'tab-3': 'javascript',
   'tab-4': 'react',
   'tab-5': 'vue',
 };
-class K extends V {
+class N extends _ {
   constructor() {
     (super(),
-      (this.selectCollection = new q()),
+      (this.selectCollection = new F()),
       (this.searchInput = document.querySelector('[data-js-portfolio-search]')),
       (this.tabs = document.querySelector('[data-js-tabs]')),
       this.initSearch(),
@@ -1398,7 +1375,7 @@ class K extends V {
     const t = this.tabs.querySelectorAll('[data-js-tabs-button]');
     t.forEach((e) => {
       e.addEventListener('click', () => {
-        const n = F[e.id] ?? 'all';
+        const n = K[e.id] ?? 'all';
         (this.setFilter('tab', n), this.setActiveTab(e, t));
       });
     });
@@ -1422,5 +1399,5 @@ class K extends V {
   }
 }
 window.addEventListener('DOMContentLoaded', () => {
-  (f(), new H(), I(), new k(), new P(), new B(), new K());
+  (f(), new H(), I(), new k(), new P(), new B(), new N());
 });
