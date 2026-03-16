@@ -1,0 +1,52 @@
+@use '@helpers' as *;
+
+.product-popup {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px;
+
+  @media (max-width: em(767.98)) {
+    flex-direction: column;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.product-popup__tech-item {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  color: var(--color-dark);
+  background-color: var(--color-orange);
+  border-radius: 12px;
+  opacity: 0;
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+  transition-delay: var(--delay, 0ms);
+  transform: translateY(10px);
+}
+
+.product-popup__tech-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

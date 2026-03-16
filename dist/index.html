@@ -73,6 +73,14 @@
                   >
                 </li>
                 <li class="menu__item">
+                  <a
+                    href="#"
+                    class="menu__link hover-link"
+                    data-goto=".portfolio"
+                    >PORTFOLIO</a
+                  >
+                </li>
+                <li class="menu__item">
                   <a href="#" class="menu__link hover-link" data-goto=".resume"
                     >RESUME</a
                   >
@@ -82,14 +90,7 @@
                     >SKILLS</a
                   >
                 </li>
-                <li class="menu__item">
-                  <a
-                    href="#"
-                    class="menu__link hover-link"
-                    data-goto=".portfolio"
-                    >PORTFOLIO</a
-                  >
-                </li>
+
                 <li class="menu__item">
                   <a href="#" class="menu__link hover-link" data-goto=".footer"
                     >CONTACTS</a
@@ -384,6 +385,416 @@
                     attention to detail, and creating scalable, user-friendly
                     web interfaces.
                   </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="page__portfolio portfolio"
+          aria-labelledby="portfolio-title"
+        >
+          <div class="portfolio__container">
+            <div class="portfolio__header header-block header-block__center">
+              <div class="header-block__subtitle">Portfolio</div>
+              <h2 class="header-block__title" id="portfolio-title">My works</h2>
+              <div class="header-block__line"></div>
+            </div>
+            <div class="portfolio__controls controls">
+              <div class="controls__item">
+                <div class="field portfolio__search">
+                  <label class="field__label" for="search-tech"
+                    >Search project...</label
+                  >
+                  <input
+                    class="field__input"
+                    id="search-tech"
+                    placeholder=" "
+                    autocomplete="off"
+                    type="search"
+                    data-js-portfolio-search
+                  />
+                </div>
+              </div>
+
+              <div class="controls__item">
+                <div
+                  class="select"
+                  data-js-select
+                  data-js-portfolio-filter="category"
+                >
+                  <label
+                    class="select__label visually-hidden"
+                    id="category-select-label"
+                    for="category"
+                  >
+                    All categories
+                  </label>
+                  <select
+                    class="select__original-control field__control"
+                    id="category"
+                    tabindex="-1"
+                    data-js-select-original-control
+                  >
+                    <option value="all" selected>All categories</option>
+                    <option value="landing">Landing</option>
+                    <option value="e-commerce">E-commerce</option>
+                    <option value="to-do-list">To Do List</option>
+                    <option value="weather">Weather</option>
+                  </select>
+
+                  <div class="select__body">
+                    <div
+                      class="select__button field__control"
+                      tabindex="0"
+                      role="combobox"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-controls="category-dropdown"
+                      aria-labelledby="category-select-label"
+                      data-js-select-button
+                    >
+                      All categories
+                    </div>
+
+                    <div
+                      class="select__dropdown"
+                      id="category-dropdown"
+                      role="listbox"
+                      aria-labelledby="category-select-label"
+                      data-js-select-dropdown
+                    >
+                      <div
+                        class="select__option is-selected is-current"
+                        id="category-option-1"
+                        role="option"
+                        aria-selected="true"
+                        data-js-select-option
+                      >
+                        All categories
+                      </div>
+                      <div
+                        class="select__option"
+                        id="category-option-2"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        Landing
+                      </div>
+                      <div
+                        class="select__option"
+                        id="category-option-3"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        E-commerce
+                      </div>
+                      <div
+                        class="select__option"
+                        id="category-option-4"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        To Do List
+                      </div>
+                      <div
+                        class="select__option"
+                        id="category-option-5"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        Weather
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="controls__item">
+                <div
+                  class="select"
+                  data-js-select
+                  data-js-portfolio-filter="pageType"
+                >
+                  <label
+                    class="select__label visually-hidden"
+                    id="page-type-select-label"
+                    for="pageType"
+                  >
+                    All page types
+                  </label>
+                  <select
+                    class="select__original-control field__control"
+                    id="pageType"
+                    tabindex="-1"
+                    data-js-select-original-control
+                  >
+                    <option value="all" selected>All page types</option>
+                    <option value="landing">Landing</option>
+                    <option value="multi-page">Multi-page</option>
+                  </select>
+                  <div class="select__body">
+                    <div
+                      class="select__button field__control"
+                      tabindex="0"
+                      role="combobox"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-controls="page-type-select-dropdown"
+                      aria-labelledby="page-type-select-label"
+                      data-js-select-button
+                    >
+                      All page types
+                    </div>
+                    <div
+                      class="select__dropdown"
+                      id="page-type-select-dropdown"
+                      role="listbox"
+                      aria-labelledby="page-type-select-label"
+                      data-js-select-dropdown
+                    >
+                      <div
+                        class="select__option is-selected is-current"
+                        id="page-type-select-option-1"
+                        role="option"
+                        aria-selected="true"
+                        data-js-select-option
+                      >
+                        All page types
+                      </div>
+                      <div
+                        class="select__option"
+                        id="page-type-select-option-2"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        Landing
+                      </div>
+                      <div
+                        class="select__option"
+                        id="page-type-select-option-3"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        Multi-page
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="controls__item">
+                <div
+                  class="select"
+                  data-js-select
+                  data-js-portfolio-filter="year"
+                >
+                  <label
+                    class="select__label visually-hidden"
+                    id="year-select-label"
+                    for="year"
+                  >
+                    All years
+                  </label>
+                  <select
+                    class="select__original-control field__control"
+                    id="year"
+                    tabindex="-1"
+                    data-js-select-original-control
+                  >
+                    <option value="all" selected>All years</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                  </select>
+                  <div class="select__body">
+                    <div
+                      class="select__button field__control"
+                      tabindex="0"
+                      role="combobox"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-controls="year-select-dropdown"
+                      aria-labelledby="year-select-label"
+                      data-js-select-button
+                    >
+                      All years
+                    </div>
+                    <div
+                      class="select__dropdown"
+                      id="year-select-dropdown"
+                      role="listbox"
+                      aria-labelledby="year-select-label"
+                      data-js-select-dropdown
+                    >
+                      <div
+                        class="select__option is-selected is-current"
+                        id="year-select-option-1"
+                        role="option"
+                        aria-selected="true"
+                        data-js-select-option
+                      >
+                        All years
+                      </div>
+                      <div
+                        class="select__option"
+                        id="year-select-option-2"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        2026
+                      </div>
+                      <div
+                        class="select__option"
+                        id="year-select-option-3"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        2025
+                      </div>
+                      <div
+                        class="select__option"
+                        id="year-select-option-4"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        2024
+                      </div>
+                      <div
+                        class="select__option"
+                        id="year-select-option-5"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        2023
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section__body tabs" data-js-tabs>
+              <header class="tabs__header">
+                <div class="tabs__buttons" role="tablist">
+                  <button
+                    class="tabs__button is-active"
+                    id="tab-1"
+                    type="button"
+                    role="tab"
+                    aria-controls="tabpanel-1"
+                    data-js-tabs-button
+                    aria-selected="true"
+                  >
+                    All works
+                  </button>
+                  <button
+                    class="tabs__button"
+                    id="tab-2"
+                    type="button"
+                    role="tab"
+                    aria-controls="tabpanel-2"
+                    data-js-tabs-button
+                    aria-selected="false"
+                    tabindex="-1"
+                  >
+                    HTML + CSS
+                  </button>
+                  <button
+                    class="tabs__button"
+                    id="tab-3"
+                    type="button"
+                    role="tab"
+                    aria-controls="tabpanel-3"
+                    data-js-tabs-button
+                    aria-selected="false"
+                    tabindex="-1"
+                  >
+                    JavaScript
+                  </button>
+                  <button
+                    class="tabs__button"
+                    id="tab-4"
+                    type="button"
+                    role="tab"
+                    aria-controls="tabpanel-4"
+                    data-js-tabs-button
+                    aria-selected="false"
+                    tabindex="-1"
+                  >
+                    React
+                  </button>
+                  <button
+                    class="tabs__button"
+                    id="tab-5"
+                    type="button"
+                    role="tab"
+                    aria-controls="tabpanel-5"
+                    data-js-tabs-button
+                    aria-selected="false"
+                    tabindex="-1"
+                  >
+                    Vue.js
+                  </button>
+                </div>
+              </header>
+              <div class="tabs__body">
+                <div
+                  class="tabs__content is-active"
+                  id="tabpanel-1"
+                  aria-labelledby="tab-1"
+                  tabindex="0"
+                  data-js-tabs-content
+                >
+                  <ul class="portfolio__items" data-portfolio="all"></ul>
+                </div>
+                <div
+                  class="tabs__content"
+                  id="tabpanel-2"
+                  aria-labelledby="tab-2"
+                  tabindex="0"
+                  data-js-tabs-content
+                >
+                  <ul class="portfolio__items" data-portfolio="htmlcss"></ul>
+                </div>
+                <div
+                  class="tabs__content"
+                  id="tabpanel-3"
+                  aria-labelledby="tab-3"
+                  tabindex="0"
+                  data-js-tabs-content
+                >
+                  <ul class="portfolio__items" data-portfolio="javascript"></ul>
+                </div>
+                <div
+                  class="tabs__content"
+                  id="tabpanel-4"
+                  aria-labelledby="tab-4"
+                  tabindex="0"
+                  data-js-tabs-content
+                >
+                  <ul class="portfolio__items" data-portfolio="react"></ul>
+                </div>
+                <div
+                  class="tabs__content"
+                  id="tabpanel-5"
+                  aria-labelledby="tab-5"
+                  tabindex="0"
+                  data-js-tabs-content
+                >
+                  <ul class="portfolio__items" data-portfolio="vue"></ul>
                 </div>
               </div>
             </div>
@@ -1494,416 +1905,6 @@
             </div>
           </div>
         </section>
-
-        <section
-          class="page__portfolio portfolio"
-          aria-labelledby="portfolio-title"
-        >
-          <div class="portfolio__container">
-            <div class="portfolio__header header-block header-block__center">
-              <div class="header-block__subtitle">Portfolio</div>
-              <h2 class="header-block__title" id="portfolio-title">My works</h2>
-              <div class="header-block__line"></div>
-            </div>
-            <div class="portfolio__controls controls">
-              <div class="controls__item">
-                <div class="field portfolio__search">
-                  <label class="field__label" for="search-tech"
-                    >Search project...</label
-                  >
-                  <input
-                    class="field__input"
-                    id="search-tech"
-                    placeholder=" "
-                    autocomplete="off"
-                    type="search"
-                    data-js-portfolio-search
-                  />
-                </div>
-              </div>
-
-              <div class="controls__item">
-                <div
-                  class="select"
-                  data-js-select
-                  data-js-portfolio-filter="category"
-                >
-                  <label
-                    class="select__label visually-hidden"
-                    id="category-select-label"
-                    for="category"
-                  >
-                    All categories
-                  </label>
-                  <select
-                    class="select__original-control field__control"
-                    id="category"
-                    tabindex="-1"
-                    data-js-select-original-control
-                  >
-                    <option value="all" selected>All categories</option>
-                    <option value="landing">Landing</option>
-                    <option value="e-commerce">E-commerce</option>
-                    <option value="to-do-list">To Do List</option>
-                    <option value="weather">Weather</option>
-                  </select>
-
-                  <div class="select__body">
-                    <div
-                      class="select__button field__control"
-                      tabindex="0"
-                      role="combobox"
-                      aria-expanded="false"
-                      aria-haspopup="listbox"
-                      aria-controls="category-dropdown"
-                      aria-labelledby="category-select-label"
-                      data-js-select-button
-                    >
-                      All categories
-                    </div>
-
-                    <div
-                      class="select__dropdown"
-                      id="category-dropdown"
-                      role="listbox"
-                      aria-labelledby="category-select-label"
-                      data-js-select-dropdown
-                    >
-                      <div
-                        class="select__option is-selected is-current"
-                        id="category-option-1"
-                        role="option"
-                        aria-selected="true"
-                        data-js-select-option
-                      >
-                        All categories
-                      </div>
-                      <div
-                        class="select__option"
-                        id="category-option-2"
-                        role="option"
-                        aria-selected="false"
-                        data-js-select-option
-                      >
-                        Landing
-                      </div>
-                      <div
-                        class="select__option"
-                        id="category-option-3"
-                        role="option"
-                        aria-selected="false"
-                        data-js-select-option
-                      >
-                        E-commerce
-                      </div>
-                      <div
-                        class="select__option"
-                        id="category-option-4"
-                        role="option"
-                        aria-selected="false"
-                        data-js-select-option
-                      >
-                        To Do List
-                      </div>
-                      <div
-                        class="select__option"
-                        id="category-option-5"
-                        role="option"
-                        aria-selected="false"
-                        data-js-select-option
-                      >
-                        Weather
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="controls__item">
-                <div
-                  class="select"
-                  data-js-select
-                  data-js-portfolio-filter="pageType"
-                >
-                  <label
-                    class="select__label visually-hidden"
-                    id="page-type-select-label"
-                    for="pageType"
-                  >
-                    All page types
-                  </label>
-                  <select
-                    class="select__original-control field__control"
-                    id="pageType"
-                    tabindex="-1"
-                    data-js-select-original-control
-                  >
-                    <option value="all" selected>All page types</option>
-                    <option value="landing">Landing</option>
-                    <option value="multi-page">Multi-page</option>
-                  </select>
-                  <div class="select__body">
-                    <div
-                      class="select__button field__control"
-                      tabindex="0"
-                      role="combobox"
-                      aria-expanded="false"
-                      aria-haspopup="listbox"
-                      aria-controls="page-type-select-dropdown"
-                      aria-labelledby="page-type-select-label"
-                      data-js-select-button
-                    >
-                      All page types
-                    </div>
-                    <div
-                      class="select__dropdown"
-                      id="page-type-select-dropdown"
-                      role="listbox"
-                      aria-labelledby="page-type-select-label"
-                      data-js-select-dropdown
-                    >
-                      <div
-                        class="select__option is-selected is-current"
-                        id="page-type-select-option-1"
-                        role="option"
-                        aria-selected="true"
-                        data-js-select-option
-                      >
-                        All page types
-                      </div>
-                      <div
-                        class="select__option"
-                        id="page-type-select-option-2"
-                        role="option"
-                        aria-selected="false"
-                        data-js-select-option
-                      >
-                        Landing
-                      </div>
-                      <div
-                        class="select__option"
-                        id="page-type-select-option-3"
-                        role="option"
-                        aria-selected="false"
-                        data-js-select-option
-                      >
-                        Multi-page
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="controls__item">
-                <div
-                  class="select"
-                  data-js-select
-                  data-js-portfolio-filter="year"
-                >
-                  <label
-                    class="select__label visually-hidden"
-                    id="year-select-label"
-                    for="year"
-                  >
-                    All years
-                  </label>
-                  <select
-                    class="select__original-control field__control"
-                    id="year"
-                    tabindex="-1"
-                    data-js-select-original-control
-                  >
-                    <option value="all" selected>All years</option>
-                    <option value="2026">2026</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                  </select>
-                  <div class="select__body">
-                    <div
-                      class="select__button field__control"
-                      tabindex="0"
-                      role="combobox"
-                      aria-expanded="false"
-                      aria-haspopup="listbox"
-                      aria-controls="year-select-dropdown"
-                      aria-labelledby="year-select-label"
-                      data-js-select-button
-                    >
-                      All years
-                    </div>
-                    <div
-                      class="select__dropdown"
-                      id="year-select-dropdown"
-                      role="listbox"
-                      aria-labelledby="year-select-label"
-                      data-js-select-dropdown
-                    >
-                      <div
-                        class="select__option is-selected is-current"
-                        id="year-select-option-1"
-                        role="option"
-                        aria-selected="true"
-                        data-js-select-option
-                      >
-                        All years
-                      </div>
-                      <div
-                        class="select__option"
-                        id="year-select-option-2"
-                        role="option"
-                        aria-selected="false"
-                        data-js-select-option
-                      >
-                        2026
-                      </div>
-                      <div
-                        class="select__option"
-                        id="year-select-option-3"
-                        role="option"
-                        aria-selected="false"
-                        data-js-select-option
-                      >
-                        2025
-                      </div>
-                      <div
-                        class="select__option"
-                        id="year-select-option-4"
-                        role="option"
-                        aria-selected="false"
-                        data-js-select-option
-                      >
-                        2024
-                      </div>
-                      <div
-                        class="select__option"
-                        id="year-select-option-5"
-                        role="option"
-                        aria-selected="false"
-                        data-js-select-option
-                      >
-                        2023
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="section__body tabs" data-js-tabs>
-              <header class="tabs__header">
-                <div class="tabs__buttons" role="tablist">
-                  <button
-                    class="tabs__button is-active"
-                    id="tab-1"
-                    type="button"
-                    role="tab"
-                    aria-controls="tabpanel-1"
-                    data-js-tabs-button
-                    aria-selected="true"
-                  >
-                    All works
-                  </button>
-                  <button
-                    class="tabs__button"
-                    id="tab-2"
-                    type="button"
-                    role="tab"
-                    aria-controls="tabpanel-2"
-                    data-js-tabs-button
-                    aria-selected="false"
-                    tabindex="-1"
-                  >
-                    HTML + CSS
-                  </button>
-                  <button
-                    class="tabs__button"
-                    id="tab-3"
-                    type="button"
-                    role="tab"
-                    aria-controls="tabpanel-3"
-                    data-js-tabs-button
-                    aria-selected="false"
-                    tabindex="-1"
-                  >
-                    JavaScript
-                  </button>
-                  <button
-                    class="tabs__button"
-                    id="tab-4"
-                    type="button"
-                    role="tab"
-                    aria-controls="tabpanel-4"
-                    data-js-tabs-button
-                    aria-selected="false"
-                    tabindex="-1"
-                  >
-                    React
-                  </button>
-                  <button
-                    class="tabs__button"
-                    id="tab-5"
-                    type="button"
-                    role="tab"
-                    aria-controls="tabpanel-5"
-                    data-js-tabs-button
-                    aria-selected="false"
-                    tabindex="-1"
-                  >
-                    Vue.js
-                  </button>
-                </div>
-              </header>
-              <div class="tabs__body">
-                <div
-                  class="tabs__content is-active"
-                  id="tabpanel-1"
-                  aria-labelledby="tab-1"
-                  tabindex="0"
-                  data-js-tabs-content
-                >
-                  <ul class="portfolio__items" data-portfolio="all"></ul>
-                </div>
-                <div
-                  class="tabs__content"
-                  id="tabpanel-2"
-                  aria-labelledby="tab-2"
-                  tabindex="0"
-                  data-js-tabs-content
-                >
-                  <ul class="portfolio__items" data-portfolio="htmlcss"></ul>
-                </div>
-                <div
-                  class="tabs__content"
-                  id="tabpanel-3"
-                  aria-labelledby="tab-3"
-                  tabindex="0"
-                  data-js-tabs-content
-                >
-                  <ul class="portfolio__items" data-portfolio="javascript"></ul>
-                </div>
-                <div
-                  class="tabs__content"
-                  id="tabpanel-4"
-                  aria-labelledby="tab-4"
-                  tabindex="0"
-                  data-js-tabs-content
-                >
-                  <ul class="portfolio__items" data-portfolio="react"></ul>
-                </div>
-                <div
-                  class="tabs__content"
-                  id="tabpanel-5"
-                  aria-labelledby="tab-5"
-                  tabindex="0"
-                  data-js-tabs-content
-                >
-                  <ul class="portfolio__items" data-portfolio="vue"></ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <footer class="footer">
         <div class="footer__container">
@@ -2036,6 +2037,44 @@
           </div>
         </div>
       </footer>
+
+      <div data-popup="popup-1" aria-hidden="true" class="popup">
+        <div data-popup-wrapper class="popup__wrapper">
+          <div data-popup-body class="popup__body">
+            <button
+              data-popup-close
+              type="button"
+              class="popup__close"
+              aria-label="Close popup"
+              title="Close popup"
+            >
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M30 10L10 30"
+                  stroke="#181C29"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 10L30 30"
+                  stroke="#181C29"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div data-popup-content class="popup__content"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
