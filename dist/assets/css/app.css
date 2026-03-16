@@ -926,6 +926,97 @@ select {
 .tabs__content:focus-visible {
   outline-offset: 0.2rem;
 }
+body:after {
+  content: '';
+  position: fixed;
+  z-index: var(--z-body-after);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000080;
+  opacity: 0;
+  -webkit-transition: opacity 0.8s ease 0s;
+  transition: opacity 0.8s ease 0s;
+  pointer-events: none;
+}
+[data-popup-open] body:after {
+  opacity: 1;
+}
+[data-popup] {
+  position: fixed;
+  inset: 0;
+  padding: 1.875rem 0.625rem;
+  visibility: hidden;
+  -webkit-transition: visibility 0.8s ease 0s;
+  transition: visibility 0.8s ease 0s;
+  pointer-events: none;
+}
+[data-popup][data-popup-active] {
+  z-index: var(--z-index-popup);
+  overflow: auto;
+  visibility: visible;
+  pointer-events: auto;
+}
+[data-popup-active] [data-popup-body] {
+  visibility: visible;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+[data-popup-wrapper] {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+}
+[data-popup-body] {
+  width: 100%;
+  max-width: 56.25rem;
+  background-color: #eee;
+  visibility: hidden;
+  -webkit-transition:
+    visibility 0.3s ease 0s,
+    -webkit-transform 0.3s ease 0s;
+  transition:
+    visibility 0.3s ease 0s,
+    -webkit-transform 0.3s ease 0s;
+  transition:
+    transform 0.3s ease 0s,
+    visibility 0.3s ease 0s;
+  transition:
+    transform 0.3s ease 0s,
+    visibility 0.3s ease 0s,
+    -webkit-transform 0.3s ease 0s;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+[data-popup-close] {
+  position: fixed;
+  z-index: 5;
+  top: 0.9375rem;
+  right: 0.9375rem;
+  color: #fff;
+}
+[data-popup-youtube-place] iframe {
+  aspect-ratio: 16/9;
+  width: 100%;
+}
 @media (min-width: 75em) {
   [class*='page__'] {
     padding-top: 6.25rem;
@@ -2354,4 +2445,84 @@ select {
   background-position: calc(100% - var(--field-input-padding-x)) 50%;
   background-size: var(--field-search-input-icon-size);
   background-repeat: no-repeat;
+}
+.product-popup {
+  padding: 0.625rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  gap: 1rem;
+}
+@media (max-width: 47.99875em) {
+  .product-popup {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+.product-popup__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 1rem;
+}
+.product-popup__title {
+  font-size: 1.375rem;
+  font-weight: 500;
+}
+.product-popup__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.product-popup__tech-item {
+  display: inline-block;
+  background-color: var(--color-orange);
+  color: var(--color-dark);
+  padding: 0.3125rem 0.625rem;
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
+  margin: 0.125rem 0.25rem 0.125rem 0;
+  opacity: 0;
+  -webkit-transform: translateY(0.625rem);
+  -ms-transform: translateY(0.625rem);
+  transform: translateY(0.625rem);
+  -webkit-transition:
+    opacity 0.3s ease,
+    -webkit-transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    -webkit-transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    -webkit-transform 0.3s ease;
+  -webkit-transition-delay: var(--delay, 0ms);
+  transition-delay: var(--delay, 0ms);
+}
+.product-popup__tech-item.visible {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
 }

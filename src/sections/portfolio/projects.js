@@ -23,7 +23,7 @@ const projects = [
   },
   {
     id: 3,
-    name: 'MK ai landing',
+    name: 'mk ai landing',
     img: 'ai-landing.webp',
     github: 'https://github.com/ivan-mr1/MK-ai-landing',
     deploy: 'https://ivan-mr1.github.io/MK-ai-landing/dist/',
@@ -89,7 +89,7 @@ const projects = [
   },
   {
     id: 9,
-    name: 'Relvise',
+    name: 'relvise',
     img: 'relvise.webp',
     github: 'https://github.com/ivan-mr1/Relvise',
     deploy: 'https://ivan-mr1.github.io/Relvise/dist/',
@@ -111,7 +111,7 @@ const projects = [
   },
   {
     id: 11,
-    name: 'Funiro',
+    name: 'funiro',
     img: 'Funiro1.webp',
     github: 'https://github.com/ivan-mr1/Funiro',
     deploy: 'https://ivan-mr1.github.io/Funiro/Funiro-main/',
@@ -133,7 +133,7 @@ const projects = [
   },
   {
     id: 13,
-    name: 'alex Portfolio',
+    name: 'alex portfolio',
     img: 'alex1.webp',
     github: 'https://github.com/ivan-mr1/alexPortfolio',
     deploy: 'https://ivan-mr1.github.io/alexPortfolio/dist/',
@@ -221,7 +221,7 @@ const projects = [
   },
   {
     id: 21,
-    name: 'Recidiviz',
+    name: 'recidiviz',
     img: 'Recidiviz.webp',
     github: 'https://github.com/ivan-mr1/Recidiviz',
     deploy: 'https://ivan-mr1.github.io/Recidiviz/dist/',
@@ -250,7 +250,7 @@ const projects = [
     category: 'landing',
     pageType: 'landing',
     year: '2023',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript'],
+    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Gulp'],
   },
   {
     id: 24,
@@ -276,7 +276,7 @@ const projects = [
   },
   {
     id: 26,
-    name: 'Fitness',
+    name: 'fitness',
     img: 'fitness.webp',
     github: 'https://github.com/ivan-mr1/Fitness',
     deploy: 'https://ivan-mr1.github.io/Fitness/dist/',
@@ -361,6 +361,17 @@ const projects = [
     pageType: 'landing',
     year: '2023',
     techStack: ['HTML', 'CSS', 'SCSS'],
+  },
+  {
+    id: 34,
+    name: 'portfolio',
+    img: 'portfolio.webp',
+    github: 'https://github.com/ivan-mr1/Ivan_Fomin',
+    deploy: 'https://ivan-mr1.github.io/Ivan_Fomin/dist/',
+    category: 'landing',
+    pageType: 'landing',
+    year: '2025',
+    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
   },
 ];
 
