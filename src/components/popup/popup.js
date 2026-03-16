@@ -1,13 +1,4 @@
-/**
- * Универсальный компонент для управления модальными окнами (попапами)
- * Поддерживает YouTube видео, hash-навигацию, focus trap и accessibility
- */
-
-import {
-  getBodyLockStatus,
-  bodyLock,
-  bodyUnlock,
-} from 'src/js/function/bodyLock';
+import { getBodyLockStatus, bodyLock, bodyUnlock } from '@js/function/bodyLock';
 
 import PopupYoutube from './PopupYoutube';
 
@@ -82,9 +73,6 @@ export default class Popup {
     }
   }
 
-  /**
-   * Привязывает обработчики событий
-   */
   bindEvents = () => {
     document.addEventListener('click', this.handleClick);
     document.addEventListener('keydown', this.handleKey);
@@ -94,9 +82,6 @@ export default class Popup {
     }
   };
 
-  /**
-   * Обработчик кликов для открытия/закрытия попапов
-   */
   handleClick = (e) => {
     const openButton = e.target.closest(this.selectors.openButton);
     const closeButton = e.target.closest(this.selectors.closeButton);
@@ -104,7 +89,6 @@ export default class Popup {
     if (openButton) {
       e.preventDefault();
 
-      // Извлекаем YouTube код если интеграция включена
       this.youTubeCode =
         this.youtube?.extractCodeFromElement(openButton) || null;
       this.lastFocusEl = openButton;
@@ -124,9 +108,6 @@ export default class Popup {
     }
   };
 
-  /**
-   * Обработчик нажатий клавиш (Escape, Tab)
-   */
   handleKey = (e) => {
     if (!this.isOpen) {
       return;
@@ -140,9 +121,6 @@ export default class Popup {
     }
   };
 
-  /**
-   * Обработчик изменения hash в URL
-   */
   handleHashChange = () => {
     if (window.location.hash) {
       this.openFromHash();
@@ -300,10 +278,6 @@ export default class Popup {
     this.open(hash);
   };
 
-  /**
-   * Очищает все обработчики событий
-   * Вызывается при уничтожении компонента
-   */
   destroy = () => {
     document.removeEventListener('click', this.handleClick);
     document.removeEventListener('keydown', this.handleKey);

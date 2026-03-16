@@ -1,97 +1,98 @@
 (function () {
   const t = document.createElement('link').relList;
   if (t && t.supports && t.supports('modulepreload')) return;
-  for (const s of document.querySelectorAll('link[rel="modulepreload"]')) n(s);
-  new MutationObserver((s) => {
-    for (const o of s)
-      if (o.type === 'childList')
-        for (const r of o.addedNodes)
-          r.tagName === 'LINK' && r.rel === 'modulepreload' && n(r);
+  for (const o of document.querySelectorAll('link[rel="modulepreload"]')) s(o);
+  new MutationObserver((o) => {
+    for (const n of o)
+      if (n.type === 'childList')
+        for (const a of n.addedNodes)
+          a.tagName === 'LINK' && a.rel === 'modulepreload' && s(a);
   }).observe(document, { childList: !0, subtree: !0 });
-  function e(s) {
-    const o = {};
+  function e(o) {
+    const n = {};
     return (
-      s.integrity && (o.integrity = s.integrity),
-      s.referrerPolicy && (o.referrerPolicy = s.referrerPolicy),
-      s.crossOrigin === 'use-credentials'
-        ? (o.credentials = 'include')
-        : s.crossOrigin === 'anonymous'
-          ? (o.credentials = 'omit')
-          : (o.credentials = 'same-origin'),
-      o
+      o.integrity && (n.integrity = o.integrity),
+      o.referrerPolicy && (n.referrerPolicy = o.referrerPolicy),
+      o.crossOrigin === 'use-credentials'
+        ? (n.credentials = 'include')
+        : o.crossOrigin === 'anonymous'
+          ? (n.credentials = 'omit')
+          : (n.credentials = 'same-origin'),
+      n
     );
   }
-  function n(s) {
-    if (s.ep) return;
-    s.ep = !0;
-    const o = e(s);
-    fetch(s.href, o);
+  function s(o) {
+    if (o.ep) return;
+    o.ep = !0;
+    const n = e(o);
+    fetch(o.href, n);
   }
 })();
-function f() {
+function T() {
   document.addEventListener('click', (i) => {
     const t = i.target.closest('[data-goto]');
     if (!t) return;
     const e = document.querySelector(t.dataset.goto);
     if (e) {
       i.preventDefault();
-      const n = e.getBoundingClientRect().top,
-        s = document.documentElement;
-      (n > 0
-        ? s.classList.add('is-scrolling-down')
-        : s.classList.remove('is-scrolling-down'),
+      const s = e.getBoundingClientRect().top,
+        o = document.documentElement;
+      (s > 0
+        ? o.classList.add('is-scrolling-down')
+        : o.classList.remove('is-scrolling-down'),
         e.scrollIntoView({ behavior: 'smooth', block: 'start' }));
-      const o = () => {
-        (s.classList.remove('is-scrolling-down'),
-          window.removeEventListener('scrollend', o));
+      const n = () => {
+        (o.classList.remove('is-scrolling-down'),
+          window.removeEventListener('scrollend', n));
       };
       'onscrollend' in window
-        ? window.addEventListener('scrollend', o)
-        : setTimeout(o, 1e3);
+        ? window.addEventListener('scrollend', n)
+        : setTimeout(n, 1e3);
     }
   });
 }
-let c = !0;
-const S = (i) => {
-    ((c = !1),
+let d = !0;
+const L = () => d,
+  y = (i) => {
+    ((d = !1),
       setTimeout(() => {
-        c = !0;
+        d = !0;
       }, i));
   },
-  E = () => document.querySelectorAll('[data-right-padding]'),
-  w = () => {
+  k = () => document.querySelectorAll('[data-right-padding]'),
+  x = () => {
     const i = window.innerWidth - document.body.clientWidth,
       t = parseFloat(getComputedStyle(document.documentElement).fontSize);
     return i / t + 'rem';
   },
-  b = (i = '') => {
-    (E().forEach((e) => {
+  S = (i = '') => {
+    (k().forEach((e) => {
       e.style.paddingRight = i;
     }),
       (document.body.style.paddingRight = i));
   },
-  C = (i) => {
+  A = (i) => {
     document.documentElement.style.setProperty('--scrollbar-width', i);
   },
-  T = () => {
+  M = () => {
     document.documentElement.style.removeProperty('--scrollbar-width');
   },
-  L = (i = 500) => {
-    if (!c) return;
-    const t = w();
-    (b(t),
-      C(t),
+  v = (i = 500) => {
+    if (!d) return;
+    const t = x();
+    (S(t),
+      A(t),
       document.documentElement.setAttribute('data-scroll-lock', ''),
-      S(i));
+      y(i));
   },
-  x = (i = 500) => {
-    c &&
-      (b(''),
-      T(),
+  f = (i = 500) => {
+    d &&
+      (S(''),
+      M(),
       document.documentElement.removeAttribute('data-scroll-lock'),
-      S(i));
+      y(i));
   };
-class k {
+class P {
   hiddenHeader = !0;
   selectors = {
     root: '[data-header]',
@@ -140,7 +141,7 @@ class k {
     ((this.isMenuOpen = t),
       this.burgerButtonElement?.classList.toggle(this.stateClasses.isActive, t),
       this.menuElement?.classList.toggle(this.stateClasses.isActive, t),
-      t ? L() : x(),
+      t ? v() : f(),
       t &&
         (this.rootElement.classList.remove(this.stateClasses.isHidden),
         this.updateHeights()),
@@ -179,10 +180,10 @@ class k {
   updateVisibilityState(t) {
     if (!this.hiddenHeader || this.isMenuOpen) return;
     const e = t > this.lastScrollY,
-      n = this.rootElement.offsetHeight,
-      s = e && t > n;
-    this.rootElement.classList.contains(this.stateClasses.isHidden) !== s &&
-      (this.rootElement.classList.toggle(this.stateClasses.isHidden, s),
+      s = this.rootElement.offsetHeight,
+      o = e && t > s;
+    this.rootElement.classList.contains(this.stateClasses.isHidden) !== o &&
+      (this.rootElement.classList.toggle(this.stateClasses.isHidden, o),
       this.updateHeights());
   }
   addListeners() {
@@ -192,7 +193,7 @@ class k {
       window.addEventListener('scroll', this.handleScroll, { passive: !0 }));
   }
 }
-let y = (i, t = 500) => {
+let E = (i, t = 500) => {
     i.classList.contains('_slide') ||
       (i.classList.add('_slide'),
       (i.style.transitionProperty = 'height, margin, padding'),
@@ -218,7 +219,7 @@ let y = (i, t = 500) => {
           i.classList.remove('_slide'));
       }, t));
   },
-  M = (i, t = 500) => {
+  H = (i, t = 500) => {
     if (!i.classList.contains('_slide')) {
       (i.classList.add('_slide'), i.hidden && (i.hidden = !1));
       let e = i.offsetHeight;
@@ -245,8 +246,8 @@ let y = (i, t = 500) => {
         }, t));
     }
   },
-  A = (i, t = 500) => (i.hidden ? M(i, t) : y(i, t));
-class u {
+  I = (i, t = 500) => (i.hidden ? H(i, t) : E(i, t));
+class m {
   constructor(t) {
     ((this.rootElement = t),
       (this.isOneSpoller = this.rootElement.hasAttribute('data-one-spoller')),
@@ -287,14 +288,14 @@ class u {
           !e.classList.contains('active') &&
           this.closeActiveSpoller(),
         e.classList.toggle('active'),
-        A(e.nextElementSibling, 500)));
+        I(e.nextElementSibling, 500)));
   }
   closeActiveSpoller() {
     const t = this.rootElement.querySelector('[data-spoller].active');
-    t && (t.classList.remove('active'), y(t.nextElementSibling, 500));
+    t && (t.classList.remove('active'), E(t.nextElementSibling, 500));
   }
 }
-class H {
+class _ {
   constructor() {
     ((this.spollers = new Map()), this.init());
   }
@@ -302,47 +303,47 @@ class H {
     const t = document.querySelectorAll('[data-spollers]');
     if (!t.length) return;
     const e = [],
-      n = [];
-    (t.forEach((s) => {
-      s.dataset.spollers ? n.push(s) : e.push(s);
+      s = [];
+    (t.forEach((o) => {
+      o.dataset.spollers ? s.push(o) : e.push(o);
     }),
-      e.forEach((s) => {
-        (s.classList.add('init'), this.spollers.set(s, new u(s)));
+      e.forEach((o) => {
+        (o.classList.add('init'), this.spollers.set(o, new m(o)));
       }),
-      this.initMediaSpollers(n));
+      this.initMediaSpollers(s));
   }
   initMediaSpollers(t) {
     if (!t.length) return;
     const e = new Map();
-    (t.forEach((n) => {
-      const [s, o] = n.dataset.spollers.split(',').map((p) => p.trim()),
-        r = o || 'max',
-        a = Number(s);
-      if (isNaN(a)) return;
-      const l = `(${r}-width: ${a}px)`;
-      (e.has(l) || e.set(l, []), e.get(l).push(n));
+    (t.forEach((s) => {
+      const [o, n] = s.dataset.spollers.split(',').map((c) => c.trim()),
+        a = n || 'max',
+        r = Number(o);
+      if (isNaN(r)) return;
+      const l = `(${a}-width: ${r}px)`;
+      (e.has(l) || e.set(l, []), e.get(l).push(s));
     }),
-      e.forEach((n, s) => {
-        const o = window.matchMedia(s),
-          r = () => {
-            n.forEach((a) => {
-              o.matches
-                ? (a.classList.add('init'),
-                  this.spollers.has(a) || this.spollers.set(a, new u(a)))
-                : (a.classList.remove('init'),
-                  this.spollers.has(a) &&
-                    (this.spollers.get(a).unbindEvents(),
-                    this.spollers.delete(a)));
+      e.forEach((s, o) => {
+        const n = window.matchMedia(o),
+          a = () => {
+            s.forEach((r) => {
+              n.matches
+                ? (r.classList.add('init'),
+                  this.spollers.has(r) || this.spollers.set(r, new m(r)))
+                : (r.classList.remove('init'),
+                  this.spollers.has(r) &&
+                    (this.spollers.get(r).unbindEvents(),
+                    this.spollers.delete(r)));
             });
           };
-        (o.addEventListener
-          ? o.addEventListener('change', r)
-          : o.addListener(r),
-          r());
+        (n.addEventListener
+          ? n.addEventListener('change', a)
+          : n.addListener(a),
+          a());
       }));
   }
 }
-class P {
+class O {
   defaults = {
     parent: document.body,
     offset: 300,
@@ -371,7 +372,7 @@ class P {
       this.toggleVisibility());
   }
   createButton() {
-    const { scrollUpClass: t, scrollUpPathClass: e, parent: n } = this.settings;
+    const { scrollUpClass: t, scrollUpPathClass: e, parent: s } = this.settings;
     ((this.button = document.createElement('button')),
       this.button.classList.add(t),
       this.button.setAttribute('aria-label', 'scroll to top'),
@@ -381,7 +382,7 @@ class P {
         <path class="${e}" d="M 24,0 a24,24 0 0,1 0,48 a24,24 0 0,1 0,-48" />
       </svg>
     `),
-      n.appendChild(this.button));
+      s.appendChild(this.button));
   }
   cacheElements() {
     const { scrollUpPathClass: t } = this.settings;
@@ -401,13 +402,13 @@ class P {
     this.path.style.strokeDashoffset = e;
   }
   toggleVisibility = () => {
-    const { offset: t, maxWidth: e, scrollUpClass: n } = this.settings,
-      s = this.getScrollTop(),
-      o = window.innerWidth;
+    const { offset: t, maxWidth: e, scrollUpClass: s } = this.settings,
+      o = this.getScrollTop(),
+      n = window.innerWidth;
     (this.updateDashOffset(),
-      s > t && o <= e
-        ? this.button.classList.add(`${n}--active`)
-        : this.button.classList.remove(`${n}--active`));
+      o > t && n <= e
+        ? this.button.classList.add(`${s}--active`)
+        : this.button.classList.remove(`${s}--active`));
   };
   scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -424,33 +425,33 @@ class P {
       this.button.remove());
   }
 }
-function I() {
+function B() {
   const i = document.querySelectorAll('.scroller');
   window.matchMedia('(prefer-reduce-motion: reduce)').matches || t();
   function t() {
     i.forEach((e) => {
       e.setAttribute('data-animated', !0);
-      const n = e.querySelector('.scroller__inner');
-      Array.from(n.children).forEach((o) => {
-        const r = o.cloneNode(!0);
-        (r.setAttribute('aria-hidden', !0), n.appendChild(r));
+      const s = e.querySelector('.scroller__inner');
+      Array.from(s.children).forEach((n) => {
+        const a = n.cloneNode(!0);
+        (a.setAttribute('aria-hidden', !0), s.appendChild(a));
       });
     });
   }
 }
-class h {
+class u {
   constructor() {
-    if (this.constructor === h)
+    if (this.constructor === u)
       throw new Error(
         'Невозможно создать экземпляр абстрактного класса BaseComponent!',
       );
   }
   getProxyState(t) {
     return new Proxy(t, {
-      get: (e, n) => e[n],
-      set: (e, n, s) => {
-        const o = e[n];
-        return ((e[n] = s), s !== o && this.updateUI(), !0);
+      get: (e, s) => e[s],
+      set: (e, s, o) => {
+        const n = e[s];
+        return ((e[s] = o), o !== n && this.updateUI(), !0);
       },
     });
   }
@@ -458,10 +459,10 @@ class h {
     throw new Error('Необходимо реализовать метод updateUI!');
   }
 }
-const v = '[data-js-tabs]';
-class O extends h {
+const w = '[data-js-tabs]';
+class D extends u {
   selectors = {
-    root: v,
+    root: w,
     button: '[data-js-tabs-button]',
     content: '[data-js-tabs-content]',
   };
@@ -486,15 +487,15 @@ class O extends h {
   }
   updateUI() {
     const { activeTabIndex: t } = this.state;
-    (this.buttonElements.forEach((e, n) => {
-      const s = n === t;
-      (e.classList.toggle(this.stateClasses.isActive, s),
-        e.setAttribute(this.stateAttributes.ariaSelected, s.toString()),
-        e.setAttribute(this.stateAttributes.tabIndex, s ? '0' : '-1'));
+    (this.buttonElements.forEach((e, s) => {
+      const o = s === t;
+      (e.classList.toggle(this.stateClasses.isActive, o),
+        e.setAttribute(this.stateAttributes.ariaSelected, o.toString()),
+        e.setAttribute(this.stateAttributes.tabIndex, o ? '0' : '-1'));
     }),
-      this.contentElements.forEach((e, n) => {
-        const s = n === t;
-        e.classList.toggle(this.stateClasses.isActive, s);
+      this.contentElements.forEach((e, s) => {
+        const o = s === t;
+        e.classList.toggle(this.stateClasses.isActive, o);
       }));
   }
   activateTab(t) {
@@ -524,22 +525,22 @@ class O extends h {
     this.state.activeTabIndex = t;
   }
   onKeyDown = (t) => {
-    const { code: e, metaKey: n } = t,
-      s = {
+    const { code: e, metaKey: s } = t,
+      o = {
         ArrowLeft: this.previousTab,
         ArrowRight: this.nextTab,
         Home: this.firstTab,
         End: this.lastTab,
       }[e];
-    if (n && e === 'ArrowLeft') {
+    if (s && e === 'ArrowLeft') {
       this.firstTab();
       return;
     }
-    if (n && e === 'ArrowRight') {
+    if (s && e === 'ArrowRight') {
       this.lastTab();
       return;
     }
-    s?.();
+    o?.();
   };
   bindEvents() {
     (this.buttonElements.forEach((t, e) => {
@@ -548,17 +549,261 @@ class O extends h {
       this.rootElement.addEventListener('keydown', this.onKeyDown));
   }
 }
-class B {
+class F {
   constructor() {
     this.init();
   }
   init() {
-    document.querySelectorAll(v).forEach((t) => {
-      new O(t);
+    document.querySelectorAll(w).forEach((t) => {
+      new D(t);
     });
   }
 }
-class d {
+class j {
+  selectors = {
+    trigger: '[data-youtube-link]',
+    container: '[data-youtube-container]',
+    youtubePlace: '[data-youtube-place]',
+  };
+  config = {
+    youtubeAttr: 'data-youtube-link',
+    autoplay: !0,
+    rel: 0,
+    showinfo: 0,
+  };
+  constructor(t = {}) {
+    ((this.config = { ...this.config, ...t }),
+      (this.activeIframe = null),
+      this.config.standalone && this.bindEvents());
+  }
+  bindEvents = () => {
+    document.addEventListener('click', this.handleClick);
+  };
+  handleClick = (t) => {
+    const e = t.target.closest(this.selectors.trigger);
+    if (!e) return;
+    t.preventDefault();
+    const s = this.extractCodeFromElement(e),
+      o = e.getAttribute('data-youtube-container');
+    if (!s) {
+      console.warn('PopupYoutube: YouTube ID не найден');
+      return;
+    }
+    const n = o
+      ? document.querySelector(`[data-youtube-container="${o}"]`)
+      : e.closest(this.selectors.container);
+    if (!n) {
+      console.warn('PopupYoutube: Контейнер для видео не найден');
+      return;
+    }
+    this.setup(n, s);
+  };
+  extractCodeFromElement = (t) =>
+    t?.getAttribute(this.config.youtubeAttr) || null;
+  setup = (t, e) => {
+    if (!t || !e)
+      return (
+        console.warn('PopupYoutube: Отсутствует контейнер или YouTube ID'),
+        null
+      );
+    let s = t.querySelector('iframe');
+    return (
+      s ||
+        ((s = this.createIframe()),
+        (t.querySelector(this.selectors.youtubePlace) || t).appendChild(s)),
+      (s.style.display = ''),
+      (s.src = this.buildYoutubeUrl(e)),
+      (this.activeIframe = s),
+      s
+    );
+  };
+  createIframe = () => {
+    const t = document.createElement('iframe');
+    return (
+      (t.allowFullscreen = !0),
+      (t.allow = this.config.autoplay
+        ? 'autoplay; encrypted-media'
+        : 'encrypted-media'),
+      t
+    );
+  };
+  buildYoutubeUrl = (t) => {
+    const e = new URLSearchParams({
+      rel: this.config.rel,
+      showinfo: this.config.showinfo,
+    });
+    return (
+      this.config.autoplay && e.append('autoplay', '1'),
+      `https://www.youtube.com/embed/${t}?${e.toString()}`
+    );
+  };
+  clear = (t) => {
+    if (!t) return;
+    const e = t.querySelector('iframe');
+    (e && ((e.style.display = 'none'), (e.src = '')),
+      this.activeIframe === e && (this.activeIframe = null));
+  };
+  stop = () => {
+    this.activeIframe &&
+      ((this.activeIframe.src = ''), (this.activeIframe = null));
+  };
+  destroy = () => {
+    (document.removeEventListener('click', this.handleClick), this.stop());
+  };
+}
+class q {
+  selectors = {
+    root: '[data-popup]',
+    openButton: '[data-popup-link]',
+    closeButton: '[data-popup-close]',
+    content: '[data-popup-body]',
+  };
+  stateAttrs = {
+    popupActive: 'data-popup-active',
+    bodyActive: 'data-popup-open',
+  };
+  stateClasses = { isVisible: 'is-visible' };
+  config = { focusTrapDelay: 50 };
+  constructor(t = {}) {
+    const e = {
+      youtubeAttr: 'data-youtube-link',
+      autoplay: !0,
+      enableYoutube: !0,
+      focusCatch: !0,
+      closeEsc: !0,
+      bodyLock: !0,
+      hash: { use: !0, navigate: !0 },
+    };
+    ((this.options = { ...e, ...t, hash: { ...e.hash, ...t?.hash } }),
+      (this.youtube = this.options.enableYoutube
+        ? new j({
+            youtubeAttr: this.options.youtubeAttr,
+            autoplay: this.options.autoplay,
+            standalone: !1,
+          })
+        : null),
+      (this.isOpen = !1),
+      (this.activePopup = null),
+      (this.lastFocusEl = null),
+      (this.youTubeCode = null),
+      (this._focusable = [
+        'a[href]',
+        'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
+        'button:not([disabled]):not([aria-hidden])',
+        'select:not([disabled]):not([aria-hidden])',
+        'textarea:not([disabled]):not([aria-hidden])',
+        '[tabindex]:not([tabindex^="-"])',
+      ]),
+      this.bindEvents(),
+      this.options.hash.navigate &&
+        window.location.hash &&
+        this.openFromHash());
+  }
+  bindEvents = () => {
+    (document.addEventListener('click', this.handleClick),
+      document.addEventListener('keydown', this.handleKey),
+      this.options.hash.navigate &&
+        window.addEventListener('hashchange', this.handleHashChange));
+  };
+  handleClick = (t) => {
+    const e = t.target.closest(this.selectors.openButton),
+      s = t.target.closest(this.selectors.closeButton);
+    if (e) {
+      (t.preventDefault(),
+        (this.youTubeCode = this.youtube?.extractCodeFromElement(e) || null),
+        (this.lastFocusEl = e));
+      const a = e.getAttribute('data-popup-link');
+      this.open(a);
+      return;
+    }
+    const o = !!s,
+      n = this.isOpen && !t.target.closest(this.selectors.content);
+    (o || n) && (t.preventDefault(), this.close());
+  };
+  handleKey = (t) => {
+    this.isOpen &&
+      (this.options.closeEsc && t.key === 'Escape'
+        ? (t.preventDefault(), this.close())
+        : this.options.focusCatch && t.key === 'Tab' && this.focusCatch(t));
+  };
+  handleHashChange = () => {
+    window.location.hash ? this.openFromHash() : this.close();
+  };
+  open = (t) => {
+    if (!L()) return;
+    const e = document.querySelector(`[data-popup="${t}"]`);
+    if (!e) {
+      console.warn(`Popup: Попап с селектором "${t}" не найден`);
+      return;
+    }
+    if (
+      (this.activePopup &&
+        this.activePopup !== e &&
+        this.close(this.activePopup),
+      (this.activePopup = e),
+      (this.isOpen = !0),
+      this.youtube)
+    ) {
+      const s = this.youTubeCode || this.youtube.extractCodeFromElement(e);
+      s && this.youtube.setup(e, s);
+    }
+    (this.options.hash.use && this.updateHash(t),
+      e.setAttribute(this.stateAttrs.popupActive, ''),
+      e.classList.add(this.stateClasses.isVisible),
+      e.setAttribute('aria-hidden', 'false'),
+      document.documentElement.setAttribute(this.stateAttrs.bodyActive, ''),
+      this.options.bodyLock && v(),
+      setTimeout(() => this.focusTrap(), this.config.focusTrapDelay));
+  };
+  close = (t = this.activePopup) => {
+    !t ||
+      !this.isOpen ||
+      (t.removeAttribute(this.stateAttrs.popupActive),
+      t.classList.remove(this.stateClasses.isVisible),
+      t.setAttribute('aria-hidden', 'true'),
+      (this.isOpen = !1),
+      (this.activePopup = null),
+      this.youtube && this.youtube.clear(t),
+      document.documentElement.removeAttribute(this.stateAttrs.bodyActive),
+      this.options.bodyLock && f(),
+      this.options.hash.use && this.clearHash(),
+      this.lastFocusEl?.focus());
+  };
+  focusCatch = (t) => {
+    const e = this.activePopup?.querySelectorAll(this._focusable);
+    if (!e?.length) return;
+    const s = Array.from(e),
+      o = s.indexOf(document.activeElement);
+    t.shiftKey && o === 0
+      ? (s[s.length - 1].focus(), t.preventDefault())
+      : !t.shiftKey && o === s.length - 1 && (s[0].focus(), t.preventDefault());
+  };
+  focusTrap = () => {
+    const t = this.activePopup?.querySelectorAll(this._focusable);
+    t?.length && (this.isOpen ? t[0] : this.lastFocusEl)?.focus();
+  };
+  updateHash = (t) => {
+    history.replaceState(null, '', `#${t}`);
+  };
+  clearHash = () => {
+    history.replaceState(null, '', window.location.pathname);
+  };
+  openFromHash = () => {
+    const t = window.location.hash.replace('#', '');
+    if (!t) return;
+    const e = document.querySelector(`[data-popup-link="${t}"]`);
+    ((this.youTubeCode = this.youtube?.extractCodeFromElement(e) || null),
+      this.open(t));
+  };
+  destroy = () => {
+    (document.removeEventListener('click', this.handleClick),
+      document.removeEventListener('keydown', this.handleKey),
+      this.options.hash.navigate &&
+        window.removeEventListener('hashchange', this.handleHashChange),
+      this.isOpen && this.close());
+  };
+}
+class p {
   constructor(t = []) {
     ((this.projects = t),
       (this.filters = {
@@ -585,22 +830,22 @@ class d {
     const {
       tab: t,
       category: e,
-      pageType: n,
-      year: s,
-      tech: o,
-      search: r,
+      pageType: s,
+      year: o,
+      tech: n,
+      search: a,
     } = this.filters;
-    return this.projects.filter((a) => {
+    return this.projects.filter((r) => {
       if (t !== 'all') {
-        const l = d.TAB_TECH_MAP[t] ?? [];
-        if (!a.techStack.some((p) => l.includes(p))) return !1;
+        const l = p.TAB_TECH_MAP[t] ?? [];
+        if (!r.techStack.some((c) => l.includes(c))) return !1;
       }
       return !(
-        (e !== 'all' && a.category !== e) ||
-        (n !== 'all' && a.pageType !== n) ||
-        (s !== 'all' && a.year !== s) ||
-        (o !== 'all' && !a.techStack.includes(o)) ||
-        (r && !a.name.toLowerCase().includes(r))
+        (e !== 'all' && r.category !== e) ||
+        (s !== 'all' && r.pageType !== s) ||
+        (o !== 'all' && r.year !== o) ||
+        (n !== 'all' && !r.techStack.includes(n)) ||
+        (a && !r.name.toLowerCase().includes(a))
       );
     });
   }
@@ -608,13 +853,13 @@ class d {
     return this.getFilteredProjects().slice(0, this.visibleCount);
   }
 }
-d.TAB_TECH_MAP = {
+p.TAB_TECH_MAP = {
   htmlcss: ['HTML', 'CSS', 'SCSS'],
   javascript: ['JavaScript'],
   react: ['React'],
   vue: ['Vue.js'],
 };
-class j {
+class V {
   classes = {
     item: 'portfolio__item',
     link: 'portfolio__link',
@@ -623,21 +868,23 @@ class j {
   constructor({
     id: t,
     img: e,
-    name: n,
-    deploy: s,
-    category: o,
+    name: s,
+    deploy: o,
+    github: n,
+    category: a,
     pageType: r,
-    year: a,
-    techStack: l,
+    year: l,
+    techStack: c,
   }) {
     ((this.id = t),
       (this.img = e),
-      (this.name = n || 'Project'),
-      (this.deploy = s || '#'),
-      (this.category = o || ''),
+      (this.name = s || 'Project'),
+      (this.deploy = o || '#'),
+      (this.github = n || '#'),
+      (this.category = a || ''),
       (this.pageType = r || ''),
-      (this.year = a || ''),
-      (this.techStack = l || []));
+      (this.year = l || ''),
+      (this.techStack = c || []));
   }
   createImage() {
     const t = document.createElement('img');
@@ -655,8 +902,15 @@ class j {
   createLink() {
     const t = document.createElement('a');
     return (
-      (t.href = this.deploy),
-      (t.target = '_blank'),
+      (t.href = '#'),
+      t.setAttribute('data-popup-link', 'popup-1'),
+      (t.dataset.id = this.id),
+      (t.dataset.title = this.name),
+      (t.dataset.image = `assets/img/works/${this.img}`),
+      (t.dataset.tech = this.techStack.join(', ')),
+      (t.dataset.year = this.year),
+      (t.dataset.deploy = this.deploy),
+      (t.dataset.github = this.github),
       t.classList.add('ibg', this.classes.link),
       t.append(this.createImage()),
       t
@@ -676,17 +930,17 @@ class j {
     );
   }
 }
-class D {
+class $ {
   constructor({
     container: t = null,
     text: e = 'show more',
-    className: n = 'button button--show-more',
-    onClick: s,
+    className: s = 'button button--show-more',
+    onClick: o,
   } = {}) {
     ((this.container = t instanceof Element ? t : null),
       (this.text = e),
-      (this.className = n),
-      (this.onClick = s),
+      (this.className = s),
+      (this.onClick = o),
       (this.element = this.createElement()),
       this.container && this.container.appendChild(this.element));
   }
@@ -714,7 +968,7 @@ class D {
       this.element.remove());
   }
 }
-const V = [
+const J = [
   {
     id: 1,
     name: 'optica store',
@@ -739,7 +993,7 @@ const V = [
   },
   {
     id: 3,
-    name: 'MK ai landing',
+    name: 'mk ai landing',
     img: 'ai-landing.webp',
     github: 'https://github.com/ivan-mr1/MK-ai-landing',
     deploy: 'https://ivan-mr1.github.io/MK-ai-landing/dist/',
@@ -805,7 +1059,7 @@ const V = [
   },
   {
     id: 9,
-    name: 'Relvise',
+    name: 'relvise',
     img: 'relvise.webp',
     github: 'https://github.com/ivan-mr1/Relvise',
     deploy: 'https://ivan-mr1.github.io/Relvise/dist/',
@@ -827,7 +1081,7 @@ const V = [
   },
   {
     id: 11,
-    name: 'Funiro',
+    name: 'funiro',
     img: 'Funiro1.webp',
     github: 'https://github.com/ivan-mr1/Funiro',
     deploy: 'https://ivan-mr1.github.io/Funiro/Funiro-main/',
@@ -849,7 +1103,7 @@ const V = [
   },
   {
     id: 13,
-    name: 'alex Portfolio',
+    name: 'alex portfolio',
     img: 'alex1.webp',
     github: 'https://github.com/ivan-mr1/alexPortfolio',
     deploy: 'https://ivan-mr1.github.io/alexPortfolio/dist/',
@@ -937,7 +1191,7 @@ const V = [
   },
   {
     id: 21,
-    name: 'Recidiviz',
+    name: 'recidiviz',
     img: 'Recidiviz.webp',
     github: 'https://github.com/ivan-mr1/Recidiviz',
     deploy: 'https://ivan-mr1.github.io/Recidiviz/dist/',
@@ -966,7 +1220,7 @@ const V = [
     category: 'landing',
     pageType: 'landing',
     year: '2023',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript'],
+    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Gulp'],
   },
   {
     id: 24,
@@ -992,7 +1246,7 @@ const V = [
   },
   {
     id: 26,
-    name: 'Fitness',
+    name: 'fitness',
     img: 'fitness.webp',
     github: 'https://github.com/ivan-mr1/Fitness',
     deploy: 'https://ivan-mr1.github.io/Fitness/dist/',
@@ -1078,10 +1332,21 @@ const V = [
     year: '2023',
     techStack: ['HTML', 'CSS', 'SCSS'],
   },
+  {
+    id: 34,
+    name: 'portfolio',
+    img: 'portfolio.webp',
+    github: 'https://github.com/ivan-mr1/Ivan_Fomin',
+    deploy: 'https://ivan-mr1.github.io/Ivan_Fomin/dist/',
+    category: 'landing',
+    pageType: 'landing',
+    year: '2025',
+    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+  },
 ];
-class m extends d {
+class g extends p {
   constructor(t) {
-    (super(V),
+    (super(J),
       (this.rootElement = t),
       (this.filters.tab = t.dataset.portfolio || 'all'),
       (this.controlsContainer = null),
@@ -1112,12 +1377,12 @@ class m extends d {
     (this.increaseVisibleCount(), this.render());
   }
   createProjectCard(t) {
-    return new j(t).renderElement();
+    return new V(t).renderElement();
   }
   createShowMoreButton() {
     return (
       this.showMoreButton ||
-        (this.showMoreButton = new D({
+        (this.showMoreButton = new $({
           container: this.controlsContainer,
           onClick: () => this.showMore(),
         })),
@@ -1127,35 +1392,35 @@ class m extends d {
   render() {
     const t = this.getFilteredProjects(),
       e = this.getVisibleProjects(),
-      n = document.createDocumentFragment();
-    (e.forEach((o) => n.append(this.createProjectCard(o))),
-      this.rootElement.replaceChildren(n),
+      s = document.createDocumentFragment();
+    (e.forEach((n) => s.append(this.createProjectCard(n))),
+      this.rootElement.replaceChildren(s),
       this.ensureControlsContainer());
-    const s = t.length - this.visibleCount;
-    if (s > 0) {
-      const o = this.createShowMoreButton();
-      (o.setText(`show more ${s}`), o.show());
+    const o = t.length - this.visibleCount;
+    if (o > 0) {
+      const n = this.createShowMoreButton();
+      (n.setText(`show more ${o}`), n.show());
     } else this.showMoreButton && this.showMoreButton.hide();
   }
 }
-class _ extends m {
+class R extends g {
   constructor() {
     (super(document.createElement('div')), (this.portfolios = []), this.init());
   }
   init() {
     document.querySelectorAll('[data-portfolio]').forEach((t) => {
-      const e = new m(t);
+      const e = new g(t);
       (e.init(), this.portfolios.push(e));
     });
   }
   setFilter(t, e) {
-    (super.setFilter(t, e), this.portfolios.forEach((n) => n.setFilter(t, e)));
+    (super.setFilter(t, e), this.portfolios.forEach((s) => s.setFilter(t, e)));
   }
 }
-const R = (i) => i / 16,
-  g = { mobile: window.matchMedia(`(width <= ${R(767.98)}rem)`) },
-  J = '[data-js-select]';
-class q extends h {
+const K = (i) => i / 16,
+  b = { mobile: window.matchMedia(`(width <= ${K(767.98)}rem)`) },
+  N = '[data-js-select]';
+class U extends u {
   selectors = {
     originalControl: '[data-js-select-original-control]',
     button: '[data-js-select-button]',
@@ -1199,10 +1464,10 @@ class q extends h {
     const {
         isExpanded: t,
         currentOptionIndex: e,
-        selectedOptionElement: n,
+        selectedOptionElement: s,
       } = this.state,
-      s = n.textContent.trim();
-    ((this.buttonElement.textContent = s),
+      o = s.textContent.trim();
+    ((this.buttonElement.textContent = o),
       this.buttonElement.classList.toggle(this.stateClasses.isExpanded, t),
       this.buttonElement.setAttribute(this.stateAttributes.ariaExpanded, t),
       this.buttonElement.setAttribute(
@@ -1210,12 +1475,12 @@ class q extends h {
         this.optionElements[e].id,
       ),
       this.dropdownElement.classList.toggle(this.stateClasses.isExpanded, t),
-      this.optionElements.forEach((o, r) => {
-        const a = r === e,
-          l = o === n;
-        (o.classList.toggle(this.stateClasses.isCurrent, a),
-          o.classList.toggle(this.stateClasses.isSelected, l),
-          o.setAttribute(this.stateAttributes.ariaSelected, l));
+      this.optionElements.forEach((n, a) => {
+        const r = a === e,
+          l = n === s;
+        (n.classList.toggle(this.stateClasses.isCurrent, r),
+          n.classList.toggle(this.stateClasses.isSelected, l),
+          n.setAttribute(this.stateAttributes.ariaSelected, l));
       }));
   }
   syncNativeControl() {
@@ -1241,18 +1506,18 @@ class q extends h {
   }
   fixDropdownPosition() {
     const t = document.documentElement.clientWidth,
-      { width: e, x: n } = this.buttonElement.getBoundingClientRect(),
-      s = n + e / 2 < t / 2;
+      { width: e, x: s } = this.buttonElement.getBoundingClientRect(),
+      o = s + e / 2 < t / 2;
     (this.dropdownElement.classList.toggle(
       this.stateClasses.isOnTheLeftSide,
-      s,
+      o,
     ),
       this.dropdownElement.classList.toggle(
         this.stateClasses.isOnTheRightSide,
-        !s,
+        !o,
       ));
   }
-  updateTabIndexes(t = g.mobile.matches) {
+  updateTabIndexes(t = b.mobile.matches) {
     ((this.originalControlElement.tabIndex = t ? 0 : -1),
       (this.buttonElement.tabIndex = t ? -1 : 0));
   }
@@ -1266,15 +1531,15 @@ class q extends h {
   };
   onClick = (t) => {
     const { target: e } = t,
-      n = e === this.buttonElement,
-      s = e.closest(this.selectors.dropdown) !== this.dropdownElement;
-    if (!n && s) {
+      s = e === this.buttonElement,
+      o = e.closest(this.selectors.dropdown) !== this.dropdownElement;
+    if (!s && o) {
       this.collapse();
       return;
     }
     if (e.matches(this.selectors.option)) {
-      const o = this.optionElements.indexOf(e);
-      ((this.state.currentOptionIndex = o),
+      const n = this.optionElements.indexOf(e);
+      ((this.state.currentOptionIndex = n),
         (this.state.selectedOptionElement = e),
         this.syncNativeControl(),
         this.collapse());
@@ -1327,7 +1592,7 @@ class q extends h {
       (this.state.currentOptionIndex = t));
   };
   bindEvents() {
-    (g.mobile.addEventListener('change', this.onMobileMatchMediaChange),
+    (b.mobile.addEventListener('change', this.onMobileMatchMediaChange),
       this.buttonElement.addEventListener('click', this.onButtonClick),
       document.addEventListener('click', this.onClick),
       this.rootElement.addEventListener('keydown', this.onKeyDown),
@@ -1337,27 +1602,27 @@ class q extends h {
       ));
   }
 }
-class F {
+class Y {
   constructor() {
     ((this.selects = []), this.init());
   }
   init() {
-    document.querySelectorAll(J).forEach((t) => {
-      this.selects.push(new q(t));
+    document.querySelectorAll(N).forEach((t) => {
+      this.selects.push(new U(t));
     });
   }
 }
-const K = {
+const z = {
   'tab-1': 'all',
   'tab-2': 'htmlcss',
   'tab-3': 'javascript',
   'tab-4': 'react',
   'tab-5': 'vue',
 };
-class N extends _ {
+class W extends R {
   constructor() {
     (super(),
-      (this.selectCollection = new F()),
+      (this.selectCollection = new Y()),
       (this.searchInput = document.querySelector('[data-js-portfolio-search]')),
       (this.tabs = document.querySelector('[data-js-tabs]')),
       this.initSearch(),
@@ -1375,29 +1640,77 @@ class N extends _ {
     const t = this.tabs.querySelectorAll('[data-js-tabs-button]');
     t.forEach((e) => {
       e.addEventListener('click', () => {
-        const n = K[e.id] ?? 'all';
-        (this.setFilter('tab', n), this.setActiveTab(e, t));
+        const s = z[e.id] ?? 'all';
+        (this.setFilter('tab', s), this.setActiveTab(e, t));
       });
     });
   }
   setActiveTab(t, e) {
-    e.forEach((n) => {
-      const s = n === t;
-      (n.classList.toggle('is-active', s),
-        n.setAttribute('aria-selected', s),
-        (n.tabIndex = s ? 0 : -1));
+    e.forEach((s) => {
+      const o = s === t;
+      (s.classList.toggle('is-active', o),
+        s.setAttribute('aria-selected', o),
+        (s.tabIndex = o ? 0 : -1));
     });
   }
   initSelects() {
     this.selectCollection.selects.forEach((t) => {
       const e = t.rootElement.dataset.jsPortfolioFilter;
       e &&
-        t.originalControlElement.addEventListener('change', (n) => {
-          this.setFilter(e, n.target.value);
+        t.originalControlElement.addEventListener('change', (s) => {
+          this.setFilter(e, s.target.value);
         });
     });
   }
 }
+function G() {
+  document.addEventListener('click', (i) => {
+    const t = i.target.closest('[data-popup-link]');
+    if (!t) return;
+    const e = document.querySelector('[data-popup-content]');
+    if (!e) return;
+    const s = t.dataset.title,
+      o = t.dataset.image,
+      n = t.dataset.tech.split(',').map((h) => h.trim()),
+      a = t.dataset.year,
+      r = t.dataset.github,
+      l = t.dataset.deploy,
+      c = n
+        .map(
+          (h, C) =>
+            `<span class="product-popup__tech-item" style="--delay:${C * 50}ms">${h}</span>`,
+        )
+        .join(' ');
+    ((e.innerHTML = `
+    <div class="product-popup">
+      <div class="product-popup__image">
+        <img
+          src="${o}"
+          alt="${s}"
+          class="product-popup__img"
+          height="400"
+          width="400"
+          loading="lazy"
+        />
+      </div>
+      <div class="product-popup__inner">
+        <h3 class="product-popup__title">${s}</h3>
+        <div class="product-popup__tech">Tech: ${c}</div>
+        <div class="product-popup__year">Year: ${a}</div>
+        <div class="product-popup__links">
+          <a href="${r}" class="tabs__button" target="_blank">Github</a>
+          <a href="${l}" class="tabs__button" target="_blank">Deploy</a>
+        </div>
+      </div>
+    </div>
+  `),
+      setTimeout(() => {
+        document.querySelectorAll('.product-popup__tech-item').forEach((h) => {
+          h.classList.add('visible');
+        });
+      }, 150));
+  });
+}
 window.addEventListener('DOMContentLoaded', () => {
-  (f(), new H(), I(), new k(), new P(), new B(), new N());
+  (T(), new _(), B(), new P(), new O(), new F(), new q(), new W(), G());
 });

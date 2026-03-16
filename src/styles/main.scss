@@ -14,6 +14,7 @@
 @use '@components/spollers/spollers';
 @use '@components/scroller/scroller';
 @use '@components/tabs/tabs';
+@use '@components/popup/popup';
 @use 'blocks/page';
 @use 'blocks/common';
 @use 'blocks/items';
@@ -25,3 +26,4 @@
 @use '@sections/skills/skills';
 @use '@sections/portfolio/portfolio';
 @use '@sections/portfolio/portfolio-controls/portfolio-controls';
+@use '@sections/portfolio/product-popup/product-popup';
