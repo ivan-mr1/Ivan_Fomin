@@ -8,7 +8,7 @@ import scroller from '@components/scroller/scroller';
 import TabsCollection from '@components/tabs/Tabs';
 import Popup from '@components/popup/popup';
 import PortfolioController from '@sections/portfolio/PortfolioController';
-import productPopup from '@sections/portfolio/product-popup/ProductPopup';
+import productPopup from '@sections/portfolio/product-popup/productPopup';
 
 window.addEventListener('DOMContentLoaded', () => {
   pageNavigation();
