@@ -65,7 +65,7 @@ const L = () => d,
       t = parseFloat(getComputedStyle(document.documentElement).fontSize);
     return i / t + 'rem';
   },
-  S = (i = '') => {
+  v = (i = '') => {
     (k().forEach((e) => {
       e.style.paddingRight = i;
     }),
@@ -77,17 +77,17 @@ const L = () => d,
   M = () => {
     document.documentElement.style.removeProperty('--scrollbar-width');
   },
-  v = (i = 500) => {
+  S = (i = 500) => {
     if (!d) return;
     const t = x();
-    (S(t),
+    (v(t),
       A(t),
       document.documentElement.setAttribute('data-scroll-lock', ''),
       y(i));
   },
   f = (i = 500) => {
     d &&
-      (S(''),
+      (v(''),
       M(),
       document.documentElement.removeAttribute('data-scroll-lock'),
       y(i));
@@ -141,7 +141,7 @@ class P {
     ((this.isMenuOpen = t),
       this.burgerButtonElement?.classList.toggle(this.stateClasses.isActive, t),
       this.menuElement?.classList.toggle(this.stateClasses.isActive, t),
-      t ? v() : f(),
+      t ? S() : f(),
       t &&
         (this.rootElement.classList.remove(this.stateClasses.isHidden),
         this.updateHeights()),
@@ -651,7 +651,7 @@ class j {
     (document.removeEventListener('click', this.handleClick), this.stop());
   };
 }
-class q {
+class V {
   selectors = {
     root: '[data-popup]',
     openButton: '[data-popup-link]',
@@ -752,7 +752,7 @@ class q {
       e.classList.add(this.stateClasses.isVisible),
       e.setAttribute('aria-hidden', 'false'),
       document.documentElement.setAttribute(this.stateAttrs.bodyActive, ''),
-      this.options.bodyLock && v(),
+      this.options.bodyLock && S(),
       setTimeout(() => this.focusTrap(), this.config.focusTrapDelay));
   };
   close = (t = this.activePopup) => {
@@ -859,7 +859,7 @@ p.TAB_TECH_MAP = {
   react: ['React'],
   vue: ['Vue.js'],
 };
-class V {
+class q {
   classes = {
     item: 'portfolio__item',
     link: 'portfolio__link',
@@ -990,6 +990,17 @@ const J = [
     pageType: 'landing',
     year: '2026',
     techStack: ['HTML', 'Vue.js', 'Tailwind', 'Vite'],
+  },
+  {
+    id: 35,
+    name: 'vue movies',
+    img: 'vue-movie.webp',
+    github: 'https://github.com/ivan-mr1/vue-movies',
+    deploy: 'https://vue-movies-lemon.vercel.app/',
+    category: 'landing',
+    pageType: 'multi-page',
+    year: '2025',
+    techStack: ['HTML', 'SCSS', 'Vue.js', 'Pinia', 'Axios', 'REST API', 'Vite'],
   },
   {
     id: 3,
@@ -1377,7 +1388,7 @@ class g extends p {
     (this.increaseVisibleCount(), this.render());
   }
   createProjectCard(t) {
-    return new V(t).renderElement();
+    return new q(t).renderElement();
   }
   createShowMoreButton() {
     return (
@@ -1712,5 +1723,5 @@ function G() {
   });
 }
 window.addEventListener('DOMContentLoaded', () => {
-  (T(), new _(), B(), new P(), new O(), new F(), new q(), new W(), G());
+  (T(), new _(), B(), new P(), new O(), new F(), new V(), new W(), G());
 });
