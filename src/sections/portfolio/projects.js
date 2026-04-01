@@ -22,6 +22,17 @@ const projects = [
     techStack: ['HTML', 'Vue.js', 'Tailwind', 'Vite'],
   },
   {
+    id: 35,
+    name: 'vue movies',
+    img: 'vue-movie.webp',
+    github: 'https://github.com/ivan-mr1/vue-movies',
+    deploy: 'https://vue-movies-lemon.vercel.app/',
+    category: 'landing',
+    pageType: 'multi-page',
+    year: '2025',
+    techStack: ['HTML', 'SCSS', 'Vue.js', 'Pinia', 'Axios', 'REST API', 'Vite'],
+  },
+  {
     id: 3,
     name: 'mk ai landing',
     img: 'ai-landing.webp',
