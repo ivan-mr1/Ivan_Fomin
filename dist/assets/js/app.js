@@ -53,7 +53,7 @@ function T() {
 }
 let d = !0;
 const L = () => d,
-  y = (i) => {
+  b = (i) => {
     ((d = !1),
       setTimeout(() => {
         d = !0;
@@ -65,7 +65,7 @@ const L = () => d,
       t = parseFloat(getComputedStyle(document.documentElement).fontSize);
     return i / t + 'rem';
   },
-  v = (i = '') => {
+  S = (i = '') => {
     (k().forEach((e) => {
       e.style.paddingRight = i;
     }),
@@ -74,25 +74,25 @@ const L = () => d,
   A = (i) => {
     document.documentElement.style.setProperty('--scrollbar-width', i);
   },
-  M = () => {
+  P = () => {
     document.documentElement.style.removeProperty('--scrollbar-width');
   },
-  S = (i = 500) => {
+  v = (i = 500) => {
     if (!d) return;
     const t = x();
-    (v(t),
+    (S(t),
       A(t),
       document.documentElement.setAttribute('data-scroll-lock', ''),
-      y(i));
+      b(i));
   },
   f = (i = 500) => {
     d &&
-      (v(''),
-      M(),
+      (S(''),
+      P(),
       document.documentElement.removeAttribute('data-scroll-lock'),
-      y(i));
+      b(i));
   };
-class P {
+class M {
   hiddenHeader = !0;
   selectors = {
     root: '[data-header]',
@@ -141,7 +141,7 @@ class P {
     ((this.isMenuOpen = t),
       this.burgerButtonElement?.classList.toggle(this.stateClasses.isActive, t),
       this.menuElement?.classList.toggle(this.stateClasses.isActive, t),
-      t ? S() : f(),
+      t ? v() : f(),
       t &&
         (this.rootElement.classList.remove(this.stateClasses.isHidden),
         this.updateHeights()),
@@ -559,7 +559,7 @@ class F {
     });
   }
 }
-class j {
+class V {
   selectors = {
     trigger: '[data-youtube-link]',
     container: '[data-youtube-container]',
@@ -651,7 +651,7 @@ class j {
     (document.removeEventListener('click', this.handleClick), this.stop());
   };
 }
-class V {
+class j {
   selectors = {
     root: '[data-popup]',
     openButton: '[data-popup-link]',
@@ -676,7 +676,7 @@ class V {
     };
     ((this.options = { ...e, ...t, hash: { ...e.hash, ...t?.hash } }),
       (this.youtube = this.options.enableYoutube
-        ? new j({
+        ? new V({
             youtubeAttr: this.options.youtubeAttr,
             autoplay: this.options.autoplay,
             standalone: !1,
@@ -752,7 +752,7 @@ class V {
       e.classList.add(this.stateClasses.isVisible),
       e.setAttribute('aria-hidden', 'false'),
       document.documentElement.setAttribute(this.stateAttrs.bodyActive, ''),
-      this.options.bodyLock && S(),
+      this.options.bodyLock && v(),
       setTimeout(() => this.focusTrap(), this.config.focusTrapDelay));
   };
   close = (t = this.activePopup) => {
@@ -968,7 +968,7 @@ class $ {
       this.element.remove());
   }
 }
-const J = [
+const R = [
   {
     id: 1,
     name: 'optica store',
@@ -978,7 +978,16 @@ const J = [
     category: 'e-commerce',
     pageType: 'multi-page',
     year: '2026',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 2,
@@ -989,7 +998,15 @@ const J = [
     category: 'e-commerce',
     pageType: 'landing',
     year: '2026',
-    techStack: ['HTML', 'Vue.js', 'Tailwind', 'Vite'],
+    techStack: [
+      'HTML',
+      'Vue.js',
+      'Tailwind',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 35,
@@ -1000,7 +1017,42 @@ const J = [
     category: 'landing',
     pageType: 'multi-page',
     year: '2025',
-    techStack: ['HTML', 'SCSS', 'Vue.js', 'Pinia', 'Axios', 'REST API', 'Vite'],
+    techStack: [
+      'HTML',
+      'SCSS',
+      'Vue.js',
+      'Pinia',
+      'Axios',
+      'FSD',
+      'REST API',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
+  },
+  {
+    id: 36,
+    name: 'Vue glasses shop',
+    img: 'vue-glasses.webp',
+    github: 'https://github.com/ivan-mr1/vue-glasses-shop',
+    deploy: 'https://vue-glasses-shop.vercel.app/',
+    category: 'e-commerce',
+    pageType: 'multi-page',
+    year: '2025',
+    techStack: [
+      'HTML',
+      'SCSS',
+      'Vue.js',
+      'Pinia',
+      'Axios',
+      'FSD',
+      'REST API',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 3,
@@ -1011,7 +1063,16 @@ const J = [
     category: 'landing',
     pageType: 'multi-page',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 4,
@@ -1022,7 +1083,16 @@ const J = [
     category: 'landing',
     pageType: 'landing',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 5,
@@ -1044,7 +1114,16 @@ const J = [
     category: 'landing',
     pageType: 'multi-page',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 7,
@@ -1055,7 +1134,16 @@ const J = [
     category: 'e-commerce',
     pageType: 'multi-page',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 8,
@@ -1066,7 +1154,16 @@ const J = [
     category: 'e-commerce',
     pageType: 'landing',
     year: '2024',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 9,
@@ -1077,7 +1174,16 @@ const J = [
     category: 'landing',
     pageType: 'landing',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 10,
@@ -1088,7 +1194,16 @@ const J = [
     category: 'landing',
     pageType: 'landing',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 11,
@@ -1297,7 +1412,17 @@ const J = [
     category: 'to-do-list',
     pageType: 'multi-page',
     year: '2026',
-    techStack: ['HTML', 'CSS', 'SCSS', 'React', 'CSS modules', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'React',
+      'CSS modules',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 30,
@@ -1308,7 +1433,15 @@ const J = [
     category: 'e-commerce',
     pageType: 'landing',
     year: '2026',
-    techStack: ['HTML', 'React', 'Ant Design', 'Vite'],
+    techStack: [
+      'HTML',
+      'React',
+      'Ant Design',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 31,
@@ -1319,7 +1452,17 @@ const J = [
     category: 'weather',
     pageType: 'landing',
     year: '2026',
-    techStack: ['HTML', 'Vue.js', 'Tailwind', 'Vite'],
+    techStack: [
+      'HTML',
+      'Vue.js',
+      'Tailwind',
+      'Axios',
+      'Pinia',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 32,
@@ -1352,12 +1495,21 @@ const J = [
     category: 'landing',
     pageType: 'landing',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
 ];
 class g extends p {
   constructor(t) {
-    (super(J),
+    (super(R),
       (this.rootElement = t),
       (this.filters.tab = t.dataset.portfolio || 'all'),
       (this.controlsContainer = null),
@@ -1414,7 +1566,7 @@ class g extends p {
     } else this.showMoreButton && this.showMoreButton.hide();
   }
 }
-class R extends g {
+class J extends g {
   constructor() {
     (super(document.createElement('div')), (this.portfolios = []), this.init());
   }
@@ -1429,7 +1581,7 @@ class R extends g {
   }
 }
 const K = (i) => i / 16,
-  b = { mobile: window.matchMedia(`(width <= ${K(767.98)}rem)`) },
+  y = { mobile: window.matchMedia(`(width <= ${K(767.98)}rem)`) },
   N = '[data-js-select]';
 class U extends u {
   selectors = {
@@ -1528,7 +1680,7 @@ class U extends u {
         !o,
       ));
   }
-  updateTabIndexes(t = b.mobile.matches) {
+  updateTabIndexes(t = y.mobile.matches) {
     ((this.originalControlElement.tabIndex = t ? 0 : -1),
       (this.buttonElement.tabIndex = t ? -1 : 0));
   }
@@ -1603,7 +1755,7 @@ class U extends u {
       (this.state.currentOptionIndex = t));
   };
   bindEvents() {
-    (b.mobile.addEventListener('change', this.onMobileMatchMediaChange),
+    (y.mobile.addEventListener('change', this.onMobileMatchMediaChange),
       this.buttonElement.addEventListener('click', this.onButtonClick),
       document.addEventListener('click', this.onClick),
       this.rootElement.addEventListener('keydown', this.onKeyDown),
@@ -1630,7 +1782,7 @@ const z = {
   'tab-4': 'react',
   'tab-5': 'vue',
 };
-class W extends R {
+class W extends J {
   constructor() {
     (super(),
       (this.selectCollection = new Y()),
@@ -1723,5 +1875,5 @@ function G() {
   });
 }
 window.addEventListener('DOMContentLoaded', () => {
-  (T(), new _(), B(), new P(), new O(), new F(), new V(), new W(), G());
+  (T(), new _(), B(), new M(), new O(), new F(), new j(), new W(), G());
 });
