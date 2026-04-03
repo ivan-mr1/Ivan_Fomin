@@ -53,7 +53,7 @@ function T() {
 }
 let d = !0;
 const L = () => d,
-  y = (i) => {
+  b = (i) => {
     ((d = !1),
       setTimeout(() => {
         d = !0;
@@ -74,7 +74,7 @@ const L = () => d,
   A = (i) => {
     document.documentElement.style.setProperty('--scrollbar-width', i);
   },
-  M = () => {
+  P = () => {
     document.documentElement.style.removeProperty('--scrollbar-width');
   },
   v = (i = 500) => {
@@ -83,16 +83,16 @@ const L = () => d,
     (S(t),
       A(t),
       document.documentElement.setAttribute('data-scroll-lock', ''),
-      y(i));
+      b(i));
   },
   f = (i = 500) => {
     d &&
       (S(''),
-      M(),
+      P(),
       document.documentElement.removeAttribute('data-scroll-lock'),
-      y(i));
+      b(i));
   };
-class P {
+class M {
   hiddenHeader = !0;
   selectors = {
     root: '[data-header]',
@@ -559,7 +559,7 @@ class F {
     });
   }
 }
-class j {
+class V {
   selectors = {
     trigger: '[data-youtube-link]',
     container: '[data-youtube-container]',
@@ -651,7 +651,7 @@ class j {
     (document.removeEventListener('click', this.handleClick), this.stop());
   };
 }
-class q {
+class j {
   selectors = {
     root: '[data-popup]',
     openButton: '[data-popup-link]',
@@ -676,7 +676,7 @@ class q {
     };
     ((this.options = { ...e, ...t, hash: { ...e.hash, ...t?.hash } }),
       (this.youtube = this.options.enableYoutube
-        ? new j({
+        ? new V({
             youtubeAttr: this.options.youtubeAttr,
             autoplay: this.options.autoplay,
             standalone: !1,
@@ -859,7 +859,7 @@ p.TAB_TECH_MAP = {
   react: ['React'],
   vue: ['Vue.js'],
 };
-class V {
+class q {
   classes = {
     item: 'portfolio__item',
     link: 'portfolio__link',
@@ -968,7 +968,7 @@ class $ {
       this.element.remove());
   }
 }
-const J = [
+const R = [
   {
     id: 1,
     name: 'optica store',
@@ -978,7 +978,16 @@ const J = [
     category: 'e-commerce',
     pageType: 'multi-page',
     year: '2026',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 2,
@@ -989,7 +998,61 @@ const J = [
     category: 'e-commerce',
     pageType: 'landing',
     year: '2026',
-    techStack: ['HTML', 'Vue.js', 'Tailwind', 'Vite'],
+    techStack: [
+      'HTML',
+      'Vue.js',
+      'Tailwind',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
+  },
+  {
+    id: 35,
+    name: 'vue movies',
+    img: 'vue-movie.webp',
+    github: 'https://github.com/ivan-mr1/vue-movies',
+    deploy: 'https://vue-movies-lemon.vercel.app/',
+    category: 'landing',
+    pageType: 'multi-page',
+    year: '2025',
+    techStack: [
+      'HTML',
+      'SCSS',
+      'Vue.js',
+      'Pinia',
+      'Axios',
+      'FSD',
+      'REST API',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
+  },
+  {
+    id: 36,
+    name: 'Vue glasses shop',
+    img: 'vue-glasses.webp',
+    github: 'https://github.com/ivan-mr1/vue-glasses-shop',
+    deploy: 'https://vue-glasses-shop.vercel.app/',
+    category: 'e-commerce',
+    pageType: 'multi-page',
+    year: '2025',
+    techStack: [
+      'HTML',
+      'SCSS',
+      'Vue.js',
+      'Pinia',
+      'Axios',
+      'FSD',
+      'REST API',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 3,
@@ -1000,7 +1063,16 @@ const J = [
     category: 'landing',
     pageType: 'multi-page',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 4,
@@ -1011,7 +1083,16 @@ const J = [
     category: 'landing',
     pageType: 'landing',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 5,
@@ -1033,7 +1114,16 @@ const J = [
     category: 'landing',
     pageType: 'multi-page',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 7,
@@ -1044,7 +1134,16 @@ const J = [
     category: 'e-commerce',
     pageType: 'multi-page',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 8,
@@ -1055,7 +1154,16 @@ const J = [
     category: 'e-commerce',
     pageType: 'landing',
     year: '2024',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 9,
@@ -1066,7 +1174,16 @@ const J = [
     category: 'landing',
     pageType: 'landing',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 10,
@@ -1077,7 +1194,16 @@ const J = [
     category: 'landing',
     pageType: 'landing',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 11,
@@ -1286,7 +1412,17 @@ const J = [
     category: 'to-do-list',
     pageType: 'multi-page',
     year: '2026',
-    techStack: ['HTML', 'CSS', 'SCSS', 'React', 'CSS modules', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'React',
+      'CSS modules',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 30,
@@ -1297,7 +1433,15 @@ const J = [
     category: 'e-commerce',
     pageType: 'landing',
     year: '2026',
-    techStack: ['HTML', 'React', 'Ant Design', 'Vite'],
+    techStack: [
+      'HTML',
+      'React',
+      'Ant Design',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 31,
@@ -1308,7 +1452,17 @@ const J = [
     category: 'weather',
     pageType: 'landing',
     year: '2026',
-    techStack: ['HTML', 'Vue.js', 'Tailwind', 'Vite'],
+    techStack: [
+      'HTML',
+      'Vue.js',
+      'Tailwind',
+      'Axios',
+      'Pinia',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
   {
     id: 32,
@@ -1341,12 +1495,21 @@ const J = [
     category: 'landing',
     pageType: 'landing',
     year: '2025',
-    techStack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'Vite'],
+    techStack: [
+      'HTML',
+      'CSS',
+      'SCSS',
+      'JavaScript',
+      'Vite',
+      'Eslint',
+      'Stylelint',
+      'Prettier',
+    ],
   },
 ];
 class g extends p {
   constructor(t) {
-    (super(J),
+    (super(R),
       (this.rootElement = t),
       (this.filters.tab = t.dataset.portfolio || 'all'),
       (this.controlsContainer = null),
@@ -1377,7 +1540,7 @@ class g extends p {
     (this.increaseVisibleCount(), this.render());
   }
   createProjectCard(t) {
-    return new V(t).renderElement();
+    return new q(t).renderElement();
   }
   createShowMoreButton() {
     return (
@@ -1403,7 +1566,7 @@ class g extends p {
     } else this.showMoreButton && this.showMoreButton.hide();
   }
 }
-class R extends g {
+class J extends g {
   constructor() {
     (super(document.createElement('div')), (this.portfolios = []), this.init());
   }
@@ -1418,7 +1581,7 @@ class R extends g {
   }
 }
 const K = (i) => i / 16,
-  b = { mobile: window.matchMedia(`(width <= ${K(767.98)}rem)`) },
+  y = { mobile: window.matchMedia(`(width <= ${K(767.98)}rem)`) },
   N = '[data-js-select]';
 class U extends u {
   selectors = {
@@ -1517,7 +1680,7 @@ class U extends u {
         !o,
       ));
   }
-  updateTabIndexes(t = b.mobile.matches) {
+  updateTabIndexes(t = y.mobile.matches) {
     ((this.originalControlElement.tabIndex = t ? 0 : -1),
       (this.buttonElement.tabIndex = t ? -1 : 0));
   }
@@ -1592,7 +1755,7 @@ class U extends u {
       (this.state.currentOptionIndex = t));
   };
   bindEvents() {
-    (b.mobile.addEventListener('change', this.onMobileMatchMediaChange),
+    (y.mobile.addEventListener('change', this.onMobileMatchMediaChange),
       this.buttonElement.addEventListener('click', this.onButtonClick),
       document.addEventListener('click', this.onClick),
       this.rootElement.addEventListener('keydown', this.onKeyDown),
@@ -1619,7 +1782,7 @@ const z = {
   'tab-4': 'react',
   'tab-5': 'vue',
 };
-class W extends R {
+class W extends J {
   constructor() {
     (super(),
       (this.selectCollection = new Y()),
@@ -1712,5 +1875,5 @@ function G() {
   });
 }
 window.addEventListener('DOMContentLoaded', () => {
-  (T(), new _(), B(), new P(), new O(), new F(), new q(), new W(), G());
+  (T(), new _(), B(), new M(), new O(), new F(), new j(), new W(), G());
 });
