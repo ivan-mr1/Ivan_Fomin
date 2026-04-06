@@ -1,0 +1,2047 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ivan F portfolio - web development, front-end."
+    />
+    <title>Ivan Fomin Portfolio</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./shared/assets/img/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./shared/assets/img/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./shared/assets/img/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./shared/assets/img/favicon/site.webmanifest" />
+
+    <link
+      rel="preload"
+      href="./shared/assets/fonts/Roboto-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./shared/assets/fonts/Roboto-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./shared/assets/fonts/Roboto-ExtraBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./shared/assets/fonts/Roboto-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <script type="module" src="./assets/js/app.js"></script>
+    <link rel="stylesheet" href="./assets/css/app.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header class="header" data-header data-right-padding>
+        <div class="header__container">
+          <div data-header-overlay class="header__overlay">
+            <nav class="header__menu menu" data-header-menu>
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a href="#" class="menu__link hover-link" data-goto=".about"
+                    >ABOUT ME</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a
+                    href="#"
+                    class="menu__link hover-link"
+                    data-goto=".portfolio"
+                    >PORTFOLIO</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="#" class="menu__link hover-link" data-goto=".resume"
+                    >RESUME</a
+                  >
+                </li>
+                <li class="menu__item">
+                  <a href="#" class="menu__link hover-link" data-goto=".skills"
+                    >SKILLS</a
+                  >
+                </li>
+
+                <li class="menu__item">
+                  <a href="#" class="menu__link hover-link" data-goto=".footer"
+                    >CONTACTS</a
+                  >
+                </li>
+              </ul>
+              <div class="header__soc1al soc1al visible-mobile">
+                <ul class="soc1al__list">
+                  <li class="soc1al__item">
+                    <a
+                      href="https://www.linkedin.com/in/fomin-ivan/"
+                      class="soc1al__link"
+                      target="_blank"
+                      aria-label="linkedin"
+                      title="linkedin"
+                    >
+                      <svg
+                        width="44"
+                        height="44"
+                        viewBox="0 0 16 16"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill="#0A66C2"
+                          d="M12.225 12.225h-1.778V9.44c0-.664-.012-1.519-.925-1.519-.926 0-1.068.724-1.068 1.47v2.834H6.676V6.498h1.707v.783h.024c.348-.594.996-.95 1.684-.925 1.802 0 2.135 1.185 2.135 2.728l-.001 3.14zM4.67 5.715a1.037 1.037 0 01-1.032-1.031c0-.566.466-1.032 1.032-1.032.566 0 1.031.466 1.032 1.032 0 .566-.466 1.032-1.032 1.032zm.889 6.51h-1.78V6.498h1.78v5.727zM13.11 2H2.885A.88.88 0 002 2.866v10.268a.88.88 0 00.885.866h10.226a.882.882 0 00.889-.866V2.865a.88.88 0 00-.889-.864z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="soc1al__item">
+                    <a
+                      href="https://github.com/ivan-mr1"
+                      class="soc1al__link"
+                      target="_blank"
+                      aria-label="Github"
+                      title="Github"
+                    >
+                      <svg
+                        width="44"
+                        height="44"
+                        viewBox="0 0 48 48"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill="#3E75C3"
+                          d="M24 0C10.75 0 0 10.79 0 24.1c0 10.64 6.88 19.67 16.42 22.86 1.2.22 1.64-.52 1.64-1.16 0-.57-.02-2.08-.03-4.09-6.68 1.46-8.09-3.23-8.09-3.23-1.09-2.79-2.66-3.53-2.66-3.53-2.18-1.49.17-1.46.17-1.46 2.41.17 3.68 2.48 3.68 2.48 2.14 3.68 5.62 2.62 6.99 2 .22-1.56.84-2.62 1.52-3.23-5.33-.61-10.93-2.67-10.93-11.9 0-2.63.93-4.78 2.47-6.47-.25-.61-1.08-3.05.23-6.37 0 0 2-.64 6.58 2.48 1.92-.54 3.97-.81 6.03-.82 2.06.01 4.12.28 6.05.82 4.57-3.12 6.57-2.48 6.57-2.48 1.32 3.32.49 5.76.24 6.37 1.55 1.69 2.47 3.84 2.47 6.47 0 9.27-5.61 11.32-10.96 11.93.88.76 1.67 2.27 1.67 4.57 0 3.23-.03 5.82-.03 6.61 0 .64.43 1.42 1.66 1.18C41.13 43.76 48 34.74 48 24.1 48 10.79 37.25 0 24 0z"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="soc1al__item">
+                    <a
+                      href="https://t.me/ivan_mr1"
+                      class="soc1al__link"
+                      target="_blank"
+                      aria-label="Telegram"
+                      title="Telegram"
+                    >
+                      <svg
+                        width="44"
+                        height="44"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          width="512"
+                          height="512"
+                          rx="15%"
+                          fill="#37aee2"
+                        />
+                        <path
+                          fill="#c8daea"
+                          d="M199 404c-11 0-10-4-13-14l-32-105 245-144"
+                        />
+                        <path
+                          fill="#a9c9dd"
+                          d="M199 404c7 0 11-4 16-8l45-43-56-34"
+                        />
+                        <path
+                          fill="#f6fbfe"
+                          d="M204 319l135 99c14 9 26 4 30-14l55-258c5-22-9-32-24-25L79 245c-21 8-21 21-4 26l83 26 190-121c9-5 17-3 11 4"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="soc1al__item">
+                    <a
+                      href="https://wa.me/380668752517"
+                      class="soc1al__link"
+                      target="_blank"
+                      aria-label="whatsapp"
+                      title="whatsapp"
+                    >
+                      <svg
+                        width="44"
+                        height="44"
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          width="512"
+                          height="512"
+                          rx="15%"
+                          fill="#25d366"
+                        />
+                        <path
+                          fill="#25d366"
+                          stroke="#ffffff"
+                          stroke-width="26"
+                          d="M123 393l14-65a138 138 0 1150 47z"
+                        />
+                        <path
+                          fill="#ffffff"
+                          d="M308 273c-3-2-6-3-9 1l-12 16c-3 2-5 3-9 1-15-8-36-17-54-47-1-4 1-6 3-8l9-14c2-2 1-4 0-6l-12-29c-3-8-6-7-9-7h-8c-2 0-6 1-10 5-22 22-13 53 3 73 3 4 23 40 66 59 32 14 39 12 48 10 11-1 22-10 27-19 1-3 6-16 2-18"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+
+            <div class="header__actions">
+              <a
+                target="_blank"
+                href="https://github.com/ivan-mr1"
+                class="header__github"
+                aria-label="Open github"
+                title="Open github"
+              >
+                <img
+                  src="./shared/assets/img/soc1al/github.svg"
+                  alt="github"
+                  class="header__github-img"
+                  width="48"
+                  height="48"
+                />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.codewars.com/users/ivan-mr1"
+                class="header__codewars"
+                aria-label="Open codewars"
+                title="Open codewars"
+              >
+                <img
+                  src="./shared/assets/img/root/libs/codewars.svg"
+                  alt="Codewars"
+                  class="header__codewars-img"
+                  width="48"
+                  height="48"
+                />
+              </a>
+              <a
+                target="_blank"
+                href="/shared/assets/files/fomin_ivan_front-end.pdf"
+                class="button button--min header__button"
+                >CV</a
+              >
+            </div>
+          </div>
+          <button
+            type="button"
+            class="header__burger-button burger-button"
+            data-header-burger-btn
+            aria-label="Open or close menu"
+            title="Open or close menu"
+          >
+            <span class="burger-button__inner">
+              <span class="burger-button__line"></span>
+              <span class="burger-button__line"></span>
+              <span class="burger-button__line"></span>
+            </span>
+          </button>
+        </div>
+      </header>
+
+      <main class="page">
+        <section
+          class="parent-video-fon page__hero hero"
+          aria-labelledby="hero-title"
+        >
+          <div class="hero__container">
+            <div class="hero__body">
+              <div class="hero__subtitle">
+                <p>My name is Ivan F.</p>
+              </div>
+              <h1 class="hero__title" id="hero-title">
+                I am a web developer from Ukraine
+              </h1>
+              <div class="hero__buttons">
+                <a href="#" class="hero__button button" data-goto=".portfolio"
+                  >Portfolio</a
+                >
+                <a href="#" class="hero__button button" data-goto=".resume"
+                  >Resume</a
+                >
+              </div>
+            </div>
+          </div>
+          <video class="video-fon" autoplay muted loop>
+            <source type="video/mp4" src="./shared/assets/video/3.mp4" />
+          </video>
+          <button
+            type="button"
+            class="scroll-down-btn"
+            data-goto=".about"
+            title="scroll down"
+            aria-label="scroll-down"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="80"
+              viewBox="0 0 50 80"
+            >
+              <path
+                class="first-path"
+                fill="#FFFFFF"
+                d="M24.752,79.182c-0.397,0-0.752-0.154-1.06-0.463L2.207,57.234c-0.306-0.305-0.458-0.656-0.458-1.057
+        s0.152-0.752,0.458-1.059l2.305-2.305c0.309-0.309,0.663-0.461,1.06-0.461c0.398,0,0.752,0.152,1.061,0.461l18.119,18.119
+        l18.122-18.119c0.306-0.309,0.657-0.461,1.057-0.461c0.402,0,0.753,0.152,1.059,0.461l2.306,2.305
+        c0.308,0.307,0.461,0.658,0.461,1.059s-0.153,0.752-0.461,1.057L25.813,78.719C25.504,79.027,25.15,79.182,24.752,79.182z"
+              ></path>
+              <path
+                class="second-path"
+                fill="#FFFFFF"
+                d="M24.752,58.25c-0.397,0-0.752-0.154-1.06-0.463L2.207,36.303c-0.306-0.304-0.458-0.655-0.458-1.057
+        c0-0.4,0.152-0.752,0.458-1.058l2.305-2.305c0.309-0.308,0.663-0.461,1.06-0.461c0.398,0,0.752,0.153,1.061,0.461l18.119,18.12
+        l18.122-18.12c0.306-0.308,0.657-0.461,1.057-0.461c0.402,0,0.753,0.153,1.059,0.461l2.306,2.305
+        c0.308,0.306,0.461,0.657,0.461,1.058c0,0.401-0.153,0.753-0.461,1.057L25.813,57.787C25.504,58.096,25.15,58.25,24.752,58.25z"
+              ></path>
+            </svg>
+          </button>
+        </section>
+
+        <section class="page__about about" aria-labelledby="about-title">
+          <div class="about__container">
+            <div class="about__wrapper">
+              <div class="ibg about__image">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                      ./shared/assets/img/second/5-320.avif 320w,
+                      ./shared/assets/img/second/5-640.avif 640w
+                    "
+                    sizes="(max-width: 320px) 100vw, (max-width: 640px) 50vw, 640px"
+                  />
+                  <source
+                    type="image/webp"
+                    srcset="
+                      ./shared/assets/img/second/5-320.webp 320w,
+                      ./shared/assets/img/second/5-640.webp 640w
+                    "
+                    sizes="(max-width: 320px) 100vw, (max-width: 640px) 50vw, 640px"
+                  />
+                  <img
+                    src="./shared/assets/img/second/5-320.webp"
+                    alt="my photo"
+                    class="about__img"
+                    width="452"
+                    height="678"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </div>
+              <div class="about__descr">
+                <div class="about__header header-block">
+                  <div class="header-block__subtitle about__subtitle">
+                    About me
+                  </div>
+                  <h2
+                    class="header-block__title header-block__title-zero"
+                    id="about-title"
+                  >
+                    My name is Ivan
+                  </h2>
+                  <div class="header-block__line"></div>
+                </div>
+                <div class="about__text">
+                  <p>
+                    Front-End Developer specializing in JavaScript (ES6+),
+                    TypeScript, React, and Vue.js. Experienced in building 40+
+                    projects, including responsive interfaces and dynamic web
+                    applications with a focus on clean code, accessibility
+                    (A11y/WCAG), and high performance (Google PageSpeed 90+).
+                    Skilled in REST API integration and modern frontend
+                    architecture approaches such as Feature-Sliced Design and
+                    Atomic Design. Passionate about continuous learning,
+                    attention to detail, and creating scalable, user-friendly
+                    web interfaces.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="page__portfolio portfolio"
+          aria-labelledby="portfolio-title"
+        >
+          <div class="portfolio__container">
+            <div class="portfolio__header header-block header-block__center">
+              <div class="header-block__subtitle">Portfolio</div>
+              <h2 class="header-block__title" id="portfolio-title">My works</h2>
+              <div class="header-block__line"></div>
+            </div>
+            <div class="portfolio__controls controls">
+              <div class="controls__item">
+                <div class="field portfolio__search">
+                  <label class="field__label" for="search-tech"
+                    >Search project...</label
+                  >
+                  <input
+                    class="field__input"
+                    id="search-tech"
+                    placeholder=" "
+                    autocomplete="off"
+                    type="search"
+                    data-js-portfolio-search
+                  />
+                </div>
+              </div>
+
+              <div class="controls__item">
+                <div
+                  class="select"
+                  data-js-select
+                  data-js-portfolio-filter="category"
+                >
+                  <label
+                    class="select__label visually-hidden"
+                    id="category-select-label"
+                    for="category"
+                  >
+                    All categories
+                  </label>
+                  <select
+                    class="select__original-control field__control"
+                    id="category"
+                    tabindex="-1"
+                    data-js-select-original-control
+                  >
+                    <option value="all" selected>All categories</option>
+                    <option value="landing">Landing</option>
+                    <option value="e-commerce">E-commerce</option>
+                    <option value="to-do-list">To Do List</option>
+                    <option value="weather">Weather</option>
+                  </select>
+
+                  <div class="select__body">
+                    <div
+                      class="select__button field__control"
+                      tabindex="0"
+                      role="combobox"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-controls="category-dropdown"
+                      aria-labelledby="category-select-label"
+                      data-js-select-button
+                    >
+                      All categories
+                    </div>
+
+                    <div
+                      class="select__dropdown"
+                      id="category-dropdown"
+                      role="listbox"
+                      aria-labelledby="category-select-label"
+                      data-js-select-dropdown
+                    >
+                      <div
+                        class="select__option is-selected is-current"
+                        id="category-option-1"
+                        role="option"
+                        aria-selected="true"
+                        data-js-select-option
+                      >
+                        All categories
+                      </div>
+                      <div
+                        class="select__option"
+                        id="category-option-2"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        Landing
+                      </div>
+                      <div
+                        class="select__option"
+                        id="category-option-3"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        E-commerce
+                      </div>
+                      <div
+                        class="select__option"
+                        id="category-option-4"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        To Do List
+                      </div>
+                      <div
+                        class="select__option"
+                        id="category-option-5"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        Weather
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="controls__item">
+                <div
+                  class="select"
+                  data-js-select
+                  data-js-portfolio-filter="pageType"
+                >
+                  <label
+                    class="select__label visually-hidden"
+                    id="page-type-select-label"
+                    for="pageType"
+                  >
+                    All page types
+                  </label>
+                  <select
+                    class="select__original-control field__control"
+                    id="pageType"
+                    tabindex="-1"
+                    data-js-select-original-control
+                  >
+                    <option value="all" selected>All page types</option>
+                    <option value="landing">Landing</option>
+                    <option value="multi-page">Multi-page</option>
+                  </select>
+                  <div class="select__body">
+                    <div
+                      class="select__button field__control"
+                      tabindex="0"
+                      role="combobox"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-controls="page-type-select-dropdown"
+                      aria-labelledby="page-type-select-label"
+                      data-js-select-button
+                    >
+                      All page types
+                    </div>
+                    <div
+                      class="select__dropdown"
+                      id="page-type-select-dropdown"
+                      role="listbox"
+                      aria-labelledby="page-type-select-label"
+                      data-js-select-dropdown
+                    >
+                      <div
+                        class="select__option is-selected is-current"
+                        id="page-type-select-option-1"
+                        role="option"
+                        aria-selected="true"
+                        data-js-select-option
+                      >
+                        All page types
+                      </div>
+                      <div
+                        class="select__option"
+                        id="page-type-select-option-2"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        Landing
+                      </div>
+                      <div
+                        class="select__option"
+                        id="page-type-select-option-3"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        Multi-page
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="controls__item">
+                <div
+                  class="select"
+                  data-js-select
+                  data-js-portfolio-filter="year"
+                >
+                  <label
+                    class="select__label visually-hidden"
+                    id="year-select-label"
+                    for="year"
+                  >
+                    All years
+                  </label>
+                  <select
+                    class="select__original-control field__control"
+                    id="year"
+                    tabindex="-1"
+                    data-js-select-original-control
+                  >
+                    <option value="all" selected>All years</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                  </select>
+                  <div class="select__body">
+                    <div
+                      class="select__button field__control"
+                      tabindex="0"
+                      role="combobox"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-controls="year-select-dropdown"
+                      aria-labelledby="year-select-label"
+                      data-js-select-button
+                    >
+                      All years
+                    </div>
+                    <div
+                      class="select__dropdown"
+                      id="year-select-dropdown"
+                      role="listbox"
+                      aria-labelledby="year-select-label"
+                      data-js-select-dropdown
+                    >
+                      <div
+                        class="select__option is-selected is-current"
+                        id="year-select-option-1"
+                        role="option"
+                        aria-selected="true"
+                        data-js-select-option
+                      >
+                        All years
+                      </div>
+                      <div
+                        class="select__option"
+                        id="year-select-option-2"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        2026
+                      </div>
+                      <div
+                        class="select__option"
+                        id="year-select-option-3"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        2025
+                      </div>
+                      <div
+                        class="select__option"
+                        id="year-select-option-4"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        2024
+                      </div>
+                      <div
+                        class="select__option"
+                        id="year-select-option-5"
+                        role="option"
+                        aria-selected="false"
+                        data-js-select-option
+                      >
+                        2023
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section__body tabs" data-js-tabs>
+              <header class="tabs__header">
+                <div class="tabs__buttons" role="tablist">
+                  <button
+                    class="tabs__button is-active"
+                    id="tab-1"
+                    type="button"
+                    role="tab"
+                    aria-controls="tabpanel-1"
+                    data-js-tabs-button
+                    aria-selected="true"
+                  >
+                    All works
+                  </button>
+                  <button
+                    class="tabs__button"
+                    id="tab-2"
+                    type="button"
+                    role="tab"
+                    aria-controls="tabpanel-2"
+                    data-js-tabs-button
+                    aria-selected="false"
+                    tabindex="-1"
+                  >
+                    HTML + CSS
+                  </button>
+                  <button
+                    class="tabs__button"
+                    id="tab-3"
+                    type="button"
+                    role="tab"
+                    aria-controls="tabpanel-3"
+                    data-js-tabs-button
+                    aria-selected="false"
+                    tabindex="-1"
+                  >
+                    JavaScript
+                  </button>
+                  <button
+                    class="tabs__button"
+                    id="tab-4"
+                    type="button"
+                    role="tab"
+                    aria-controls="tabpanel-4"
+                    data-js-tabs-button
+                    aria-selected="false"
+                    tabindex="-1"
+                  >
+                    React
+                  </button>
+                  <button
+                    class="tabs__button"
+                    id="tab-5"
+                    type="button"
+                    role="tab"
+                    aria-controls="tabpanel-5"
+                    data-js-tabs-button
+                    aria-selected="false"
+                    tabindex="-1"
+                  >
+                    Vue.js
+                  </button>
+                </div>
+              </header>
+              <div class="tabs__body">
+                <div
+                  class="tabs__content is-active"
+                  id="tabpanel-1"
+                  role="tabpanel"
+                  aria-labelledby="tab-1"
+                  tabindex="0"
+                  data-js-tabs-content
+                >
+                  <ul class="portfolio__items" data-portfolio="all"></ul>
+                </div>
+                <div
+                  class="tabs__content"
+                  id="tabpanel-2"
+                  role="tabpanel"
+                  aria-labelledby="tab-2"
+                  tabindex="0"
+                  data-js-tabs-content
+                >
+                  <ul class="portfolio__items" data-portfolio="htmlcss"></ul>
+                </div>
+                <div
+                  class="tabs__content"
+                  id="tabpanel-3"
+                  role="tabpanel"
+                  aria-labelledby="tab-3"
+                  tabindex="0"
+                  data-js-tabs-content
+                >
+                  <ul class="portfolio__items" data-portfolio="javascript"></ul>
+                </div>
+                <div
+                  class="tabs__content"
+                  id="tabpanel-4"
+                  role="tabpanel"
+                  aria-labelledby="tab-4"
+                  tabindex="0"
+                  data-js-tabs-content
+                >
+                  <ul class="portfolio__items" data-portfolio="react"></ul>
+                </div>
+                <div
+                  class="tabs__content"
+                  id="tabpanel-5"
+                  role="tabpanel"
+                  aria-labelledby="tab-5"
+                  tabindex="0"
+                  data-js-tabs-content
+                >
+                  <ul class="portfolio__items" data-portfolio="vue"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page__resume resume" aria-labelledby="resume-title">
+          <div class="resume__container">
+            <div class="resume__header header-block header-block__center">
+              <div class="header-block__subtitle">Resume</div>
+              <h2 class="header-block__title" id="resume-title">My Resume</h2>
+              <div class="header-block__line"></div>
+            </div>
+            <div class="resume__wrapper">
+              <div class="resume__column">
+                <h3 class="resume__title">Education</h3>
+                <ul>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div class="item-resume__header">
+                          <h4 class="item-resume__title">
+                            Donetsk University of Economics and Law
+                          </h4>
+                          <div class="item-resume__subtitle">
+                            Bachelor's degree | Donetsk (2005-2009)
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item-resume__body">
+                        <p>
+                          Faculty of Economics and Entrepreneurship. Specialty
+                          Economist
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head item-resume__head-spoller">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div class="item-resume__header">
+                          <h4 class="item-resume__title">Stepik</h4>
+                        </div>
+                      </div>
+                      <div data-spollers class="item-resume__body spollers">
+                        <div class="spollers__item">
+                          <button
+                            tabindex="1"
+                            type="button"
+                            data-spoller
+                            class="item-resume__text spollers__title"
+                          >
+                            Web Development: HTML CSS (2022)
+                          </button>
+                          <div class="">
+                            <img
+                              src="./shared/assets/img/thirdSection3/stepik.webp"
+                              alt="stepik"
+                              width="482"
+                              height="340"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head item-resume__head-spoller">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/3.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div class="item-resume__header">
+                          <h4 class="item-resume__title">Udemy</h4>
+                        </div>
+                      </div>
+                      <div data-spollers class="item-resume__body spollers">
+                        <div class="spollers__item">
+                          <button
+                            tabindex="1"
+                            type="button"
+                            data-spoller
+                            class="item-resume__text spollers__title"
+                          >
+                            Web Development (2022)
+                          </button>
+                          <div class="">
+                            <img
+                              src="./shared/assets/img/thirdSection3/wed-developer-udemy.webp"
+                              alt="Web Development Udemy"
+                              width="482"
+                              height="340"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head item-resume__head-spoller">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/4.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div data-spollers class="spollers item-resume__header">
+                          <h4 class="item-resume__title">Udemy</h4>
+                        </div>
+                      </div>
+                      <div data-spollers class="item-resume__body spollers">
+                        <div class="spollers__item">
+                          <button
+                            tabindex="1"
+                            type="button"
+                            data-spoller
+                            class="item-resume__text spollers__title"
+                          >
+                            Complete Course on JavaScript + React (2023)
+                          </button>
+                          <div class="">
+                            <img
+                              src="./shared/assets/img/thirdSection3/js-react-udemy.webp"
+                              alt="Complete Course on JavaScript + React Udemy"
+                              width="482"
+                              height="340"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head item-resume__head-spoller">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/4.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div data-spollers class="spollers item-resume__header">
+                          <h4 class="item-resume__title">ITVDN</h4>
+                        </div>
+                      </div>
+                      <div data-spollers class="item-resume__body spollers">
+                        <div class="spollers__item">
+                          <button
+                            tabindex="1"
+                            type="button"
+                            data-spoller
+                            class="item-resume__text spollers__title"
+                          >
+                            JavaScript Starter
+                          </button>
+                          <div class="">
+                            <img
+                              src="./shared/assets/img/thirdSection3/js-starter.webp"
+                              alt="JavaScript Starter ITVDN"
+                              width="482"
+                              height="340"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head item-resume__head-spoller">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/4.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div data-spollers class="spollers item-resume__header">
+                          <h4 class="item-resume__title">ITVDN</h4>
+                        </div>
+                      </div>
+                      <div data-spollers class="item-resume__body spollers">
+                        <div class="spollers__item">
+                          <button
+                            tabindex="1"
+                            type="button"
+                            data-spoller
+                            class="item-resume__text spollers__title"
+                          >
+                            Git basics
+                          </button>
+                          <div class="">
+                            <img
+                              src="./shared/assets/img/thirdSection3/git1.webp"
+                              alt="Git ITVDN"
+                              width="482"
+                              height="340"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head item-resume__head-spoller">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/4.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div data-spollers class="spollers item-resume__header">
+                          <h4 class="item-resume__title">ITVDN</h4>
+                        </div>
+                      </div>
+                      <div data-spollers class="item-resume__body spollers">
+                        <div class="spollers__item">
+                          <button
+                            tabindex="1"
+                            type="button"
+                            data-spoller
+                            class="item-resume__text spollers__title"
+                          >
+                            React
+                          </button>
+                          <div class="">
+                            <img
+                              src="./shared/assets/img/thirdSection3/react1.webp"
+                              alt="React ITVDN"
+                              width="482"
+                              height="340"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head item-resume__head-spoller">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/4.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div data-spollers class="spollers item-resume__header">
+                          <h4 class="item-resume__title">ITVDN</h4>
+                        </div>
+                      </div>
+                      <div data-spollers class="item-resume__body spollers">
+                        <div class="spollers__item">
+                          <button
+                            tabindex="1"
+                            type="button"
+                            data-spoller
+                            class="item-resume__text spollers__title"
+                          >
+                            React Native
+                          </button>
+                          <div class="">
+                            <img
+                              src="./shared/assets/img/thirdSection3/react-native.webp"
+                              alt="React Native ITVDN"
+                              width="482"
+                              height="340"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head item-resume__head-spoller">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/4.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div data-spollers class="spollers item-resume__header">
+                          <h4 class="item-resume__title">RS School</h4>
+                        </div>
+                      </div>
+                      <div data-spollers class="item-resume__body spollers">
+                        <div class="spollers__item">
+                          <button
+                            tabindex="1"
+                            type="button"
+                            data-spoller
+                            class="item-resume__text spollers__title"
+                          >
+                            JS / Front-end Pre-school Course
+                          </button>
+                          <div class="">
+                            <img
+                              src="./shared/assets/img/thirdSection3/rsschool1.webp"
+                              alt="JS / Front-end Pre-school Course RS School"
+                              width="482"
+                              height="240"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                            <img
+                              src="./shared/assets/img/thirdSection3/rsschool2.webp"
+                              alt="JS / Front-end Pre-school Course RS School"
+                              width="482"
+                              height="240"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head item-resume__head-spoller">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/4.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div data-spollers class="spollers item-resume__header">
+                          <h4 class="item-resume__title">ITVDN</h4>
+                        </div>
+                      </div>
+                      <div data-spollers class="item-resume__body spollers">
+                        <div class="spollers__item">
+                          <button
+                            tabindex="1"
+                            type="button"
+                            data-spoller
+                            class="item-resume__text spollers__title"
+                          >
+                            Vue.js
+                          </button>
+                          <div class="">
+                            <img
+                              src="./shared/assets/img/thirdSection3/vue.webp"
+                              alt="Vue.js ITVDN"
+                              width="482"
+                              height="340"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head item-resume__head-spoller">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/4.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div data-spollers class="spollers item-resume__header">
+                          <h4 class="item-resume__title">ITVDN</h4>
+                        </div>
+                      </div>
+                      <div data-spollers class="item-resume__body spollers">
+                        <div class="spollers__item">
+                          <button
+                            tabindex="1"
+                            type="button"
+                            data-spoller
+                            class="item-resume__text spollers__title"
+                          >
+                            TypeScript
+                          </button>
+                          <div class="">
+                            <img
+                              src="./shared/assets/img/thirdSection3/typescript.webp"
+                              alt="typescript ITVDN"
+                              width="482"
+                              height="340"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="resume__column">
+                <h3 class="resume__title">Work</h3>
+                <ul>
+                  <li class="resume__item">
+                    <div class="item-resume">
+                      <div class="item-resume__head">
+                        <div class="item-resume__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item-resume__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <div class="item-resume__header">
+                          <h4 class="item-resume__title">
+                            Front-end development
+                          </h4>
+                          <div class="item-resume__subtitle">
+                            Freelance | (September 2023 to present)
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item-resume__body">
+                        <p>
+                          Front-End Developer specializing in JavaScript (ES6+),
+                          TypeScript, React 18+, and Vue.js 3. Experienced in
+                          building over 40+ projects with a focus on clean code,
+                          accessibility (A11y/WCAG), responsive interfaces, and
+                          high performance (Google PageSpeed 90+). Experienced
+                          in REST API integration and modern frontend
+                          architecture approaches (Feature-Sliced Design, Atomic
+                          Design).
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="page__skills skills" aria-labelledby="skills-title">
+          <div class="skills__container">
+            <div class="skills__header header-block header-block__center">
+              <div class="header-block__subtitle">Skills</div>
+              <h2 class="header-block__title" id="skills-title">My Skills</h2>
+              <div class="header-block__line"></div>
+            </div>
+            <div
+              class="scroller skills__scroller"
+              data-direction="left"
+              data-speed="fast"
+            >
+              <div class="scroller__inner">
+                <img
+                  src="./shared/assets/img/fourthSection4/html5.svg"
+                  alt="html5"
+                  class="scroller__img"
+                  width="46"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/css3.svg"
+                  alt="css3"
+                  class="scroller__img"
+                  width="46"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/Saas.svg"
+                  alt="sass"
+                  class="scroller__img"
+                  width="85"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/bootstrap.svg"
+                  alt="bootstrap"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/tailwind.svg"
+                  alt="tailwind"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/figma.svg"
+                  alt="figma"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/js.svg"
+                  alt="javascript"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/typescript.svg"
+                  alt="typescript"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/react.svg"
+                  alt="react"
+                  class="scroller__img"
+                  width="72"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/vue.svg"
+                  alt="vue"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/Git.svg"
+                  alt="Git"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/vite.svg"
+                  alt="vite"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/gulp.svg"
+                  alt="gulp"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/webpack.svg"
+                  alt="webpack"
+                  class="scroller__img"
+                  width="65"
+                  height="65"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  src="./shared/assets/img/fourthSection4/jquery.svg"
+                  alt="jquery"
+                  class="scroller__img"
+                  width="162"
+                  height="37"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+            <div class="items__wrapper">
+              <div class="items__column">
+                <h3 class="items__title">Hard skills</h3>
+                <ul class="items__list">
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          HTML (HTML5), PostHTML, JSX
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          CSS (CSS3), SASS (SCSS), PostCSS, CSS Modules,
+                          Bootstrap, Tailwind, GSAP, Ant Design, Material UI,
+                          Chart.js, Responsive & Adaptive Design, Pixel Perfect,
+                          Animations
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">JavaScript, TypeScript</div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          React, Vue.js, React Router, Vue Router 4, Pinia
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">Webpack, Vite, Gulp</div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          REST API, Axios, WebSockets
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          BEM, Feature-Sliced Design (FSD), Feature-based
+                          architecture, Atomic Design, Accessibility, UX
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          Git (GitHub, GitLab), Netlify, Vercel
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          Figma, Adobe Photoshop, Avocode
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/2.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">English level - A2</div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="resume__column">
+                <h3 class="resume__title">Soft skills</h3>
+                <ul>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          I know how to work in a team, I have experience in
+                          communication with designers, managers and other
+                          engineers
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          I am responsible about deadlines
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          I am attentive to the details of the terms of
+                          reference
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          I am demanding of the quality of my code, I follow the
+                          code-style
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          I have time management skills
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          I welcome constructive criticism and am always happy
+                          to find new points of professional and personal growth
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          I know how to solve conflict situations
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          I am correctly convey thoughts, formulate questions
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          I write detailed reports on the work done, if required
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="items__item">
+                    <div class="item">
+                      <div class="item__head">
+                        <div class="item__icon">
+                          <img
+                            src="./shared/assets/img/thirdSection3/1.svg"
+                            alt="icon"
+                            class="item__img"
+                            width="25"
+                            height="25"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="item__text">
+                          I am motivated to improve my skills, constantly
+                          studying new technologies in my field of activity
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="footer__container">
+          <div class="footer__header">
+            <h2 class="footer__title">Contact me</h2>
+            <div class="footer__text">In any way convenient for you:</div>
+          </div>
+          <div class="footer__wrapper">
+            <div class="footer__soc1al soc1al">
+              <ul class="soc1al__list">
+                <li class="soc1al__item">
+                  <a
+                    href="https://www.linkedin.com/in/fomin-ivan/"
+                    class="soc1al__link"
+                    target="_blank"
+                    aria-label="linkedin"
+                    title="linkedin"
+                  >
+                    <svg
+                      width="44"
+                      height="44"
+                      viewBox="0 0 16 16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill="#0A66C2"
+                        d="M12.225 12.225h-1.778V9.44c0-.664-.012-1.519-.925-1.519-.926 0-1.068.724-1.068 1.47v2.834H6.676V6.498h1.707v.783h.024c.348-.594.996-.95 1.684-.925 1.802 0 2.135 1.185 2.135 2.728l-.001 3.14zM4.67 5.715a1.037 1.037 0 01-1.032-1.031c0-.566.466-1.032 1.032-1.032.566 0 1.031.466 1.032 1.032 0 .566-.466 1.032-1.032 1.032zm.889 6.51h-1.78V6.498h1.78v5.727zM13.11 2H2.885A.88.88 0 002 2.866v10.268a.88.88 0 00.885.866h10.226a.882.882 0 00.889-.866V2.865a.88.88 0 00-.889-.864z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li class="soc1al__item">
+                  <a
+                    href="https://github.com/ivan-mr1"
+                    class="soc1al__link"
+                    target="_blank"
+                    aria-label="Github"
+                    title="Github"
+                  >
+                    <svg
+                      width="44"
+                      height="44"
+                      viewBox="0 0 48 48"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill="#3E75C3"
+                        d="M24 0C10.75 0 0 10.79 0 24.1c0 10.64 6.88 19.67 16.42 22.86 1.2.22 1.64-.52 1.64-1.16 0-.57-.02-2.08-.03-4.09-6.68 1.46-8.09-3.23-8.09-3.23-1.09-2.79-2.66-3.53-2.66-3.53-2.18-1.49.17-1.46.17-1.46 2.41.17 3.68 2.48 3.68 2.48 2.14 3.68 5.62 2.62 6.99 2 .22-1.56.84-2.62 1.52-3.23-5.33-.61-10.93-2.67-10.93-11.9 0-2.63.93-4.78 2.47-6.47-.25-.61-1.08-3.05.23-6.37 0 0 2-.64 6.58 2.48 1.92-.54 3.97-.81 6.03-.82 2.06.01 4.12.28 6.05.82 4.57-3.12 6.57-2.48 6.57-2.48 1.32 3.32.49 5.76.24 6.37 1.55 1.69 2.47 3.84 2.47 6.47 0 9.27-5.61 11.32-10.96 11.93.88.76 1.67 2.27 1.67 4.57 0 3.23-.03 5.82-.03 6.61 0 .64.43 1.42 1.66 1.18C41.13 43.76 48 34.74 48 24.1 48 10.79 37.25 0 24 0z"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li class="soc1al__item">
+                  <a
+                    href="https://t.me/ivan_mr1"
+                    class="soc1al__link"
+                    target="_blank"
+                    aria-label="Telegram"
+                    title="Telegram"
+                  >
+                    <svg
+                      width="44"
+                      height="44"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="512" height="512" rx="15%" fill="#37aee2" />
+                      <path
+                        fill="#c8daea"
+                        d="M199 404c-11 0-10-4-13-14l-32-105 245-144"
+                      />
+                      <path
+                        fill="#a9c9dd"
+                        d="M199 404c7 0 11-4 16-8l45-43-56-34"
+                      />
+                      <path
+                        fill="#f6fbfe"
+                        d="M204 319l135 99c14 9 26 4 30-14l55-258c5-22-9-32-24-25L79 245c-21 8-21 21-4 26l83 26 190-121c9-5 17-3 11 4"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li class="soc1al__item">
+                  <a
+                    href="https://wa.me/380668752517"
+                    class="soc1al__link"
+                    target="_blank"
+                    aria-label="whatsapp"
+                    title="whatsapp"
+                  >
+                    <svg
+                      width="44"
+                      height="44"
+                      viewBox="0 0 512 512"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="512" height="512" rx="15%" fill="#25d366" />
+                      <path
+                        fill="#25d366"
+                        stroke="#ffffff"
+                        stroke-width="26"
+                        d="M123 393l14-65a138 138 0 1150 47z"
+                      />
+                      <path
+                        fill="#ffffff"
+                        d="M308 273c-3-2-6-3-9 1l-12 16c-3 2-5 3-9 1-15-8-36-17-54-47-1-4 1-6 3-8l9-14c2-2 1-4 0-6l-12-29c-3-8-6-7-9-7h-8c-2 0-6 1-10 5-22 22-13 53 3 73 3 4 23 40 66 59 32 14 39 12 48 10 11-1 22-10 27-19 1-3 6-16 2-18"
+                      />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <ul class="footer__contacts">
+              <li class="footer__item">
+                <div class="footer__link-icon">
+                  <img
+                    src="./shared/assets/img/footer/social/email.svg"
+                    alt="email icon"
+                    class="footer__link-img"
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                  />
+                </div>
+                <a href="mailto:ivanfomin.mr1@gmail.com" class="footer__link"
+                  ><span class="hover-link">ivanfomin.mr1@gmail.com</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+
+      <div data-popup="popup-1" aria-hidden="true" class="popup">
+        <div data-popup-wrapper class="popup__wrapper">
+          <div data-popup-body class="popup__body">
+            <button
+              data-popup-close
+              type="button"
+              class="popup__close"
+              aria-label="Close popup"
+              title="Close popup"
+            >
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M30 10L10 30"
+                  stroke="#ffa501"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 10L30 30"
+                  stroke="#ffa501"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div data-popup-content class="popup__content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

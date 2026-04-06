@@ -3,7 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      name="description"
+      content="Ivan F portfolio - web development, front-end."
+    />
+    <title>Ivan Fomin Portfolio</title>
+    <load src="shared/head/_favicons.html" />
+    <load src="shared/head/_font-preload.html" />
+    <link rel="stylesheet" href="app/styles/main.scss" />
+    <script type="module" src="app/js/app.js"></script>
   </head>
-  <body></body>
+
+  <body>
+    <div class="wrapper">
+      <load src="widgets/header/_header.html" />
+      <main class="page">
+        <load src="sections/hero/_hero.html" />
+        <load src="sections/about/_about.html" />
+        <load src="sections/portfolio/_portfolio.html" />
+        <load src="sections/resume/_resume.html" />
+        <load src="sections/skills/_skills.html" />
+      </main>
+      <load src="widgets/footer/_footer.html" />
+      <load src="shared/ui/popup/_popup.html" />
+    </div>
+  </body>
 </html>

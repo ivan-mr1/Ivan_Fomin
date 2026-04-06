@@ -1,4 +1,4 @@
-import { locales } from '../locates/locales';
+import { locales } from '@/shared/lib';
 
 class CountdownTimer {
   /**
