@@ -1,5 +1,5 @@
 import PortfolioCollection from './PortfolioCollection.js';
-import SelectCollection from '@components/form/select/Select.js';
+import SelectCollection from '@/shared/ui/form/select/Select.js';
 
 const TAB_ID_TO_FILTER_KEY = {
   'tab-1': 'all',

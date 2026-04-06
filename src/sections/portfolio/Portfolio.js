@@ -1,6 +1,6 @@
 import PortfolioBase from './PortfolioBase.js';
 import ProjectCard from './ProjectCard.js';
-import ShowMoreButton from '@components/showMoreButton/ShowMoreButton.js';
+import ShowMoreButton from '@/shared/ui/showMoreButton/ShowMoreButton.js';
 import projects from './projects.js';
 
 export default class Portfolio extends PortfolioBase {

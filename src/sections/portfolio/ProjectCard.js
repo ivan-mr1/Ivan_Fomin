@@ -29,7 +29,7 @@ export default class ProjectCard {
 
   createImage() {
     const img = document.createElement('img');
-    img.src = `assets/img/works/${this.img}`;
+    img.src = `shared/assets/img/works/${this.img}`;
     img.alt = this.name;
     img.classList.add(this.classes.img);
     img.width = 280;

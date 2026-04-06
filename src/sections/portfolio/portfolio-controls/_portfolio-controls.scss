@@ -63,7 +63,7 @@
         padding-right: calc(
           var(--field-input-padding-x) * 2 + var(--field-search-input-icon-size)
         );
-        background-image: url('@assets/img/components/icon-search_black.svg');
+        background-image: url('@/shared/assets/img/components/icon-search_black.svg');
         background-position: calc(100% - var(--field-input-padding-x)) 50%;
         background-size: var(--field-search-input-icon-size);
         background-repeat: no-repeat;

@@ -3,28 +3,11 @@
     "baseUrl": ".",
     "ignoreDeprecations": "6.0",
     "paths": {
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"],
-      "@styles/*": ["src/styles/*"],
-      "@helpers/*": ["src/styles/helpers/*"],
-      "@sections/*": ["src/sections/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@js/*": ["src/js/*"]
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/shared/assets/*"],
+      "@styles/*": ["./src/app/styles/*"],
+      "@helpers/*": ["./src/app/styles/helpers/*"]
     }
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", "build"]
 }
-
-// {
-//   "compilerOptions": {
-//     "baseUrl": ".",
-//     "ignoreDeprecations": "6.0",
-//     "paths": {
-//       "@/*": ["./src/*"],
-//       "@assets/*": ["./src/shared/assets/*"],
-//       "@styles/*": ["./src/app/styles/*"],
-//       "@helpers/*": ["./src/app/styles/helpers/*"]
-//     }
-//   },
-//   "exclude": ["node_modules", "dist", "build"]
-// }

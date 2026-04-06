@@ -16,7 +16,7 @@
       "typescript": "https://testprovider.com/ru/search-certificate/tp24794857"
     },
     "rsschool": {
-      "js pre-school": "assets/img/certificate/rsschool1.webp"
+      "js pre-school": "shared/assets/img/certificate/rsschool1.webp"
     }
   }
 }
