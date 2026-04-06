@@ -1,20 +1,17 @@
 @use 'sass:math';
 
-//  Percent
 @function percent($px, $from: 100) {
   $result: math.div($px, $from) * 100%;
 
   @return $result;
 }
 
-//  REM
 @function rem($px, $current: 16) {
   $result: math.div($px, $current) + rem;
 
   @return $result;
 }
 
-//  EM
 @function em($px, $current: 16) {
   $result: math.div($px, $current) + em;
 
@@ -39,5 +36,3 @@
     #{$maxSize * 1rem}
   );
 }
-
-// обязательно передать размер контейнера в функцию fluid в каждом проекте

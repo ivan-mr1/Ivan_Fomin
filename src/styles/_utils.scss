@@ -38,21 +38,20 @@ p {
   }
 }
 
-// .hidden-mobile {
-//   @include mobile {
-//     display: none !important;
-//   }
-// }
+.hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
 
-// .disabled {
-//   opacity: 0.5;
-//   cursor: default;
-//   pointer-events: none; // запрещаем взаимодействие
-// }
+.disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
 
-// :focus-visible {
-//   // в момент фокусировки с клавиатуры
-//   outline: rem(2) dashed var(--color-white);
-//   outline-offset: rem(4);
-//   transition-duration: 0s !important;
-// }
+:focus-visible {
+  outline: rem(2) dashed var(--color-white);
+  outline-offset: rem(4);
+  transition-duration: 0s !important;
+}

@@ -14,3 +14,17 @@
   },
   "exclude": ["node_modules", "dist"]
 }
+
+// {
+//   "compilerOptions": {
+//     "baseUrl": ".",
+//     "ignoreDeprecations": "6.0",
+//     "paths": {
+//       "@/*": ["./src/*"],
+//       "@assets/*": ["./src/shared/assets/*"],
+//       "@styles/*": ["./src/app/styles/*"],
+//       "@helpers/*": ["./src/app/styles/helpers/*"]
+//     }
+//   },
+//   "exclude": ["node_modules", "dist", "build"]
+// }

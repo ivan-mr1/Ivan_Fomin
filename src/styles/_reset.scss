@@ -25,9 +25,9 @@ html {
 body {
   min-height: 100vh;
   line-height: 1;
-  scrollbar-gutter: stable; // резервирует место под скроллбар
+  scrollbar-gutter: stable;
   text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased; // Делает шрифты более аккуратными и тонкими на macOS и iOS
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
