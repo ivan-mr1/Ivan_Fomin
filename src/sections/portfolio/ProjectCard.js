@@ -29,13 +29,17 @@ export default class ProjectCard {
     this.techStack = techStack || [];
   }
 
-  getImagePath() {
-    return `${BASE_URL}shared/assets/img/works/${this.img}`;
+  getRelativeImagePath() {
+    return `shared/assets/img/works/${this.img}`;
+  }
+
+  getFullImagePath() {
+    return `${BASE_URL}${this.getRelativeImagePath()}`;
   }
 
   createImage() {
     const img = document.createElement('img');
-    img.src = this.getImagePath();
+    img.src = this.getFullImagePath();
     img.alt = this.name;
     img.classList.add(this.classes.img);
     img.width = 280;
@@ -53,7 +57,7 @@ export default class ProjectCard {
 
     link.dataset.id = this.id;
     link.dataset.title = this.name;
-    link.dataset.image = this.getImagePath();
+    link.dataset.image = this.getRelativeImagePath();
     link.dataset.tech = this.techStack.join(', ');
     link.dataset.year = this.year;
     link.dataset.deploy = this.deploy;
