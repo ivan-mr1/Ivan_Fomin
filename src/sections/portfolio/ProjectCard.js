@@ -29,7 +29,7 @@ export default class ProjectCard {
 
   createImage() {
     const img = document.createElement('img');
-    img.src = `/shared/assets/img/works/${this.img}`;
+    img.src = `shared/assets/img/works/${this.img}`;
     img.alt = this.name;
     img.classList.add(this.classes.img);
     img.width = 280;
@@ -47,7 +47,7 @@ export default class ProjectCard {
 
     link.dataset.id = this.id;
     link.dataset.title = this.name;
-    link.dataset.image = `/shared/assets/img/works/${this.img}`;
+    link.dataset.image = `shared/assets/img/works/${this.img}`;
     link.dataset.tech = this.techStack.join(', ');
     link.dataset.year = this.year;
     link.dataset.deploy = this.deploy;
