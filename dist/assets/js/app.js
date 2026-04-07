@@ -59,14 +59,14 @@ const L = () => d,
         d = !0;
       }, i));
   },
-  k = () => document.querySelectorAll('[data-right-padding]'),
-  x = () => {
+  x = () => document.querySelectorAll('[data-right-padding]'),
+  k = () => {
     const i = window.innerWidth - document.body.clientWidth,
       t = parseFloat(getComputedStyle(document.documentElement).fontSize);
     return i / t + 'rem';
   },
   S = (i = '') => {
-    (k().forEach((e) => {
+    (x().forEach((e) => {
       e.style.paddingRight = i;
     }),
       (document.body.style.paddingRight = i));
@@ -79,7 +79,7 @@ const L = () => d,
   },
   v = (i = 500) => {
     if (!d) return;
-    const t = x();
+    const t = k();
     (S(t),
       A(t),
       document.documentElement.setAttribute('data-scroll-lock', ''),
@@ -888,10 +888,13 @@ class $ {
       (this.year = l || ''),
       (this.techStack = c || []));
   }
+  getImagePath() {
+    return `./shared/assets/img/works/${this.img}`;
+  }
   createImage() {
     const t = document.createElement('img');
     return (
-      (t.src = `shared/assets/img/works/${this.img}`),
+      (t.src = this.getImagePath()),
       (t.alt = this.name),
       t.classList.add(this.classes.img),
       (t.width = 280),
@@ -908,7 +911,7 @@ class $ {
       t.setAttribute('data-popup-link', 'popup-1'),
       (t.dataset.id = this.id),
       (t.dataset.title = this.name),
-      (t.dataset.image = `shared/assets/img/works/${this.img}`),
+      (t.dataset.image = this.getImagePath()),
       (t.dataset.tech = this.techStack.join(', ')),
       (t.dataset.year = this.year),
       (t.dataset.deploy = this.deploy),
