@@ -14,7 +14,10 @@ export default function productPopup() {
 
     const title = link.dataset.title;
     const imagePath = link.dataset.image;
-    const image = `${BASE_URL}${imagePath}`;
+    const normalizedImagePath = imagePath.startsWith(BASE_URL)
+      ? imagePath.slice(BASE_URL.length)
+      : imagePath.replace(/^\/+/, '');
+    const image = `${BASE_URL.replace(/\/$/, '')}/${normalizedImagePath}`;
     const techArray = link.dataset.tech.split(',').map((t) => t.trim());
     const year = link.dataset.year;
     const github = link.dataset.github;
