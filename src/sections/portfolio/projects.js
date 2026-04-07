@@ -521,7 +521,7 @@ const projects = [
     name: 'portfolio',
     img: 'portfolio.webp',
     github: 'https://github.com/ivan-mr1/Ivan_Fomin',
-    deploy: 'https://ivan-mr1.github.io/Ivan_Fomin/dist/',
+    deploy: 'https://ivan-mr1.github.io/Ivan_Fomin/',
     category: 'landing',
     pageType: 'landing',
     year: '2025',
