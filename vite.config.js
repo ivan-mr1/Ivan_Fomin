@@ -43,5 +43,5 @@ export default defineConfig({
     outDir: '../dist',
   },
   root: 'src',
-  base: process.env.NODE_ENV === 'production' ? '/Ivan_Fomin/' : '',
+  base: import.meta.env.MODE === 'production' ? '/Ivan_Fomin/' : '',
 });

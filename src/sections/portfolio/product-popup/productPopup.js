@@ -1,3 +1,5 @@
+import { BASE_URL } from '@/shared/config';
+
 export default function productPopup() {
   document.addEventListener('click', (e) => {
     const link = e.target.closest('[data-popup-link]');
@@ -11,7 +13,8 @@ export default function productPopup() {
     }
 
     const title = link.dataset.title;
-    const image = link.dataset.image;
+    const imagePath = link.dataset.image;
+    const image = `${BASE_URL}${imagePath}`;
     const techArray = link.dataset.tech.split(',').map((t) => t.trim());
     const year = link.dataset.year;
     const github = link.dataset.github;

@@ -1,6 +1,6 @@
 # My Portfolio
 
-- Deploy: [link](https://ivan-mr1.github.io/Ivan_Fomin/dist/)
+- Deploy: [link](https://ivan-mr1.github.io/Ivan_Fomin/)
 
 - Technologies: HTML, SCSS, Javascript, Vite, Eslint, Stylelint, Prettier
 

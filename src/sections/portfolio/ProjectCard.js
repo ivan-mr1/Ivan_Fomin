@@ -1,3 +1,5 @@
+import { BASE_URL } from '@/shared/config';
+
 export default class ProjectCard {
   classes = {
     item: 'portfolio__item',
@@ -28,7 +30,7 @@ export default class ProjectCard {
   }
 
   getImagePath() {
-    return `./shared/assets/img/works/${this.img}`;
+    return `${BASE_URL}shared/assets/img/works/${this.img}`;
   }
 
   createImage() {
