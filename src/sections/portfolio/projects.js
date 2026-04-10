@@ -51,6 +51,7 @@ const projects = [
       'HTML',
       'SCSS',
       'Vue.js',
+      'i18n',
       'Pinia',
       'Axios',
       'FSD',
